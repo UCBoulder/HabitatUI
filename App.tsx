@@ -1,8 +1,24 @@
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
+import React, {useEffect} from "react";
+import {StyleSheet, Text, View} from "react-native";
+import MapView, {PROVIDER_GOOGLE} from "react-native-maps";
+import {request, PERMISSIONS} from "react-native-permissions"
 
 export default function App() {
+  useEffect(() => {
+    // Request location permissions
+    request(PERMISSIONS.ANDROID.ACCESS_COARSE_LOCATION)
+    .then((result) => {
+      if (result === "granted") {
+        console.log("Location permission granted");
+      } else {
+        console.log("Location permission denied");
+      }
+    })
+    .catch((error) => {
+      console.error("Error requesting location permission: ", error);
+    });
+  }, []);
+
   return (
     <View style={styles.container}>
       {/* Banner */}
