@@ -16,7 +16,8 @@
     "react-native": "0.72.5",
     "react-native-elements": "^3.4.3",
     "react-native-maps": "1.7.1",
-    "react-native-permissions": "^3.9.3"
+    "react-native-permissions": "^3.9.3",
+    "react-native-scripts": "2.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
