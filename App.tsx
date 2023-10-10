@@ -1,5 +1,6 @@
 import React, {useEffect} from "react";
-import {StyleSheet, Text, View} from "react-native";
+import {Alert, StyleSheet, Text, View} from "react-native";
+import { Button } from "react-native-elements";
 import MapView, {PROVIDER_GOOGLE} from "react-native-maps";
 import {request, PERMISSIONS} from "react-native-permissions"
 
@@ -24,6 +25,13 @@ export default function App() {
       {/* Banner */}
       <View style={styles.banner}>
         <Text style={styles.bannerText}>Example Map</Text>
+      </View>
+
+      <View style={styles.locationButtonStyle}>
+      <Button //press the button that gets the user's location
+        title="Get user location"
+        onPress={() => Alert.alert('Pressed')}
+        />
       </View>
 
       {/* Render the map */}
@@ -61,5 +69,12 @@ const styles = StyleSheet.create({
   bannerText: {
     color: "white", 
     fontSize: 18,
+  },
+  locationButtonStyle: {
+    justifyContent: 'center',
+    position: 'absolute',
+    bottom: 35,
+    margin: 16,
+    right: 10,
   },
 });
