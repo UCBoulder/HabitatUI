@@ -1,53 +1,65 @@
-import React, {useEffect, useState} from 'react';
-import {
-  Text,
-  StyleSheet,
-  Button,
-  View,
-  Alert,
-} from 'react-native';
+import React, {useEffect} from "react";
+import {StyleSheet, Text, View} from "react-native";
+import MapView, {PROVIDER_GOOGLE} from "react-native-maps";
+import {request, PERMISSIONS} from "react-native-permissions"
 
-const App = () => {
-const [session, setSession] = useState(1);
-const onClickHandler = () => {
-  setSession(session + 1)
-  checkSession(session + 1);
-};
-
-const checkSession = (newSession: number) => {
-  if (newSession === 10) {
-    showSessionReachedAlert();
-  }
-};
-
-const showSessionReachedAlert = () => {
-  Alert.alert('Stop', 'congrats you can count to 10', [
-    {
-      text: 'OK',
-    },
-  ]);
-};
-
+export default function App() {
+  useEffect(() => {
+    // Request location permissions
+    request(PERMISSIONS.ANDROID.ACCESS_COARSE_LOCATION)
+    .then((result) => {
+      if (result === "granted") {
+        console.log("Location permission granted");
+      } else {
+        console.log("Location permission denied");
+      }
+    })
+    .catch((error) => {
+      console.error("Error requesting location permission: ", error);
+    });
+  }, []);
 
   return (
-    <View style={styles.body}>
-      <Text style={styles.text}> This is session number {session}</Text>
-      <Button title='Update session number' onPress={onClickHandler}></Button>
+    <View style={styles.container}>
+      {/* Banner */}
+      <View style={styles.banner}>
+        <Text style={styles.bannerText}>Example Map</Text>
       </View>
+
+      {/* Render the map */}
+      <MapView
+        provider={PROVIDER_GOOGLE}
+        style={styles.map}
+        // Specify coordinates for Gunnison, Colorado
+        initialRegion={{
+          latitude: 38.5449,
+          longitude: -106.9329,
+          latitudeDelta: 0.0922,
+          longitudeDelta: 0.0421,
+        }}
+        showsUserLocation={true}
+        showsMyLocationButton={true}
+      />
+    </View>
   );
-  };
+}
 
 const styles = StyleSheet.create({
-  body : {
-    flex: 1,
-    backgroundColor: '#ffffff',
-    alignItems: 'center',
-    justifyContent: 'center'
+  container: {
+    flex: 1, 
   },
-  text: {
-    fontSize: 20,
-    margin: 10,
+  map: {
+    flex: 1, 
+    width: "100%",
+  },
+  banner: {
+    backgroundColor: "blue",
+    padding: 10,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  bannerText: {
+    color: "white", 
+    fontSize: 18,
   },
 });
-
-export default App;
