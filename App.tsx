@@ -1,22 +1,35 @@
-import React, {useEffect} from "react";
-import {StyleSheet, Text, View} from "react-native";
-import MapView, {PROVIDER_GOOGLE} from "react-native-maps";
-import {request, PERMISSIONS} from "react-native-permissions"
+import React, { useEffect } from "react";
+import { StyleSheet, Text, View } from "react-native";
+import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
+import { request, PERMISSIONS } from "react-native-permissions";
+import axios from "axios";
 
 export default function App() {
   useEffect(() => {
     // Request location permissions
     request(PERMISSIONS.ANDROID.ACCESS_COARSE_LOCATION)
-    .then((result) => {
-      if (result === "granted") {
-        console.log("Location permission granted");
-      } else {
-        console.log("Location permission denied");
-      }
-    })
-    .catch((error) => {
-      console.error("Error requesting location permission: ", error);
-    });
+      .then((result) => {
+        if (result === "granted") {
+          console.log("Location permission granted");
+        } else {
+          console.log("Location permission denied");
+        }
+      })
+      .catch((error) => {
+        console.error("Error requesting location permission: ", error);
+      });
+
+    // Send a POST request to backend
+    axios
+      .post("http://your-backend-server/api/endpoint", {
+        message: "Hello world",
+      })
+      .then((response) => {
+        console.log("Response from backend: ", response.data);
+      })
+      .catch((error) => {
+        console.error("Error sending request to backend: ", error);
+      });
   }, []);
 
   return (
@@ -46,10 +59,10 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1, 
+    flex: 1,
   },
   map: {
-    flex: 1, 
+    flex: 1,
     width: "100%",
   },
   banner: {
@@ -59,7 +72,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   bannerText: {
-    color: "white", 
+    color: "white",
     fontSize: 18,
   },
 });
