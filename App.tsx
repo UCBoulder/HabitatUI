@@ -21,7 +21,7 @@ export default function App() {
 
     // Send a POST request to backend
     axios
-      .post("http://your-backend-server/api/endpoint", {
+      .post("URL", {
         message: "Hello world",
       })
       .then((response) => {
