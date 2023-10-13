@@ -21,7 +21,7 @@ export default function App() {
 
     // Send a POST request to backend
     axios
-      .post("URL", {
+      .post("http://YOU_IP_ADDRESS:8080/APITEST", {
         message: "Hello world",
       })
       .then((response) => {
