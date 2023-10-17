@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { Alert, StyleSheet, Text, View } from "react-native";
 import { Button } from "react-native-elements";
-import { StyleSheet, Text, View } from "react-native";
 import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
 import { request, PERMISSIONS } from "react-native-permissions";
 import axios from "axios";
@@ -73,8 +72,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   map: {
-    flex: 1,
-    width: "100%",
+    ...StyleSheet.absoluteFillObject,
   },
   banner: {
     backgroundColor: "blue",
@@ -88,9 +86,6 @@ const styles = StyleSheet.create({
   },
   mapContainer: {
     flex: 1,
-  },
-  map: {
-    ...StyleSheet.absoluteFillObject,
   },
   locationButton: {
     position: 'relative',
