@@ -3,6 +3,7 @@ import { Alert, StyleSheet, Text, View } from "react-native";
 import { Button } from "react-native-elements";
 import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
 import { request, PERMISSIONS } from "react-native-permissions";
+import Geolocation from "react-native-geolocation-service";
 import axios from "axios";
 
 export default function App() {
@@ -19,10 +20,10 @@ export default function App() {
       .catch((error) => {
         console.error("Error requesting location permission: ", error);
       });
-    
+
     // Send a POST request to backend
     axios
-      .post("http://YOU_IP_ADDRESS:8080/APITEST", {
+      .post("http://192.168.56.1:8080/APITEST", {
         message: "Hello world",
       })
       .then((response) => {
@@ -59,7 +60,9 @@ export default function App() {
         <View style={styles.locationButton}>
           <Button
             title="Get user location"
-            onPress={() => Alert.alert('Pressed')} //change this to get cords
+            onPress={() => Geolocation.getCurrentPosition((position) => {
+              console.log(position);
+            })} //change this to get cords
           />
         </View>
       </View>
@@ -89,7 +92,7 @@ const styles = StyleSheet.create({
   },
   locationButton: {
     position: 'relative',
-    height: 1000, 
+    height: 1000,
     alignItems: "center",
     justifyContent: "center",
   },
