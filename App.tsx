@@ -1,8 +1,10 @@
 import React, { useEffect } from "react";
 import { Alert, StyleSheet, Text, View } from "react-native";
 import { Button } from "react-native-elements";
+import { StyleSheet, Text, View } from "react-native";
 import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
 import { request, PERMISSIONS } from "react-native-permissions";
+import axios from "axios";
 
 export default function App() {
   useEffect(() => {
@@ -17,6 +19,18 @@ export default function App() {
       })
       .catch((error) => {
         console.error("Error requesting location permission: ", error);
+      });
+    
+    // Send a POST request to backend
+    axios
+      .post("http://YOU_IP_ADDRESS:8080/APITEST", {
+        message: "Hello world",
+      })
+      .then((response) => {
+        console.log("Response from backend: ", response.data);
+      })
+      .catch((error) => {
+        console.error("Error sending request to backend: ", error);
       });
   }, []);
 
@@ -57,6 +71,10 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  map: {
+    flex: 1,
+    width: "100%",
   },
   banner: {
     backgroundColor: "blue",
