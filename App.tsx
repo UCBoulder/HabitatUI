@@ -1,42 +1,55 @@
-import React, { useEffect } from "react";
-import { Alert, StyleSheet, Text, View } from "react-native";
+import React, { useEffect, useState } from "react";
+import { StyleSheet, Text, View } from "react-native";
 import { Button } from "react-native-elements";
 import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
 import { request, PERMISSIONS } from "react-native-permissions";
-import Geolocation from "react-native-geolocation-service";
+import Geolocation, { GeoPosition } from "react-native-geolocation-service";
 import axios from "axios";
 
 export default function App() {
-  useEffect(() => {
-    // Request location permissions
-    request(PERMISSIONS.ANDROID.ACCESS_COARSE_LOCATION)
-      .then((result) => {
-        if (result === "granted") {
-          console.log("Location permission granted");
-        } else {
-          console.log("Location permission denied");
-        }
-      })
-      .catch((error) => {
-        console.error("Error requesting location permission: ", error);
-      });
+  // set state to initially be null
+  const [currentLocation, setCurrentLocation] = useState<GeoPosition | null>(null);
 
-    // Send a POST request to backend
-    axios
-      .post("http://192.168.56.1:8080/APITEST", {
-        message: "Hello world",
-      })
-      .then((response) => {
-        console.log("Response from backend: ", response.data);
-      })
-      .catch((error) => {
-        console.error("Error sending request to backend: ", error);
+  const requestLocationPermission = async () => {
+    try {
+      const result = await request(PERMISSIONS.ANDROID.ACCESS_COARSE_LOCATION);
+      if (result === "granted") {
+        console.log("Location permission granted");
+      } else {
+        console.log("Location permission denied");
+      }
+    } catch (error) {
+      console.error("Error requesting location permission: ", error);
+    }
+  };
+
+  // send the user location data from Geolocation.getCurrentPosition to backend
+  const sendRequestToBackend = async (position: Geolocation.GeoPosition) => {
+    try {
+      const response = await axios.post("http://192.168.56.1:8080/APITEST", {
+        position: position, // User location
       });
+      console.log("Response from backend: ", response.data);
+    } catch (error) {
+      console.error("Error sending request to backend: ", error);
+    }
+  };
+
+  // Helper for Get location button
+  const handleGetLocation = () => {
+    Geolocation.getCurrentPosition((position) => {
+      setCurrentLocation(position);
+      sendRequestToBackend(position);
+    });
+  };
+
+  // Stuff that happens when the app is opened
+  useEffect(() => {
+    requestLocationPermission();
   }, []);
 
   return (
     <View style={styles.container}>
-      {/* Banner */}
       <View style={styles.banner}>
         <Text style={styles.bannerText}>Example Map</Text>
       </View>
@@ -45,7 +58,6 @@ export default function App() {
         <MapView
           provider={PROVIDER_GOOGLE}
           style={styles.map}
-          // Specify coordinates for Gunnison, Colorado
           initialRegion={{
             latitude: 38.5449,
             longitude: -106.9329,
@@ -56,14 +68,8 @@ export default function App() {
           showsMyLocationButton={true}
         />
 
-        {/* Location button */}
         <View style={styles.locationButton}>
-          <Button
-            title="Get user location"
-            onPress={() => Geolocation.getCurrentPosition((position) => {
-              console.log(position);
-            })} //change this to get cords
-          />
+          <Button title="Get user location" onPress={handleGetLocation} />
         </View>
       </View>
     </View>
@@ -91,8 +97,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   locationButton: {
-    position: 'relative',
-    height: 1000,
+    position: "relative", 
+    height: 1000, 
     alignItems: "center",
     justifyContent: "center",
   },
