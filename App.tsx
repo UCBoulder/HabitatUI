@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { Button } from "react-native-elements";
-import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
+import MapView, { Marker, PROVIDER_GOOGLE } from "react-native-maps";
 import { request, PERMISSIONS } from "react-native-permissions";
 import Geolocation, { GeoPosition } from "react-native-geolocation-service";
 import axios from "axios";
 
 export default function App() {
   // set state to initially be null
-  const [currentLocation, setCurrentLocation] = useState<GeoPosition | null>(null);
+  const [userLocation, setUserLocation] = useState(null);
 
   const requestLocationPermission = async () => {
     try {
@@ -38,10 +38,11 @@ export default function App() {
   // Helper for Get location button
   const handleGetLocation = () => {
     Geolocation.getCurrentPosition((position) => {
-      setCurrentLocation(position);
+      setUserLocation(position);
       sendRequestToBackend(position);
     });
   };
+
 
   // Stuff that happens when the app is opened
   useEffect(() => {
@@ -58,15 +59,25 @@ export default function App() {
         <MapView
           provider={PROVIDER_GOOGLE}
           style={styles.map}
+          showsUserLocation={true}
+          showsMyLocationButton={true}
           initialRegion={{
             latitude: 38.5449,
             longitude: -106.9329,
             latitudeDelta: 0.0922,
             longitudeDelta: 0.0421,
           }}
-          showsUserLocation={true}
-          showsMyLocationButton={true}
-        />
+        >
+          {userLocation && (
+            <Marker
+              coordinate={{
+                latitude: userLocation.coords.latitude,
+                longitude: userLocation.coords.longitude,
+              }}
+            />
+          )}
+
+        </MapView>
 
         <View style={styles.locationButton}>
           <Button title="Get user location" onPress={handleGetLocation} />
@@ -97,8 +108,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   locationButton: {
-    position: "relative", 
-    height: 1000, 
+    position: "relative",
+    height: 1000,
     alignItems: "center",
     justifyContent: "center",
   },
