@@ -1,24 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { View, StyleSheet } from "react-native";
 import MapView, { Marker, PROVIDER_GOOGLE } from "react-native-maps";
-import axios from "axios";
+import { getLocationPins } from "../utils/APICalls";
 
 const Map = ({ userLocation }) => {
   const [apiCoordinates, setApiCoordinates] = useState([]);
 
   useEffect(() => {
-    // Define the function to fetch the location pins
-    const getLocationPins = async () => {
+    const fetchPins = async () => {
       try {
-        const locTestResponse = await axios.get("http://192.168.56.1:3000/locTest");
-        setApiCoordinates(locTestResponse.data);
+        const coordinates = await getLocationPins();
+        coordinates && setApiCoordinates(coordinates)
       } catch (error) {
         console.error("Error fetching API data: ", error);
       }
     };
 
-    // Call the function to fetch location pins when the component mounts
-    getLocationPins();
+    fetchPins();
   }, []);
 
   return (
@@ -43,7 +41,7 @@ const Map = ({ userLocation }) => {
             }}
           />
         )}
-        
+
         {apiCoordinates.map((coordinate, index) => (
           // Place all the pins that the api is sending 
           <Marker

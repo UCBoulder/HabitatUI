@@ -1,6 +1,6 @@
 import { request, PERMISSIONS } from "react-native-permissions";
 import Geolocation from "react-native-geolocation-service";
-import axios from "axios";
+import { sendLocationPin } from "./APICalls";
 
 export const requestLocationPermission = async () => {
   try {
@@ -15,20 +15,9 @@ export const requestLocationPermission = async () => {
   }
 };
 
-export const sendRequestToBackend = async (position) => {
-  try {
-    const response = await axios.post("http://192.168.56.1:8080/APITEST", {
-      position,
-    });
-    console.log("Response from backend: ", response.data);
-  } catch (error) {
-    console.error("Error sending request to backend: ", error);
-  }
-};
-
 export const handleGetLocation = (setUserLocation) => {
   Geolocation.getCurrentPosition((position) => {
     setUserLocation(position);
-    sendRequestToBackend(position);
+    sendLocationPin(position);
   });
 };
