@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Button, StyleSheet } from "react-native";
 
+// button that appears on the map page
 const LocationButton = ({ onGetLocation }) => (
   <View style={styles.locationButton}>
     <Button title="Get user location" onPress={onGetLocation} />
