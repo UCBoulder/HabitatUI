@@ -3,7 +3,7 @@ import { View, StyleSheet } from "react-native";
 import MapView, { Marker, PROVIDER_GOOGLE } from "react-native-maps";
 import { getLocationPins } from "../utils/APICalls";
 
-const Map = ({ userLocation }) => {
+const MapPage = ({ userLocation }) => {
   const [apiCoordinates, setApiCoordinates] = useState([]);
 
   useEffect(() => {
@@ -69,4 +69,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Map;
+export default MapPage;

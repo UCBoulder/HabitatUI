@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { View, StyleSheet } from "react-native";
 import { requestLocationPermission, handleGetLocation } from "./utils/HelperFunctions";
 
-import Map from "./components/Map";
+import MapPage from "./Pages/MapPage";
 import LocationButton from "./components/LocationButton";
 
 export default function App() {
@@ -15,7 +15,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Map userLocation={userLocation} />
+      <MapPage userLocation={userLocation} />
       <LocationButton
         onGetLocation={() => handleGetLocation(setUserLocation)}
       />    
