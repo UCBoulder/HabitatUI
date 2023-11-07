@@ -9,6 +9,7 @@ export default function App() {
   const [userLocation, setUserLocation] = useState(null);
 
   useEffect(() => {
+    // ask for location permissions when the app first loads
     requestLocationPermission();
   }, []);
 

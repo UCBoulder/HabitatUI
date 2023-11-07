@@ -7,6 +7,7 @@ const Map = ({ userLocation }) => {
   const [apiCoordinates, setApiCoordinates] = useState([]);
 
   useEffect(() => {
+    // fetch all of the pins from the api when the component loads
     const fetchPins = async () => {
       try {
         const coordinates = await getLocationPins();
@@ -20,6 +21,7 @@ const Map = ({ userLocation }) => {
   }, []);
 
   return (
+    // set default map location to be Gunnison
     <View style={styles.mapContainer}>
       <MapView
         provider={PROVIDER_GOOGLE}
