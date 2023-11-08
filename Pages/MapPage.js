@@ -41,6 +41,7 @@ const MapPage = ({ userLocation }) => {
               latitude: userLocation.coords.latitude,
               longitude: userLocation.coords.longitude,
             }}
+            title="Your observation"
           />
         )}
 
@@ -52,7 +53,7 @@ const MapPage = ({ userLocation }) => {
               latitude: coordinate.latitude,
               longitude: coordinate.longitude,
             }}
-            title={`Marker ${index + 1}`}
+            title={`Observation ${index + 1}`}
           />
         ))}
       </MapView>

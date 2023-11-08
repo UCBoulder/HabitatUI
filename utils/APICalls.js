@@ -14,12 +14,13 @@ export const getLocationPins = async () => {
 // send one lat long coordinate to the API
 export const sendLocationPin = async (position) => {
     try {
-      const response = await axios.post("http://192.168.56.1:8080/APITEST", {
+      const response = await axios.post("http://192.168.56.1:3000/error", {
         position,
       });
       console.log("Response from backend: ", response.data);
     } catch (error) {
-      console.error("Error sending request to backend: ", error);
+      console.error("Error sending data to backend: ", error);
+      return null
     }
   };
 

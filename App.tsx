@@ -4,6 +4,7 @@ import { requestLocationPermission, handleGetLocation } from "./utils/HelperFunc
 
 import MapPage from "./Pages/MapPage";
 import LocationButton from "./components/LocationButton";
+import AppNavigator from "./Navigation/AppNavigator";
 
 export default function App() {
   const [userLocation, setUserLocation] = useState(null);
