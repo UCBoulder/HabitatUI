@@ -20,7 +20,6 @@ const Map = ({ userLocation }) => {
     };
 
     fetchPins();
-    console.log(apiCoordinates)
   }, []);
 
   return (
