@@ -3,13 +3,13 @@ import { View, Button, StyleSheet } from "react-native";
 
 // button that appears on the map page
 const LocationButton = ({ onGetLocation }) => (
-  <View style={styles.locationButton}>
+  <View style={styles.LocationButton}>
     <Button title="Get user location" onPress={onGetLocation} />
   </View>
 );
 
 const styles = StyleSheet.create({
-  locationButton: {
+  LocationButton: {
     position: "absolute",
     bottom: 20,
     left: 0,
