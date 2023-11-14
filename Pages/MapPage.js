@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import { View, StyleSheet } from "react-native";
 import MapView, { Marker, PROVIDER_GOOGLE } from "react-native-maps";
 import { getLocationPins } from "../utils/APICalls";
-
-import {Pin} from "./Pin";
+import { Pin } from "../components/Pin";
 
 const MapPage = ({ userLocation }) => {
   const [apiCoordinates, setApiCoordinates] = useState([]);
