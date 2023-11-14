@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { View, StyleSheet } from "react-native";
-import { requestLocationPermission, handleGetLocation } from "./utils/HelperFunctions";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { MapScreen } from "./components/NavigationComponents";
+import InfoPage from "./Pages/InfoPage";
+import { requestLocationPermission } from "./utils/HelperFunctions";
 
-import Map from "./components/Map";
-import LocationButton from "./components/LocationButton";
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   const [userLocation, setUserLocation] = useState(null);
@@ -14,17 +16,13 @@ export default function App() {
   }, []);
 
   return (
-    <View style={styles.container}>
-      <Map userLocation={userLocation} />
-      <LocationButton
-        onGetLocation={() => handleGetLocation(setUserLocation)}
-      />    
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Map">
+          {(props) => <MapScreen {...props} userLocation={userLocation} setUserLocation={setUserLocation} />}
+        </Stack.Screen>
+        <Stack.Screen name="Info" component={InfoPage} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});

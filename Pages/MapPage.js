@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import { View, StyleSheet } from "react-native";
 import MapView, { Marker, PROVIDER_GOOGLE } from "react-native-maps";
 import { getLocationPins } from "../utils/APICalls";
+import { Pin } from "../components/Pin";
 
-const Map = ({ userLocation }) => {
+const MapPage = ({ userLocation }) => {
   const [apiCoordinates, setApiCoordinates] = useState([]);
 
   useEffect(() => {
@@ -41,9 +42,9 @@ const Map = ({ userLocation }) => {
               latitude: userLocation.coords.latitude,
               longitude: userLocation.coords.longitude,
             }}
+            title="Your observation"
           />
         )}
-
         {apiCoordinates.map((coordinate, index) => (
           // Place all the pins that the api is sending 
           <Marker
@@ -52,7 +53,9 @@ const Map = ({ userLocation }) => {
               latitude: coordinate.latitude,
               longitude: coordinate.longitude,
             }}
-            title={`Marker ${index + 1}`}
+
+            pinColor = {Pin(coordinate.verification)}
+            title={`Observation ${index + 1}`}
           />
         ))}
       </MapView>
@@ -69,4 +72,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Map;
+export default MapPage;
