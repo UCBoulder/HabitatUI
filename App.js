@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { MapScreen } from "./components/NavigationComponents";
+import { MapScreen } from "./components/MapScreen";
 import InfoPage from "./Pages/InfoPage";
 import CameraPage from "./Pages/CameraPage";
 import { requestLocationPermission, requestCameraPermission } from "./utils/HelperFunctions";
-import { StyleSheet } from "react-native";
 
 const Stack = createNativeStackNavigator();
 

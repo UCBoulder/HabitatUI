@@ -1,4 +1,5 @@
 import { Camera, useCameraDevice } from "react-native-vision-camera";
+import { StyleSheet } from "react-native";
 
 const CameraPage = () => {
     const device = useCameraDevice('back')
