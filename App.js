@@ -3,7 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { MapScreen } from "./components/NavigationComponents";
 import InfoPage from "./Pages/InfoPage";
-import { requestLocationPermission } from "./utils/HelperFunctions";
+import { requestLocationPermission, requestCameraPermission } from "./utils/HelperFunctions";
 import { Camera, useCameraDevice, useCameraPermission } from "react-native-vision-camera";
 import { StyleSheet } from "react-native";
 
@@ -17,6 +17,7 @@ export default function App() {
   useEffect(() => {
     // ask for location permissions when the app first loads
     requestLocationPermission();
+    requestCameraPermission();
     
   }, []);
 
