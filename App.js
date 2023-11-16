@@ -12,8 +12,7 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   const [userLocation, setUserLocation] = useState(null);
   const { hasPermission, requestPermission } = useCameraPermission()
-  const device = Camera.getAvailableCameraDevices()
-  console.log(device)
+  const device = useCameraDevice('back')
 
   useEffect(() => {
     // ask for location permissions when the app first loads
