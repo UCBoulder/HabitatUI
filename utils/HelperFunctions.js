@@ -5,7 +5,7 @@ import { sendLocationPin } from "./APICalls";
 // request location permissions
 export const requestLocationPermission = async () => {
   try {
-    const result = await request(PERMISSIONS.ANDROID.ACCESS_COARSE_LOCATION);
+    const result = await request(PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION);
     if (result === "granted") {
       console.log("Location permission granted");
     } else {
