@@ -1,6 +1,6 @@
 import { Camera, useCameraDevice } from "react-native-vision-camera";
 import { View, StyleSheet, TouchableOpacity, Image, Text } from "react-native";
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 
 const CameraPage = () => {
     const camera = useRef(null);
@@ -39,7 +39,7 @@ const CameraPage = () => {
                 photo={true}
             />
 
-            {!photoTaken && (
+            {!photoTaken && ( // provide a button that takes a photo
                 <View style={styles.buttonContainer}>
                     <TouchableOpacity
                         style={styles.camButton}
@@ -48,7 +48,7 @@ const CameraPage = () => {
                 </View>
             )}
 
-            {photoTaken && (
+            {photoTaken && ( // show photo after it has been taken
                 <Image
                     source={{ uri: `file://'${imageSource}` }}
                     style={styles.image}
@@ -56,8 +56,9 @@ const CameraPage = () => {
                 />
             )}
 
-            {photoTaken && (
+            {photoTaken && ( // confirm and redo buttons after a photo has been taken
                 <View style={styles.confirmationContainer}>
+                    
                     <TouchableOpacity
                         style={styles.redoButton}
                         onPress={() => handleRedo()}
@@ -71,6 +72,7 @@ const CameraPage = () => {
                     >
                         <Text>Confirm</Text>
                     </TouchableOpacity>
+
                 </View>
             )}
         </View>
