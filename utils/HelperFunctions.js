@@ -16,8 +16,21 @@ export const requestLocationPermission = async () => {
   }
 };
 
+export const requestCameraPermission = async () => {
+  try {
+    const result = await request(PERMISSIONS.ANDROID.CAMERA);
+    if (result === "granted") {
+      console.log("Camera permission granted");
+    } else {
+      console.log("Camera permission denied");
+    }
+  } catch (error) {
+    console.error("Error requesting camera permission: ", error);
+  }
+};
+
 // helper to combine button functionality and sending to the API
-export const handleGetLocation = (setUserLocation) => {
+export const makeObservation = (setUserLocation) => {
   Geolocation.getCurrentPosition((position) => {
     setUserLocation(position);
     sendLocationPin(position);

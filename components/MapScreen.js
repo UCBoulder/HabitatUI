@@ -4,13 +4,15 @@ import { SwitchPageButton } from "./SwitchPageButton";
 import LocationButton from "./LocationButton";
 import { handleGetLocation } from "../utils/HelperFunctions";
 import { View, StyleSheet } from "react-native";
+import { makeObservation } from "../utils/HelperFunctions";
 
 export function MapScreen(props) {
+
   return (
     <View style={styles.MapScreen}>
       <MapPage userLocation={props.userLocation} />
       <LocationButton
-        onGetLocation={() => handleGetLocation(props.setUserLocation)}
+        onGetLocation={() => makeObservation(props.setUserLocation)}
       />
       <SwitchPageButton
         navigation={props.navigation}
@@ -22,7 +24,7 @@ export function MapScreen(props) {
 }
 
 const styles = StyleSheet.create({
-    MapScreen: {
-      flex: 1,
-    },
+  MapScreen: {
+    flex: 1,
+  },
 });
