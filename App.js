@@ -26,7 +26,7 @@ export default function App() {
           {(props) => <MapScreen {...props} userLocation={userLocation} setUserLocation={setUserLocation} />}
         </Stack.Screen>
         <Stack.Screen name="Info" component={InfoPage} />
-        <Stack.Screen name="Camera" component={CameraPage} />
+        <Stack.Screen name="Camera" component={CameraPage} options={{ headerShown: false}}/>
       </Stack.Navigator>
     </NavigationContainer>
   )
