@@ -16,17 +16,21 @@ export default function App() {
     requestLocationPermission();
     // ask for camera permissions when the app first loads
     requestCameraPermission();
-    
+
   }, []);
 
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Map">
+
+        <Stack.Screen name="Map" options={{ headerShown: false }}>
           {(props) => <MapScreen {...props} userLocation={userLocation} setUserLocation={setUserLocation} />}
         </Stack.Screen>
+
         <Stack.Screen name="Info" component={InfoPage} />
-        <Stack.Screen name="Camera" component={CameraPage} options={{ headerShown: false}}/>
+
+        <Stack.Screen name="Camera" component={CameraPage} options={{ headerShown: false }} />
+
       </Stack.Navigator>
     </NavigationContainer>
   )

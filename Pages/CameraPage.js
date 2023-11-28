@@ -36,6 +36,7 @@ const CameraPage = () => {
                 style={StyleSheet.absoluteFill}
                 device={device}
                 isActive={!photoTaken} // Deactivate camera when photo is taken
+                enableZoomGesture={true}
                 photo={true}
             />
 
@@ -58,7 +59,7 @@ const CameraPage = () => {
 
             {photoTaken && ( // confirm and redo buttons after a photo has been taken
                 <View style={styles.confirmationContainer}>
-                    
+
                     <TouchableOpacity
                         style={styles.redoButton}
                         onPress={() => handleRedo()}
@@ -105,7 +106,8 @@ const styles = StyleSheet.create({
         height: 80,
         width: 80,
         borderRadius: 40,
-        backgroundColor: 'white',
+        borderWidth: 5,
+        borderColor: 'white',
     },
     confirmationButton: {
         backgroundColor: 'green',
