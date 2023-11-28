@@ -1,8 +1,7 @@
-import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { View, Button, StyleSheet } from "react-native";
+import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
-// button that appears on the map page
 const LocationButton = ({ onGetLocation }) => {
   const navigation = useNavigation();
 
@@ -12,20 +11,33 @@ const LocationButton = ({ onGetLocation }) => {
   };
 
   return (
-    <View style={styles.LocationButton}>
-      <Button title="Make Observation"
-        onPress={handlePress} />
+    <View style={styles.locationButtonContainer}>
+      <TouchableOpacity
+        style={styles.locationButton}
+        onPress={handlePress}
+      >
+        <Text style={styles.buttonText}>Make Observation</Text>
+      </TouchableOpacity>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  LocationButton: {
+  locationButtonContainer: {
     position: "absolute",
     bottom: 20,
     left: 0,
     right: 0,
     alignItems: "center",
+  },
+  locationButton: {
+    backgroundColor: 'white',
+    padding: 10,
+    borderRadius: 5,
+  },
+  buttonText: {
+    color: 'black',
+    textAlign: 'center',
   },
 });
 
