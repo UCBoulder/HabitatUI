@@ -19,6 +19,7 @@ const CameraPage = () => {
     }
 
     function handleConfirmation() {
+
     }
 
     function handleRedo() {
@@ -26,7 +27,7 @@ const CameraPage = () => {
         setPhotoTaken(false);
     }
 
-    if (device == null) return <NoCameraDeviceError />
+    if (device == null) return <Text>No Camera Found</Text>
 
     return (
         <View style={styles.container}>
