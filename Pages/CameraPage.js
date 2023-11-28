@@ -1,8 +1,11 @@
 import { Camera, useCameraDevice } from "react-native-vision-camera";
 import { View, StyleSheet, TouchableOpacity, Image, Text } from "react-native";
 import React, { useState, useRef } from 'react';
+import { useNavigation } from "@react-navigation/native";
+
 
 const CameraPage = () => {
+    const navigation = useNavigation();
     const camera = useRef(null);
     const device = useCameraDevice('back')
 
@@ -19,7 +22,7 @@ const CameraPage = () => {
     }
 
     function handleConfirmation() {
-
+        navigation.navigate("Confirmation", { imageSource })
     }
 
     function handleRedo() {

@@ -13,7 +13,8 @@ const LocationButton = ({ onGetLocation }) => {
 
   return (
     <View style={styles.LocationButton}>
-      <Button title="Get user location" onPress={handlePress} />
+      <Button title="Make Observation"
+        onPress={handlePress} />
     </View>
   );
 };
