@@ -14,7 +14,7 @@ export const getLocationPins = async () => {
 // send one lat long coordinate to the API
 export const sendLocationPin = async (position) => {
     try {
-      const response = await axios.post("http://192.168.56.1:3000/error", {
+      const response = await axios.post("http://192.168.56.1:3000/observations", {
         position,
       });
       console.log("Response from backend: ", response.data);
