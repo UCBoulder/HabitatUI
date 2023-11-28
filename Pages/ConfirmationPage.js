@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { View, StyleSheet, Image, TextInput } from "react-native";
 
-const ConfirmationPage = () => {
+const ConfirmationPage = ({ route }) => {
+    const { imageSource } = route.params;
     const [text, onChangeText] = useState('');
 
     return (
         <View style={styles.container}>
             <Image
-                source={{ uri: `file://'${imageSource}` }}
+                source={{ uri: `file://${imageSource}` }}
                 style={styles.confirmationImage}
             />
             <TextInput
@@ -15,21 +16,31 @@ const ConfirmationPage = () => {
                 onChangeText={onChangeText}
                 value={text}
                 placeholder="Put text here"
+                placeholderTextColor={"#aaa"}
+                multiline={true}
+                textAlignVertical="top"
+                color="#aaa"
             />
         </View>
     );
 };
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
     confirmationImage: {
-        width: '50%',
+        width: '100%',
         height: '50%',
     },
     input: {
-        height: 40,
-        margin: 12,
-        borderWidth: 1,
-        padding: 10,
+        flex: 1,
+        height: 100,
+        width: '100%',
+        textDecorationColor: '#aaa',
+        textAlignVertical: 'top'
     },
 });
 
