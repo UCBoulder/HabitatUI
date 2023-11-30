@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { MapScreen } from "./components/MapScreen";
 import InfoPage from "./Pages/InfoPage";
 import CameraPage from "./Pages/CameraPage";
+import ConfirmationPage from "./Pages/ConfirmationPage";
 import { requestLocationPermission, requestCameraPermission } from "./utils/HelperFunctions";
 
 const Stack = createNativeStackNavigator();
@@ -30,6 +31,8 @@ export default function App() {
         <Stack.Screen name="Info" component={InfoPage} />
 
         <Stack.Screen name="Camera" component={CameraPage} options={{ headerShown: false }} />
+
+        <Stack.Screen name="Confirmation" component={ConfirmationPage} options={{ headerShown: false }} />
 
       </Stack.Navigator>
     </NavigationContainer>

@@ -1,6 +1,7 @@
 import React from "react";
 import { TouchableOpacity, Text, View, StyleSheet } from "react-native";
 
+// Button that can be used to switch pages easily. Only being used as the "info" button on the map page
 export const SwitchPageButton = ({ navigation, destinationScreen, title }) => {
     return (
         <View style={styles.SwitchPageButton}>
@@ -20,11 +21,11 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     button: {
-        backgroundColor: "#fff",
+        backgroundColor: 'white',
         padding: 10,
-        borderRadius: 0,
+        borderRadius: 5,
     },
     buttonText: {
-        color: "#000",
+        color: 'black',
     },
 });
