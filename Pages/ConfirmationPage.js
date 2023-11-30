@@ -15,6 +15,7 @@ const ConfirmationPage = ({ route }) => {
     return (
         <View style={styles.container}>
 
+            {/* Display photo that was taken */}
             <Image
                 source={{ uri: `file://${imageSource}` }}
                 style={styles.confirmationImage}

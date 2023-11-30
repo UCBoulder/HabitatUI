@@ -3,6 +3,7 @@ import { View, StyleSheet, TouchableOpacity, Image, Text } from "react-native";
 import React, { useState, useRef } from 'react';
 import { useNavigation } from "@react-navigation/native";
 
+// Page for taking a picture, confirming, and retaking a picture to then be sent to the ConfirmationPage
 const CameraPage = () => {
     const navigation = useNavigation();
     const camera = useRef(null);
@@ -34,6 +35,7 @@ const CameraPage = () => {
     return (
         <View style={styles.container}>
 
+            {/* Camera component */}
             <Camera
                 ref={camera}
                 style={StyleSheet.absoluteFill}
@@ -43,7 +45,8 @@ const CameraPage = () => {
                 photo={true}
             />
 
-            {!photoTaken && ( // provide a button that takes a photo
+            {/* Button for taking a photo */}
+            {!photoTaken && (
                 <View style={styles.buttonContainer}>
                     <TouchableOpacity
                         style={styles.camButton}
@@ -52,7 +55,8 @@ const CameraPage = () => {
                 </View>
             )}
 
-            {photoTaken && ( // show photo after it has been taken
+            {/* Display the taken photo */}
+            {photoTaken && (
                 <Image
                     source={{ uri: `file://'${imageSource}` }}
                     style={styles.image}
@@ -60,7 +64,8 @@ const CameraPage = () => {
                 />
             )}
 
-            {photoTaken && ( // confirm and redo buttons after a photo has been taken
+            {/* Confirm and redo buttons after a photo has been taken */}
+            {photoTaken && (
                 <View style={styles.confirmationContainer}>
 
                     <TouchableOpacity

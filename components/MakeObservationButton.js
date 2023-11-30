@@ -2,7 +2,8 @@ import React from "react";
 import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
-const LocationButton = ({ onGetLocation }) => {
+// Button that appears on the map screen which starts the cheatgrass observation process for the user
+const MakeObservationButton = ({ onGetLocation }) => {
   const navigation = useNavigation();
 
   const handlePress = () => {
@@ -41,4 +42,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LocationButton;
+export default MakeObservationButton;
