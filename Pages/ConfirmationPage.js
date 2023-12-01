@@ -10,7 +10,7 @@ const ConfirmationPage = ({ route, setUserLocation }) => {
 
     const confirmationButton = () => {
         // send stuff to api???
-        makeObservation(setUserLocation);
+        makeObservation(setUserLocation, text);
         navigation.navigate("Map");
     };
 

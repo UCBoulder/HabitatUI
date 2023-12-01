@@ -12,15 +12,40 @@ export const getLocationPins = async () => {
 };
 
 // send one lat long coordinate to the API
-export const sendLocationPin = async (position) => {
-    try {
-      const response = await axios.post("http://192.168.56.1:3000/observations", {
-        position,
-      });
-      console.log("Response from backend: ", response.data);
-    } catch (error) {
-      console.error("Error sending data to backend: ", error);
-      return null
-    }
+export const sendLocationPin = async (position, text) => {
+  
+  const observation = {
+    coords: {
+      latitude: position.coords.latitude,
+      longitude: position.coords.longitude,
+      accuracy: position.coords.accuracy,
+    },
+    Notes: text,
+    VerificationRating: 1,
+    timestamp: position.timestamp,
   };
+
+  try {
+    console.log(observation)
+    const response = await axios.post("http://192.168.56.1:3000/observations", {
+      observation,
+    });
+    console.log("Response from backend: ", response.data);
+  } catch (error) {
+    console.error("Error sending data to backend: ", error);
+    return null
+  }
+};
+
+// observation {
+//   "Notes": undefined, 
+//   "VerificationRating": 1,
+//   "coords": {
+//     "accuracy": 14.8149995803833, 
+//     "latitude": 38.547351, 
+//     "longitude": -106.9226196
+// }, 
+//   "timestamp": 1701473299603
+// }
+
 
