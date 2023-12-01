@@ -6,11 +6,6 @@ import InfoPage from "./Pages/InfoPage";
 import CameraPage from "./Pages/CameraPage";
 import ConfirmationPage from "./Pages/ConfirmationPage";
 import { requestLocationPermission, requestCameraPermission } from "./utils/HelperFunctions";
-import { LogBox } from 'react-native';
-
-LogBox.ignoreLogs([
-  'Non-serializable values were found in the navigation state',
-]);
 
 const Stack = createNativeStackNavigator();
 
@@ -40,7 +35,7 @@ export default function App() {
         <Stack.Screen name="Confirmation" options={{ headerShown: false }}>
           {(props) => <ConfirmationPage {...props} setUserLocation={setUserLocation} />}
         </Stack.Screen>
-        
+
       </Stack.Navigator>
     </NavigationContainer>
   )
