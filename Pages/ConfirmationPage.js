@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import { View, StyleSheet, Image, TextInput, TouchableOpacity, Text } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { makeObservation } from "../utils/HelperFunctions";
 
-const ConfirmationPage = ({ route }) => {
+const ConfirmationPage = ({ route, setUserLocation }) => {
     const navigation = useNavigation();
-    const { imageSource, onGetLocation } = route.params || {};
+    const { imageSource } = route.params;
     const [text, onChangeText] = useState('');
 
     const confirmationButton = () => {
         // send stuff to api???
-        onGetLocation();
+        makeObservation(setUserLocation);
         navigation.navigate("Map");
     };
 
