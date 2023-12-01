@@ -4,10 +4,11 @@ import React, { useState, useRef } from 'react';
 import { useNavigation } from "@react-navigation/native";
 
 // Page for taking a picture, confirming, and retaking a picture to then be sent to the ConfirmationPage
-const CameraPage = () => {
+const CameraPage = ({ route }) => {    
     const navigation = useNavigation();
     const camera = useRef(null);
     const device = useCameraDevice('back')
+    const onGetLocation = route.params?.onGetLocation || (() => {});
 
     const [imageSource, setImageSource] = useState('');
     const [photoTaken, setPhotoTaken] = useState(false);
@@ -22,7 +23,7 @@ const CameraPage = () => {
     }
 
     function handleConfirmation() {
-        navigation.navigate("Confirmation", { imageSource })
+        navigation.navigate("Confirmation", { imageSource, onGetLocation })
     }
 
     function handleRedo() {

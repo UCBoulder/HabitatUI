@@ -7,8 +7,7 @@ const MakeObservationButton = ({ onGetLocation }) => {
   const navigation = useNavigation();
 
   const handlePress = () => {
-    onGetLocation();
-    navigation.navigate('Camera');
+    navigation.navigate('Camera', { onGetLocation });
   };
 
   return (

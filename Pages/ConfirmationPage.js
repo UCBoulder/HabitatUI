@@ -4,11 +4,12 @@ import { useNavigation } from "@react-navigation/native";
 
 const ConfirmationPage = ({ route }) => {
     const navigation = useNavigation();
-    const { imageSource } = route.params;
+    const { imageSource, onGetLocation } = route.params || {};
     const [text, onChangeText] = useState('');
 
     const confirmationButton = () => {
         // send stuff to api???
+        onGetLocation();
         navigation.navigate("Map");
     };
 
