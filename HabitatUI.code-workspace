@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../HabitatDB"
+		},
+		{
+			"path": "../HabitatApi"
+		}
+	],
+	"settings": {}
+}
