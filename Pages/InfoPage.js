@@ -4,7 +4,7 @@ import { GestureHandlerRootView, PanGestureHandler, PinchGestureHandler, State }
 //Will need to run: npm i react-native-gesture-handler
 
 const windowWidth = Dimensions.get('window').width; //gets the dimensions of the screen, should allow images to adapt to different sreen sizes
-
+//tests for product
 
 const InfoPage = () => {
 
@@ -64,77 +64,80 @@ const InfoPage = () => {
 
   return (
     <GestureHandlerRootView>
-      <ScrollView contentContainerStyle={styles.scrollView} >
-        <PanGestureHandler
-          onGestureEvent={onPan}
-          ref={panRef}
-          simultaneousHandlers={[pinchRef]}
-          enabled={panEnabled}
-          failOffsetX={[-1000, 1000]}
-          shouldCancelWhenOutside
-        >
-          <PinchGestureHandler
-            ref={pinchRef}
-            onGestureEvent={onPinch}
-            simultaneousHandlers={[panRef]}
-            onHandlerStateChange={handlePinchStateChange}
+      <ScrollView horizontal={true} contentContainerStyle={styles.scrollView} >
+        {/* // vertical = {true} */}
+        <ScrollView contentContainerStyle={styles.scrollView} >
+          <PanGestureHandler
+            onGestureEvent={onPan}
+            ref={panRef}
+            simultaneousHandlers={[pinchRef]}
+            enabled={panEnabled}
+            failOffsetX={[-1000, 1000]}
+            shouldCancelWhenOutside
           >
-            <Animated.View>
-              <Text style={styles.headerText}>What is Cheatgrass?</Text>
-              <Animated.Image
-                source={require('../images/CheatgrassInfographic.png')}
-                style={{
+            <PinchGestureHandler
+              ref={pinchRef}
+              onGestureEvent={onPinch}
+              simultaneousHandlers={[panRef]}
+              onHandlerStateChange={handlePinchStateChange}
+            >
+              <Animated.View>
+                <Text style={styles.headerText}>What is Cheatgrass?</Text>
+                <Animated.Image
+                  source={require('../images/CheatgrassInfographic.png')}
+                  style={{
+                    width: windowWidth,
+                    height: windowWidth * 2.75,
+                    resizeMode: 'contain',
+                    transform: [
+                      { scale: scale },
+                      { translateX: transX },
+                      { translateY: transY }]
+                  }} />
+                <Text style={styles.headerText}>How To Identify  {"\n"}Cheatgrass</Text>
+                <Animated.Image source={require('../images/IdentifyCheat.png')} style={{
                   width: windowWidth,
-                  height: windowWidth * 2.75,
-                  resizeMode: 'contain',
+                  height: windowWidth * 2.5,
+                  padding: 5,
                   transform: [
                     { scale: scale },
                     { translateX: transX },
                     { translateY: transY }]
                 }} />
-              <Text style={styles.headerText}>How To Identify Cheatgrass</Text>
-              <Animated.Image source={require('../images/IdentifyCheat.png')} style={{
-                width: windowWidth,
-                height: windowWidth * 2.5,
-                padding: 5,
-                transform: [
-                  { scale: scale },
-                  { translateX: transX },
-                  { translateY: transY }]
-              }} />
-              <Text style={styles.headerText}>How To Stop The Spread Of Cheatgrass</Text>
-              <Animated.Image source={require('../images/DontGetCheated.png')} style={{
-                width: windowWidth,
-                height: windowWidth * 2.5,
-                padding: 5,
-                transform: [
-                  { scale: scale },
-                  { translateX: transX },
-                  { translateY: transY }]
-              }} />
-              <Text style={styles.headerText}>How Cheatgrass Effects The Gunnison Valley</Text>
-              <Animated.Image source={require('../images/DangerOnTheRange.png')} style={{
-                width: windowWidth,
-                height: windowWidth * 2.5,
-                padding: 5,
-                transform: [
-                  { scale: scale },
-                  { translateX: transX },
-                  { translateY: transY }]
-              }} />
-              <Text style={styles.headerText}>The Dangers Of Cheatgrass</Text>
-              <Animated.Image source={require('../images/CheatAndFire.png')} style={{
-                width: windowWidth,
-                height: windowWidth * 2.5,
-                padding: 5,
-                transform: [
-                  { scale: scale },
-                  { translateX: transX },
-                  { translateY: transY }]
-              }} />
-            </Animated.View>
-          </PinchGestureHandler>
-        </PanGestureHandler>
+                <Text style={styles.headerText}>How To Stop The  {"\n"}Spread Of Cheatgrass</Text>
+                <Animated.Image source={require('../images/DontGetCheated.png')} style={{
+                  width: windowWidth,
+                  height: windowWidth * 2.5,
+                  padding: 5,
+                  transform: [
+                    { scale: scale },
+                    { translateX: transX },
+                    { translateY: transY }]
+                }} />
+                <Text style={styles.headerText}>How Cheatgrass Effects  {"\n"}The Gunnison Valley</Text>
+                <Animated.Image source={require('../images/DangerOnTheRange.png')} style={{
+                  width: windowWidth,
+                  height: windowWidth * 2.5,
+                  padding: 5,
+                  transform: [
+                    { scale: scale },
+                    { translateX: transX },
+                    { translateY: transY }]
+                }} />
+                <Text style={styles.headerText}>The Dangers {"\n"}Of Cheatgrass</Text>
+                <Animated.Image source={require('../images/CheatAndFire.png')} style={{
+                  width: windowWidth,
+                  height: windowWidth * 2.5,
+                  padding: 5,
+                  transform: [
+                    { scale: scale },
+                    { translateX: transX },
+                    { translateY: transY }]
+                }} />
+              </Animated.View>
+            </PinchGestureHandler>
+          </PanGestureHandler>
+        </ScrollView>
       </ScrollView>
     </GestureHandlerRootView>
   );
@@ -166,6 +169,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 30,
     color: 'black',
+    justifyContent: 'center'
   }
 }
 );
