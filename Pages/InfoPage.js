@@ -3,7 +3,7 @@ import { Text, ScrollView, StyleSheet, StatusBar, View, Dimensions, Animated } f
 import { GestureHandlerRootView, PanGestureHandler, PinchGestureHandler, State } from 'react-native-gesture-handler';
 //Will need to run: npm i react-native-gesture-handler
 
-const windowWidth = Dimensions.get('window').width; //gets the dimensions of the screen, should allow images to adapt to different sreen sizes
+const windowWidth = Dimensions.get('window').width; //gets the dimensions of the screen, should allow images to adapt to different screen sizes
 //tests for product
 
 const InfoPage = () => {
@@ -82,6 +82,7 @@ const InfoPage = () => {
               onHandlerStateChange={handlePinchStateChange}
             >
               <Animated.View>
+                
                 <Text style={styles.headerText}>What is Cheatgrass?</Text>
                 <Animated.Image
                   source={require('../images/CheatgrassInfographic.png')}
