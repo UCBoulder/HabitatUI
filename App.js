@@ -5,7 +5,7 @@ import { MapScreen } from "./components/MapScreen";
 import InfoPage from "./Pages/InfoPage";
 import CameraPage from "./Pages/CameraPage";
 import ConfirmationPage from "./Pages/ConfirmationPage";
-import { requestLocationPermission, requestCameraPermission } from "./utils/HelperFunctions";
+import { requestLocationPermission, requestCameraPermission } from "./utils/Permissions";
 
 const Stack = createNativeStackNavigator();
 

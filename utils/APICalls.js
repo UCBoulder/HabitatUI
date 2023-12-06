@@ -27,9 +27,9 @@ export const sendLocationPin = async (position, text) => {
 
   try {
     console.log(observation)
-    const response = await axios.post("http://192.168.56.1:3000/observations", {
+    const response = await axios.post("http://192.168.56.1:3000/observations",
       observation,
-    });
+    );
     console.log("Response from backend: ", response.data);
   } catch (error) {
     console.error("Error sending data to backend: ", error);

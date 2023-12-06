@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, StyleSheet, Image, TextInput, TouchableOpacity, Text } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { makeObservation } from "../utils/HelperFunctions";
+import { makeObservation } from "../utils/MakeObservation";
 
 const ConfirmationPage = ({ route, setUserLocation }) => {
     const navigation = useNavigation();
@@ -9,7 +9,6 @@ const ConfirmationPage = ({ route, setUserLocation }) => {
     const [text, onChangeText] = useState('');
 
     const confirmationButton = () => {
-        // send stuff to api???
         makeObservation(setUserLocation, text);
         navigation.navigate("Map");
     };
