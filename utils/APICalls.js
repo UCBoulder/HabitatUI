@@ -36,6 +36,7 @@ export const sendLocationPin = async (position, text, imageSource) => {
         uri: imageSource,
         type: 'image/jpeg', 
         name: 'image.jpg',
+        encoded64: imageBase64,
       });
 
       observation.image = formData;
