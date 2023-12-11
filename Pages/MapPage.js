@@ -56,7 +56,8 @@ const MapPage = ({ userLocation }) => {
 
             pinColor = {Pin(coordinate.verification)}
             title={`Observation ${index + 1}`}
-          />
+            description={`Latitude: ${coordinate.latitude}\n Longitude: ${coordinate.longitude}`}
+            />
         ))}
       </MapView>
     </View>
