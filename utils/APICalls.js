@@ -12,8 +12,8 @@ export const getLocationPins = async () => {
 };
 
 // send one lat long coordinate to the API
-export const sendLocationPin = async (position, text) => {
-  
+export const sendLocationPin = async (position, text, imageSource) => {
+
   const observation = {
     coords: {
       latitude: position.coords.latitude,
@@ -26,6 +26,15 @@ export const sendLocationPin = async (position, text) => {
   };
 
   try {
+    if (imageSource) {
+      const response = await fetch(imageSource);
+      const blob = await response.blob();
+
+      const formData = new FormData()
+      formData.append('image', blob);
+
+      observation.image = formData;
+    }
     console.log(observation)
     const response = await axios.post("http://192.168.56.1:3000/observations",
       observation,
@@ -38,13 +47,13 @@ export const sendLocationPin = async (position, text) => {
 };
 
 // observation {
-//   "Notes": undefined, 
+//   "Notes": undefined,
 //   "VerificationRating": 1,
 //   "coords": {
-//     "accuracy": 14.8149995803833, 
-//     "latitude": 38.547351, 
+//     "accuracy": 14.8149995803833,
+//     "latitude": 38.547351,
 //     "longitude": -106.9226196
-// }, 
+// },
 //   "timestamp": 1701473299603
 // }
 
