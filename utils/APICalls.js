@@ -1,4 +1,5 @@
 import axios from "axios";
+import RNFS from 'react-native-fs';
 
 // recieve one or many lat long coordinates from the API
 export const getLocationPins = async () => {
@@ -26,18 +27,27 @@ export const sendLocationPin = async (position, text, imageSource) => {
   };
 
   try {
+    let headers = { 'Content-Type': 'application/json' };
+
     if (imageSource) {
-      const response = await fetch(imageSource);
-      const blob = await response.blob();
+      const imageBase64 = await RNFS.readFile(imageSource, 'base64');
 
-      const formData = new FormData()
-      formData.append('image', blob);
-
+      const formData = new FormData();
+      formData.append('image', {
+        uri: imageSource,
+        type: 'image/jpeg', 
+        name: 'image.jpg',
+      });
+      
       observation.image = formData;
+
+      headers = { 'Content-Type': 'multipart/form-data' };
     }
     console.log(observation)
     const response = await axios.post("http://192.168.56.1:3000/observations",
-      observation,
+      observation, { 
+        headers,
+      }
     );
     console.log("Response from backend: ", response.data);
   } catch (error) {
@@ -54,6 +64,9 @@ export const sendLocationPin = async (position, text, imageSource) => {
 //     "latitude": 38.547351,
 //     "longitude": -106.9226196
 // },
+//   "image": {
+//      "_parts":[[Array]]
+// }
 //   "timestamp": 1701473299603
 // }
 
