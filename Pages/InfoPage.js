@@ -1,145 +1,126 @@
-import React, { useState, useRef, createRef } from "react";
-import { Text, ScrollView, StyleSheet, StatusBar, View, Dimensions, Animated } from "react-native";
+import React, { useState, useRef, useEffect } from 'react';
+import { Text, ScrollView, StyleSheet, StatusBar, View, Dimensions, Animated } from 'react-native';
 import { GestureHandlerRootView, PanGestureHandler, PinchGestureHandler, State } from 'react-native-gesture-handler';
-//Will need to run: npm i react-native-gesture-handler
 
-const windowWidth = Dimensions.get('window').width; //gets the dimensions of the screen, should allow images to adapt to different sreen sizes
-
+const windowWidth = Dimensions.get('window').width;
 
 const InfoPage = () => {
-
-  const scale = useRef(new Animated.Value(1)).current; //measures zooming effect
-  const transX = useRef(new Animated.Value(0)).current; //measure l/r panning
-  const transY = useRef(new Animated.Value(0)).current;
+  const images = [
+    require('../images/CheatgrassInfographic.png'),
+    require('../images/IdentifyCheat.png'),
+    require('../images/DontGetCheated.png'),
+    require('../images/DangerOnTheRange.png'),
+    require('../images/CheatAndFire.png'),
+  ];
 
   const [panEnabled, setPanEnabled] = useState(false);
 
-  const pinchRef = createRef();
-  const panRef = createRef();
+  const createPanRef = () => images.map(() => useRef(null));
+  const panRefs = createPanRef();
 
+  const createPinchRef = () => images.map(() => useRef(null));
+  const pinchRefs = createPinchRef();
 
-  const onPinch = Animated.event([{
-    nativeEvent: { scale }
-  }],
-    { useNativeDrive: true }
-  );
+  const createScale = () => images.map(() => new Animated.Value(1));
+  const scales = createScale();
 
-  const onPan = Animated.event([{
-    nativeEvent: {
-      translationX: transX,
-      translationY: transY
-    }
-  }],
-    { useNativeDrive: true }
-  );
+  const createTransX = () => images.map(() => new Animated.Value(0));
+  const transXs = createTransX();
 
-  const handlePinchStateChange = ({ nativeEvent }) => {
-    // enabled pan only after pinch-zoom
+  const createTransY = () => images.map(() => new Animated.Value(0));
+  const transYs = createTransY();
+
+  const onPinch = (index) =>
+    Animated.event(
+      [
+        {
+          nativeEvent: { scale: scales[index] },
+        },
+      ],
+      { useNativeDriver: false } // Note: Set useNativeDriver to false
+    );
+
+  const onPan = (index) =>
+    Animated.event(
+      [
+        {
+          nativeEvent: {
+            translationX: transXs[index],
+            translationY: transYs[index],
+          },
+        },
+      ],
+      { useNativeDriver: false } // Note: Set useNativeDriver to false
+    );
+
+  const handlePinchStateChange = (index, { nativeEvent }) => {
     if (nativeEvent.state === State.ACTIVE) {
       setPanEnabled(true);
     }
 
-    // when scale < 1, reset scale back to original (1)
     const nScale = nativeEvent.scale;
     if (nativeEvent.state === State.END) {
       if (nScale < 1) {
-        Animated.spring(scale, {
-          toValue: 1,
-          useNativeDriver: true
-        }).start();
-        Animated.spring(transX, {
-          toValue: 0,
-          useNativeDriver: true
-        }).start();
-        Animated.spring(transY, {
-          toValue: 0,
-          useNativeDriver: true
-        }).start();
+        Animated.spring(scales[index], { toValue: 1, useNativeDriver: false }).start();
+        Animated.spring(transXs[index], { toValue: 0, useNativeDriver: false }).start();
+        Animated.spring(transYs[index], { toValue: 0, useNativeDriver: false }).start();
 
         setPanEnabled(false);
       }
     }
   };
 
+  useEffect(() => {
+    // Clean up references
+    return () => {
+      panRefs.forEach((ref) => (ref.current = null));
+      pinchRefs.forEach((ref) => (ref.current = null));
+    };
+  }, []);
 
   return (
     <GestureHandlerRootView>
-      <ScrollView contentContainerStyle={styles.scrollView} >
-        <PanGestureHandler
-          onGestureEvent={onPan}
-          ref={panRef}
-          simultaneousHandlers={[pinchRef]}
-          enabled={panEnabled}
-          failOffsetX={[-1000, 1000]}
-          shouldCancelWhenOutside
-        >
-          <PinchGestureHandler
-            ref={pinchRef}
-            onGestureEvent={onPinch}
-            simultaneousHandlers={[panRef]}
-            onHandlerStateChange={handlePinchStateChange}
-          >
-            <Animated.View>
-              <Text style={styles.headerText}>What is Cheatgrass?</Text>
-              <Animated.Image
-                source={require('../images/CheatgrassInfographic.png')}
-                style={{
-                  width: windowWidth,
-                  height: windowWidth * 2.75,
-                  resizeMode: 'contain',
-                  transform: [
-                    { scale: scale },
-                    { translateX: transX },
-                    { translateY: transY }]
-                }} />
-              <Text style={styles.headerText}>How To Identify Cheatgrass</Text>
-              <Animated.Image source={require('../images/IdentifyCheat.png')} style={{
-                width: windowWidth,
-                height: windowWidth * 2.5,
-                padding: 5,
-                transform: [
-                  { scale: scale },
-                  { translateX: transX },
-                  { translateY: transY }]
-              }} />
-              <Text style={styles.headerText}>How To Stop The Spread Of Cheatgrass</Text>
-              <Animated.Image source={require('../images/DontGetCheated.png')} style={{
-                width: windowWidth,
-                height: windowWidth * 2.5,
-                padding: 5,
-                transform: [
-                  { scale: scale },
-                  { translateX: transX },
-                  { translateY: transY }]
-              }} />
-              <Text style={styles.headerText}>How Cheatgrass Effects The Gunnison Valley</Text>
-              <Animated.Image source={require('../images/DangerOnTheRange.png')} style={{
-                width: windowWidth,
-                height: windowWidth * 2.5,
-                padding: 5,
-                transform: [
-                  { scale: scale },
-                  { translateX: transX },
-                  { translateY: transY }]
-              }} />
-              <Text style={styles.headerText}>The Dangers Of Cheatgrass</Text>
-              <Animated.Image source={require('../images/CheatAndFire.png')} style={{
-                width: windowWidth,
-                height: windowWidth * 2.5,
-                padding: 5,
-                transform: [
-                  { scale: scale },
-                  { translateX: transX },
-                  { translateY: transY }]
-              }} />
-            </Animated.View>
-          </PinchGestureHandler>
-        </PanGestureHandler>
+      <ScrollView contentContainerStyle={styles.scrollView}>
+        {images.map((source, index) => (
+          <View key={index}>
+            <Text style={styles.headerText}>{`Image ${index + 1}`}</Text>
+            <PanGestureHandler
+              ref={(ref) => (panRefs[index].current = ref)}
+              onGestureEvent={onPan(index)}
+              simultaneousHandlers={pinchRefs[index]}
+              enabled={panEnabled}
+              failOffsetX={[-1000, 1000]}
+              shouldCancelWhenOutside
+            >
+              <Animated.View>
+                <PinchGestureHandler
+                  ref={(ref) => (pinchRefs[index].current = ref)}
+                  onGestureEvent={onPinch(index)}
+                  simultaneousHandlers={panRefs[index]}
+                  onHandlerStateChange={(event) => handlePinchStateChange(index, event)}
+                >
+                  <Animated.Image
+                    source={source}
+                    style={{
+                      width: windowWidth,
+                      height: windowWidth * 2.5,
+                      padding: 5,
+                      transform: [
+                        { scale: scales[index] },
+                        { translateX: transXs[index] },
+                        { translateY: transYs[index] },
+                      ],
+                    }}
+                  />
+                </PinchGestureHandler>
+              </Animated.View>
+            </PanGestureHandler>
+          </View>
+        ))}
       </ScrollView>
     </GestureHandlerRootView>
   );
 };
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
