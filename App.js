@@ -5,7 +5,7 @@ import { MapScreen } from "./components/MapScreen";
 import InfoPage from "./Pages/InfoPage";
 import CameraPage from "./Pages/CameraPage";
 import ConfirmationPage from "./Pages/ConfirmationPage";
-import { requestLocationPermission, requestCameraPermission } from "./utils/HelperFunctions";
+import { requestLocationPermission, requestCameraPermission } from "./utils/Permissions";
 
 const Stack = createNativeStackNavigator();
 
@@ -25,14 +25,16 @@ export default function App() {
       <Stack.Navigator>
 
         <Stack.Screen name="Map" options={{ headerShown: false }}>
-          {(props) => <MapScreen {...props} userLocation={userLocation} setUserLocation={setUserLocation} />}
+          {(props) => <MapScreen {...props} userLocation={userLocation} />}
         </Stack.Screen>
 
         <Stack.Screen name="Info" component={InfoPage} />
 
         <Stack.Screen name="Camera" component={CameraPage} options={{ headerShown: false }} />
 
-        <Stack.Screen name="Confirmation" component={ConfirmationPage} options={{ headerShown: false }} />
+        <Stack.Screen name="Confirmation" options={{ headerShown: false }}>
+          {(props) => <ConfirmationPage {...props} setUserLocation={setUserLocation} />}
+        </Stack.Screen>
 
       </Stack.Navigator>
     </NavigationContainer>

@@ -1,6 +1,4 @@
 import { request, PERMISSIONS } from "react-native-permissions";
-import Geolocation from "react-native-geolocation-service";
-import { sendLocationPin } from "./APICalls";
 
 // request location permissions
 export const requestLocationPermission = async () => {
@@ -29,10 +27,3 @@ export const requestCameraPermission = async () => {
   }
 };
 
-// helper to combine button functionality and sending to the API
-export const makeObservation = (setUserLocation) => {
-  Geolocation.getCurrentPosition((position) => {
-    setUserLocation(position);
-    sendLocationPin(position);
-  });
-};

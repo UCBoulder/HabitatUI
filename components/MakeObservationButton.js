@@ -3,11 +3,10 @@ import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 // Button that appears on the map screen which starts the cheatgrass observation process for the user
-const MakeObservationButton = ({ onGetLocation }) => {
+const MakeObservationButton = () => {
   const navigation = useNavigation();
 
   const handlePress = () => {
-    onGetLocation();
     navigation.navigate('Camera');
   };
 
