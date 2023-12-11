@@ -67,7 +67,7 @@ const InfoPage = () => {
       <ScrollView horizontal={true} contentContainerStyle={styles.scrollView} >
         {/* // vertical = {true} */}
         <ScrollView contentContainerStyle={styles.scrollView} >
-          <PanGestureHandler
+          {/* <PanGestureHandler
             onGestureEvent={onPan}
             ref={panRef}
             simultaneousHandlers={[pinchRef]}
@@ -80,7 +80,7 @@ const InfoPage = () => {
               onGestureEvent={onPinch}
               simultaneousHandlers={[panRef]}
               onHandlerStateChange={handlePinchStateChange}
-            >
+            > */}
               <Animated.View>
                 
                 <Text style={styles.headerText}>What is Cheatgrass?</Text>
@@ -136,8 +136,8 @@ const InfoPage = () => {
                     { translateY: transY }]
                 }} />
               </Animated.View>
-            </PinchGestureHandler>
-          </PanGestureHandler>
+            {/* </PinchGestureHandler>
+          </PanGestureHandler> */}
         </ScrollView>
       </ScrollView>
     </GestureHandlerRootView>
