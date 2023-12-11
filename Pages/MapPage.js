@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { View, StyleSheet } from "react-native";
-import MapView, { Marker, PROVIDER_GOOGLE } from "react-native-maps";
+import { View, StyleSheet, Text, Image } from "react-native";
+import MapView, { Callout, Marker, PROVIDER_GOOGLE } from "react-native-maps";
 import { getLocationPins } from "../utils/APICalls";
 import { Pin } from "../components/Pin";
 
@@ -53,11 +53,16 @@ const MapPage = ({ userLocation }) => {
               latitude: coordinate.latitude,
               longitude: coordinate.longitude,
             }}
+            pinColor={Pin(coordinate.verification)}>
 
-            pinColor = {Pin(coordinate.verification)}
-            title={`Observation ${index + 1}`}
-            description={`Latitude: ${coordinate.latitude}\n Longitude: ${coordinate.longitude}`}
-            />
+            <Callout>
+              <View style={styles.calloutContainer}>
+                <Text><Image source={require('../images/PXL_20231211_211945981.MP.jpg')}
+                  style={styles.imageCallout}
+                /></Text>
+              </View>
+            </Callout>
+          </Marker>
         ))}
       </MapView>
     </View>
@@ -65,6 +70,15 @@ const MapPage = ({ userLocation }) => {
 };
 
 const styles = StyleSheet.create({
+  calloutContainer: {
+    width: 200,
+    height: 340,
+  },
+  imageCallout: {
+    width: 100,
+    height: 170,
+    // resizeMode: "cover",
+  },
   mapContainer: {
     minHeight: "100%",
   },
