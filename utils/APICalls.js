@@ -27,7 +27,6 @@ export const sendLocationPin = async (position, text, imageSource) => {
   };
 
   try {
-    let headers = { 'Content-Type': 'application/json' };
 
     if (imageSource) {
       const imageBase64 = await RNFS.readFile(imageSource, 'base64');
@@ -38,16 +37,13 @@ export const sendLocationPin = async (position, text, imageSource) => {
         type: 'image/jpeg', 
         name: 'image.jpg',
       });
-      
+
       observation.image = formData;
 
-      headers = { 'Content-Type': 'multipart/form-data' };
     }
-    console.log(observation)
+    console.log(observation.image._parts)
     const response = await axios.post("http://192.168.56.1:3000/observations",
-      observation, { 
-        headers,
-      }
+      observation,
     );
     console.log("Response from backend: ", response.data);
   } catch (error) {
