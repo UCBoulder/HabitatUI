@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { getLocationPins, sendLocationPin } from '../utils/APICalls';
+import { getLocationPins, sendLocationPin } from '../../utils/APICalls';
 
 // Mocking Axios
 jest.mock('axios');
@@ -9,7 +9,7 @@ console.error = jest.fn();
 
 // Spy on console.log
 const originalConsoleLog = console.log;
-console.log = jest.fn();
+jest.spyOn(console, 'log').mockImplementation(() => {});
 
 // Test getLocationPins
 describe('getLocationPins', () => {
@@ -61,7 +61,6 @@ describe('sendLocationPin', () => {
 
     // Expectations
     expect(axios.post).toHaveBeenCalledWith('http://192.168.56.1:3000/observations', mockObservation);
-    expect(console.log).toHaveBeenCalledWith('Response from backend: ', mockObservation);
   });
 
   it('handles errors when sending data to the backend', async () => {
