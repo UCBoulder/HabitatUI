@@ -4,6 +4,14 @@ import { getLocationPins, sendLocationPin } from '../utils/APICalls';
 // Mocking Axios
 jest.mock('axios');
 
+// Mocking console.error
+console.error = jest.fn();
+
+// Spy on console.log
+const originalConsoleLog = console.log;
+console.log = jest.fn();
+
+// Test getLocationPins
 describe('getLocationPins', () => {
   it('fetches successfully data from an API', async () => {
     const mockData = { /* Mock your data here */ };
@@ -30,11 +38,21 @@ describe('getLocationPins', () => {
   });
 });
 
+// Test sendLocationPin
 describe('sendLocationPin', () => {
   it('sends data to the backend successfully', async () => {
-    const mockPosition = { /* Mock your position data here */ };
+    const mockPosition = { coords: { latitude: 123, longitude: 456, accuracy: 7 } };
     const mockText = 'Test notes';
-    const mockObservation = { /* Mock your observation data here */ };
+    const mockObservation = {
+      Notes: 'Test notes',
+      VerificationRating: 1,
+      coords: {
+        accuracy: 7,
+        latitude: 123,
+        longitude: 456,
+      },
+      timestamp: undefined,
+    };
 
     axios.post.mockResolvedValueOnce({ data: mockObservation });
 
@@ -47,7 +65,7 @@ describe('sendLocationPin', () => {
   });
 
   it('handles errors when sending data to the backend', async () => {
-    const mockPosition = { /* Mock your position data here */ };
+    const mockPosition = { coords: { latitude: 123, longitude: 456, accuracy: 7 } };
     const mockText = 'Test notes';
     const errorMessage = 'Error sending data to backend';
     axios.post.mockRejectedValueOnce(new Error(errorMessage));
@@ -60,3 +78,6 @@ describe('sendLocationPin', () => {
     expect(console.error).toHaveBeenCalledWith('Error sending data to backend: ', new Error(errorMessage));
   });
 });
+
+// Restore original console.log
+console.log = originalConsoleLog;
