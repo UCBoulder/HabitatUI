@@ -1,6 +1,6 @@
 import { sendLocationPin } from "../../utils/APICalls";
 import { makeObservation } from "../../utils/MakeObservation";
-import Geolocation from "react-native-geolocation-service";
+import Geolocation from "react-native-geolocation-service"; // something is wrong with jest and the import 
 
 // Mock the Geolocation module
 jest.mock("react-native-geolocation-service");
