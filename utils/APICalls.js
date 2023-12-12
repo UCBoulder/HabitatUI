@@ -39,10 +39,10 @@ export const sendLocationPin = async (position, text, imageSource) => {
         encoded64: imageBase64,
       });
 
-      observation.image = formData;
+      observation.image = imageBase64;
 
     }
-    console.log(observation.image._parts)
+    // console.log(observation.image._parts)
     const response = await axios.post("http://192.168.56.1:3000/observations",
       observation,
     );
