@@ -16,6 +16,7 @@
     "native-base": "^3.4.28",
     "react": "18.2.0",
     "react-native": "0.72.6",
+    "react-native-camera": "^4.2.1",
     "react-native-elements": "^3.4.3",
     "react-native-geolocation-service": "^5.3.1",
     "react-native-maps": "1.7.1",
@@ -23,7 +24,7 @@
     "react-native-safe-area-context": "^4.7.4",
     "react-native-screens": "^3.27.0",
     "react-native-scripts": "2.0.1",
-    "react-native-vision-camera": "^3.6.4"
+    "react-native-vision-camera": "^3.6.16"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
@@ -32,6 +33,7 @@
     "@react-native/eslint-config": "^0.72.2",
     "@react-native/metro-config": "^0.72.11",
     "@testing-library/jest-native": "^5.4.3",
+    "@testing-library/react": "^14.1.2",
     "@testing-library/react-native": "^12.4.1",
     "@tsconfig/react-native": "^3.0.0",
     "@types/react": "^18.0.24",

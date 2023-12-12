@@ -50,6 +50,7 @@ const CameraPage = () => {
                     <TouchableOpacity
                         style={styles.camButton}
                         onPress={() => capturePhoto()}
+                        testID = "takePhotoButton"
                     />
                 </View>
             )}
@@ -60,6 +61,7 @@ const CameraPage = () => {
                     source={{ uri: `file://'${imageSource}` }}
                     style={styles.image}
                     resizeMode="cover"
+                    testID = "showPhoto"
                 />
             )}
 
