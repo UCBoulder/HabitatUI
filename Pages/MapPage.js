@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { View, StyleSheet, Text, Image } from "react-native";
-import MapView, { Callout, Marker, PROVIDER_GOOGLE } from "react-native-maps";
+import { View, StyleSheet, Image, Text, TouchableOpacity } from "react-native";
+import MapView, { Marker, PROVIDER_GOOGLE, Callout } from "react-native-maps";
 import { getLocationPins } from "../utils/APICalls";
 import { Pin } from "../components/Pin";
 
 const MapPage = ({ userLocation }) => {
   const [apiCoordinates, setApiCoordinates] = useState([]);
+  const [selectedMarker, setSelectedMarker] = useState(null);
 
   useEffect(() => {
-    // fetch all of the pins from the api when the component loads
+    // fetch all of the pins from the API when the component loads
     const fetchPins = async () => {
       try {
         const coordinates = await getLocationPins();
-        coordinates && setApiCoordinates(coordinates)
+        coordinates && setApiCoordinates(coordinates);
       } catch (error) {
         console.error("Error fetching API data: ", error);
       }
@@ -21,8 +22,16 @@ const MapPage = ({ userLocation }) => {
     fetchPins();
   }, []);
 
+  const handleMarkerPress = (marker) => {
+    setSelectedMarker(marker);
+  };
+
+  const closeInfoWindow = () => {
+    setSelectedMarker(null);
+  };
+
   return (
-    // set default map location to be Gunnison
+    // set the default map location to be Gunnison
     <View style={styles.mapContainer}>
       <MapView
         provider={PROVIDER_GOOGLE}
@@ -36,30 +45,46 @@ const MapPage = ({ userLocation }) => {
           longitudeDelta: 0.0421,
         }}
       >
-        {userLocation && ( //place pin at users location when button is pressed
+        {userLocation && (
           <Marker
             coordinate={{
               latitude: userLocation.coords.latitude,
               longitude: userLocation.coords.longitude,
             }}
             title="Your observation"
-          />
+            onPress={() => handleMarkerPress(userLocation)}
+          >
+            <Callout>
+              <View style={styles.calloutContainer}>
+                <Text>{`Your observation\nLatitude: ${userLocation.coords.latitude}\nLongitude: ${userLocation.coords.longitude}`}</Text>
+                <TouchableOpacity onPress={closeInfoWindow}>
+                  <Text style={styles.closeButton}>X</Text>
+                </TouchableOpacity>
+                <Image
+                  source={require('../images/PXL_20231211_211945981.MP.jpg')}
+                  style={styles.imageCallout}
+                />
+              </View>
+            </Callout>
+          </Marker>
         )}
         {apiCoordinates.map((coordinate, index) => (
-          // Place all the pins that the api is sending 
           <Marker
             key={index}
             coordinate={{
               latitude: coordinate.latitude,
               longitude: coordinate.longitude,
             }}
-            pinColor={Pin(coordinate.verification)}>
-
+            pinColor={Pin(coordinate.verification)}
+            onPress={() => handleMarkerPress(coordinate)}
+          >
             <Callout>
               <View style={styles.calloutContainer}>
-                <Text><Image source={require('../images/PXL_20231211_211945981.MP.jpg')}
-                  style={styles.imageCallout}
-                /></Text>
+                <Text>{`Latitude: ${coordinate.latitude}\nLongitude: ${coordinate.longitude}\n`}
+                <Image
+                  source={require('../images/PXL_20231211_211945981.MP.jpg')}
+                  style = {{ width: 220, height: 75, justifyContent: 'flex-start', flex: 1, alignContent: 'center', resizeMode: 'stretch'}}
+                  /></Text>
               </View>
             </Callout>
           </Marker>
@@ -70,20 +95,26 @@ const MapPage = ({ userLocation }) => {
 };
 
 const styles = StyleSheet.create({
-  calloutContainer: {
-    width: 200,
-    height: 340,
-  },
-  imageCallout: {
-    width: 100,
-    height: 170,
-    // resizeMode: "cover",
-  },
   mapContainer: {
-    minHeight: "100%",
+    flex: 1,
   },
   map: {
     ...StyleSheet.absoluteFillObject,
+  },
+  calloutContainer: {
+    width: 220,
+    height: 300,
+  },
+  imageCallout: {
+    width: "100%",
+    height: "70%",
+    resizeMode: "cover",
+    marginTop: 10,
+  },
+  closeButton: {
+    fontSize: 20,
+    color: "red",
+    alignSelf: "flex-end",
   },
 });
 
