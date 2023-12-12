@@ -5,7 +5,7 @@ const InfoPage = () => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
 
-      <Image source={require('../images/CheatgrassInfographic.png')} style={styles.infographic} />
+      <Image source={require('../images/CheatgrassInfographic.png')} style={styles.infographic} testID="infographic" />
       {/* <Image source={require('../images/CheatGrassBrochure-1.png')} style={styles.image} /> */}
 
       
