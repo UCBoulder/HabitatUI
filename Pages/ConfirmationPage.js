@@ -36,6 +36,7 @@ const ConfirmationPage = ({ route, setUserLocation }) => {
             <TouchableOpacity
                 style={styles.confirmationButton}
                 onPress={confirmationButton}
+                testID= "confirmButton"
             >
                 <Text style={styles.buttonText}>Confirm Observation</Text>
 

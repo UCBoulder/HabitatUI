@@ -1,33 +1,47 @@
 ///testing if the buttons on home page switch to t=other pages as expected
 
 import * as React from 'react'
-import { render, fireEvent } from '@testing-library/react-native';
+import { render, fireEvent, screen } from '@testing-library/react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import CameraPage from '../../Pages/CameraPage'
-import { TouchableOpacity } from 'react-native'
-import 'react-native-camera';
+//import { createNativeStackNavigator } from '@react-navigation/stack';
+import MapPage from "../../Pages/MapPage";
+import { SwitchPageButton } from "../../components/SwitchPageButton";
+import InfoPage from '../../Pages/InfoPage';
+
 
 jest.mock('@react-navigation/native');
 
+jest.mock('@react-navigation/stack');
+
+jest.mock("react-native-maps", () => ({
+    MapView: jest.fn()
+}));
+
+jest.mock("@react-navigation/native-stack", () => ({
+    createNativeStackNavigator: jest.fn()
+}));
+
+// const Stack = createNativeStackNavigator();
+
 describe('Navigation', () => {
-  test('navigates from map page to infor page on button press', () => {
-    const Stack = createStackNavigator();
+  test('navigates from map page to information page on button press', () => {
 
     const { getByText } = render(
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Home">
-          <Stack.Screen name="Home" component={HomePage} />
-          <Stack.Screen name="SecondPage" component={SecondPage} />
-        </Stack.Navigator>
+        <SwitchPageButton/>
+        {/* <Stack.Navigator initialRouteName="MapPage">
+          <Stack.Screen name="Map" component={MapPage} />
+          <Stack.Screen name="Info" page={InfoPage} />
+        </Stack.Navigator> */}
       </NavigationContainer>
     );
 
+    fireEvent.press(screen.getByName("Info"));
     // Find the button and simulate a press
-    const button = getByText('Go to Second Page');
+    const button = SwitchPageButton;
     fireEvent.press(button);
 
     // Check if navigation was called with the correct screen name
-    expect(navigation.navigate).toHaveBeenCalledWith('InfoPage');
+    expect(screen.getByText('Info')).toBeOnTheScreen();
   });
 });
