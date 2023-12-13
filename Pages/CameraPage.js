@@ -72,6 +72,7 @@ const CameraPage = () => {
                     <TouchableOpacity
                         style={styles.redoButton}
                         onPress={() => handleRedo()}
+                        testID = "retakeButton"
                     >
                         <Text>Retake</Text>
                     </TouchableOpacity>
@@ -79,6 +80,7 @@ const CameraPage = () => {
                     <TouchableOpacity
                         style={styles.confirmationButton}
                         onPress={() => handleConfirmation()}
+                        testID = "confirmButton"
                     >
                         <Text>Confirm</Text>
                     </TouchableOpacity>
