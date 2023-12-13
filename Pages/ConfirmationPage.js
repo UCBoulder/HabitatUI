@@ -6,10 +6,11 @@ import { makeObservation } from "../utils/MakeObservation";
 const ConfirmationPage = ({ route, setUserLocation }) => {
     const navigation = useNavigation();
     const { imageSource } = route.params;
-    const [text, onChangeText] = useState('');
+    const [locationText, onChangeLocationText] = useState('');
+    const [plantText, onChangePlantText] = useState('');
 
     const confirmationButton = () => {
-        makeObservation(setUserLocation, text);
+        makeObservation(setUserLocation, locationText, plantText);
         navigation.navigate("Map");
     };
 
@@ -22,10 +23,26 @@ const ConfirmationPage = ({ route, setUserLocation }) => {
                 style={styles.confirmationImage}
             />
 
+            <Text style = {styles.label}>Please describle the location</Text>
+
             <TextInput
                 style={styles.input}
-                onChangeText={onChangeText}
-                value={text}
+                onChangeText={onChangeLocationText}
+                value={locationText}
+                placeholder="Put text here"
+                placeholderTextColor={"#aaa"}
+                multiline={true}
+                textAlignVertical="top"
+                color="#aaa"
+
+            />
+
+            <Text style = {styles.label}>Please describe the plant</Text>
+
+            <TextInput
+                style={styles.input}
+                onChangeText={onChangePlantText}
+                value={plantText}
                 placeholder="Put text here"
                 placeholderTextColor={"#aaa"}
                 multiline={true}
@@ -63,7 +80,7 @@ const styles = StyleSheet.create({
         textAlignVertical: 'top'
     },
     confirmationButton: {
-        backgroundColor: 'white',
+        backgroundColor: 'silver',
         padding: 10,
         borderRadius: 5,
         bottom: 20
@@ -71,6 +88,10 @@ const styles = StyleSheet.create({
     buttonText: {
         color: 'black',
         textAlign: 'center',
+    },
+    label: {
+       color: 'black', 
+       textAlign: 'left' 
     },
 });
 
