@@ -10,7 +10,7 @@ const ConfirmationPage = ({ route, setUserLocation }) => {
     const [plantText, onChangePlantText] = useState('');
 
     const confirmationButton = () => {
-        makeObservation(setUserLocation, locationText, plantText);
+        makeObservation(setUserLocation, locationText, plantText, imageSource);
         navigation.navigate("Map");
     };
 
