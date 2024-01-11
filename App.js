@@ -6,6 +6,7 @@ import InfoPage from "./pages/InfoPage";
 import CameraPage from "./pages/CameraPage";
 import ConfirmationPage from "./pages/ConfirmationPage";
 import { requestLocationPermission, requestCameraPermission } from "./utils/Permissions";
+import { v4 as uuidv4 } from 'uuid'
 
 const Stack = createNativeStackNavigator();
 
@@ -17,7 +18,9 @@ export default function App() {
     requestLocationPermission();
     // ask for camera permissions when the app first loads
     requestCameraPermission();
-
+    // make a unique userID when the app first loads
+    const userID = uuidv4();
+    console.log(userID)
   }, []);
 
   return (
