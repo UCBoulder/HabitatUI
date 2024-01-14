@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { MapScreen } from "./components/MapScreen";
-import InfoPage from "./pages/InfoPage";
-import CameraPage from "./pages/CameraPage";
-import ConfirmationPage from "./pages/ConfirmationPage";
+import InfoPage from "./Pages/InfoPage";
+import CameraPage from "./Pages/CameraPage";
+import ConfirmationPage from "./Pages/ConfirmationPage";
 import { requestLocationPermission, requestCameraPermission } from "./utils/Permissions";
 
 const Stack = createNativeStackNavigator();
