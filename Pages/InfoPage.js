@@ -74,9 +74,10 @@ const InfoPage = () => {
           shouldCancelWhenOutside
         >
           <PinchGestureHandler
-            ref={pinchRef}
             onGestureEvent={onPinch}
-            simultaneousHandlers={[panRef]}
+            ref={pinchRef}
+            simultaneousHandlers={[pinchRef]}
+            enabled={panEnabled}
             onHandlerStateChange={handlePinchStateChange}
           >
             <Animated.View>
@@ -170,6 +171,5 @@ const styles = StyleSheet.create({
 }
 );
 
+
 export default InfoPage;
-
-
