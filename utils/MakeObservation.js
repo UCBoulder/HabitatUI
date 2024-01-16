@@ -5,7 +5,6 @@ import { sendLocationPin } from "./APICalls";
 export const makeObservation = (setUserLocation, userID, text) => {
   Geolocation.getCurrentPosition((position) => {
     setUserLocation(position);
-    sendLocationPin(position,userID, text);
-
+    sendLocationPin(position, userID, text);
   });
 };
