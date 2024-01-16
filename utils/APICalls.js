@@ -12,9 +12,10 @@ export const getLocationPins = async () => {
 };
 
 // send one lat long coordinate to the API
-export const sendLocationPin = async (position, text) => {
+export const sendLocationPin = async (position, userID, text) => {
   
   const observation = {
+    userID: userID,
     coords: {
       latitude: position.coords.latitude,
       longitude: position.coords.longitude,
