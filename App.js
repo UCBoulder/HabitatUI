@@ -19,7 +19,7 @@ export default function App() {
     requestLocationPermission();
     // ask for camera permissions when the app first loads
     requestCameraPermission();
-    // make a unique userID when the app first loads
+    // load user id when the app launches
     loadUserID(setUserID);
   }, []);
 
