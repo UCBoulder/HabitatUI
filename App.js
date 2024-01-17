@@ -6,18 +6,21 @@ import InfoPage from "./pages/InfoPage";
 import CameraPage from "./pages/CameraPage";
 import ConfirmationPage from "./pages/ConfirmationPage";
 import { requestLocationPermission, requestCameraPermission } from "./utils/Permissions";
+import { loadUserID } from "./utils/UserID";
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   const [userLocation, setUserLocation] = useState(null);
+  const [userID, setUserID] = useState(null);
 
   useEffect(() => {
     // ask for location permissions when the app first loads
     requestLocationPermission();
     // ask for camera permissions when the app first loads
     requestCameraPermission();
-
+    // load user id when the app launches
+    loadUserID(setUserID);
   }, []);
 
   return (
@@ -33,7 +36,7 @@ export default function App() {
         <Stack.Screen name="Camera" component={CameraPage} options={{ headerShown: false }} />
 
         <Stack.Screen name="Confirmation" options={{ headerShown: false }}>
-          {(props) => <ConfirmationPage {...props} setUserLocation={setUserLocation} />}
+          {(props) => <ConfirmationPage {...props} setUserLocation={setUserLocation} userID={userID} />}
         </Stack.Screen>
 
       </Stack.Navigator>
