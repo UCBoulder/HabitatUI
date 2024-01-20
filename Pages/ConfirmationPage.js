@@ -9,7 +9,7 @@ const ConfirmationPage = ({ route, setUserLocation, userID }) => {
     const [text, onChangeText] = useState('');
 
     const confirmationButton = () => {
-        makeObservation(setUserLocation, userID, text);
+        makeObservation(setUserLocation, userID, text, imageSource);
         navigation.navigate("Map");
     };
 

@@ -1,4 +1,5 @@
 import axios from "axios";
+import RNFS from 'react-native-fs';
 
 // recieve one or many lat long coordinates from the API
 export const getLocationPins = async () => {
@@ -12,8 +13,8 @@ export const getLocationPins = async () => {
 };
 
 // send one lat long coordinate to the API
-export const sendLocationPin = async (position, userID, text) => {
-  
+export const sendLocationPin = async (position, userID, text, imageSource) => {
+
   const observation = {
     userID: userID,
     coords: {
@@ -27,7 +28,22 @@ export const sendLocationPin = async (position, userID, text) => {
   };
 
   try {
-    console.log(observation)
+
+    if (imageSource) {
+      const imageBase64 = await RNFS.readFile(imageSource, 'base64');
+
+      const formData = new FormData();
+      formData.append('image', {
+        uri: imageSource,
+        type: 'image/jpeg', 
+        name: 'image.jpg',
+        encoded64: imageBase64,
+      });
+
+      observation.image = imageBase64;
+
+    }
+    // console.log(observation.image._parts)
     const response = await axios.post("http://192.168.56.1:3000/observations",
       observation,
     );
@@ -39,13 +55,16 @@ export const sendLocationPin = async (position, userID, text) => {
 };
 
 // observation {
-//   "Notes": undefined, 
+//   "Notes": undefined,
 //   "VerificationRating": 1,
 //   "coords": {
-//     "accuracy": 14.8149995803833, 
-//     "latitude": 38.547351, 
+//     "accuracy": 14.8149995803833,
+//     "latitude": 38.547351,
 //     "longitude": -106.9226196
-// }, 
+// },
+//   "image": {
+//      "_parts":[[Array]]
+// }
 //   "timestamp": 1701473299603
 // }
 
