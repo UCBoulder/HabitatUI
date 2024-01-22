@@ -6,4 +6,4 @@ export const FormatDate = (timestamp) => {
 
     const formattedDate = `${month}/${day}/${year}`;
     return formattedDate;
-}
+};

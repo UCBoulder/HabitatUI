@@ -10,7 +10,7 @@ const CustomMarker = ({ data }) => {
             latitude: data.coords.latitude,
             longitude: data.coords.longitude,
         }}
-            pinColor={ColorCode(data.verification)}>
+            pinColor={ColorCode(data.VerificationRating)}>
             <Callout>
                 <View style={styles.calloutContainer}>
                     <Text style={styles.calloutText}>
@@ -18,6 +18,7 @@ const CustomMarker = ({ data }) => {
                         {`Latitude: ${data.coords.latitude}\nLongitude: ${data.coords.longitude}\n`}
                         {`Accuracy: ${data.coords.accuracy.toFixed(3)}\n`}
                         {data.Notes}
+                        {`\n`}
                     </Text>
                 </View>
             </Callout>
