@@ -1,4 +1,4 @@
-export const Pin = (rating) => {
+export const ColorCode = (rating) => {
     //No=0 Maybe=1 Yes=2 increasing level of assurity
     if(rating == 2){
         return "#031cfc";
