@@ -29,12 +29,16 @@ const CustomMarker = ({ data }) => {
                         {`Observation made on: ${FormatDate(data.timestamp)}\n`}
                         {`Latitude: ${data.coords.latitude}\nLongitude: ${data.coords.longitude}\n`}
                         {`Accuracy: ${data.coords.accuracy.toFixed(3)}\n`}
-                        {data.Notes}
-                        {`\nClick to view image`}
+                        {`${data.Notes}\n`}
+                    </Text>
+
+                    <Text style={styles.calloutTextCentered}>
+                        {`Click to view image`}
                     </Text>
 
                 </View>
 
+                {/* Image popup */}
                 <Modal
                     animationType="slide"
                     transparent={false}
@@ -52,6 +56,7 @@ const CustomMarker = ({ data }) => {
                     </View>
 
                 </Modal>
+
             </Callout>
         </Marker>
     );
@@ -66,6 +71,11 @@ const styles = StyleSheet.create({
     calloutText: {
         fontSize: 14,
         color: 'black',
+    },
+    calloutTextCentered: {
+        fontSize: 14,
+        color: 'black',
+        textAlign: 'center',
     },
     modalContainer: {
         flex: 1,
