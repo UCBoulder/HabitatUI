@@ -33,7 +33,7 @@ const CustomMarker = ({ data }) => {
                     </Text>
 
                     <Text style={styles.calloutTextCentered}>
-                        {`Click to view image`}
+                        {`Tap to view image`}
                     </Text>
 
                 </View>
