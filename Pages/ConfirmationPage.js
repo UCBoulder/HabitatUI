@@ -3,13 +3,13 @@ import { View, StyleSheet, Image, TextInput, TouchableOpacity, Text } from "reac
 import { useNavigation } from "@react-navigation/native";
 import { makeObservation } from "../utils/MakeObservation";
 
-const ConfirmationPage = ({ route, setUserLocation }) => {
+const ConfirmationPage = ({ route, setUserLocation, userID }) => {
     const navigation = useNavigation();
     const { imageSource } = route.params;
     const [text, onChangeText] = useState('');
 
     const confirmationButton = () => {
-        makeObservation(setUserLocation, text);
+        makeObservation(setUserLocation, userID, text, imageSource);
         navigation.navigate("Map");
     };
 
