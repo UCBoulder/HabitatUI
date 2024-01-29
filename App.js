@@ -1,27 +1,27 @@
-import React, { useEffect, useState } from "react";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { MapScreen } from "./components/MapScreen";
-import InfoPage from "./pages/InfoPage";
-import CameraPage from "./pages/CameraPage";
-import ConfirmationPage from "./pages/ConfirmationPage";
-import { requestLocationPermission, requestCameraPermission } from "./utils/Permissions";
-import { loadUserID } from "./utils/UserID";
+import React, { useEffect, useState } from 'react'
+import { NavigationContainer } from '@react-navigation/native'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { MapScreen } from './components/MapScreen'
+import InfoPage from './pages/InfoPage'
+import CameraPage from './pages/CameraPage'
+import ConfirmationPage from './pages/ConfirmationPage'
+import { requestLocationPermission, requestCameraPermission } from './utils/Permissions'
+import { loadUserID } from './utils/UserID'
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator()
 
-export default function App() {
-  const [userLocation, setUserLocation] = useState(null);
-  const [userID, setUserID] = useState(null);
+export default function App () {
+  const [userLocation, setUserLocation] = useState(null)
+  const [userID, setUserID] = useState(null)
 
   useEffect(() => {
     // ask for location permissions when the app first loads
-    requestLocationPermission();
+    requestLocationPermission()
     // ask for camera permissions when the app first loads
-    requestCameraPermission();
+    requestCameraPermission()
     // load user id when the app launches
-    loadUserID(setUserID);
-  }, []);
+    loadUserID(setUserID)
+  }, [])
 
   return (
     <NavigationContainer>
