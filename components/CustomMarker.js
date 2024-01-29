@@ -1,24 +1,24 @@
-import React, { useState } from "react";
-import { Marker, Callout } from "react-native-maps";
-import { ColorCode } from "./ColorCode";
-import { FormatDate } from "../utils/FormatDate";
-import { View, Text, StyleSheet, Image, Modal, TouchableOpacity } from "react-native";
+import React, { useState } from 'react'
+import { Marker, Callout } from 'react-native-maps'
+import { ColorCode } from './ColorCode'
+import { FormatDate } from '../utils/FormatDate'
+import { View, Text, StyleSheet, Image, Modal, TouchableOpacity } from 'react-native'
 
 const CustomMarker = ({ data }) => {
-    const [modalVisible, setModalVisible] = useState(false)
+  const [modalVisible, setModalVisible] = useState(false)
 
-    const calloutPress = () => {
-        setModalVisible(true);
-    }
+  const calloutPress = () => {
+    setModalVisible(true)
+  }
 
-    const closeModal = () => {
-        setModalVisible(false);
-    }
+  const closeModal = () => {
+    setModalVisible(false)
+  }
 
-    return (
+  return (
         <Marker coordinate={{
-            latitude: data.coords.latitude,
-            longitude: data.coords.longitude,
+          latitude: data.coords.latitude,
+          longitude: data.coords.longitude
         }}
             pinColor={ColorCode(data.VerificationRating)}>
             <Callout tooltip onPress={calloutPress}>
@@ -33,7 +33,7 @@ const CustomMarker = ({ data }) => {
                     </Text>
 
                     <Text style={styles.calloutTextCentered}>
-                        {`Tap to view image`}
+                        {'Tap to view image'}
                     </Text>
 
                 </View>
@@ -59,44 +59,44 @@ const CustomMarker = ({ data }) => {
 
             </Callout>
         </Marker>
-    );
-};
+  )
+}
 
 const styles = StyleSheet.create({
-    calloutContainer: {
-        borderRadius: 10,
-        backgroundColor: 'white',
-        padding: 4,
-    },
-    calloutText: {
-        fontSize: 14,
-        color: 'black',
-    },
-    calloutTextCentered: {
-        fontSize: 14,
-        color: 'black',
-        textAlign: 'center',
-    },
-    modalContainer: {
-        flex: 1,
-    },
-    modalExitButton: {
-        position: 'absolute',
-        top: 10,
-        right: 10,
-        backgroundColor: 'white',
-        borderRadius: 50,
-        padding: 10,
-    },
-    modalExitButtonText: {
-        color: 'black',
-        fontSize: 20,
-    },
-    modalImage: {
-        flex: 1,
-        width: '100%',
-        height: '100%',
-    },
-});
+  calloutContainer: {
+    borderRadius: 10,
+    backgroundColor: 'white',
+    padding: 4
+  },
+  calloutText: {
+    fontSize: 14,
+    color: 'black'
+  },
+  calloutTextCentered: {
+    fontSize: 14,
+    color: 'black',
+    textAlign: 'center'
+  },
+  modalContainer: {
+    flex: 1
+  },
+  modalExitButton: {
+    position: 'absolute',
+    top: 10,
+    right: 10,
+    backgroundColor: 'white',
+    borderRadius: 50,
+    padding: 10
+  },
+  modalExitButtonText: {
+    color: 'black',
+    fontSize: 20
+  },
+  modalImage: {
+    flex: 1,
+    width: '100%',
+    height: '100%'
+  }
+})
 
-export default CustomMarker;
+export default CustomMarker
