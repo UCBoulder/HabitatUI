@@ -3,6 +3,7 @@ import { Marker, Callout } from 'react-native-maps'
 import { ColorCode } from './ColorCode'
 import { FormatDate } from '../utils/FormatDate'
 import { View, Text, StyleSheet, Image, Modal, TouchableOpacity } from 'react-native'
+import PropTypes from 'prop-types'
 
 const CustomMarker = ({ data }) => {
   const [modalVisible, setModalVisible] = useState(false)
@@ -60,6 +61,20 @@ const CustomMarker = ({ data }) => {
             </Callout>
         </Marker>
   )
+}
+
+// Define PropTypes for the data prop
+CustomMarker.propTypes = {
+  data: PropTypes.shape({
+    coords: PropTypes.shape({
+      latitude: PropTypes.number,
+      longitude: PropTypes.number,
+      accuracy: PropTypes.number
+    }),
+    VerificationRating: PropTypes.number,
+    timestamp: PropTypes.string,
+    Notes: PropTypes.string
+  })
 }
 
 const styles = StyleSheet.create({
