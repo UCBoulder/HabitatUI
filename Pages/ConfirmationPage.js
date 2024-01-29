@@ -1,19 +1,20 @@
-import React, { useState } from "react";
-import { View, StyleSheet, Image, TextInput, TouchableOpacity, Text } from "react-native";
-import { useNavigation } from "@react-navigation/native";
-import { makeObservation } from "../utils/MakeObservation";
+import React, { useState } from 'react'
+import { View, StyleSheet, Image, TextInput, TouchableOpacity, Text } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
+import { makeObservation } from '../utils/MakeObservation'
+import PropTypes from 'prop-types'
 
 const ConfirmationPage = ({ route, setUserLocation, userID }) => {
-    const navigation = useNavigation();
-    const { imageSource } = route.params;
-    const [text, onChangeText] = useState('');
+  const navigation = useNavigation()
+  const { imageSource } = route.params
+  const [text, onChangeText] = useState('')
 
-    const confirmationButton = () => {
-        makeObservation(setUserLocation, userID, text, imageSource);
-        navigation.navigate("Map");
-    };
+  const confirmationButton = () => {
+    makeObservation(setUserLocation, userID, text, imageSource)
+    navigation.navigate('Map')
+  }
 
-    return (
+  return (
         <View style={styles.container}>
 
             {/* Display photo that was taken */}
@@ -27,7 +28,7 @@ const ConfirmationPage = ({ route, setUserLocation, userID }) => {
                 onChangeText={onChangeText}
                 value={text}
                 placeholder="Put text here"
-                placeholderTextColor={"#aaa"}
+                placeholderTextColor={'#aaa'}
                 multiline={true}
                 textAlignVertical="top"
                 color="#aaa"
@@ -42,36 +43,42 @@ const ConfirmationPage = ({ route, setUserLocation, userID }) => {
             </TouchableOpacity>
 
         </View>
-    );
-};
+  )
+}
+
+ConfirmationPage.propTypes = {
+  route: PropTypes.object.isRequired,
+  setUserLocation: PropTypes.func.isRequired,
+  userID: PropTypes.string.isRequired
+}
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    confirmationImage: {
-        width: '100%',
-        height: '50%',
-    },
-    input: {
-        flex: 1,
-        height: 100,
-        width: '100%',
-        textDecorationColor: '#aaa',
-        textAlignVertical: 'top'
-    },
-    confirmationButton: {
-        backgroundColor: 'white',
-        padding: 10,
-        borderRadius: 5,
-        bottom: 20
-    },
-    buttonText: {
-        color: 'black',
-        textAlign: 'center',
-    },
-});
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  confirmationImage: {
+    width: '100%',
+    height: '50%'
+  },
+  input: {
+    flex: 1,
+    height: 100,
+    width: '100%',
+    textDecorationColor: '#aaa',
+    textAlignVertical: 'top'
+  },
+  confirmationButton: {
+    backgroundColor: 'white',
+    padding: 10,
+    borderRadius: 5,
+    bottom: 20
+  },
+  buttonText: {
+    color: 'black',
+    textAlign: 'center'
+  }
+})
 
-export default ConfirmationPage;
+export default ConfirmationPage

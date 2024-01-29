@@ -1,24 +1,25 @@
-import React, { useState, useEffect } from "react";
-import { View, StyleSheet, Image, Text, TouchableOpacity } from "react-native";
-import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
-import { getLocationPins } from "../utils/APICalls";
-import CustomMarker from "../components/CustomMarker";
+import React, { useState, useEffect } from 'react'
+import { View, StyleSheet } from 'react-native'
+import MapView, { PROVIDER_GOOGLE } from 'react-native-maps'
+import { getLocationPins } from '../utils/APICalls'
+import CustomMarker from '../components/CustomMarker'
+import PropTypes from 'prop-types'
 
 const MapPage = ({ userLocation }) => {
-  const [apiCoordinates, setApiCoordinates] = useState([]);
+  const [apiCoordinates, setApiCoordinates] = useState([])
 
   useEffect(() => {
     const fetchPins = async () => {
       try {
-        const coordinates = await getLocationPins();
-        coordinates && setApiCoordinates(coordinates);
+        const coordinates = await getLocationPins()
+        coordinates && setApiCoordinates(coordinates)
       } catch (error) {
-        console.error("Error fetching API data: ", error);
+        console.error('Error fetching API data: ', error)
       }
-    };
+    }
 
-    fetchPins();
-  }, []);
+    fetchPins()
+  }, [])
 
   return (
     <View style={styles.mapContainer}>
@@ -32,7 +33,7 @@ const MapPage = ({ userLocation }) => {
           latitude: 38.5449,
           longitude: -106.9329,
           latitudeDelta: 0.0922,
-          longitudeDelta: 0.0421,
+          longitudeDelta: 0.0421
         }}
       >
         {userLocation && (
@@ -49,16 +50,20 @@ const MapPage = ({ userLocation }) => {
         ))}
       </MapView>
     </View>
-  );
-};
+  )
+}
+
+MapPage.propTypes = {
+  userLocation: PropTypes.object
+}
 
 const styles = StyleSheet.create({
   mapContainer: {
-    flex: 1,
+    flex: 1
   },
   map: {
-    ...StyleSheet.absoluteFillObject,
-  },
-});
+    ...StyleSheet.absoluteFillObject
+  }
+})
 
-export default MapPage;
+export default MapPage
