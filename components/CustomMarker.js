@@ -72,7 +72,7 @@ CustomMarker.propTypes = {
       accuracy: PropTypes.number
     }),
     VerificationRating: PropTypes.number,
-    timestamp: PropTypes.string,
+    timestamp: PropTypes.number,
     Notes: PropTypes.string
   })
 }
