@@ -1,14 +1,14 @@
-import React from "react";
-import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import React from 'react'
+import { View, TouchableOpacity, Text, StyleSheet } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
 
 // Button that appears on the map screen which starts the cheatgrass observation process for the user
 const MakeObservationButton = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation()
 
   const handlePress = () => {
-    navigation.navigate('Camera');
-  };
+    navigation.navigate('Camera')
+  }
 
   return (
     <View style={styles.locationButtonContainer}>
@@ -19,26 +19,26 @@ const MakeObservationButton = () => {
         <Text style={styles.buttonText}>Make Observation</Text>
       </TouchableOpacity>
     </View>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   locationButtonContainer: {
-    position: "absolute",
+    position: 'absolute',
     bottom: 20,
     left: 0,
     right: 0,
-    alignItems: "center",
+    alignItems: 'center'
   },
   locationButton: {
     backgroundColor: 'white',
     padding: 10,
-    borderRadius: 5,
+    borderRadius: 5
   },
   buttonText: {
     color: 'black',
-    textAlign: 'center',
-  },
-});
+    textAlign: 'center'
+  }
+})
 
-export default MakeObservationButton;
+export default MakeObservationButton
