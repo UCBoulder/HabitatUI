@@ -7,7 +7,6 @@ import CameraPage from './pages/CameraPage'
 import ConfirmationPage from './pages/ConfirmationPage'
 import { requestLocationPermission, requestCameraPermission } from './utils/Permissions'
 import { loadUserID } from './utils/UserID'
-import cellServiceCheck from './utils/CellServiceChecking'
 
 const Stack = createNativeStackNavigator()
 
@@ -22,7 +21,6 @@ export default function App() {
     requestCameraPermission()
     // load user id when the app launches
     loadUserID(setUserID)
-    cellServiceCheck()
   }, [])
 
   return (
