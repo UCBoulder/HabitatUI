@@ -1,14 +1,14 @@
-import NetInfo from "@react-native-community/netinfo";
+import NetInfo from '@react-native-community/netinfo'
 
-const serviceCheck = async () => {
+const connectionCheck = async () => {
   try {
-    const state = await NetInfo.fetch();
-    console.log("Is connected?", state.isConnected);
-    return state.isConnected;
+    const state = await NetInfo.fetch()
+    console.log('Is connected?', state.isConnected)
+    return state.isConnected
   } catch (error) {
-    console.error("Error fetching network information", error);
-    return false;
+    console.error('Error fetching network information', error)
+    return false
   }
 }
 
-export default serviceCheck;
+export default connectionCheck
