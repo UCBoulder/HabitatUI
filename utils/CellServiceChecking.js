@@ -1,13 +1,12 @@
-import { NetInfo } from "react-native"
+import NetInfo from "@react-native-community/netinfo";
+
+
 
 const cellServiceCheck = () => {
-    NetInfo.isConnected.fetch().then(isConnected => {
-        if (isConnected) {
-            console.log("online")
-        } else {
-            console.log("offline")
-        }
-    })
+    NetInfo.fetch().then(state => {
+        console.log("Connection type", state.type);
+        console.log("Is connected?", state.isConnected);
+      });
 }
 
 export default cellServiceCheck;

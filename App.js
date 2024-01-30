@@ -7,7 +7,7 @@ import CameraPage from './pages/CameraPage'
 import ConfirmationPage from './pages/ConfirmationPage'
 import { requestLocationPermission, requestCameraPermission } from './utils/Permissions'
 import { loadUserID } from './utils/UserID'
-import { cellServiceCheck } from './utils/CellServiceChecking'
+import cellServiceCheck from './utils/CellServiceChecking'
 
 const Stack = createNativeStackNavigator()
 
