@@ -30,7 +30,7 @@ const CustomMarker = ({ data }) => {
                         {`Observation made on: ${FormatDate(data.timestamp)}\n`}
                         {`Latitude: ${data.coords.latitude}\nLongitude: ${data.coords.longitude}\n`}
                         {`Accuracy: ${data.coords.accuracy.toFixed(3)}\n`}
-                        {`${data.Notes}\n`}
+                        {data.Notes ? `${data.Notes}\n` : "Your observation is being uploaded\n"}
                     </Text>
 
                     <Text style={styles.calloutTextCentered}>
