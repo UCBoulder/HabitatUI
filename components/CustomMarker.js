@@ -8,6 +8,7 @@ import { simplifyJson } from '../utils/simplifyJson'
 
 const CustomMarker = ({ data }) => {
   const [modalVisible, setModalVisible] = useState(false)
+  console.log(data)
   parsedData = simplifyJson(data)
   console.log(parsedData)
       
@@ -33,7 +34,7 @@ const CustomMarker = ({ data }) => {
                         {`Observation made on: ${FormatDate(parsedData.timestamp)}\n`}
                         {`Latitude: ${parsedData.coords.latitude}\nLongitude: ${parsedData.coords.longitude}\n`}
                         {`Accuracy: ${parsedData.coords.accuracy}\n`}
-                        {parsedData.Notes ? `${parsedData.Notes}\n` : "Your observation is being uploaded\n"}
+                        {parsedData.Notes ? `${parsedData.Notes}\n` : "\n"}
                     </Text>
 
                     <Text style={styles.calloutTextCentered}>
@@ -74,8 +75,8 @@ CustomMarker.propTypes = {
       longitude: PropTypes.number,
       accuracy: PropTypes.number
     }),
-    VerificationRating: PropTypes.number,
-    timestamp: PropTypes.number,
+    VerificationRating: PropTypes.object,
+    timestamp: PropTypes.object,
     Notes: PropTypes.string
   })
 }
