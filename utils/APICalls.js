@@ -5,7 +5,7 @@ import { Alert } from 'react-native'
 // recieve one or many lat long coordinates from the API
 export const getLocationPins = async () => {
   try {
-    const locTestResponse = await axios.get('http://192.168.56.1:3000/locTest')
+    const locTestResponse = await axios.get('http://192.168.56.1:3000/observations')
     return locTestResponse.data
   } catch (error) {
     console.error('Error fetching API data: ', error)
