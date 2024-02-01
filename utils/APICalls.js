@@ -6,7 +6,6 @@ import { Alert } from 'react-native'
 export const getLocationPins = async () => {
   try {
     const locTestResponse = await axios.get('http://192.168.56.1:3000/observations')
-    console.log(locTestResponse.data)
     return locTestResponse.data
   } catch (error) {
     console.error('Error fetching API data: ', error)

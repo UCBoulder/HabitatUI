@@ -4,10 +4,13 @@ import { ColorCode } from './ColorCode'
 import { FormatDate } from '../utils/FormatDate'
 import { View, Text, StyleSheet, Image, Modal, TouchableOpacity } from 'react-native'
 import PropTypes from 'prop-types'
+import { simplifyJson } from '../utils/simplifyJson'
 
 const CustomMarker = ({ data }) => {
   const [modalVisible, setModalVisible] = useState(false)
-
+  parsedData = simplifyJson(data)
+  console.log(parsedData)
+      
   const calloutPress = () => {
     setModalVisible(true)
   }
@@ -18,19 +21,19 @@ const CustomMarker = ({ data }) => {
 
   return (
         <Marker coordinate={{
-          latitude: data.coords.latitude,
-          longitude: data.coords.longitude
+          latitude: parsedData.coords.latitude,
+          longitude: parsedData.coords.longitude
         }}
-            pinColor={ColorCode(data.VerificationRating)}>
+            pinColor={ColorCode(parsedData.VerificationRating)}>
             <Callout tooltip onPress={calloutPress}>
 
                 <View style={styles.calloutContainer}>
 
                     <Text style={styles.calloutText}>
-                        {`Observation made on: ${FormatDate(data.timestamp)}\n`}
-                        {`Latitude: ${data.coords.latitude}\nLongitude: ${data.coords.longitude}\n`}
-                        {`Accuracy: ${data.coords.accuracy.toFixed(3)}\n`}
-                        {data.Notes ? `${data.Notes}\n` : "Your observation is being uploaded\n"}
+                        {`Observation made on: ${FormatDate(parsedData.timestamp)}\n`}
+                        {`Latitude: ${parsedData.coords.latitude}\nLongitude: ${parsedData.coords.longitude}\n`}
+                        {`Accuracy: ${parsedData.coords.accuracy}\n`}
+                        {parsedData.Notes ? `${parsedData.Notes}\n` : "Your observation is being uploaded\n"}
                     </Text>
 
                     <Text style={styles.calloutTextCentered}>
