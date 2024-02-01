@@ -8,10 +8,8 @@ import { simplifyJson } from '../utils/simplifyJson'
 
 const CustomMarker = ({ data }) => {
   const [modalVisible, setModalVisible] = useState(false)
-  console.log(data)
   parsedData = simplifyJson(data)
-  console.log(parsedData)
-      
+
   const calloutPress = () => {
     setModalVisible(true)
   }
@@ -21,49 +19,49 @@ const CustomMarker = ({ data }) => {
   }
 
   return (
-        <Marker coordinate={{
-          latitude: parsedData.coords.latitude,
-          longitude: parsedData.coords.longitude
-        }}
-            pinColor={ColorCode(parsedData.VerificationRating)}>
-            <Callout tooltip onPress={calloutPress}>
+    <Marker coordinate={{
+      latitude: parsedData.coords.latitude,
+      longitude: parsedData.coords.longitude
+    }}
+      pinColor={ColorCode(parsedData.VerificationRating)}>
+      <Callout tooltip onPress={calloutPress}>
 
-                <View style={styles.calloutContainer}>
+        <View style={styles.calloutContainer}>
 
-                    <Text style={styles.calloutText}>
-                        {`Observation made on: ${FormatDate(parsedData.timestamp)}\n`}
-                        {`Latitude: ${parsedData.coords.latitude}\nLongitude: ${parsedData.coords.longitude}\n`}
-                        {`Accuracy: ${parsedData.coords.accuracy}\n`}
-                        {parsedData.Notes ? `${parsedData.Notes}\n` : "\n"}
-                    </Text>
+          <Text style={styles.calloutText}>
+            {`Observation made on: ${FormatDate(parsedData.timestamp)}\n`}
+            {`Latitude: ${parsedData.coords.latitude}\nLongitude: ${parsedData.coords.longitude}\n`}
+            {`Accuracy: ${parsedData.coords.accuracy}\n`}
+            {parsedData.Notes ? `${parsedData.Notes}\n` : "\n"}
+          </Text>
 
-                    <Text style={styles.calloutTextCentered}>
-                        {'Tap to view image'}
-                    </Text>
+          <Text style={styles.calloutTextCentered}>
+            {'Tap to view image'}
+          </Text>
 
-                </View>
+        </View>
 
-                {/* Image popup */}
-                <Modal
-                    animationType="slide"
-                    transparent={false}
-                    visible={modalVisible}
-                >
-                    <View style={styles.modalContainer}>
-                        <Image
-                            source={require('../images/PXL_20231211_211945981.MP.jpg')}
-                            style={styles.modalImage}
-                            resizeMode="contain"
-                        />
-                        <TouchableOpacity style={styles.modalExitButton} onPress={closeModal}>
-                            <Text style={styles.buttonText}>X</Text>
-                        </TouchableOpacity>
-                    </View>
+        {/* Image popup */}
+        <Modal
+          animationType="slide"
+          transparent={false}
+          visible={modalVisible}
+        >
+          <View style={styles.modalContainer}>
+            <Image
+              source={require('../images/PXL_20231211_211945981.MP.jpg')}
+              style={styles.modalImage}
+              resizeMode="contain"
+            />
+            <TouchableOpacity style={styles.modalExitButton} onPress={closeModal}>
+              <Text style={styles.buttonText}>X</Text>
+            </TouchableOpacity>
+          </View>
 
-                </Modal>
+        </Modal>
 
-            </Callout>
-        </Marker>
+      </Callout>
+    </Marker>
   )
 }
 
@@ -76,7 +74,10 @@ CustomMarker.propTypes = {
       accuracy: PropTypes.number
     }),
     VerificationRating: PropTypes.object,
-    timestamp: PropTypes.object,
+    timestamp: PropTypes.oneOfType([
+      PropTypes.object,
+      PropTypes.number,
+    ]),
     Notes: PropTypes.string
   })
 }
