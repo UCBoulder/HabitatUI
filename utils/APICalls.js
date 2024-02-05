@@ -91,3 +91,10 @@ export const sendStoredObservations = async () => {
     await AsyncStorage.removeItem('Observations')
   }
 }
+
+export const checkAsyncStorage = async () => {
+  const storedObservations = await AsyncStorage.getItem('Observations')
+  if (storedObservations) {
+    sendStoredObservations()
+  }
+}
