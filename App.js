@@ -11,7 +11,7 @@ import { checkAsyncStorage } from './utils/APICalls'
 
 const Stack = createNativeStackNavigator()
 
-export default function App() {
+export default function App () {
   const [userLocation, setUserLocation] = useState(null)
   const [userID, setUserID] = useState(null)
 
@@ -23,7 +23,6 @@ export default function App() {
     // load user id when the app launches
     loadUserID(setUserID)
     checkAsyncStorage()
-
   }, [])
 
   return (
