@@ -30,11 +30,14 @@ const CameraPage = () => {
     setPhotoTaken(false)
   }
 
+  function handleBack () {
+    navigation.goBack()
+  }
+
   if (device == null) return <Text>No Camera Found</Text>
 
   return (
     <View style={styles.container}>
-
       {/* Camera component */}
       <Camera
         ref={camera}
@@ -44,6 +47,11 @@ const CameraPage = () => {
         enableZoomGesture={true}
         photo={true}
       />
+
+      {/* Back Button */}
+      <TouchableOpacity style={styles.backButton} onPress={() => handleBack()}>
+        <Icon name="arrow-left" size={25} color="white" />
+      </TouchableOpacity>
 
       {/* Button for taking a photo */}
       {!photoTaken && (
@@ -129,6 +137,13 @@ const styles = StyleSheet.create({
   image: {
     width: '100%',
     height: '100%'
+  },
+  backButton: {
+    position: 'absolute',
+    top: 10,
+    left: 10,
+    padding: 10,
+    borderRadius: 5
   }
 })
 
