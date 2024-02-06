@@ -2,6 +2,7 @@ import { Camera, useCameraDevice } from 'react-native-vision-camera'
 import { View, StyleSheet, TouchableOpacity, Image, Text } from 'react-native'
 import React, { useState, useRef } from 'react'
 import { useNavigation } from '@react-navigation/native'
+import Icon from 'react-native-vector-icons/FontAwesome5'
 
 // Page for taking a picture, confirming, and retaking a picture to then be sent to the ConfirmationPage
 const CameraPage = () => {
@@ -32,58 +33,59 @@ const CameraPage = () => {
   if (device == null) return <Text>No Camera Found</Text>
 
   return (
-        <View style={styles.container}>
+    <View style={styles.container}>
 
-            {/* Camera component */}
-            <Camera
-                ref={camera}
-                style={StyleSheet.absoluteFill}
-                device={device}
-                isActive={!photoTaken} // Deactivate camera when photo is taken
-                enableZoomGesture={true}
-                photo={true}
-            />
+      {/* Camera component */}
+      <Camera
+        ref={camera}
+        style={StyleSheet.absoluteFill}
+        device={device}
+        isActive={!photoTaken} // Deactivate camera when photo is taken
+        enableZoomGesture={true}
+        photo={true}
+      />
 
-            {/* Button for taking a photo */}
-            {!photoTaken && (
-                <View style={styles.buttonContainer}>
-                    <TouchableOpacity
-                        style={styles.camButton}
-                        onPress={() => capturePhoto()}
-                    />
-                </View>
-            )}
-
-            {/* Display the taken photo */}
-            {photoTaken && (
-                <Image
-                    source={{ uri: `file://'${imageSource}` }}
-                    style={styles.image}
-                    resizeMode="cover"
-                />
-            )}
-
-            {/* Confirm and redo buttons after a photo has been taken */}
-            {photoTaken && (
-                <View style={styles.confirmationContainer}>
-
-                    <TouchableOpacity
-                        style={styles.redoButton}
-                        onPress={() => handleRedo()}
-                    >
-                        <Text>Retake</Text>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity
-                        style={styles.confirmationButton}
-                        onPress={() => handleConfirmation()}
-                    >
-                        <Text>Confirm</Text>
-                    </TouchableOpacity>
-
-                </View>
-            )}
+      {/* Button for taking a photo */}
+      {!photoTaken && (
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity
+            style={styles.camButton}
+            onPress={() => capturePhoto()}
+          />
         </View>
+      )}
+
+      {/* Display the taken photo */}
+      {photoTaken && (
+        <Image
+          source={{ uri: `file://'${imageSource}` }}
+          style={styles.image}
+          resizeMode="cover"
+        />
+      )}
+
+      {/* Confirm and redo buttons after a photo has been taken */}
+      {photoTaken && (
+        <View style={styles.confirmationContainer}>
+
+          <TouchableOpacity
+            style={styles.redoButton}
+            onPress={() => handleRedo()}
+          >
+            <Icon name="redo" size={25} color='white' />
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.confirmationButton}
+            onPress={() => handleConfirmation()}
+          >
+            <Icon name="check" size={25} color='white' />
+
+          </TouchableOpacity>
+
+        </View>
+      )}
+    </View>
   )
 }
 
@@ -117,12 +119,10 @@ const styles = StyleSheet.create({
     borderColor: 'white'
   },
   confirmationButton: {
-    backgroundColor: 'green',
     padding: 10,
     borderRadius: 5
   },
   redoButton: {
-    backgroundColor: 'red',
     padding: 10,
     borderRadius: 5
   },
