@@ -1,13 +1,12 @@
 import axios from 'axios'
 import RNFS from 'react-native-fs'
 import { Alert } from 'react-native'
-import { NetworkInfo } from 'react-native-network-info'
+import config from '../config'
 
 // recieve one or many lat long coordinates from the API
 export const getLocationPins = async () => {
   try {
-    // const ipAddress = await NetworkInfo.getIPV4Address()
-    // const response = await axios.get(`http://${ipAddress}:3000/observations`)
+    const response = await axios.get(`${config.emulatorAddress}/observations`)
     return response.data
   } catch (error) {
     console.error('Error fetching API data: ', error)
@@ -43,9 +42,7 @@ export const sendLocationPin = async (position, userID, text, imageSource) => {
 
       observation.image = imageBase64
     }
-    // console.log(observation.image._parts)
-    const ipAddress = await NetworkInfo.getIPAddress()
-    const response = await axios.post(`http://${ipAddress}:3000/observations`, observation)
+    const response = await axios.post(`${config.emulatorAddress}/observations`, observation)
 
     console.log('Response from backend: ', response.data)
     Alert.alert('Success', 'Your Observation Was Successfully Uploaded')
