@@ -5,10 +5,11 @@ import { FormatDate } from '../utils/FormatDate'
 import { View, Text, StyleSheet, Image, Modal, TouchableOpacity } from 'react-native'
 import PropTypes from 'prop-types'
 import { simplifyJson } from '../utils/simplifyJson'
+import Icon from 'react-native-vector-icons/FontAwesome6'
 
 const CustomMarker = ({ data }) => {
   const [modalVisible, setModalVisible] = useState(false)
-  parsedData = simplifyJson(data)
+  const parsedData = simplifyJson(data)
 
   const calloutPress = () => {
     setModalVisible(true)
@@ -23,7 +24,7 @@ const CustomMarker = ({ data }) => {
       latitude: parsedData.coords.latitude,
       longitude: parsedData.coords.longitude
     }}
-      pinColor={ColorCode(parsedData.VerificationRating)}>
+      pinColor={ColorCode(parsedData.VerificationRating ? parsedData.VerificationRating : '1')}>
       <Callout tooltip onPress={calloutPress}>
 
         <View style={styles.calloutContainer}>
@@ -32,7 +33,7 @@ const CustomMarker = ({ data }) => {
             {`Observation made on: ${FormatDate(parsedData.timestamp)}\n`}
             {`Latitude: ${parsedData.coords.latitude}\nLongitude: ${parsedData.coords.longitude}\n`}
             {`Accuracy: ${parsedData.coords.accuracy}\n`}
-            {parsedData.Notes ? `${parsedData.Notes}\n` : "\n"}
+            {parsedData.Notes ? `${parsedData.Notes}\n` : '\n'}
           </Text>
 
           <Text style={styles.calloutTextCentered}>
@@ -44,17 +45,16 @@ const CustomMarker = ({ data }) => {
         {/* Image popup */}
         <Modal
           animationType="slide"
-          transparent={false}
           visible={modalVisible}
         >
           <View style={styles.modalContainer}>
             <Image
               source={require('../images/PXL_20231211_211945981.MP.jpg')}
               style={styles.modalImage}
-              resizeMode="contain"
+              resizeMode="stretch"
             />
             <TouchableOpacity style={styles.modalExitButton} onPress={closeModal}>
-              <Text style={styles.buttonText}>X</Text>
+              <Icon name="x" size={25} color="white" />
             </TouchableOpacity>
           </View>
 
@@ -76,7 +76,7 @@ CustomMarker.propTypes = {
     VerificationRating: PropTypes.object,
     timestamp: PropTypes.oneOfType([
       PropTypes.object,
-      PropTypes.number,
+      PropTypes.number
     ]),
     Notes: PropTypes.string
   })
@@ -98,19 +98,17 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
   modalContainer: {
-    flex: 1
+    flex: 1,
+    width: '100%',
+    height: '100%'
   },
   modalExitButton: {
+    zIndex: 2,
     position: 'absolute',
     top: 10,
     right: 10,
-    backgroundColor: 'white',
     borderRadius: 50,
     padding: 10
-  },
-  modalExitButtonText: {
-    color: 'black',
-    fontSize: 20
   },
   modalImage: {
     flex: 1,
