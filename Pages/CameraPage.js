@@ -50,7 +50,7 @@ const CameraPage = () => {
 
       {/* Back Button */}
       <TouchableOpacity style={styles.backButton} onPress={() => handleBack()}>
-        <Icon name="arrow-left" size={25} color="white" />
+        <Icon name="arrow-left" size={30} color="white" />
       </TouchableOpacity>
 
       {/* Button for taking a photo */}
@@ -80,14 +80,14 @@ const CameraPage = () => {
             style={styles.redoButton}
             onPress={() => handleRedo()}
           >
-            <Icon name="redo" size={25} color='white' />
+            <Icon name="redo" size={30} color='white' />
           </TouchableOpacity>
 
           <TouchableOpacity
             style={styles.confirmationButton}
             onPress={() => handleConfirmation()}
           >
-            <Icon name="check" size={25} color='white' />
+            <Icon name="check" size={30} color='white' />
 
           </TouchableOpacity>
 

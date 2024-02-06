@@ -24,13 +24,14 @@ const ConfirmationPage = ({ route, setUserLocation, userID }) => {
 
       {/* Back Button */}
       <TouchableOpacity style={styles.backButton} onPress={() => handleBack()}>
-        <Icon name="arrow-left" size={25} color="white" />
+        <Icon name="arrow-left" size={30} color="white" />
       </TouchableOpacity>
 
       {/* Display photo that was taken */}
       <Image
         source={{ uri: `file://${imageSource}` }}
         style={styles.confirmationImage}
+        resizeMode='cover'
       />
 
       <TextInput
