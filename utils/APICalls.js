@@ -1,13 +1,11 @@
 import axios from 'axios'
 import RNFS from 'react-native-fs'
 import { Alert } from 'react-native'
-import { NetworkInfo } from 'react-native-network-info'
-import config from '../config';
+import config from '../config'
 
 // recieve one or many lat long coordinates from the API
 export const getLocationPins = async () => {
   try {
-    const ipAddress = await NetworkInfo.getIPAddress()
     const response = await axios.get(`${config.emulatorAddress}/observations`)
     return response.data
   } catch (error) {
