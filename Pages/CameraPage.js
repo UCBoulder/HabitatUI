@@ -120,9 +120,9 @@ const styles = StyleSheet.create({
     padding: 20
   },
   camButton: {
-    height: 80,
-    width: 80,
-    borderRadius: 40,
+    height: 90,
+    width: 90,
+    borderRadius: 45,
     borderWidth: 5,
     borderColor: 'white'
   },
