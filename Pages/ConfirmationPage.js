@@ -32,11 +32,10 @@ onOwnershipChange = selectedOwnership => {
 const ConfirmationPage = ({route, setUserLocation}) => {
   const navigation = useNavigation();
   const {imageSource} = route.params;
-  const [cover, onChangeCover] = useState('');
   const [acres, onChangeAcres] = useState('');
   const [description, onChangeDescription] = useState('');
   const [ownership, onChangeOwnership] = useState('');
-const [selectedId, setSelectedId] = useState();
+  const [cover, onChangeCover] = useState();
 
   const confirmationButton = () => {
     makeObservation(setUserLocation, cover, acres, description, ownership);
@@ -119,29 +118,33 @@ const [selectedId, setSelectedId] = useState();
         style={styles.confirmationImage}
       />
       <ScrollView>
+      {/* <Text style={styles.label}>All fields optional</Text> */}
         {/* <Text> "Estimated cover or density of plants (optional)"</Text> */}
-        <Text style={styles.label}> Select Estimated Plant Cover:</Text>
+        <Text style={styles.label}> Select Estimated Plant Cover (optional):</Text>
         <RadioGroup
           radioButtons={plantDensity}
-          onPress={setSelectedId}
-          selectedId={selectedId}
+          onPress={onChangeCover}
+          selectedId={cover}
           layout="row"
           flexDirection="row"
           containerStyle={styles.radioGroupContainer} // Add this line for additional styling
           buttonContainerStyle={styles.radioButtonContainer}
           labelStyle={{color: 'black'}}
         />
-        <TextInput
-          style={styles.input}
-          onChangeText={onChangeAcres}
-          value={acres}
-          placeholder="Estimated acres"
-          placeholderTextColor={'#aaa'}
-          multiline={true}
-          textAlignVertical="top"
-          color="#aaa"
+        
+        <Text style={styles.label}>Land Owned By (optional):</Text>
+        <RadioGroup
+          radioButtons={landOwnership}
+          onPress={onChangeOwnership}
+          selectedId={ownership}
+          layout="row"
+          flexDirection="row"
+          containerStyle={styles.radioGroupContainer} // Add this line for additional styling
+          buttonContainerStyle={styles.radioButtonContainer}
+          labelStyle={{color: 'black'}}
         />
-        <TextInput
+        <Text style={styles.label}>Location Description (optional):</Text>
+       <TextInput
           style={styles.input}
           onChangeText={onChangeDescription}
           value={description}
@@ -151,28 +154,13 @@ const [selectedId, setSelectedId] = useState();
           textAlignVertical="top"
           color="#aaa"
         />
-        <TextInput
-          style={styles.input}
-          onChangeText={onChangeOwnership}
-          value={ownership}
-          placeholder="Land Owned By"
-          placeholderTextColor={'#aaa'}
-          multiline={true}
-          textAlignVertical="top"
-          color="#aaa"
-        />
-        <RadioGroup
-          radioButtons={radioButtons}
-          onPress={setSelectedId}
-          selectedId={selectedId}
-        />
-   
-      </ScrollView>
+      
       <TouchableOpacity
         style={styles.confirmationButton}
         onPress={confirmationButton}>
         <Text style={styles.buttonText}>Confirm Observation</Text>
       </TouchableOpacity>
+      </ScrollView>
     </View>
   );
 };
@@ -202,6 +190,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 5,
     bottom: 20,
+    marginVertical: 10,
   },
   buttonText: {
     color: 'black',
@@ -211,7 +200,7 @@ radioGroupContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
-    marginVertical: 10,
+    marginVertical: 20,
   },
   radioButtonContainer: {
     width: '30%', // Adjust this value as needed
