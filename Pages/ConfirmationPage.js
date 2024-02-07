@@ -1,4 +1,4 @@
-import React, {useMemo, useState} from 'react';
+import React, { useMemo, useState } from 'react';
 import {
   View,
   StyleSheet,
@@ -8,8 +8,8 @@ import {
   Text,
   ScrollView,
 } from 'react-native';
-import {useNavigation} from '@react-navigation/native';
-import {makeObservation} from '../utils/MakeObservation';
+import { useNavigation } from '@react-navigation/native';
+import { makeObservation } from '../utils/MakeObservation';
 import RadioGroup from 'react-native-radio-buttons-group';
 
 state = {
@@ -17,7 +17,7 @@ state = {
 };
 
 onPercentChange = selectedPercent => {
-  this.setState({selectedPercent});
+  this.setState({ selectedPercent });
 };
 
 state = {
@@ -25,12 +25,12 @@ state = {
 };
 
 onOwnershipChange = selectedOwnership => {
-  this.setState({selectedOwnership});
+  this.setState({ selectedOwnership });
 };
 
-const ConfirmationPage = ({route, setUserLocation}) => {
+const ConfirmationPage = ({ route, setUserLocation }) => {
   const navigation = useNavigation();
-  const {imageSource} = route.params;
+  const { imageSource } = route.params;
   const [acres, onChangeAcres] = useState('');
   const [description, onChangeDescription] = useState('');
   const [ownership, onChangeOwnership] = useState('');
@@ -133,11 +133,10 @@ const ConfirmationPage = ({route, setUserLocation}) => {
     <View style={styles.container}>
       {/* Display photo that was taken */}
       <Image
-        source={{uri: `file://${imageSource}`}}
+        source={{ uri: `file://${imageSource}` }}
         style={styles.confirmationImage}
       />
       <ScrollView>
-        {/* <Text> "Estimated cover or density of plants (optional)"</Text> */}
         <Text style={styles.label}> Select Estimated Plant Cover (optional):</Text>
         <RadioGroup
           radioButtons={plantDensity}
@@ -147,10 +146,10 @@ const ConfirmationPage = ({route, setUserLocation}) => {
           flexDirection="row"
           containerStyle={styles.radioGroupContainer}
           buttonContainerStyle={styles.radioButtonContainer}
-          labelStyle={{color: 'black'}}
+          labelStyle={{ color: 'black' }}
         />
 
-        
+
         <Text style={styles.label}>Land Owned By (optional):</Text>
         <RadioGroup
           radioButtons={landOwnership}
@@ -160,8 +159,8 @@ const ConfirmationPage = ({route, setUserLocation}) => {
           flexDirection="row"
           containerStyle={styles.radioGroupContainer} // Add this line for additional styling
           buttonContainerStyle={styles.radioButtonContainer}
-          labelStyle={{color: 'black'}}
-          />
+          labelStyle={{ color: 'black' }}
+        />
 
 
         <Text style={styles.label}>Select Estimated Acres (optional):</Text>
@@ -174,10 +173,10 @@ const ConfirmationPage = ({route, setUserLocation}) => {
           containerStyle={styles.radioGroupContainer}
 
           buttonContainerStyle={styles.radioButtonContainer}
-          labelStyle={{color: 'black'}}
+          labelStyle={{ color: 'black' }}
         />
         <Text style={styles.label}>Location Description (optional):</Text>
-       <TextInput
+        <TextInput
           style={styles.input}
           onChangeText={onChangeDescription}
           value={description}
@@ -187,20 +186,27 @@ const ConfirmationPage = ({route, setUserLocation}) => {
           textAlignVertical="top"
           color="#aaa"
         />
-
-      <TouchableOpacity
-        style={styles.confirmationButton}
-        onPress={confirmationButton}>
-        <Text style={styles.buttonText}>Confirm Observation</Text>
-      </TouchableOpacity>
+        <View style={styles.container}>
+          <TouchableOpacity
+            style={styles.confirmationButton}
+            onPress={confirmationButton}>
+            <Text style={styles.buttonText}>Confirm Observation</Text>
+          </TouchableOpacity>
+        </View>
       </ScrollView>
     </View>
+
   );
 };
 
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  scrollViewContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
@@ -222,9 +228,12 @@ const styles = StyleSheet.create({
   confirmationButton: {
     backgroundColor: 'white',
     padding: 10,
-    borderRadius: 5,
+    borderRadius: 10,
+    borderColor: 'black',
     bottom: 20,
-    marginVertical: 30,
+    marginTop: 30,
+    width: '50%',
+
   },
   buttonText: {
     color: 'black',
@@ -234,7 +243,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
-    marginVertical: 20,
+    marginBottom: 20,
   },
   radioButtonContainer: {
     width: '30%', // Adjust this value as needed
@@ -244,6 +253,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     color: 'black',
+    marginBottom: 20,
   },
 });
 
