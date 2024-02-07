@@ -1,17 +1,70 @@
 import React, { useState } from "react";
-import { View, StyleSheet, Image, TextInput, TouchableOpacity, Text } from "react-native";
+import { View, StyleSheet, Image, TextInput, TouchableOpacity, Text, ScrollView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { makeObservation } from "../utils/MakeObservation";
+import MultiSelect from 'react-native-multiple-select';
+
+//npm install react-native-multiple-select --save
+
+const percents = [{
+    percent: '0-20%'
+  }, {
+    percent: '20-40%'
+  }, {
+    percent: '40-60%'
+  },{
+    percent: '60-80%'
+  },{
+    percent: '80-100%'
+  },
+];
+
+const ownership = [{
+    ownedby: 'Private'
+  }, {
+    ownedby: 'BLM (Bureau of Land Management)'
+  }, {
+    ownedby: 'USFS (US Forest Service)'
+  },{
+    ownedby: 'Colorado State'
+  },{
+    ownedby: 'NPS (National Park Service)'
+  },{
+    ownedby: 'Unknown'
+  }
+];
+
+state = {
+    selectedPercent : []
+  };
+
+  onPercentChange = selectedPercent => {
+    this.setState({ selectedPercent });
+  };
+
+  state = {
+    selectedOwnership : []
+  };
+
+  onOwnershipChange = selectedOwnership => {
+    this.setState({ selectedOwnership });
+  };
+
 
 const ConfirmationPage = ({ route, setUserLocation }) => {
     const navigation = useNavigation();
     const { imageSource } = route.params;
-    const [text, onChangeText] = useState('');
+    const [cover, onChangeCover] = useState('');
+    const [acres, onChangeAcres] = useState('');
+    const [description, onChangeDescription] = useState('');
+    const [ownership, onChangeOwnership] = useState('');
+
 
     const confirmationButton = () => {
-        makeObservation(setUserLocation, text);
+        makeObservation(setUserLocation, cover, acres, description, ownership);
         navigation.navigate("Map");
     };
+
 
     return (
         <View style={styles.container}>
@@ -21,18 +74,75 @@ const ConfirmationPage = ({ route, setUserLocation }) => {
                 source={{ uri: `file://${imageSource}` }}
                 style={styles.confirmationImage}
             />
-
+            <ScrollView>
+            {/* <Text> "Estimated cover or density of plants (optional)"</Text> */}
             <TextInput
                 style={styles.input}
-                onChangeText={onChangeText}
-                value={text}
-                placeholder="Put text here"
+                onChangeText={onChangeCover}
+                value={cover}
+                placeholder="Estimated cover or density of plants (optional)"
                 placeholderTextColor={"#aaa"}
                 multiline={true}
                 textAlignVertical="top"
                 color="#aaa"
             />
-
+            <TextInput
+                style={styles.input}
+                onChangeText={onChangeAcres}
+                value={acres}
+                placeholder="Estimated acres"
+                placeholderTextColor={"#aaa"}
+                multiline={true}
+                textAlignVertical="top"
+                color="#aaa"
+            />
+            <TextInput
+                style={styles.input}
+                onChangeText={onChangeDescription}
+                value={description}
+                placeholder="Location Description"
+                placeholderTextColor={"#aaa"}
+                multiline={true}
+                textAlignVertical="top"
+                color="#aaa"
+            />
+            <TextInput
+                style={styles.input}
+                onChangeText={onChangeOwnership}
+                value={ownership}
+                placeholder="Land Owned By"
+                placeholderTextColor={"#aaa"}
+                multiline={true}
+                textAlignVertical="top"
+                color="#aaa"
+            />
+        {/* <MultiSelect
+          hideTags
+          percent={percents}
+          uniqueKey="percent"
+          ref={(component) => { this.multiSelect = component }}
+          onPercentChange={this.onPercentChange}
+          selectedPercent={selectedPercent}
+          selectText="Pick Items"
+          searchInputPlaceholderText="Search Items..."
+          onChangeInput={ (text)=> console.log(text)}
+          altFontFamily="ProximaNova-Light"
+          tagRemoveIconColor="#CCC"
+          tagBorderColor="#CCC"
+          tagTextColor="#CCC"
+          selectedItemTextColor="#CCC"
+          selectedItemIconColor="#CCC"
+          itemTextColor="#000"
+          displayKey="name"
+          searchInputStyle={{ color: '#CCC' }}
+          submitButtonColor="#CCC"
+          submitButtonText="Submit"
+         /> */}
+         </ScrollView>
+{/* 
+         <View>
+           {this.multiSelect.getSelectedItemsExt(selectedItems)}
+         </View> */}
             <TouchableOpacity
                 style={styles.confirmationButton}
                 onPress={confirmationButton}
@@ -58,7 +168,10 @@ const styles = StyleSheet.create({
     input: {
         flex: 1,
         height: 100,
-        width: '100%',
+        width: 350,
+        borderColor: "black",
+        borderWidth: 1,
+        borderRadius: 10,
         textDecorationColor: '#aaa',
         textAlignVertical: 'top'
     },
@@ -74,4 +187,6 @@ const styles = StyleSheet.create({
     },
 });
 
+
 export default ConfirmationPage;
+

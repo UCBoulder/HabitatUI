@@ -20,7 +20,9 @@ export const sendLocationPin = async (position, text) => {
       longitude: position.coords.longitude,
       accuracy: position.coords.accuracy,
     },
-    Notes: text,
+    Notes: {
+      //HERE
+    },
     VerificationRating: 1,
     timestamp: position.timestamp,
   };
