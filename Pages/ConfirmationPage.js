@@ -12,7 +12,6 @@ import {useNavigation} from '@react-navigation/native';
 import {makeObservation} from '../utils/MakeObservation';
 import RadioGroup from 'react-native-radio-buttons-group';
 
-
 state = {
   selectedPercent: [],
 };
@@ -32,11 +31,10 @@ onOwnershipChange = selectedOwnership => {
 const ConfirmationPage = ({route, setUserLocation}) => {
   const navigation = useNavigation();
   const {imageSource} = route.params;
-  const [cover, onChangeCover] = useState('');
-  const [acres, onChangeAcres] = useState('');
+  const [acres, onChangeAcres] = useState();
   const [description, onChangeDescription] = useState('');
   const [ownership, onChangeOwnership] = useState('');
-const [selectedId, setSelectedId] = useState();
+  const [selectedId, setSelectedId] = useState();
 
   const confirmationButton = () => {
     makeObservation(setUserLocation, cover, acres, description, ownership);
@@ -46,7 +44,6 @@ const [selectedId, setSelectedId] = useState();
   const plantDensity = useMemo(
     () => [
       {
-
         id: '1', // acts as primary key, should be unique and non-empty string
         label: '0-20%',
         value: '0-20%',
@@ -74,8 +71,8 @@ const [selectedId, setSelectedId] = useState();
     ],
     [],
   );
-    const landOwnership = useMemo(
-          () => [
+  const landOwnership = useMemo(
+    () => [
       {
         id: 'Private', // acts as primary key, should be unique and non-empty string
         label: 'Private',
@@ -110,6 +107,26 @@ const [selectedId, setSelectedId] = useState();
     [],
   );
 
+  const acresSelect = useMemo(
+    () => [
+      {
+        id: '1',
+        label: '<1',
+        value: '<1',
+      },
+      {
+        id: '2',
+        label: '1<5',
+        value: '1<5',
+      },
+      {
+        id: '3',
+        label: '5<10',
+        value: '5<10',
+      },
+    ],
+    [],
+  );
 
   return (
     <View style={styles.container}>
@@ -119,18 +136,30 @@ const [selectedId, setSelectedId] = useState();
         style={styles.confirmationImage}
       />
       <ScrollView>
-        {/* <Text> "Estimated cover or density of plants (optional)"</Text> */}
-        <Text style={styles.label}> Select Estimated Plant Cover:</Text>
+        <Text style={styles.label}>Select Estimated Plant Cover:</Text>
         <RadioGroup
           radioButtons={plantDensity}
           onPress={setSelectedId}
           selectedId={selectedId}
           layout="row"
           flexDirection="row"
-          containerStyle={styles.radioGroupContainer} // Add this line for additional styling
+          containerStyle={styles.radioGroupContainer}
           buttonContainerStyle={styles.radioButtonContainer}
           labelStyle={{color: 'black'}}
         />
+
+        <Text style={styles.label}>Select Estimated Acres:</Text>
+        <RadioGroup
+          radioButtons={acresSelect}
+          onPress={onChangeAcres}
+          selectedId={acres}
+          layout="row"
+          flexDirection="row"
+          containerStyle={styles.radioGroupContainer}
+          buttonContainerStyle={styles.radioButtonContainer}
+          labelStyle={{color: 'black'}}
+        />
+
         <TextInput
           style={styles.input}
           onChangeText={onChangeAcres}
@@ -161,12 +190,6 @@ const [selectedId, setSelectedId] = useState();
           textAlignVertical="top"
           color="#aaa"
         />
-        <RadioGroup
-          radioButtons={radioButtons}
-          onPress={setSelectedId}
-          selectedId={selectedId}
-        />
-   
       </ScrollView>
       <TouchableOpacity
         style={styles.confirmationButton}
@@ -207,7 +230,7 @@ const styles = StyleSheet.create({
     color: 'black',
     textAlign: 'center',
   },
-radioGroupContainer: {
+  radioGroupContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
