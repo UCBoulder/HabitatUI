@@ -12,44 +12,6 @@ import {useNavigation} from '@react-navigation/native';
 import {makeObservation} from '../utils/MakeObservation';
 import RadioGroup from 'react-native-radio-buttons-group';
 
-const percents = [
-  {
-    percent: '0-20%',
-  },
-  {
-    percent: '20-40%',
-  },
-  {
-    percent: '40-60%',
-  },
-  {
-    percent: '60-80%',
-  },
-  {
-    percent: '80-100%',
-  },
-];
-
-const ownership = [
-  {
-    ownedby: 'Private',
-  },
-  {
-    ownedby: 'BLM (Bureau of Land Management)',
-  },
-  {
-    ownedby: 'USFS (US Forest Service)',
-  },
-  {
-    ownedby: 'Colorado State',
-  },
-  {
-    ownedby: 'NPS (National Park Service)',
-  },
-  {
-    ownedby: 'Unknown',
-  },
-];
 
 state = {
   selectedPercent: [],
@@ -74,7 +36,7 @@ const ConfirmationPage = ({route, setUserLocation}) => {
   const [acres, onChangeAcres] = useState('');
   const [description, onChangeDescription] = useState('');
   const [ownership, onChangeOwnership] = useState('');
-  const [selectedId, setSelectedId] = useState();
+const [selectedId, setSelectedId] = useState();
 
   const confirmationButton = () => {
     makeObservation(setUserLocation, cover, acres, description, ownership);
@@ -84,6 +46,7 @@ const ConfirmationPage = ({route, setUserLocation}) => {
   const plantDensity = useMemo(
     () => [
       {
+
         id: '1', // acts as primary key, should be unique and non-empty string
         label: '0-20%',
         value: '0-20%',
@@ -111,6 +74,42 @@ const ConfirmationPage = ({route, setUserLocation}) => {
     ],
     [],
   );
+    const landOwnership = useMemo(
+          () => [
+      {
+        id: 'Private', // acts as primary key, should be unique and non-empty string
+        label: 'Private',
+        value: 'Private',
+      },
+      {
+        id: 'Bureau of Land Management (BLM)',
+        label: 'Bureau of Land Management (BLM)',
+        value: 'Bureau of Land Management (BLM)',
+      },
+      {
+        id: 'US Forest Service (USFS)',
+        label: 'US Forest Service (USFS)',
+        value: 'US Forest Service (USFS)',
+      },
+      {
+        id: 'Colorado State',
+        label: 'Colorado State',
+        value: 'Colorado State',
+      },
+      {
+        id: 'National Park Service (NPS)',
+        label: 'National Park Service (NPS)',
+        value: 'National Park Service (NPS)',
+      },
+      {
+        id: 'Unknown',
+        label: 'Unknown',
+        value: 'Unknown',
+      },
+    ],
+    [],
+  );
+
 
   return (
     <View style={styles.container}>
@@ -152,8 +151,23 @@ const ConfirmationPage = ({route, setUserLocation}) => {
           textAlignVertical="top"
           color="#aaa"
         />
+        <TextInput
+          style={styles.input}
+          onChangeText={onChangeOwnership}
+          value={ownership}
+          placeholder="Land Owned By"
+          placeholderTextColor={'#aaa'}
+          multiline={true}
+          textAlignVertical="top"
+          color="#aaa"
+        />
+        <RadioGroup
+          radioButtons={radioButtons}
+          onPress={setSelectedId}
+          selectedId={selectedId}
+        />
+   
       </ScrollView>
-
       <TouchableOpacity
         style={styles.confirmationButton}
         onPress={confirmationButton}>
@@ -193,7 +207,7 @@ const styles = StyleSheet.create({
     color: 'black',
     textAlign: 'center',
   },
-  radioGroupContainer: {
+radioGroupContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
