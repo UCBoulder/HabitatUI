@@ -12,7 +12,6 @@ import {useNavigation} from '@react-navigation/native';
 import {makeObservation} from '../utils/MakeObservation';
 import RadioGroup from 'react-native-radio-buttons-group';
 
-
 state = {
   selectedPercent: [],
 };
@@ -37,6 +36,7 @@ const ConfirmationPage = ({route, setUserLocation}) => {
   const [ownership, onChangeOwnership] = useState('');
   const [cover, onChangeCover] = useState();
 
+
   const confirmationButton = () => {
     makeObservation(setUserLocation, cover, acres, description, ownership);
     navigation.navigate('Map');
@@ -45,7 +45,6 @@ const ConfirmationPage = ({route, setUserLocation}) => {
   const plantDensity = useMemo(
     () => [
       {
-
         id: '1', // acts as primary key, should be unique and non-empty string
         label: '0-20%',
         value: '0-20%',
@@ -73,8 +72,8 @@ const ConfirmationPage = ({route, setUserLocation}) => {
     ],
     [],
   );
-    const landOwnership = useMemo(
-          () => [
+  const landOwnership = useMemo(
+    () => [
       {
         id: 'Private', // acts as primary key, should be unique and non-empty string
         label: 'Private',
@@ -109,6 +108,26 @@ const ConfirmationPage = ({route, setUserLocation}) => {
     [],
   );
 
+  const acresSelect = useMemo(
+    () => [
+      {
+        id: '1',
+        label: '<1',
+        value: '<1',
+      },
+      {
+        id: '2',
+        label: '1<5',
+        value: '1<5',
+      },
+      {
+        id: '3',
+        label: '5<10',
+        value: '5<10',
+      },
+    ],
+    [],
+  );
 
   return (
     <View style={styles.container}>
@@ -118,7 +137,6 @@ const ConfirmationPage = ({route, setUserLocation}) => {
         style={styles.confirmationImage}
       />
       <ScrollView>
-      {/* <Text style={styles.label}>All fields optional</Text> */}
         {/* <Text> "Estimated cover or density of plants (optional)"</Text> */}
         <Text style={styles.label}> Select Estimated Plant Cover (optional):</Text>
         <RadioGroup
@@ -127,10 +145,11 @@ const ConfirmationPage = ({route, setUserLocation}) => {
           selectedId={cover}
           layout="row"
           flexDirection="row"
-          containerStyle={styles.radioGroupContainer} // Add this line for additional styling
+          containerStyle={styles.radioGroupContainer}
           buttonContainerStyle={styles.radioButtonContainer}
           labelStyle={{color: 'black'}}
         />
+
         
         <Text style={styles.label}>Land Owned By (optional):</Text>
         <RadioGroup
@@ -140,6 +159,20 @@ const ConfirmationPage = ({route, setUserLocation}) => {
           layout="row"
           flexDirection="row"
           containerStyle={styles.radioGroupContainer} // Add this line for additional styling
+          buttonContainerStyle={styles.radioButtonContainer}
+          labelStyle={{color: 'black'}}
+          />
+
+
+        <Text style={styles.label}>Select Estimated Acres (optional):</Text>
+        <RadioGroup
+          radioButtons={acresSelect}
+          onPress={onChangeAcres}
+          selectedId={acres}
+          layout="row"
+          flexDirection="row"
+          containerStyle={styles.radioGroupContainer}
+
           buttonContainerStyle={styles.radioButtonContainer}
           labelStyle={{color: 'black'}}
         />
@@ -154,7 +187,7 @@ const ConfirmationPage = ({route, setUserLocation}) => {
           textAlignVertical="top"
           color="#aaa"
         />
-      
+
       <TouchableOpacity
         style={styles.confirmationButton}
         onPress={confirmationButton}>
@@ -164,6 +197,7 @@ const ConfirmationPage = ({route, setUserLocation}) => {
     </View>
   );
 };
+
 
 const styles = StyleSheet.create({
   container: {
@@ -190,13 +224,13 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 5,
     bottom: 20,
-    marginVertical: 10,
+    marginVertical: 30,
   },
   buttonText: {
     color: 'black',
     textAlign: 'center',
   },
-radioGroupContainer: {
+  radioGroupContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
