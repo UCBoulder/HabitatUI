@@ -121,6 +121,7 @@ const ConfirmationPage = ({route, setUserLocation}) => {
       />
       <ScrollView>
         {/* <Text> "Estimated cover or density of plants (optional)"</Text> */}
+        <Text style={styles.label}> Select Estimated Plant Cover:</Text>
         <RadioGroup
           radioButtons={plantDensity}
           onPress={setSelectedId}
@@ -198,10 +199,14 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginVertical: 10,
   },
-
   radioButtonContainer: {
     width: '30%', // Adjust this value as needed
     marginVertical: 5,
+  },
+  label: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: 'black',
   },
 });
 
