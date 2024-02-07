@@ -74,28 +74,43 @@ const ConfirmationPage = ({route, setUserLocation}) => {
   const [acres, onChangeAcres] = useState('');
   const [description, onChangeDescription] = useState('');
   const [ownership, onChangeOwnership] = useState('');
+  const [selectedId, setSelectedId] = useState();
 
   const confirmationButton = () => {
     makeObservation(setUserLocation, cover, acres, description, ownership);
     navigation.navigate('Map');
   };
 
-  const radioButtons = useMemo(
+  const plantDensity = useMemo(
     () => [
       {
         id: '1', // acts as primary key, should be unique and non-empty string
-        label: 'Option 1',
-        value: 'option1',
+        label: '0-20%',
+        value: '0-20%',
       },
       {
         id: '2',
-        label: 'Option 2',
-        value: 'option2',
+        label: '20-40%',
+        value: '20-40%',
+      },
+      {
+        id: '3',
+        label: '40-60%',
+        value: '40-60%',
+      },
+      {
+        id: '4',
+        label: '60-80%',
+        value: '60-80%',
+      },
+      {
+        id: '5',
+        label: '80-100%',
+        value: '80-100%',
       },
     ],
     [],
   );
-  const [selectedId, setSelectedId] = useState();
 
   return (
     <View style={styles.container}>
@@ -106,15 +121,15 @@ const ConfirmationPage = ({route, setUserLocation}) => {
       />
       <ScrollView>
         {/* <Text> "Estimated cover or density of plants (optional)"</Text> */}
-        <TextInput
-          style={styles.input}
-          onChangeText={onChangeCover}
-          value={cover}
-          placeholder="Estimated cover or density of plants (optional)"
-          placeholderTextColor={'#aaa'}
-          multiline={true}
-          textAlignVertical="top"
-          color="#aaa"
+        <RadioGroup
+          radioButtons={plantDensity}
+          onPress={setSelectedId}
+          selectedId={selectedId}
+          layout="row"
+          flexDirection="row"
+          containerStyle={styles.radioGroupContainer} // Add this line for additional styling
+          buttonContainerStyle={styles.radioButtonContainer}
+          labelStyle={{color: 'black'}}
         />
         <TextInput
           style={styles.input}
@@ -136,48 +151,8 @@ const ConfirmationPage = ({route, setUserLocation}) => {
           textAlignVertical="top"
           color="#aaa"
         />
-        <TextInput
-          style={styles.input}
-          onChangeText={onChangeOwnership}
-          value={ownership}
-          placeholder="Land Owned By"
-          placeholderTextColor={'#aaa'}
-          multiline={true}
-          textAlignVertical="top"
-          color="#aaa"
-        />
-        <RadioGroup
-          radioButtons={radioButtons}
-          onPress={setSelectedId}
-          selectedId={selectedId}
-        />
-        {/* <MultiSelect
-          hideTags
-          percent={percents}
-          uniqueKey="percent"
-          ref={(component) => { this.multiSelect = component }}
-          onPercentChange={this.onPercentChange}
-          selectedPercent={selectedPercent}
-          selectText="Pick Items"
-          searchInputPlaceholderText="Search Items..."
-          onChangeInput={ (text)=> console.log(text)}
-          altFontFamily="ProximaNova-Light"
-          tagRemoveIconColor="#CCC"
-          tagBorderColor="#CCC"
-          tagTextColor="#CCC"
-          selectedItemTextColor="#CCC"
-          selectedItemIconColor="#CCC"
-          itemTextColor="#000"
-          displayKey="name"
-          searchInputStyle={{ color: '#CCC' }}
-          submitButtonColor="#CCC"
-          submitButtonText="Submit"
-         /> */}
       </ScrollView>
-      {/*
-         <View>
-           {this.multiSelect.getSelectedItemsExt(selectedItems)}
-         </View> */}
+
       <TouchableOpacity
         style={styles.confirmationButton}
         onPress={confirmationButton}>
@@ -216,6 +191,17 @@ const styles = StyleSheet.create({
   buttonText: {
     color: 'black',
     textAlign: 'center',
+  },
+  radioGroupContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    marginVertical: 10,
+  },
+
+  radioButtonContainer: {
+    width: '30%', // Adjust this value as needed
+    marginVertical: 5,
   },
 });
 
