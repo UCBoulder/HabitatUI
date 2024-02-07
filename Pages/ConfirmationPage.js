@@ -159,32 +159,11 @@ const ConfirmationPage = ({route, setUserLocation}) => {
           buttonContainerStyle={styles.radioButtonContainer}
           labelStyle={{color: 'black'}}
         />
-
-        <TextInput
-          style={styles.input}
-          onChangeText={onChangeAcres}
-          value={acres}
-          placeholder="Estimated acres"
-          placeholderTextColor={'#aaa'}
-          multiline={true}
-          textAlignVertical="top"
-          color="#aaa"
-        />
         <TextInput
           style={styles.input}
           onChangeText={onChangeDescription}
           value={description}
           placeholder="Location Description"
-          placeholderTextColor={'#aaa'}
-          multiline={true}
-          textAlignVertical="top"
-          color="#aaa"
-        />
-        <TextInput
-          style={styles.input}
-          onChangeText={onChangeOwnership}
-          value={ownership}
-          placeholder="Land Owned By"
           placeholderTextColor={'#aaa'}
           multiline={true}
           textAlignVertical="top"
