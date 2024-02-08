@@ -1,5 +1,4 @@
 export const FormatDate = (timestamp) => {
-  
   const date = new Date(+timestamp)
   const day = date.getDate()
   const month = date.getMonth() + 1 // zero based
