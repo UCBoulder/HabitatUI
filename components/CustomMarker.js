@@ -8,7 +8,7 @@ import { simplifyJson } from '../utils/simplifyJson'
 
 const CustomMarker = ({ data }) => {
   const [modalVisible, setModalVisible] = useState(false)
-  parsedData = simplifyJson(data)
+  const parsedData = simplifyJson(data)
 
   const calloutPress = () => {
     setModalVisible(true)
@@ -32,7 +32,7 @@ const CustomMarker = ({ data }) => {
             {`Observation made on: ${FormatDate(parsedData.timestamp)}\n`}
             {`Latitude: ${parsedData.coords.latitude}\nLongitude: ${parsedData.coords.longitude}\n`}
             {`Accuracy: ${parsedData.coords.accuracy}\n`}
-            {parsedData.Notes ? `${parsedData.Notes}\n` : "\n"}
+            {parsedData.Notes ? `${parsedData.Notes}\n` : '\n'}
           </Text>
 
           <Text style={styles.calloutTextCentered}>
@@ -76,7 +76,7 @@ CustomMarker.propTypes = {
     VerificationRating: PropTypes.object,
     timestamp: PropTypes.oneOfType([
       PropTypes.object,
-      PropTypes.number,
+      PropTypes.number
     ]),
     Notes: PropTypes.string
   })
