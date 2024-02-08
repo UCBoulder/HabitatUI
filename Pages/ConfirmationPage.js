@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, {useMemo, useState} from 'react';
 import {
   View,
   StyleSheet,
@@ -8,34 +8,17 @@ import {
   Text,
   ScrollView,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { makeObservation } from '../utils/MakeObservation';
+import {useNavigation} from '@react-navigation/native';
+import {makeObservation} from '../utils/MakeObservation';
 import RadioGroup from 'react-native-radio-buttons-group';
 
-state = {
-  selectedPercent: [],
-};
-
-onPercentChange = selectedPercent => {
-  this.setState({ selectedPercent });
-};
-
-state = {
-  selectedOwnership: [],
-};
-
-onOwnershipChange = selectedOwnership => {
-  this.setState({ selectedOwnership });
-};
-
-const ConfirmationPage = ({ route, setUserLocation }) => {
+const ConfirmationPage = ({route, setUserLocation}) => {
   const navigation = useNavigation();
-  const { imageSource } = route.params;
+  const {imageSource} = route.params;
   const [acres, onChangeAcres] = useState('');
   const [description, onChangeDescription] = useState('');
   const [ownership, onChangeOwnership] = useState('');
   const [cover, onChangeCover] = useState();
-
 
   const confirmationButton = () => {
     makeObservation(setUserLocation, cover, acres, description, ownership);
@@ -45,27 +28,27 @@ const ConfirmationPage = ({ route, setUserLocation }) => {
   const plantDensity = useMemo(
     () => [
       {
-        id: '1', // acts as primary key, should be unique and non-empty string
+        id: '0-20%',
         label: '0-20%',
         value: '0-20%',
       },
       {
-        id: '2',
+        id: '20-40%',
         label: '20-40%',
         value: '20-40%',
       },
       {
-        id: '3',
+        id: '40-60%',
         label: '40-60%',
         value: '40-60%',
       },
       {
-        id: '4',
+        id: '60-80%',
         label: '60-80%',
         value: '60-80%',
       },
       {
-        id: '5',
+        id: '80-100%',
         label: '80-100%',
         value: '80-100%',
       },
@@ -75,7 +58,7 @@ const ConfirmationPage = ({ route, setUserLocation }) => {
   const landOwnership = useMemo(
     () => [
       {
-        id: 'Private', // acts as primary key, should be unique and non-empty string
+        id: 'Private',
         label: 'Private',
         value: 'Private',
       },
@@ -111,19 +94,19 @@ const ConfirmationPage = ({ route, setUserLocation }) => {
   const acresSelect = useMemo(
     () => [
       {
-        id: '1',
+        id: '<1',
         label: '<1',
         value: '<1',
       },
       {
-        id: '2',
+        id: '1<5',
         label: '1<5',
         value: '1<5',
       },
       {
-        id: '3',
-        label: '5<10',
-        value: '5<10',
+        id: '5<',
+        label: '5<',
+        value: '5<',
       },
     ],
     [],
@@ -133,11 +116,13 @@ const ConfirmationPage = ({ route, setUserLocation }) => {
     <View style={styles.container}>
       {/* Display photo that was taken */}
       <Image
-        source={{ uri: `file://${imageSource}` }}
+        source={{uri: `file://${imageSource}`}}
         style={styles.confirmationImage}
       />
       <ScrollView>
-        <Text style={styles.label}> Select Estimated Plant Cover (optional):</Text>
+        <Text style={styles.label}>
+          Select Estimated Plant Cover (optional):
+        </Text>
         <RadioGroup
           radioButtons={plantDensity}
           onPress={onChangeCover}
@@ -146,9 +131,8 @@ const ConfirmationPage = ({ route, setUserLocation }) => {
           flexDirection="row"
           containerStyle={styles.radioGroupContainer}
           buttonContainerStyle={styles.radioButtonContainer}
-          labelStyle={{ color: 'black' }}
+          labelStyle={styles.radioGroup}
         />
-
 
         <Text style={styles.label}>Land Owned By (optional):</Text>
         <RadioGroup
@@ -159,9 +143,8 @@ const ConfirmationPage = ({ route, setUserLocation }) => {
           flexDirection="row"
           containerStyle={styles.radioGroupContainer} // Add this line for additional styling
           buttonContainerStyle={styles.radioButtonContainer}
-          labelStyle={{ color: 'black' }}
+          labelStyle={styles.radioGroup}
         />
-
 
         <Text style={styles.label}>Select Estimated Acres (optional):</Text>
         <RadioGroup
@@ -171,10 +154,10 @@ const ConfirmationPage = ({ route, setUserLocation }) => {
           layout="row"
           flexDirection="row"
           containerStyle={styles.radioGroupContainer}
-
           buttonContainerStyle={styles.radioButtonContainer}
-          labelStyle={{ color: 'black' }}
+          labelStyle={styles.radioGroup}
         />
+
         <Text style={styles.label}>Location Description (optional):</Text>
         <TextInput
           style={styles.input}
@@ -186,6 +169,7 @@ const ConfirmationPage = ({ route, setUserLocation }) => {
           textAlignVertical="top"
           color="#aaa"
         />
+
         <View style={styles.container}>
           <TouchableOpacity
             style={styles.confirmationButton}
@@ -195,10 +179,8 @@ const ConfirmationPage = ({ route, setUserLocation }) => {
         </View>
       </ScrollView>
     </View>
-
   );
 };
-
 
 const styles = StyleSheet.create({
   container: {
@@ -216,14 +198,14 @@ const styles = StyleSheet.create({
     height: '50%',
   },
   input: {
-    flex: 1,
     height: 100,
-    width: 350,
+    width: '95%',
     borderColor: 'black',
     borderWidth: 1,
     borderRadius: 10,
     textDecorationColor: '#aaa',
     textAlignVertical: 'top',
+    marginLeft: 10,
   },
   confirmationButton: {
     backgroundColor: 'white',
@@ -233,7 +215,6 @@ const styles = StyleSheet.create({
     bottom: 20,
     marginTop: 30,
     width: '50%',
-
   },
   buttonText: {
     color: 'black',
@@ -246,14 +227,17 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   radioButtonContainer: {
-    width: '30%', // Adjust this value as needed
     marginVertical: 5,
   },
   label: {
     fontSize: 18,
     fontWeight: 'bold',
     color: 'black',
-    marginBottom: 20,
+    marginBottom: 15,
+    marginLeft: 10,
+  },
+  radioGroup: {
+    color: 'black',
   },
 });
 
