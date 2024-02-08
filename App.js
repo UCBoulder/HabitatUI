@@ -15,12 +15,13 @@ export default function App () {
   const [userID, setUserID] = useState(null)
 
   useEffect(() => {
-    // ask for location permissions when the app first loads
-    requestLocationPermission()
-    // ask for camera permissions when the app first loads
-    requestCameraPermission()
-    // load user id when the app launches
-    loadUserID(setUserID)
+    const startUp = async () => {
+      await requestLocationPermission()
+      await requestCameraPermission()
+      await loadUserID(setUserID)
+    }
+
+    startUp()
   }, [])
 
   return (

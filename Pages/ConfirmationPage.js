@@ -3,6 +3,7 @@ import { View, StyleSheet, Image, TextInput, TouchableOpacity, Text } from 'reac
 import { useNavigation } from '@react-navigation/native'
 import { makeObservation } from '../utils/MakeObservation'
 import PropTypes from 'prop-types'
+import Icon from 'react-native-vector-icons/FontAwesome5'
 
 const ConfirmationPage = ({ route, setUserLocation, userID }) => {
   const navigation = useNavigation()
@@ -14,35 +15,45 @@ const ConfirmationPage = ({ route, setUserLocation, userID }) => {
     navigation.navigate('Map')
   }
 
+  function handleBack () {
+    navigation.goBack()
+  }
+
   return (
-        <View style={styles.container}>
+    <View style={styles.container}>
 
-            {/* Display photo that was taken */}
-            <Image
-                source={{ uri: `file://${imageSource}` }}
-                style={styles.confirmationImage}
-            />
+      {/* Back Button */}
+      <TouchableOpacity style={styles.backButton} onPress={() => handleBack()}>
+        <Icon name="arrow-left" size={30} color="white" />
+      </TouchableOpacity>
 
-            <TextInput
-                style={styles.input}
-                onChangeText={onChangeText}
-                value={text}
-                placeholder="Put text here"
-                placeholderTextColor={'#aaa'}
-                multiline={true}
-                textAlignVertical="top"
-                color="#aaa"
-            />
+      {/* Display photo that was taken */}
+      <Image
+        source={{ uri: `file://${imageSource}` }}
+        style={styles.confirmationImage}
+        resizeMode='cover'
+      />
 
-            <TouchableOpacity
-                style={styles.confirmationButton}
-                onPress={confirmationButton}
-            >
-                <Text style={styles.buttonText}>Confirm Observation</Text>
+      <TextInput
+        style={styles.input}
+        onChangeText={onChangeText}
+        value={text}
+        placeholder="Put text here"
+        placeholderTextColor={'#aaa'}
+        multiline={true}
+        textAlignVertical="top"
+        color="#aaa"
+      />
 
-            </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.confirmationButton}
+        onPress={confirmationButton}
+      >
+        <Text style={styles.buttonText}>Confirm Observation</Text>
 
-        </View>
+      </TouchableOpacity>
+
+    </View>
   )
 }
 
@@ -78,6 +89,14 @@ const styles = StyleSheet.create({
   buttonText: {
     color: 'black',
     textAlign: 'center'
+  },
+  backButton: {
+    zIndex: 2,
+    position: 'absolute',
+    top: 10,
+    left: 10,
+    padding: 10,
+    borderRadius: 5
   }
 })
 
