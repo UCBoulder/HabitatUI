@@ -11,6 +11,7 @@ import {
 import { useNavigation } from '@react-navigation/native'
 import { makeObservation } from '../utils/MakeObservation'
 import RadioGroup from 'react-native-radio-buttons-group'
+import PropTypes from 'prop-types'
 
 const ConfirmationPage = ({ route, setUserLocation }) => {
   const navigation = useNavigation()
@@ -180,6 +181,11 @@ const ConfirmationPage = ({ route, setUserLocation }) => {
       </ScrollView>
     </View>
   )
+}
+
+ConfirmationPage.propTypes = {
+  route: PropTypes.object,
+  setUserLocation: PropTypes.object
 }
 
 const styles = StyleSheet.create({
