@@ -240,5 +240,14 @@ const styles = StyleSheet.create({
     color: 'black',
   },
 });
+  backButton: {
+    zIndex: 2,
+    position: 'absolute',
+    top: 10,
+    left: 10,
+    padding: 10,
+    borderRadius: 5
+  }
+})
 
-export default ConfirmationPage;
+export default ConfirmationPage
