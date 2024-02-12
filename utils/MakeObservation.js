@@ -4,8 +4,7 @@ import { sendLocationPin } from './APICalls'
 // helper to combine button functionality and sending to the API
 export const makeObservation = (setUserLocation, userID, imageSource, cover, acres, description, ownership) => {
   Geolocation.getCurrentPosition((position) => {
-    setUserLocation(position);
-    sendLocationPin(position, userID, imageSource, cover, acres, description, ownership);
-  });
-};
-
+    setUserLocation(position)
+    sendLocationPin(position, userID, imageSource, cover, acres, description, ownership)
+  })
+}
