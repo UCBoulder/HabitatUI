@@ -1,10 +1,11 @@
-import Geolocation from "react-native-geolocation-service";
-import { sendLocationPin } from "./APICalls";
+import Geolocation from 'react-native-geolocation-service'
+import { sendLocationPin } from './APICalls'
 
 // helper to combine button functionality and sending to the API
-export const makeObservation = (setUserLocation, userID, text, imageSource) => {
+export const makeObservation = (setUserLocation, userID, imageSource, cover, acres, description, ownership) => {
   Geolocation.getCurrentPosition((position) => {
     setUserLocation(position);
-    sendLocationPin(position, userID, text, imageSource);
+    sendLocationPin(position, userID, imageSource, cover, acres, description, ownership);
   });
 };
+

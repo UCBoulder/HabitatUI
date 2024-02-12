@@ -1,75 +1,69 @@
-import React, { useState, useEffect } from "react";
-import { View, StyleSheet } from "react-native";
-import MapView, { Marker, PROVIDER_GOOGLE } from "react-native-maps";
-import { getLocationPins } from "../utils/APICalls";
-import { Pin } from "../components/Pin";
+import React, { useState, useEffect } from 'react'
+import { View, StyleSheet } from 'react-native'
+import MapView, { PROVIDER_GOOGLE } from 'react-native-maps'
+import { getLocationPins } from '../utils/APICalls'
+import CustomMarker from '../components/CustomMarker'
+import PropTypes from 'prop-types'
 
 const MapPage = ({ userLocation }) => {
-  const [apiCoordinates, setApiCoordinates] = useState([]);
+  const [apiCoordinates, setApiCoordinates] = useState([])
 
   useEffect(() => {
-    // fetch all of the pins from the api when the component loads
     const fetchPins = async () => {
       try {
-        const coordinates = await getLocationPins();
+        const coordinates = await getLocationPins()
         coordinates && setApiCoordinates(coordinates)
       } catch (error) {
-        console.error("Error fetching API data: ", error);
+        console.error('Error fetching API data: ', error)
       }
-    };
+    }
 
-    fetchPins();
-  }, []);
+    fetchPins()
+  }, [])
 
   return (
-    // set default map location to be Gunnison
     <View style={styles.mapContainer}>
       <MapView
         provider={PROVIDER_GOOGLE}
         style={styles.map}
         showsUserLocation={true}
         showsMyLocationButton={true}
+        mapType="hybrid"
         initialRegion={{
           latitude: 38.5449,
           longitude: -106.9329,
           latitudeDelta: 0.0922,
-          longitudeDelta: 0.0421,
+          longitudeDelta: 0.0421
         }}
       >
-        {userLocation && ( //place pin at users location when button is pressed
-          <Marker
-            coordinate={{
-              latitude: userLocation.coords.latitude,
-              longitude: userLocation.coords.longitude,
-            }}
-            title="Your observation"
+        {userLocation && (
+          <CustomMarker
+            data={userLocation}
           />
         )}
-        {apiCoordinates.map((coordinate, index) => (
-          // Place all the pins that the api is sending 
-          <Marker
-            key={index}
-            coordinate={{
-              latitude: coordinate.latitude,
-              longitude: coordinate.longitude,
-            }}
 
-            pinColor = {Pin(coordinate.verification)}
-            title={`Observation ${index + 1}`}
+        {apiCoordinates.map((coordinate, index) => (
+          <CustomMarker
+            key={index}
+            data={coordinate}
           />
         ))}
       </MapView>
     </View>
-  );
-};
+  )
+}
+
+MapPage.propTypes = {
+  userLocation: PropTypes.object
+}
 
 const styles = StyleSheet.create({
   mapContainer: {
-    minHeight: "100%",
+    flex: 1
   },
   map: {
-    ...StyleSheet.absoluteFillObject,
-  },
-});
+    ...StyleSheet.absoluteFillObject
+  }
+})
 
-export default MapPage;
+export default MapPage
