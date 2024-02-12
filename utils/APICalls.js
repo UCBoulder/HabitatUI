@@ -15,7 +15,7 @@ export const getLocationPins = async () => {
 }
 
 // send one lat long coordinate to the API
-export const sendLocationPin = async (position, userID, imageSource, cover, acres, description, ownership) => {
+export const sendLocationPin = async (position, userID, text, imageSource) => {
   const observation = {
     userID,
     coords: {
@@ -23,12 +23,7 @@ export const sendLocationPin = async (position, userID, imageSource, cover, acre
       longitude: position.coords.longitude,
       accuracy: position.coords.accuracy
     },
-    Notes: {
-      estimatedCover: cover,
-      estimatedArea: acres,
-      locationDescription: description,
-      ownership: ownership,
-    },
+    Notes: text,
     VerificationRating: 1,
     timestamp: position.timestamp
   }
