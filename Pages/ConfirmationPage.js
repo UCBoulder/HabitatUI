@@ -94,19 +94,19 @@ const ConfirmationPage = ({route, setUserLocation}) => {
   const acresSelect = useMemo(
     () => [
       {
-        id: '<1',
-        label: '<1',
-        value: '<1',
+        id: '< 1',
+        label: '< 1',
+        value: '< 1',
       },
       {
-        id: '1<5',
-        label: '1<5',
-        value: '1<5',
+        id: '1 to 5',
+        label: '1 to 5',
+        value: '1 to 5',
       },
       {
-        id: '5<',
-        label: '5<',
-        value: '5<',
+        id: '> 5',
+        label: '> 5',
+        value: '> 5',
       },
     ],
     [],

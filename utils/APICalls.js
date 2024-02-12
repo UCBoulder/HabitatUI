@@ -12,7 +12,7 @@ export const getLocationPins = async () => {
 };
 
 // send one lat long coordinate to the API
-export const sendLocationPin = async (position, text) => {
+export const sendLocationPin = async (position, cover, acres, description, ownership) => {
   
   const observation = {
     coords: {
@@ -21,7 +21,10 @@ export const sendLocationPin = async (position, text) => {
       accuracy: position.coords.accuracy,
     },
     Notes: {
-      //HERE
+      estimatedCover: cover,
+      estimatedArea: acres,
+      locationDescription: description,
+      ownership: ownership,
     },
     VerificationRating: 1,
     timestamp: position.timestamp,

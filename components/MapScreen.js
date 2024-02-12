@@ -1,5 +1,5 @@
 import React from 'react';
-import MapPage from '../pages/MapPage';
+import MapPage from '../Pages/MapPage';
 import {SwitchPageButton} from './SwitchPageButton';
 import MakeObservationButton from './MakeObservationButton';
 import {View, StyleSheet} from 'react-native';
