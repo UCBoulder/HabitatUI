@@ -27,21 +27,19 @@ export default function App () {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Map" options={{headerShown: false}}>
-          {props => <MapScreen {...props} userLocation={userLocation} />}
+
+        <Stack.Screen name="Map" options={{ headerShown: false }}>
+          {(props) => <MapScreen {...props} userLocation={userLocation} />}
         </Stack.Screen>
 
         <Stack.Screen name="Info" component={InfoPage} />
 
-        <Stack.Screen
-          name="Camera"
-          component={CameraPage}
-          options={{headerShown: false}}
-        />
+        <Stack.Screen name="Camera" component={CameraPage} options={{ headerShown: false }} />
 
         <Stack.Screen name="Confirmation" options={{ headerShown: false }}>
           {(props) => <ConfirmationPage {...props} setUserLocation={setUserLocation} userID={userID} />}
         </Stack.Screen>
+
       </Stack.Navigator>
     </NavigationContainer>
   )
