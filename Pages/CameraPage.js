@@ -15,7 +15,9 @@ const CameraPage = () => {
 
   async function capturePhoto () {
     if (camera.current !== null) {
-      const photo = await camera.current.takePhoto({})
+      const photo = await camera.current.takePhoto({
+        enableShutterSound: false
+      })
       setImageSource(photo.path)
       setPhotoTaken(true)
     }
@@ -46,6 +48,7 @@ const CameraPage = () => {
         isActive={!photoTaken} // Deactivate camera when photo is taken
         enableZoomGesture={true}
         photo={true}
+        format={undefined}
       />
 
       {/* Back Button */}
