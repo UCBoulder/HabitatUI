@@ -27,7 +27,7 @@ export const sendLocationPin = async (position, userID, imageSource, cover, acre
       estimatedCover: cover,
       estimatedArea: acres,
       locationDescription: description,
-      ownership
+      ownership: ownership,
     },
     VerificationRating: 1,
     timestamp: position.timestamp
@@ -56,7 +56,7 @@ export const sendLocationPin = async (position, userID, imageSource, cover, acre
 
     Alert.alert('Failed', 'Your Observation Failed to Upload', [{
       text: 'Retry',
-      onPress: () => sendLocationPin(position, userID, imageSource, cover, acres, description, ownership)
+      onPress: () => sendLocationPin(position, userID, text, imageSource)
     },
     {
       text: 'Ok'
