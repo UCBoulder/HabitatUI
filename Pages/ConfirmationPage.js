@@ -22,7 +22,7 @@ const ConfirmationPage = ({ route, setUserLocation, userID }) => {
   const [cover, onChangeCover] = useState()
 
   const confirmationButton = () => {
-    makeObservation(setUserLocation, userID, cover, acres, description, ownership)
+    makeObservation(setUserLocation, userID, cover, acres, description, ownership, imageSource)
     navigation.navigate('Map')
   }
 
