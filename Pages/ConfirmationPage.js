@@ -13,7 +13,7 @@ import { makeObservation } from '../utils/MakeObservation'
 import RadioGroup from 'react-native-radio-buttons-group'
 import PropTypes from 'prop-types'
 
-const ConfirmationPage = ({ route, setUserLocation }) => {
+const ConfirmationPage = ({ route, setUserLocation, userID }) => {
   const navigation = useNavigation()
   const { imageSource } = route.params
   const [acres, onChangeAcres] = useState('')
@@ -22,7 +22,7 @@ const ConfirmationPage = ({ route, setUserLocation }) => {
   const [cover, onChangeCover] = useState()
 
   const confirmationButton = () => {
-    makeObservation(setUserLocation, cover, acres, description, ownership)
+    makeObservation(setUserLocation, userID, cover, acres, description, ownership)
     navigation.navigate('Map')
   }
 
@@ -184,8 +184,9 @@ const ConfirmationPage = ({ route, setUserLocation }) => {
 }
 
 ConfirmationPage.propTypes = {
-  route: PropTypes.object,
-  setUserLocation: PropTypes.object
+  route: PropTypes.object.isRequired,
+  setUserLocation: PropTypes.func.isRequired,
+  userID: PropTypes.string.isRequired
 }
 
 const styles = StyleSheet.create({

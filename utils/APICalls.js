@@ -17,6 +17,7 @@ export const getLocationPins = async () => {
 // send one lat long coordinate to the API
 export const sendLocationPin = async (position, userID, cover, acres, description, ownership, imageSource) => {
   const observation = {
+    userID,
     coords: {
       latitude: position.coords.latitude,
       longitude: position.coords.longitude,
@@ -46,8 +47,9 @@ export const sendLocationPin = async (position, userID, cover, acres, descriptio
 
       observation.image = imageBase64
     }
-    const response = await axios.post(`${config.emulatorAddress}/observations`, observation)
+    console.log(observation)
 
+    const response = await axios.post(`${config.emulatorAddress}/observations`, observation)
     console.log('Response from backend: ', response.data)
     Alert.alert('Success', 'Your Observation Was Successfully Uploaded')
   } catch (error) {
