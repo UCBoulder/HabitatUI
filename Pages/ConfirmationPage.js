@@ -26,6 +26,9 @@ const ConfirmationPage = ({ route, setUserLocation, userID }) => {
     navigation.navigate('Map')
   }
 
+  function handleBack () {
+    navigation.navigate('Map')
+  }
   const plantDensity = useMemo(
     () => [
       {
@@ -120,10 +123,17 @@ const ConfirmationPage = ({ route, setUserLocation, userID }) => {
         source={{ uri: `file://${imageSource}` }}
         style={styles.confirmationImage}
       />
+       {/* Cancel; back to home */}
+    <TouchableOpacity style={styles.backButton} onPress={() => handleBack()}>
+    <Text style={styles.buttonText}>Cancel</Text>
+    </TouchableOpacity>
+    {/* Pop up for do you want to cancel */}
+
       <ScrollView>
         <Text style={styles.label}>
           Select Estimated Plant Cover (optional):
         </Text>
+        {/* i button with information pop up */}
         <RadioGroup
           radioButtons={plantDensity}
           onPress={onChangeCover}
@@ -245,6 +255,15 @@ const styles = StyleSheet.create({
   },
   radioGroup: {
     color: 'black'
+  },
+  backButton: {
+    zIndex: 2,
+    position: 'absolute',
+    top: 10,
+    left: 10,
+    padding: 10,
+    borderRadius: 5,
+    backgroundColor: 'white'
   }
 })
 
