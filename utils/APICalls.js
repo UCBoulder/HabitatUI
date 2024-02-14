@@ -15,7 +15,7 @@ export const getLocationPins = async () => {
 }
 
 // send one lat long coordinate to the API
-export const sendLocationPin = async (position, userID, text, imageSource) => {
+export const sendLocationPin = async (position, userID, cover, acres, description, ownership, imageSource) => {
   const observation = {
     userID,
     coords: {
@@ -23,7 +23,12 @@ export const sendLocationPin = async (position, userID, text, imageSource) => {
       longitude: position.coords.longitude,
       accuracy: position.coords.accuracy
     },
-    Notes: text,
+    Notes: {
+      estimatedCover: cover,
+      estimatedArea: acres,
+      locationDescription: description,
+      ownership
+    },
     VerificationRating: 1,
     timestamp: position.timestamp
   }
@@ -42,8 +47,9 @@ export const sendLocationPin = async (position, userID, text, imageSource) => {
 
       observation.image = imageBase64
     }
-    const response = await axios.post(`${config.emulatorAddress}/observations`, observation)
+    // console.log(observation)
 
+    const response = await axios.post(`${config.emulatorAddress}/observations`, observation)
     console.log('Response from backend: ', response.data)
     Alert.alert('Success', 'Your Observation Was Successfully Uploaded')
   } catch (error) {
@@ -51,7 +57,7 @@ export const sendLocationPin = async (position, userID, text, imageSource) => {
 
     Alert.alert('Failed', 'Your Observation Failed to Upload', [{
       text: 'Retry',
-      onPress: () => sendLocationPin(position, userID, text, imageSource)
+      onPress: () => sendLocationPin(position, userID, cover, acres, description, ownership, imageSource)
     },
     {
       text: 'Ok'

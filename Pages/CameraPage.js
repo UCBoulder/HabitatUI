@@ -15,7 +15,9 @@ const CameraPage = () => {
 
   async function capturePhoto () {
     if (camera.current !== null) {
-      const photo = await camera.current.takePhoto({})
+      const photo = await camera.current.takePhoto({
+        enableShutterSound: false
+      })
       setImageSource(photo.path)
       setPhotoTaken(true)
     }

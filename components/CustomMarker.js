@@ -33,7 +33,7 @@ const CustomMarker = ({ data }) => {
             {`Observation made on: ${FormatDate(parsedData.timestamp)}\n`}
             {`Latitude: ${parsedData.coords.latitude}\nLongitude: ${parsedData.coords.longitude}\n`}
             {`Accuracy: ${parsedData.coords.accuracy}\n`}
-            {parsedData.Notes ? `${parsedData.Notes}\n` : '\n'}
+            {/* {parsedData.Notes.locationDescription !== undefined ? `${parsedData.Notes.locationDescription}\n` : '\n'} */}
           </Text>
 
           <Text style={styles.calloutTextCentered}>
@@ -65,7 +65,6 @@ const CustomMarker = ({ data }) => {
   )
 }
 
-// Define PropTypes for the data prop
 CustomMarker.propTypes = {
   data: PropTypes.shape({
     coords: PropTypes.shape({
@@ -78,7 +77,12 @@ CustomMarker.propTypes = {
       PropTypes.object,
       PropTypes.number
     ]),
-    Notes: PropTypes.string
+    Notes: PropTypes.shape({
+      estimatedCover: PropTypes.string,
+      estimatedArea: PropTypes.string,
+      locationDescription: PropTypes.string,
+      ownership: PropTypes.string
+    })
   })
 }
 
