@@ -32,6 +32,7 @@ export const sendLocationPin = async (position, userID, cover, acres, descriptio
     VerificationRating: 1,
     timestamp: position.timestamp
   }
+  console.log(observation)
 
   try {
     if (imageSource) {

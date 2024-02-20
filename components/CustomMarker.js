@@ -6,10 +6,12 @@ import { View, Text, StyleSheet, Image, Modal, TouchableOpacity } from 'react-na
 import PropTypes from 'prop-types'
 import { simplifyJson } from '../utils/simplifyJson'
 import Icon from 'react-native-vector-icons/FontAwesome6'
+import FetchS3Image from '../utils/FetchS3Image'
 
 const CustomMarker = ({ data }) => {
   const [modalVisible, setModalVisible] = useState(false)
   const parsedData = simplifyJson(data)
+  console.log(parsedData)
 
   const calloutPress = () => {
     setModalVisible(true)
@@ -33,7 +35,7 @@ const CustomMarker = ({ data }) => {
             {`Observation made on: ${FormatDate(parsedData.timestamp)}\n`}
             {`Latitude: ${parsedData.coords.latitude}\nLongitude: ${parsedData.coords.longitude}\n`}
             {`Accuracy: ${parsedData.coords.accuracy}\n`}
-            {/* {parsedData.Notes.locationDescription !== undefined ? `${parsedData.Notes.locationDescription}\n` : '\n'} */}
+            {`Notes: ${parsedData.Notes?.locationDescription ?? ''}\n`}
           </Text>
 
           <Text style={styles.calloutTextCentered}>
@@ -48,11 +50,12 @@ const CustomMarker = ({ data }) => {
           visible={modalVisible}
         >
           <View style={styles.modalContainer}>
-            <Image
-              source={require('../images/PXL_20231211_211945981.MP.jpg')}
+            <FetchS3Image />
+            {/* <Image
+              source={parsedData.observationImageUrl }
               style={styles.modalImage}
               resizeMode="stretch"
-            />
+            /> */}
             <TouchableOpacity style={styles.modalExitButton} onPress={closeModal}>
               <Icon name="x" size={25} color="white" />
             </TouchableOpacity>

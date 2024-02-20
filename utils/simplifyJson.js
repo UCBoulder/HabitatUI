@@ -5,11 +5,14 @@ export const simplifyJson = (input) => {
     if (Object.prototype.hasOwnProperty.call(input, key)) {
       const value = input[key]
 
-      if (key === 'coords' && value.S) {
+      if ((key === 'Notes' || key === 'coords') && value.S) {
         // Parse the inner JSON string if present
-        result[key] = JSON.parse(value.S)
+        const nestedJsonStr = value.S
+        const nestedJson = JSON.parse(nestedJsonStr)
+
+        // Assign the parsed nested JSON to the result
+        result[key] = nestedJson
       } else {
-        // Use the original value or the simplified string
         result[key] = value.S || value.N || value
       }
     }
