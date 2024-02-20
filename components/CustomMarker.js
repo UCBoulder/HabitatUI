@@ -50,7 +50,7 @@ const CustomMarker = ({ data }) => {
           visible={modalVisible}
         >
           <View style={styles.modalContainer}>
-            <FetchS3Image />
+            {/* <FetchS3Image /> */}
             {/* <Image
               source={parsedData.observationImageUrl }
               style={styles.modalImage}
