@@ -6,12 +6,14 @@ import {
   TextInput,
   TouchableOpacity,
   Text,
+  Modal,
   ScrollView
 } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { makeObservation } from '../utils/MakeObservation'
 import RadioGroup from 'react-native-radio-buttons-group'
 import PropTypes from 'prop-types'
+import Icon from 'react-native-vector-icons/FontAwesome6'
 
 const ConfirmationPage = ({ route, setUserLocation, userID }) => {
   const navigation = useNavigation()
@@ -20,10 +22,19 @@ const ConfirmationPage = ({ route, setUserLocation, userID }) => {
   const [description, onChangeDescription] = useState('')
   const [ownership, onChangeOwnership] = useState('')
   const [cover, onChangeCover] = useState()
+  const [modalVisible, setModalVisible] = useState(false)
 
   const confirmationButton = () => {
     makeObservation(setUserLocation, userID, cover, acres, description, ownership, imageSource)
     navigation.navigate('Map')
+  }
+
+  const closeModal = () => {
+    setModalVisible(false)
+  }
+
+  function handleI () {
+    setModalVisible(true)
   }
 
   const plantDensity = useMemo(
@@ -134,7 +145,24 @@ const ConfirmationPage = ({ route, setUserLocation, userID }) => {
           buttonContainerStyle={styles.radioButtonContainer}
           labelStyle={styles.radioGroup}
         />
-
+        <TouchableOpacity
+          style={styles.IButton}
+          onPress={() => handleI()}
+        >
+          <Icon name="circle-info" size={30} color="black" />
+        </TouchableOpacity>
+        <Modal
+          animationType="slide"
+          visible={modalVisible}
+          // style = {styles.modalContainer}
+        >
+          <View>
+            {/* <TouchableOpacity style={styles.modalExitButton} onPress={closeModal}>
+              <Icon name="x" size={25} color="black" />
+            </TouchableOpacity> */}
+            <Text style={styles.modalText}>I promise this makes sense</Text>
+          </View>
+        </Modal>
         <Text style={styles.label}>Land Owned By (optional):</Text>
         <RadioGroup
           radioButtons={landOwnership}
@@ -245,6 +273,27 @@ const styles = StyleSheet.create({
   },
   radioGroup: {
     color: 'black'
+  },
+  IButton: {
+    padding: 10,
+    borderRadius: 5
+  },
+  modalContainer: {
+    width: 50,
+    height: 50,
+    borderColor: 'black'
+  },
+  modalExitButton: {
+    zIndex: 2,
+    position: 'absolute',
+    top: 10,
+    right: 10,
+    borderRadius: 50,
+    padding: 10
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: 'center'
   }
 })
 
