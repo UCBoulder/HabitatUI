@@ -49,12 +49,8 @@ const CustomMarker = ({ data }) => {
           visible={modalVisible}
         >
           <View style={styles.modalContainer}>
-            {/* <FetchS3Image /> */}
-            {/* <Image
-              source={parsedData.observationImageUrl }
-              style={styles.modalImage}
-              resizeMode="stretch"
-            /> */}
+            <FetchS3Image imageURL={parsedData.observationIamgeUrl} />
+
             <TouchableOpacity style={styles.modalExitButton} onPress={closeModal}>
               <Icon name="x" size={25} color="white" />
             </TouchableOpacity>
