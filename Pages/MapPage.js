@@ -5,22 +5,26 @@ import { getLocationPins } from '../utils/APICalls'
 import CustomMarker from '../components/CustomMarker'
 import PropTypes from 'prop-types'
 import { convertToCSV, saveCSVToFile } from '../utils/CsvSaving'
+import { useIsFocused } from '@react-navigation/native'
 
 const MapPage = ({ userLocation }) => {
   const [apiCoordinates, setApiCoordinates] = useState([])
+  const isFocused = useIsFocused()
 
   useEffect(() => {
-    const fetchPins = async () => {
-      try {
-        const coordinates = await getLocationPins()
-        coordinates && setApiCoordinates(coordinates)
-      } catch (error) {
-        console.error('Error fetching API data: ', error)
-      }
+    if (isFocused) {
+      fetchPins()
     }
+  }, [isFocused])
 
-    fetchPins()
-  }, [])
+  const fetchPins = async () => {
+    try {
+      const coordinates = await getLocationPins()
+      coordinates && setApiCoordinates(coordinates)
+    } catch (error) {
+      console.error('Error fetching API data: ', error)
+    }
+  }
 
   const handleDownload = () => {
     if (apiCoordinates.length > 0) {
@@ -57,9 +61,9 @@ const MapPage = ({ userLocation }) => {
         ))}
       </MapView>
       <View style={styles.downloadButtonContainer}>
-      <TouchableOpacity style={styles.downloadButton} onPress={handleDownload}>
-        <Text style={styles.buttonText}>Download</Text>
-      </TouchableOpacity>
+        <TouchableOpacity style={styles.downloadButton} onPress={handleDownload}>
+          <Text style={styles.buttonText}>Download</Text>
+        </TouchableOpacity>
       </View>
     </View>
   )

@@ -16,6 +16,8 @@ export const getLocationPins = async () => {
 
 // send one lat long coordinate to the API
 export const sendLocationPin = async (position, userID, cover, acres, description, ownership, imageSource) => {
+  console.log('imageSource', imageSource)
+
   const observation = {
     userID,
     coords: {
@@ -36,18 +38,9 @@ export const sendLocationPin = async (position, userID, cover, acres, descriptio
   try {
     if (imageSource) {
       const imageBase64 = await RNFS.readFile(imageSource, 'base64')
-
-      const formData = new FormData()
-      formData.append('image', {
-        uri: imageSource,
-        type: 'image/jpeg',
-        name: 'image.jpg',
-        encoded64: imageBase64
-      })
-
       observation.image = imageBase64
     }
-    // console.log(observation)
+    // console.log('api calls', observation)
 
     const response = await axios.post(`${config.emulatorAddress}/observations`, observation)
     console.log('Response from backend: ', response.data)
