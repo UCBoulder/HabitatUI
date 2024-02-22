@@ -13,7 +13,6 @@
     "@react-native-async-storage/async-storage": "^1.21.0",
     "@react-navigation/native": "^6.1.9",
     "@react-navigation/native-stack": "^6.9.17",
-    "aws-sdk": "^2.1560.0",
     "axios": "^1.5.1",
     "native-base": "^3.4.28",
     "react": "18.2.0",
