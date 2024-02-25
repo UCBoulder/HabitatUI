@@ -9,13 +9,13 @@ import { useIsFocused } from '@react-navigation/native'
 
 const MapPage = ({ userLocation }) => {
   const [apiCoordinates, setApiCoordinates] = useState([])
-  const isFocused = useIsFocused()
+  // const isFocused = useIsFocused()
 
   useEffect(() => {
-    if (isFocused) {
-      fetchPins()
-    }
-  }, [isFocused])
+    // if (isFocused) {
+    fetchPins()
+    // }
+  }, [])
 
   const fetchPins = async () => {
     try {
