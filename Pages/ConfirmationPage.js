@@ -151,18 +151,22 @@ const ConfirmationPage = ({ route, setUserLocation, userID }) => {
         >
           <Icon name="circle-info" size={30} color="black" />
         </TouchableOpacity>
+
         <Modal
           animationType="slide"
           visible={modalVisible}
-          // style = {styles.modalContainer}
+          transparent={true}
         >
-          <View>
-            {/* <TouchableOpacity style={styles.modalExitButton} onPress={closeModal}>
-              <Icon name="x" size={25} color="black" />
-            </TouchableOpacity> */}
-            <Text style={styles.modalText}>I promise this makes sense</Text>
+          <View style={styles.modalContainer}>
+            <View style={styles.modalContent}>
+              <TouchableOpacity style={styles.modalExitButton} onPress={closeModal}>
+                <Icon name="x" size={25} color="black" />
+              </TouchableOpacity>
+              <Text style={styles.modalText}>I promise this makes sense</Text>
+            </View>
           </View>
         </Modal>
+
         <Text style={styles.label}>Land Owned By (optional):</Text>
         <RadioGroup
           radioButtons={landOwnership}
@@ -279,10 +283,20 @@ const styles = StyleSheet.create({
     borderRadius: 5
   },
   modalContainer: {
-    width: 50,
-    height: 50,
-    borderColor: 'black'
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)'
   },
+  modalContent: {
+    width: '80%', // change these sam :)
+    height: '50%', // change these sam :)
+    backgroundColor: 'white',
+    borderRadius: 10,
+    padding: 20,
+    alignItems: 'center'
+  },
+
   modalExitButton: {
     zIndex: 2,
     position: 'absolute',
