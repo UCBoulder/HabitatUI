@@ -40,7 +40,7 @@ const ConfirmationPage = ({ route, setUserLocation, userID }) => {
   function handleBack () {
     navigation.navigate('Map')
   }
-  
+
   const plantDensity = useMemo(
     () => [
       {
@@ -179,7 +179,8 @@ const ConfirmationPage = ({ route, setUserLocation, userID }) => {
                 <Icon name="x" size={25} color="black" />
               </TouchableOpacity>
               <Text>  </Text>
-              <Text style={styles.modalText}> Estimate the amount of the ground that is covered with cheat grass. For example, if about half the plants are cheat grass, then it's 50% cover.</Text>
+              <Text style={styles.modalText}> Estimate the amount of the ground that is covered with cheat grass. For example,
+              if about half the plants are cheat grass, then it is 50% cover.</Text>
             </View>
           </View>
         </Modal>
@@ -326,7 +327,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: 'black',
     fontSize: 25
-    },
+  },
   backButton: {
     zIndex: 2,
     position: 'absolute',
