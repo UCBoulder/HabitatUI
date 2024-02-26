@@ -11,7 +11,8 @@ import FetchS3Image from '../utils/FetchS3Image'
 const CustomMarker = ({ data }) => {
   const [modalVisible, setModalVisible] = useState(false)
   const parsedData = simplifyJson(data)
-
+  console.log(parsedData)
+  console.log("from the CustomMarker")
   const calloutPress = () => {
     setModalVisible(true)
   }
@@ -22,8 +23,8 @@ const CustomMarker = ({ data }) => {
 
   return (
     <Marker coordinate={{
-      latitude: parsedData.coords.latitude,
-      longitude: parsedData.coords.longitude
+      latitude: parseFloat(parsedData.coords.latitude),
+      longitude: parseFloat(parsedData.coords.longitude)
     }}
       pinColor={ColorCode(parsedData.VerificationRating ? parsedData.VerificationRating : '1')}>
       <Callout tooltip onPress={calloutPress}>
@@ -63,6 +64,23 @@ const CustomMarker = ({ data }) => {
   )
 }
 
+
+// Define PropTypes for the data prop
+// CustomMarker.propTypes = {
+//   data: PropTypes.shape({
+//     coords: PropTypes.shape({
+//       latitude: PropTypes.number,
+//       longitude: PropTypes.number,
+//       accuracy: PropTypes.number
+//     }),
+//     VerificationRating: PropTypes.object,
+//     timestamp: PropTypes.oneOfType([
+//       PropTypes.object,
+//       PropTypes.number
+//     ]),
+//     Notes: PropTypes.string
+//   })
+// }
 CustomMarker.propTypes = {
   data: PropTypes.shape({
     coords: PropTypes.shape({
