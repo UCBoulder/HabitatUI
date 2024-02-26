@@ -103,22 +103,27 @@ const ConfirmationPage = ({ route, setUserLocation, userID }) => {
     []
   )
 
-  const acresSelect = useMemo(
+  const sizeSelect = useMemo(
     () => [
       {
-        id: '< 1',
-        label: '< 1',
-        value: '< 1'
+        id: 'the size of a car',
+        label: 'the size of a car',
+        value: 'the size of a car'
       },
       {
-        id: '1 to 5',
-        label: '1 to 5',
-        value: '1 to 5'
+        id: 'the size of a garage',
+        label: 'the size of a garage',
+        value: 'the size of a garage'
       },
       {
-        id: '> 5',
-        label: '> 5',
-        value: '> 5'
+        id: 'the size of a football field',
+        label: 'the size of a football field',
+        value: 'the size of a football field'
+      },
+      {
+        id: 'larger than a football field',
+        label: 'larger than a football field',
+        value: 'larger than a football field'
       }
     ],
     []
@@ -162,7 +167,8 @@ const ConfirmationPage = ({ route, setUserLocation, userID }) => {
               <TouchableOpacity style={styles.modalExitButton} onPress={closeModal}>
                 <Icon name="x" size={25} color="black" />
               </TouchableOpacity>
-              <Text style={styles.modalText}>I promise this makes sense</Text>
+              <Text>  </Text>
+              <Text style={styles.modalText}> Estimate the amount of the ground that is covered with cheat grass. For example, if about half the plants are cheat grass, then it's 50% cover.</Text>
             </View>
           </View>
         </Modal>
@@ -179,9 +185,9 @@ const ConfirmationPage = ({ route, setUserLocation, userID }) => {
           labelStyle={styles.radioGroup}
         />
 
-        <Text style={styles.label}>Select Estimated Acres (optional):</Text>
+        <Text style={styles.label}>Select Estimated Size (optional):</Text>
         <RadioGroup
-          radioButtons={acresSelect}
+          radioButtons={sizeSelect}
           onPress={onChangeAcres}
           selectedId={acres}
           layout="row"
@@ -307,7 +313,9 @@ const styles = StyleSheet.create({
   },
   modalText: {
     marginBottom: 15,
-    textAlign: 'center'
+    textAlign: 'center',
+    color: 'black',
+    fontSize: 25
   }
 })
 
