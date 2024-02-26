@@ -5,17 +5,14 @@ import { getLocationPins } from '../utils/APICalls'
 import CustomMarker from '../components/CustomMarker'
 import PropTypes from 'prop-types'
 import { convertToCSV, saveCSVToFile } from '../utils/CsvSaving'
-import { useIsFocused } from '@react-navigation/native'
 
 const MapPage = ({ userLocation }) => {
   const [apiCoordinates, setApiCoordinates] = useState([])
-  const isFocused = useIsFocused()
+  const [mapKey, setMapKey] = useState(0)
 
   useEffect(() => {
-    if (isFocused) {
-      fetchPins()
-    }
-  }, [isFocused])
+    fetchPins()
+  }, [mapKey])
 
   const fetchPins = async () => {
     try {
@@ -32,9 +29,15 @@ const MapPage = ({ userLocation }) => {
       saveCSVToFile(csvData)
     }
   }
+
+  const refreshMap = async () => {
+    setMapKey(prevKey => prevKey + 1)
+  }
+
   return (
     <View style={styles.mapContainer}>
       <MapView
+        key={mapKey}
         provider={PROVIDER_GOOGLE}
         style={styles.map}
         showsUserLocation={true}
@@ -47,22 +50,21 @@ const MapPage = ({ userLocation }) => {
           longitudeDelta: 0.0421
         }}
       >
-        {userLocation && (
-          <CustomMarker
-            data={userLocation}
-          />
-        )}
 
         {apiCoordinates.map((coordinate, index) => (
-          <CustomMarker
-            key={index}
-            data={coordinate}
-          />
+          <CustomMarker key={index} data={coordinate} />
         ))}
+
+        {userLocation && (
+          <CustomMarker data={userLocation} />
+        )}
       </MapView>
       <View style={styles.downloadButtonContainer}>
         <TouchableOpacity style={styles.downloadButton} onPress={handleDownload}>
           <Text style={styles.buttonText}>Download</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.downloadButton} onPress={refreshMap}>
+          <Text style={styles.buttonText}>Refresh</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -90,7 +92,8 @@ const styles = StyleSheet.create({
   downloadButton: {
     backgroundColor: 'white',
     padding: 10,
-    borderRadius: 5
+    borderRadius: 5,
+    marginVertical: 5
   },
   buttonText: {
     color: 'black',
