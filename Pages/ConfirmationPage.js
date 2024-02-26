@@ -6,12 +6,14 @@ import {
   TextInput,
   TouchableOpacity,
   Text,
+  Modal,
   ScrollView
 } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { makeObservation } from '../utils/MakeObservation'
 import RadioGroup from 'react-native-radio-buttons-group'
 import PropTypes from 'prop-types'
+import Icon from 'react-native-vector-icons/FontAwesome6'
 
 const ConfirmationPage = ({ route, setUserLocation, userID }) => {
   const navigation = useNavigation()
@@ -20,15 +22,25 @@ const ConfirmationPage = ({ route, setUserLocation, userID }) => {
   const [description, onChangeDescription] = useState('')
   const [ownership, onChangeOwnership] = useState('')
   const [cover, onChangeCover] = useState()
+  const [modalVisible, setModalVisible] = useState(false)
 
   const confirmationButton = () => {
     makeObservation(setUserLocation, userID, cover, acres, description, ownership, imageSource)
     navigation.navigate('Map')
   }
 
+  const closeModal = () => {
+    setModalVisible(false)
+  }
+
+  function handleI () {
+    setModalVisible(true)
+  }
+
   function handleBack () {
     navigation.navigate('Map')
   }
+
   const plantDensity = useMemo(
     () => [
       {
@@ -95,22 +107,27 @@ const ConfirmationPage = ({ route, setUserLocation, userID }) => {
     []
   )
 
-  const acresSelect = useMemo(
+  const sizeSelect = useMemo(
     () => [
       {
-        id: '< 1',
-        label: '< 1',
-        value: '< 1'
+        id: 'the size of a car',
+        label: 'the size of a car',
+        value: 'the size of a car'
       },
       {
-        id: '1 to 5',
-        label: '1 to 5',
-        value: '1 to 5'
+        id: 'the size of a garage',
+        label: 'the size of a garage',
+        value: 'the size of a garage'
       },
       {
-        id: '> 5',
-        label: '> 5',
-        value: '> 5'
+        id: 'the size of a football field',
+        label: 'the size of a football field',
+        value: 'the size of a football field'
+      },
+      {
+        id: 'larger than a football field',
+        label: 'larger than a football field',
+        value: 'larger than a football field'
       }
     ],
     []
@@ -144,7 +161,29 @@ const ConfirmationPage = ({ route, setUserLocation, userID }) => {
           buttonContainerStyle={styles.radioButtonContainer}
           labelStyle={styles.radioGroup}
         />
+        <TouchableOpacity
+          style={styles.IButton}
+          onPress={() => handleI()}
+        >
+          <Icon name="circle-info" size={30} color="black" />
+        </TouchableOpacity>
 
+        <Modal
+          animationType="slide"
+          visible={modalVisible}
+          transparent={true}
+        >
+          <View style={styles.modalContainer}>
+            <View style={styles.modalContent}>
+              <TouchableOpacity style={styles.modalExitButton} onPress={closeModal}>
+                <Icon name="x" size={25} color="black" />
+              </TouchableOpacity>
+              <Text>  </Text>
+              <Text style={styles.modalText}> Estimate the amount of the ground that is covered with cheat grass. For example,
+              if about half the plants are cheat grass, then it is 50% cover.</Text>
+            </View>
+          </View>
+        </Modal>
         <Text style={styles.label}>Land Owned By (optional):</Text>
         <RadioGroup
           radioButtons={landOwnership}
@@ -157,9 +196,9 @@ const ConfirmationPage = ({ route, setUserLocation, userID }) => {
           labelStyle={styles.radioGroup}
         />
 
-        <Text style={styles.label}>Select Estimated Acres (optional):</Text>
+        <Text style={styles.label}>Select Estimated Size (optional):</Text>
         <RadioGroup
-          radioButtons={acresSelect}
+          radioButtons={sizeSelect}
           onPress={onChangeAcres}
           selectedId={acres}
           layout="row"
@@ -255,6 +294,38 @@ const styles = StyleSheet.create({
   },
   radioGroup: {
     color: 'black'
+  },
+  IButton: {
+    padding: 10,
+    borderRadius: 5
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)'
+  },
+  modalContent: {
+    width: '80%',
+    height: '50%',
+    backgroundColor: 'white',
+    borderRadius: 10,
+    padding: 20,
+    alignItems: 'center'
+  },
+  modalExitButton: {
+    zIndex: 2,
+    position: 'absolute',
+    top: 10,
+    right: 10,
+    borderRadius: 50,
+    padding: 10
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: 'center',
+    color: 'black',
+    fontSize: 25
   },
   backButton: {
     zIndex: 2,
