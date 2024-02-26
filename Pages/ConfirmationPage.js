@@ -184,7 +184,6 @@ const ConfirmationPage = ({ route, setUserLocation, userID }) => {
             </View>
           </View>
         </Modal>
-
         <Text style={styles.label}>Land Owned By (optional):</Text>
         <RadioGroup
           radioButtons={landOwnership}
