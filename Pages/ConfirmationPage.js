@@ -37,6 +37,10 @@ const ConfirmationPage = ({ route, setUserLocation, userID }) => {
     setModalVisible(true)
   }
 
+  function handleBack () {
+    navigation.navigate('Map')
+  }
+  
   const plantDensity = useMemo(
     () => [
       {
@@ -136,10 +140,17 @@ const ConfirmationPage = ({ route, setUserLocation, userID }) => {
         source={{ uri: `file://${imageSource}` }}
         style={styles.confirmationImage}
       />
+       {/* Cancel; back to home */}
+    <TouchableOpacity style={styles.backButton} onPress={() => handleBack()}>
+    <Text style={styles.buttonText}>Cancel</Text>
+    </TouchableOpacity>
+    {/* Pop up for do you want to cancel */}
+
       <ScrollView>
         <Text style={styles.label}>
           Select Estimated Plant Cover (optional):
         </Text>
+        {/* i button with information pop up */}
         <RadioGroup
           radioButtons={plantDensity}
           onPress={onChangeCover}
@@ -295,14 +306,13 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0, 0, 0, 0.5)'
   },
   modalContent: {
-    width: '80%', // change these sam :)
-    height: '50%', // change these sam :)
+    width: '80%',
+    height: '50%',
     backgroundColor: 'white',
     borderRadius: 10,
     padding: 20,
     alignItems: 'center'
   },
-
   modalExitButton: {
     zIndex: 2,
     position: 'absolute',
@@ -316,6 +326,15 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: 'black',
     fontSize: 25
+    },
+  backButton: {
+    zIndex: 2,
+    position: 'absolute',
+    top: 10,
+    left: 10,
+    padding: 10,
+    borderRadius: 5,
+    backgroundColor: 'white'
   }
 })
 

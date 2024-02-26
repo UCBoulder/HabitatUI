@@ -27,7 +27,7 @@ export const sendLocationPin = async (position, userID, cover, acres, descriptio
       estimatedCover: cover,
       estimatedArea: acres,
       locationDescription: description,
-      ownership
+      ownership: ownership
     },
     VerificationRating: 1,
     timestamp: position.timestamp
@@ -47,7 +47,7 @@ export const sendLocationPin = async (position, userID, cover, acres, descriptio
 
       observation.image = imageBase64
     }
-    // console.log(observation)
+    console.log(observation)
 
     const response = await axios.post(`${config.emulatorAddress}/observations`, observation)
     console.log('Response from backend: ', response.data)
