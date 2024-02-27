@@ -20,6 +20,7 @@
     "native-base": "^3.4.28",
     "react": "18.2.0",
     "react-native": "0.72.6",
+    "react-native-aws3": "^0.0.9",
     "react-native-elements": "^3.4.3",
     "react-native-fs": "^2.20.0",
     "react-native-geolocation-service": "^5.3.1",

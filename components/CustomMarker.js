@@ -11,6 +11,7 @@ import FetchS3Image from '../utils/FetchS3Image'
 const CustomMarker = ({ data }) => {
   const [modalVisible, setModalVisible] = useState(false)
   const parsedData = simplifyJson(data)
+  console.log(parsedData)
 
   const calloutPress = () => {
     setModalVisible(true)
@@ -34,7 +35,9 @@ const CustomMarker = ({ data }) => {
             {`Observation made on: ${FormatDate(parsedData.timestamp)}\n`}
             {`Latitude: ${parsedData.coords.latitude}\nLongitude: ${parsedData.coords.longitude}\n`}
             {`Accuracy: ${parsedData.coords.accuracy}\n`}
-            {`Notes: ${parsedData.Notes?.locationDescription ?? ''}\n`}
+            {/* {`Notes: ${parsedData.Notes.locationDescription}\n`} */}
+
+            {/* {`Notes: ${parsedData.Notes?.locationDescription ?? ''}\n`} */}
           </Text>
 
           <Text style={styles.calloutTextCentered}>
@@ -52,7 +55,9 @@ const CustomMarker = ({ data }) => {
             <FetchS3Image imageURL={parsedData.image} />
 
             <TouchableOpacity style={styles.modalExitButton} onPress={closeModal}>
-              <Icon name="x" size={25} color="white" />
+              <View style={styles.iconContainer}>
+                <Icon name="x" size={25} color="black" />
+              </View>
             </TouchableOpacity>
           </View>
 
@@ -132,6 +137,11 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     height: '100%'
+  },
+  iconContainer: {
+    backgroundColor: 'white',
+    borderRadius: 10,
+    padding: 5
   }
 })
 

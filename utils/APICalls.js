@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid'
 import RNFS from 'react-native-fs'
 import { Alert } from 'react-native'
 import config from '../config'
-import { processImageFile } from './S3Upload'
+import { processImageFile, s3Upload } from './S3Upload'
 import { Buffer } from 'buffer'
 
 // recieve one or many lat long coordinates from the API
@@ -42,13 +42,12 @@ export const sendLocationPin = async (position, userID, cover, acres, descriptio
 
   if (imageSource) {
     try {
-      const s3Location = await processImageFile(imageSource)
-      observation.image = s3Location
+      const s3Location = s3Upload(imageSource)
+      observation.image = s3Location._j
     } catch (error) {
       console.error('Failed to upload to S3:', error)
     }
   }
-
   try {
     const response = await axios.post(`${config.apiTestAddress}${config.apiPath}`, observation)
     console.log('Response from backend: ', response.data)
