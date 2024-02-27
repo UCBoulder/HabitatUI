@@ -1,5 +1,4 @@
-import { S3Client } from '@aws-sdk/client-s3'
-import { Upload } from '@aws-sdk/lib-storage'
+import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3'
 import { v4 as uuidv4 } from 'uuid'
 import RNFS from 'react-native-fs'
 import { Buffer } from 'buffer'
@@ -9,7 +8,7 @@ const client = new S3Client({ region })
 const arn = 'arn:aws:s3:us-east-1:124008505402:accesspoint/habipoint'
 
 async function s3Upload (arn, key, file) {
-  const upload = new Upload({
+  const upload = new PutObjectCommand({
     client,
     params: {
       Bucket: arn,
@@ -19,7 +18,7 @@ async function s3Upload (arn, key, file) {
   })
 
   try {
-    await upload.done()
+    await s3Upload(arn, key, file)
     console.log(`File uploaded successfully to ${'test-cow'}/${key}`)
     return `https://${'test-cow'}.s3.${region}.amazonaws.com/${key}` // return the location of the file
   } catch (error) {
