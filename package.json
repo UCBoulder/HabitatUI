@@ -10,9 +10,12 @@
     "test": "jest"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.521.0",
+    "@aws-sdk/lib-storage": "^3.521.0",
     "@react-native-async-storage/async-storage": "^1.21.0",
     "@react-navigation/native": "^6.1.9",
     "@react-navigation/native-stack": "^6.9.17",
+    "aws-sdk": "^2.1566.0",
     "axios": "^1.5.1",
     "native-base": "^3.4.28",
     "react": "18.2.0",

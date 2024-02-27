@@ -12,7 +12,8 @@ const CustomMarker = ({ data }) => {
   const [modalVisible, setModalVisible] = useState(false)
   const parsedData = simplifyJson(data)
   console.log(parsedData)
-  console.log("from the CustomMarker")
+  console.log('from the CustomMarker')
+
   const calloutPress = () => {
     setModalVisible(true)
   }
@@ -50,7 +51,7 @@ const CustomMarker = ({ data }) => {
           visible={modalVisible}
         >
           <View style={styles.modalContainer}>
-            <FetchS3Image imageURL={parsedData.observationIamgeUrl} />
+            <FetchS3Image imageURL={parsedData.image} />
 
             <TouchableOpacity style={styles.modalExitButton} onPress={closeModal}>
               <Icon name="x" size={25} color="white" />
@@ -63,7 +64,6 @@ const CustomMarker = ({ data }) => {
     </Marker>
   )
 }
-
 
 // Define PropTypes for the data prop
 // CustomMarker.propTypes = {
