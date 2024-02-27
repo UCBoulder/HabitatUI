@@ -5,6 +5,7 @@ import { getLocationPins } from '../utils/APICalls'
 import CustomMarker from '../components/CustomMarker'
 import PropTypes from 'prop-types'
 import { convertToCSV, saveCSVToFile } from '../utils/CsvSaving'
+import Icon from 'react-native-vector-icons/FontAwesome5' // Import the icon of your choice
 
 const MapPage = ({ userLocation }) => {
   const [apiCoordinates, setApiCoordinates] = useState([])
@@ -43,6 +44,7 @@ const MapPage = ({ userLocation }) => {
         showsUserLocation={true}
         showsMyLocationButton={true}
         mapType="hybrid"
+        toolbarEnabled={false}
         initialRegion={{
           latitude: 38.5449,
           longitude: -106.9329,
@@ -59,12 +61,12 @@ const MapPage = ({ userLocation }) => {
           <CustomMarker data={userLocation} />
         )}
       </MapView>
-      <View style={styles.downloadButtonContainer}>
-        <TouchableOpacity style={styles.downloadButton} onPress={handleDownload}>
+      <View style={styles.buttonContainer}>
+        {/* <TouchableOpacity style={styles.button} onPress={handleDownload}>
           <Text style={styles.buttonText}>Download</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.downloadButton} onPress={refreshMap}>
-          <Text style={styles.buttonText}>Refresh</Text>
+        </TouchableOpacity> */}
+        <TouchableOpacity style={styles.refreshButton} onPress={refreshMap}>
+          <Icon name="sync" size={30} color="black" />
         </TouchableOpacity>
       </View>
     </View>
@@ -82,17 +84,22 @@ const styles = StyleSheet.create({
   map: {
     ...StyleSheet.absoluteFillObject
   },
-  downloadButtonContainer: {
+  buttonContainer: {
     position: 'absolute',
-    bottom: 100,
-    left: 0,
-    right: 0,
+    bottom: 15,
+    right: 20,
     alignItems: 'center'
   },
-  downloadButton: {
+  button: {
     backgroundColor: 'white',
     padding: 10,
     borderRadius: 5,
+    marginVertical: 5
+  },
+  refreshButton: {
+    backgroundColor: 'white',
+    padding: 15,
+    borderRadius: 50,
     marginVertical: 5
   },
   buttonText: {
