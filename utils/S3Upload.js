@@ -12,8 +12,7 @@ export async function s3Upload (filePath) {
   //   keyPrefix: 'test-photos/',
   //   bucket: 'test-cow',
   //   region: 'us-east-1',
-  //   accessKey: 'AKIARZX33UA5CJWNBDOT',
-  //   secretKey: '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',
+
   //   successActionStatus: 201
   // }
 
