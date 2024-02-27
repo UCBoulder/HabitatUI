@@ -217,7 +217,7 @@ const ConfirmationPage = ({ route, setUserLocation, userID }) => {
           placeholderTextColor={'#aaa'}
           multiline={true}
           textAlignVertical="top"
-          color="#aaa"
+          color='black'
         />
 
         <View style={styles.container}>
