@@ -11,8 +11,6 @@ import FetchS3Image from '../utils/FetchS3Image'
 const CustomMarker = ({ data }) => {
   const [modalVisible, setModalVisible] = useState(false)
   const parsedData = simplifyJson(data)
-  console.log(parsedData)
-  console.log('from the CustomMarker')
 
   const calloutPress = () => {
     setModalVisible(true)
@@ -81,26 +79,26 @@ const CustomMarker = ({ data }) => {
 //     Notes: PropTypes.string
 //   })
 // }
-CustomMarker.propTypes = {
-  data: PropTypes.shape({
-    coords: PropTypes.shape({
-      latitude: PropTypes.number,
-      longitude: PropTypes.number,
-      accuracy: PropTypes.number
-    }),
-    VerificationRating: PropTypes.object,
-    timestamp: PropTypes.oneOfType([
-      PropTypes.object,
-      PropTypes.number
-    ]),
-    Notes: PropTypes.shape({
-      estimatedCover: PropTypes.string,
-      estimatedArea: PropTypes.string,
-      locationDescription: PropTypes.string,
-      ownership: PropTypes.string
-    })
-  })
-}
+// CustomMarker.propTypes = {
+//   data: PropTypes.shape({
+//     coords: PropTypes.shape({
+//       latitude: PropTypes.number,
+//       longitude: PropTypes.number,
+//       accuracy: PropTypes.number
+//     }),
+//     VerificationRating: PropTypes.object,
+//     timestamp: PropTypes.oneOfType([
+//       PropTypes.object,
+//       PropTypes.number
+//     ]),
+//     Notes: PropTypes.shape({
+//       estimatedCover: PropTypes.string,
+//       estimatedArea: PropTypes.string,
+//       locationDescription: PropTypes.string,
+//       ownership: PropTypes.string
+//     })
+//   })
+// }
 
 const styles = StyleSheet.create({
   calloutContainer: {

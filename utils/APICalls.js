@@ -41,11 +41,8 @@ export const sendLocationPin = async (position, userID, cover, acres, descriptio
   }
 
   if (imageSource) {
-    const imageBuffer = await RNFS.readFile(imageSource, 'base64')
-    const buffer = Buffer.from(imageBuffer, 'base64')
-
     try {
-      const s3Location = await processImageFile('test-cow', buffer, 'image/jpeg')
+      const s3Location = await processImageFile(imageSource)
       observation.image = s3Location
     } catch (error) {
       console.error('Failed to upload to S3:', error)

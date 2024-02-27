@@ -32,9 +32,9 @@ const FetchS3Image = ({ imageURL }) => {
   )
 }
 
-FetchS3Image.propTypes = {
-  imageURL: PropTypes.string
-}
+// FetchS3Image.propTypes = {
+//   imageURL: PropTypes.string
+// }
 
 const styles = StyleSheet.create({
   container: {
