@@ -22,7 +22,8 @@ const ConfirmationPage = ({ route, setUserLocation, userID }) => {
   const [description, onChangeDescription] = useState('')
   const [ownership, onChangeOwnership] = useState('')
   const [cover, onChangeCover] = useState()
-  const [modalVisible, setModalVisible] = useState(false)
+  const [iModalVisible, setiModalVisible] = useState(false)
+  const [cancelModalVisible, setCancelModalVisible] = useState(false)
 
   const confirmationButton = () => {
     makeObservation(setUserLocation, userID, cover, acres, description, ownership, imageSource)
@@ -30,15 +31,20 @@ const ConfirmationPage = ({ route, setUserLocation, userID }) => {
   }
 
   const closeModal = () => {
-    setModalVisible(false)
+    setiModalVisible(false)
+    setCancelModalVisible(false)
   }
 
   function handleI () {
-    setModalVisible(true)
+    setiModalVisible(true)
   }
 
   function handleBack () {
     navigation.navigate('Map')
+  }
+
+  function handleCancel () {
+    setCancelModalVisible(true)
   }
 
   const plantDensity = useMemo(
@@ -141,16 +147,34 @@ const ConfirmationPage = ({ route, setUserLocation, userID }) => {
         style={styles.confirmationImage}
       />
        {/* Cancel; back to home */}
-    <TouchableOpacity style={styles.backButton} onPress={() => handleBack()}>
+    <TouchableOpacity style={styles.backButton} onPress={() => handleCancel()}>
     <Text style={styles.buttonText}>Cancel</Text>
     </TouchableOpacity>
     {/* Pop up for do you want to cancel */}
+    <Modal
+          animationType="slide"
+          visible={cancelModalVisible}
+          transparent={true}
+        >
+          <View style={styles.modalContainer}>
+            <View style={styles.modalContent}>
+              <Text>  </Text>
+              <Text style={styles.modalText}> Are you sure you want to delete current observation?</Text>
+              <TouchableOpacity style={styles.modalYesButton} onPress={() => handleBack()}>
+                <Text style={styles.buttonText}>Yes</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.modalNoButton} onPress={closeModal}>
+                <Text style={styles.buttonText}>No</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </Modal>
 
+      {/* confirmation questions */}
       <ScrollView>
         <Text style={styles.label}>
           Select Estimated Plant Cover (optional):
         </Text>
-        {/* i button with information pop up */}
         <RadioGroup
           radioButtons={plantDensity}
           onPress={onChangeCover}
@@ -161,6 +185,7 @@ const ConfirmationPage = ({ route, setUserLocation, userID }) => {
           buttonContainerStyle={styles.radioButtonContainer}
           labelStyle={styles.radioGroup}
         />
+         {/* i button with information pop up */}
         <TouchableOpacity
           style={styles.IButton}
           onPress={() => handleI()}
@@ -170,17 +195,17 @@ const ConfirmationPage = ({ route, setUserLocation, userID }) => {
 
         <Modal
           animationType="slide"
-          visible={modalVisible}
+          visible={iModalVisible}
           transparent={true}
         >
           <View style={styles.modalContainer}>
             <View style={styles.modalContent}>
-              <TouchableOpacity style={styles.modalExitButton} onPress={closeModal}>
+              <TouchableOpacity style={styles.modalXButton} onPress={closeModal}>
                 <Icon name="x" size={25} color="black" />
               </TouchableOpacity>
               <Text>  </Text>
-              <Text style={styles.modalText}> Estimate the amount of the ground that is covered with cheat grass. For example,
-              if about half the plants are cheat grass, then it is 50% cover.</Text>
+              <Text style={styles.modalText}> Estimate the amount of the ground in an infestation that is covered with cheat grass. For example,
+              if about half the plants in a square foot are cheat grass, then it is 50% cover.</Text>
             </View>
           </View>
         </Modal>
@@ -313,13 +338,31 @@ const styles = StyleSheet.create({
     padding: 20,
     alignItems: 'center'
   },
-  modalExitButton: {
+  modalXButton: {
     zIndex: 2,
     position: 'absolute',
     top: 10,
     right: 10,
     borderRadius: 50,
     padding: 10
+  },
+  modalYesButton: {
+    zIndex: 2,
+    position: 'absolute',
+    bottom: 10,
+    left: 10,
+    borderRadius: 100,
+    padding: 10,
+    backgroundColor: '#0af23c'
+  },
+  modalNoButton: {
+    zIndex: 2,
+    position: 'absolute',
+    bottom: 10,
+    right: 10,
+    borderRadius: 100,
+    padding: 10,
+    backgroundColor: '#f20a0a'
   },
   modalText: {
     marginBottom: 15,
