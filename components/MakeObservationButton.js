@@ -32,12 +32,13 @@ const styles = StyleSheet.create({
   },
   locationButton: {
     backgroundColor: 'white',
-    padding: 10,
-    borderRadius: 5
+    padding: 15,
+    borderRadius: 10
   },
   buttonText: {
     color: 'black',
-    textAlign: 'center'
+    textAlign: 'center',
+    fontSize: 18
   }
 })
 
