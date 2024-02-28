@@ -151,9 +151,13 @@ const ConfirmationPage = ({ route, setUserLocation, userID }) => {
         source={{ uri: `file://${imageSource}` }}
         style={styles.confirmationImage}
       />
-    <ScrollView>
-    {/* land owned by question */}
-    <Text style={styles.label}>Land Owned By (optional):</Text>
+      {/* Cancel; back to home */}
+      <TouchableOpacity style={styles.backButton} onPress={() => handleBack()}>
+        <Icon name="x" size={25} color="black" />
+      </TouchableOpacity>
+      <ScrollView>
+        {/* land owned by question */}
+        <Text style={styles.label}>Land Owned By (optional):</Text>
         <RadioGroup
           radioButtons={landOwnership}
           onPress={onChangeOwnership}
@@ -165,8 +169,8 @@ const ConfirmationPage = ({ route, setUserLocation, userID }) => {
           labelStyle={styles.radioGroup}
         />
 
-    {/* estimated size of infestation question */}
-    <Text style={styles.label}>Select Estimated Size of Infestation (optional):</Text>
+        {/* estimated size of infestation question */}
+        <Text style={styles.label}>Select Estimated Size of Infestation (optional):</Text>
         <RadioGroup
           radioButtons={sizeSelect}
           onPress={onChangeAcres}
@@ -177,13 +181,8 @@ const ConfirmationPage = ({ route, setUserLocation, userID }) => {
           buttonContainerStyle={styles.radioButtonContainer}
           labelStyle={styles.radioGroup}
         />
-        
-      {/* Cancel; back to home */}
-      <TouchableOpacity style={styles.backButton} onPress={() => handleBack()}>
-        <Icon name="x" size={25} color="black" />
-      </TouchableOpacity>
 
-      {/* confirmation questions */}
+        {/* confirmation questions */}
         <Text style={styles.label}>
           Select Estimated Plant Cover (optional):
         </Text>
@@ -197,7 +196,7 @@ const ConfirmationPage = ({ route, setUserLocation, userID }) => {
           buttonContainerStyle={styles.radioButtonContainer}
           labelStyle={styles.radioGroup}
         />
-        
+
         {/* i button with information pop up */}
         <TouchableOpacity
           style={styles.IButton}
