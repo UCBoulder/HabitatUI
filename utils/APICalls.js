@@ -30,12 +30,7 @@ export const sendLocationPin = async (position, userID, cover, acres, descriptio
       longitude: position.coords.longitude,
       accuracy: position.coords.accuracy
     },
-    Notes: {
-      estimatedCover: cover,
-      estimatedArea: acres,
-      locationDescription: description,
-      ownership
-    },
+    Notes: description,
     VerificationRating: 1,
     timestamp: position.timestamp
   }

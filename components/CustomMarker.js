@@ -35,7 +35,7 @@ const CustomMarker = ({ data }) => {
             {`Observation made on: ${FormatDate(parsedData.timestamp)}\n`}
             {`Latitude: ${parsedData.coords.latitude}\nLongitude: ${parsedData.coords.longitude}\n`}
             {`Accuracy: ${parsedData.coords.accuracy}\n`}
-            {/* {`Notes: ${parsedData.Notes.locationDescription}\n`} */}
+            {`Notes: ${parsedData.Notes}\n`}
 
             {/* {`Notes: ${parsedData.Notes?.locationDescription ?? ''}\n`} */}
           </Text>
