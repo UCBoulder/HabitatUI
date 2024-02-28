@@ -1,13 +1,18 @@
 import axios from 'axios'
+import { v4 as uuidv4 } from 'uuid'
 import RNFS from 'react-native-fs'
 import { Alert } from 'react-native'
 import config from '../config'
+import { processImageFile, s3Upload } from './S3Upload'
+import { Buffer } from 'buffer'
 
 // recieve one or many lat long coordinates from the API
 export const getLocationPins = async () => {
   try {
-    const response = await axios.get(`${config.emulatorAddress}/observations`)
-    return response.data
+    const response = await axios.get(`${config.apiTestAddress}${config.apiPath}`)
+    // console.log(response)
+    // console.log("From the APICALLS")
+    return response.data.Items
   } catch (error) {
     console.error('Error fetching API data: ', error)
     return null
@@ -16,8 +21,10 @@ export const getLocationPins = async () => {
 
 // send one lat long coordinate to the API
 export const sendLocationPin = async (position, userID, cover, acres, description, ownership, imageSource) => {
+  const oid = uuidv4()
   const observation = {
-    userID,
+    UserID: userID,
+    ObservationID: oid,
     coords: {
       latitude: position.coords.latitude,
       longitude: position.coords.longitude,
@@ -27,29 +34,22 @@ export const sendLocationPin = async (position, userID, cover, acres, descriptio
       estimatedCover: cover,
       estimatedArea: acres,
       locationDescription: description,
-      ownership: ownership
+      ownership
     },
     VerificationRating: 1,
     timestamp: position.timestamp
   }
 
-  try {
-    if (imageSource) {
-      const imageBase64 = await RNFS.readFile(imageSource, 'base64')
-
-      const formData = new FormData()
-      formData.append('image', {
-        uri: imageSource,
-        type: 'image/jpeg',
-        name: 'image.jpg',
-        encoded64: imageBase64
-      })
-
-      observation.image = imageBase64
+  if (imageSource) {
+    try {
+      const s3Location = s3Upload(imageSource)
+      observation.image = s3Location._j
+    } catch (error) {
+      console.error('Failed to upload to S3:', error)
     }
-    console.log(observation)
-
-    const response = await axios.post(`${config.emulatorAddress}/observations`, observation)
+  }
+  try {
+    const response = await axios.post(`${config.apiTestAddress}${config.apiPath}`, observation)
     console.log('Response from backend: ', response.data)
     Alert.alert('Success', 'Your Observation Was Successfully Uploaded')
   } catch (error) {

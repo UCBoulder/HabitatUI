@@ -2,14 +2,16 @@ import React, { useState } from 'react'
 import { Marker, Callout } from 'react-native-maps'
 import { ColorCode } from './ColorCode'
 import { FormatDate } from '../utils/FormatDate'
-import { View, Text, StyleSheet, Image, Modal, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet, Modal, TouchableOpacity } from 'react-native'
 import PropTypes from 'prop-types'
 import { simplifyJson } from '../utils/simplifyJson'
 import Icon from 'react-native-vector-icons/FontAwesome6'
+import FetchS3Image from '../utils/FetchS3Image'
 
 const CustomMarker = ({ data }) => {
   const [modalVisible, setModalVisible] = useState(false)
   const parsedData = simplifyJson(data)
+  console.log(parsedData)
 
   const calloutPress = () => {
     setModalVisible(true)
@@ -21,8 +23,8 @@ const CustomMarker = ({ data }) => {
 
   return (
     <Marker coordinate={{
-      latitude: parsedData.coords.latitude,
-      longitude: parsedData.coords.longitude
+      latitude: parseFloat(parsedData.coords.latitude),
+      longitude: parseFloat(parsedData.coords.longitude)
     }}
       pinColor={ColorCode(parsedData.VerificationRating ? parsedData.VerificationRating : '1')}>
       <Callout tooltip onPress={calloutPress}>
@@ -33,7 +35,9 @@ const CustomMarker = ({ data }) => {
             {`Observation made on: ${FormatDate(parsedData.timestamp)}\n`}
             {`Latitude: ${parsedData.coords.latitude}\nLongitude: ${parsedData.coords.longitude}\n`}
             {`Accuracy: ${parsedData.coords.accuracy}\n`}
-            {/* {parsedData.Notes.locationDescription !== undefined ? `${parsedData.Notes.locationDescription}\n` : '\n'} */}
+            {/* {`Notes: ${parsedData.Notes.locationDescription}\n`} */}
+
+            {/* {`Notes: ${parsedData.Notes?.locationDescription ?? ''}\n`} */}
           </Text>
 
           <Text style={styles.calloutTextCentered}>
@@ -48,13 +52,12 @@ const CustomMarker = ({ data }) => {
           visible={modalVisible}
         >
           <View style={styles.modalContainer}>
-            <Image
-              source={require('../images/PXL_20231211_211945981.MP.jpg')}
-              style={styles.modalImage}
-              resizeMode="stretch"
-            />
+            <FetchS3Image imageURL={parsedData.image} />
+
             <TouchableOpacity style={styles.modalExitButton} onPress={closeModal}>
-              <Icon name="x" size={25} color="white" />
+              <View style={styles.iconContainer}>
+                <Icon name="x" size={25} color="black" />
+              </View>
             </TouchableOpacity>
           </View>
 
@@ -65,26 +68,42 @@ const CustomMarker = ({ data }) => {
   )
 }
 
-CustomMarker.propTypes = {
-  data: PropTypes.shape({
-    coords: PropTypes.shape({
-      latitude: PropTypes.number,
-      longitude: PropTypes.number,
-      accuracy: PropTypes.number
-    }),
-    VerificationRating: PropTypes.object,
-    timestamp: PropTypes.oneOfType([
-      PropTypes.object,
-      PropTypes.number
-    ]),
-    Notes: PropTypes.shape({
-      estimatedCover: PropTypes.string,
-      estimatedArea: PropTypes.string,
-      locationDescription: PropTypes.string,
-      ownership: PropTypes.string
-    })
-  })
-}
+// Define PropTypes for the data prop
+// CustomMarker.propTypes = {
+//   data: PropTypes.shape({
+//     coords: PropTypes.shape({
+//       latitude: PropTypes.number,
+//       longitude: PropTypes.number,
+//       accuracy: PropTypes.number
+//     }),
+//     VerificationRating: PropTypes.object,
+//     timestamp: PropTypes.oneOfType([
+//       PropTypes.object,
+//       PropTypes.number
+//     ]),
+//     Notes: PropTypes.string
+//   })
+// }
+// CustomMarker.propTypes = {
+//   data: PropTypes.shape({
+//     coords: PropTypes.shape({
+//       latitude: PropTypes.number,
+//       longitude: PropTypes.number,
+//       accuracy: PropTypes.number
+//     }),
+//     VerificationRating: PropTypes.object,
+//     timestamp: PropTypes.oneOfType([
+//       PropTypes.object,
+//       PropTypes.number
+//     ]),
+//     Notes: PropTypes.shape({
+//       estimatedCover: PropTypes.string,
+//       estimatedArea: PropTypes.string,
+//       locationDescription: PropTypes.string,
+//       ownership: PropTypes.string
+//     })
+//   })
+// }
 
 const styles = StyleSheet.create({
   calloutContainer: {
@@ -118,6 +137,11 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     height: '100%'
+  },
+  iconContainer: {
+    backgroundColor: 'white',
+    borderRadius: 10,
+    padding: 5
   }
 })
 
