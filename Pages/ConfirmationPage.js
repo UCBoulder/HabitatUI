@@ -110,20 +110,25 @@ const ConfirmationPage = ({ route, setUserLocation, userID }) => {
   const sizeSelect = useMemo(
     () => [
       {
-        id: 'the size of a car',
-        label: 'the size of a car',
-        value: 'the size of a car'
+        id: 'smaller than a VW Bug',
+        label: 'smaller than a VW Bug',
+        value: 'smaller than a VW Bug'
       },
       {
-        id: 'the size of a garage',
-        label: 'the size of a garage',
-        value: 'the size of a garage'
+        id: 'between a VW Bug and a 2 car garage',
+        label: 'between a VW Bug and a 2 car garage',
+        value: 'between a VW Bug and a 2 car garage'
       },
       {
-        id: 'the size of a football field',
-        label: 'the size of a football field',
-        value: 'the size of a football field'
+        id: 'between a 2 car garage and a football field',
+        label: 'between a 2 car garage and a football field',
+        value: 'between a 2 car garage and a football field'
       },
+      // {
+      //   id: 'the size of a football field',
+      //   label: 'the size of a football field',
+      //   value: 'the size of a football field'
+      // },
       {
         id: 'larger than a football field',
         label: 'larger than a football field',
@@ -142,11 +147,38 @@ const ConfirmationPage = ({ route, setUserLocation, userID }) => {
       />
        {/* Cancel; back to home */}
     <TouchableOpacity style={styles.backButton} onPress={() => handleBack()}>
-    <Text style={styles.buttonText}>Cancel</Text>
+      <Text style={styles.buttonText}>Cancel</Text>
     </TouchableOpacity>
     {/* Pop up for do you want to cancel */}
 
-      <ScrollView>
+    <ScrollView>
+    {/* land owned by question */}
+    <Text style={styles.label}>Land Owned By (optional):</Text>
+        <RadioGroup
+          radioButtons={landOwnership}
+          onPress={onChangeOwnership}
+          selectedId={ownership}
+          layout="row"
+          flexDirection="row"
+          containerStyle={styles.radioGroupContainer} // Add this line for additional styling
+          buttonContainerStyle={styles.radioButtonContainer}
+          labelStyle={styles.radioGroup}
+        />
+
+    {/* estimated size of infestation question */}
+    <Text style={styles.label}>Select Estimated Size of Infestation (optional):</Text>
+        <RadioGroup
+          radioButtons={sizeSelect}
+          onPress={onChangeAcres}
+          selectedId={acres}
+          layout="row"
+          flexDirection="row"
+          containerStyle={styles.radioGroupContainer}
+          buttonContainerStyle={styles.radioButtonContainer}
+          labelStyle={styles.radioGroup}
+        />
+
+      {/* Plant cover question */}
         <Text style={styles.label}>
           Select Estimated Plant Cover (optional):
         </Text>
@@ -184,38 +216,16 @@ const ConfirmationPage = ({ route, setUserLocation, userID }) => {
             </View>
           </View>
         </Modal>
-        <Text style={styles.label}>Land Owned By (optional):</Text>
-        <RadioGroup
-          radioButtons={landOwnership}
-          onPress={onChangeOwnership}
-          selectedId={ownership}
-          layout="row"
-          flexDirection="row"
-          containerStyle={styles.radioGroupContainer} // Add this line for additional styling
-          buttonContainerStyle={styles.radioButtonContainer}
-          labelStyle={styles.radioGroup}
-        />
 
-        <Text style={styles.label}>Select Estimated Size (optional):</Text>
-        <RadioGroup
-          radioButtons={sizeSelect}
-          onPress={onChangeAcres}
-          selectedId={acres}
-          layout="row"
-          flexDirection="row"
-          containerStyle={styles.radioGroupContainer}
-          buttonContainerStyle={styles.radioButtonContainer}
-          labelStyle={styles.radioGroup}
-        />
-
+        {/* location description text input */}
         <Text style={styles.label}>Location Description (optional):</Text>
         <TextInput
           style={styles.input}
           onChangeText={onChangeDescription}
           value={description}
-          placeholder="Location Description"
-          placeholderTextColor={'#aaa'}
           multiline={true}
+          placeholder={'Please describe the area. \nInclude landmarks, the cardinal direction, etc.'}
+          placeholderTextColor={'#aaa'}
           textAlignVertical="top"
           color='black'
         />
