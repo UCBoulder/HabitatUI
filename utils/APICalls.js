@@ -46,7 +46,7 @@ export const sendLocationPin = async (position, userID, cover, acres, descriptio
   try {
     const response = await axios.post(`${config.apiTestAddress}${config.apiPath}`, observation)
     console.log('Response from backend: ', response.data)
-    Alert.alert('Success', 'Your Observation Was Successfully Uploaded')
+    Alert.alert('Success', 'Your Observation Was Successfully Uploaded. If your information does not show up in your pin, refresh the page.')
   } catch (error) {
     console.error('Error sending data to backend: ', error)
 
