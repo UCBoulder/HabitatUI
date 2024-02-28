@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   Text,
   Modal,
-  ScrollView
+  ScrollView, Alert
 } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { makeObservation } from '../utils/MakeObservation'
@@ -23,7 +23,6 @@ const ConfirmationPage = ({ route, setUserLocation, userID }) => {
   const [ownership, onChangeOwnership] = useState('')
   const [cover, onChangeCover] = useState()
   const [iModalVisible, setiModalVisible] = useState(false)
-  const [cancelModalVisible, setCancelModalVisible] = useState(false)
 
   const confirmationButton = () => {
     makeObservation(setUserLocation, userID, cover, acres, description, ownership, imageSource)
@@ -32,7 +31,6 @@ const ConfirmationPage = ({ route, setUserLocation, userID }) => {
 
   const closeModal = () => {
     setiModalVisible(false)
-    setCancelModalVisible(false)
   }
 
   function handleI () {
@@ -40,11 +38,13 @@ const ConfirmationPage = ({ route, setUserLocation, userID }) => {
   }
 
   function handleBack () {
-    navigation.navigate('Map')
-  }
-
-  function handleCancel () {
-    setCancelModalVisible(true)
+    Alert.alert('', 'Are you sure you want to discard your observation?', [{
+      text: 'Keep'
+    },
+    {
+      text: 'Discard',
+      onPress: () => navigation.navigate('Map')
+    }])
   }
 
   const plantDensity = useMemo(
@@ -146,29 +146,10 @@ const ConfirmationPage = ({ route, setUserLocation, userID }) => {
         source={{ uri: `file://${imageSource}` }}
         style={styles.confirmationImage}
       />
-       {/* Cancel; back to home */}
-    <TouchableOpacity style={styles.backButton} onPress={() => handleCancel()}>
-    <Text style={styles.buttonText}>Cancel</Text>
-    </TouchableOpacity>
-    {/* Pop up for do you want to cancel */}
-    <Modal
-          animationType="slide"
-          visible={cancelModalVisible}
-          transparent={true}
-        >
-          <View style={styles.modalContainer}>
-            <View style={styles.modalContent}>
-              <Text>  </Text>
-              <Text style={styles.modalText}> Are you sure you want to delete current observation?</Text>
-              <TouchableOpacity style={styles.modalYesButton} onPress={() => handleBack()}>
-                <Text style={styles.buttonText}>Yes</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.modalNoButton} onPress={closeModal}>
-                <Text style={styles.buttonText}>No</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-        </Modal>
+      {/* Cancel; back to home */}
+      <TouchableOpacity style={styles.backButton} onPress={() => handleBack()}>
+        <Icon name="x" size={25} color="black" />
+      </TouchableOpacity>
 
       {/* confirmation questions */}
       <ScrollView>
@@ -185,7 +166,7 @@ const ConfirmationPage = ({ route, setUserLocation, userID }) => {
           buttonContainerStyle={styles.radioButtonContainer}
           labelStyle={styles.radioGroup}
         />
-         {/* i button with information pop up */}
+        {/* i button with information pop up */}
         <TouchableOpacity
           style={styles.IButton}
           onPress={() => handleI()}
@@ -205,7 +186,7 @@ const ConfirmationPage = ({ route, setUserLocation, userID }) => {
               </TouchableOpacity>
               <Text>  </Text>
               <Text style={styles.modalText}> Estimate the amount of the ground in an infestation that is covered with cheat grass. For example,
-              if about half the plants in a square foot are cheat grass, then it is 50% cover.</Text>
+                if about half the plants in a square foot are cheat grass, then it is 50% cover.</Text>
             </View>
           </View>
         </Modal>
@@ -346,16 +327,16 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     padding: 10
   },
-  modalYesButton: {
+  modalCancelButton: {
     zIndex: 2,
     position: 'absolute',
     bottom: 10,
     left: 10,
     borderRadius: 100,
     padding: 10,
-    backgroundColor: '#0af23c'
+    backgroundColor: '#9d9e9d'
   },
-  modalNoButton: {
+  modalDiscardButton: {
     zIndex: 2,
     position: 'absolute',
     bottom: 10,
@@ -376,7 +357,7 @@ const styles = StyleSheet.create({
     top: 10,
     left: 10,
     padding: 10,
-    borderRadius: 5,
+    borderRadius: 50,
     backgroundColor: 'white'
   }
 })
