@@ -15,7 +15,7 @@ import RadioGroup from 'react-native-radio-buttons-group'
 import PropTypes from 'prop-types'
 import Icon from 'react-native-vector-icons/FontAwesome6'
 
-const ConfirmationPage = ({ route, setUserLocation, userID }) => {
+const ConfirmationPage = ({ route, userID }) => {
   const navigation = useNavigation()
   const { imageSource } = route.params
   const [acres, onChangeAcres] = useState('')
@@ -25,8 +25,8 @@ const ConfirmationPage = ({ route, setUserLocation, userID }) => {
   const [iModalVisible, setiModalVisible] = useState(false)
 
   const confirmationButton = () => {
-    makeObservation(setUserLocation, userID, cover, acres, description, ownership, imageSource)
-    navigation.navigate('Map')
+    const observation = makeObservation(userID, cover, acres, description, ownership, imageSource)
+    navigation.navigate('Map', observation)
   }
 
   const closeModal = () => {
@@ -249,7 +249,6 @@ const ConfirmationPage = ({ route, setUserLocation, userID }) => {
 
 ConfirmationPage.propTypes = {
   route: PropTypes.object.isRequired,
-  setUserLocation: PropTypes.func.isRequired,
   userID: PropTypes.string.isRequired
 }
 

@@ -20,29 +20,8 @@ export const getLocationPins = async () => {
 }
 
 // send one lat long coordinate to the API
-export const sendLocationPin = async (position, userID, cover, acres, description, ownership, imageSource) => {
-  const oid = uuidv4()
-  const observation = {
-    UserID: userID,
-    ObservationID: oid,
-    coords: {
-      latitude: position.coords.latitude,
-      longitude: position.coords.longitude,
-      accuracy: position.coords.accuracy
-    },
-    Notes: description,
-    VerificationRating: 1,
-    timestamp: position.timestamp
-  }
-
-  if (imageSource) {
-    try {
-      const s3Location = s3Upload(imageSource)
-      observation.image = s3Location._j
-    } catch (error) {
-      console.error('Failed to upload to S3:', error)
-    }
-  }
+export const sendLocationPin = async (observation) => {
+  console.log(observation)
   try {
     const response = await axios.post(`${config.apiTestAddress}${config.apiPath}`, observation)
     console.log('Response from backend: ', response.data)
@@ -52,7 +31,7 @@ export const sendLocationPin = async (position, userID, cover, acres, descriptio
 
     Alert.alert('Failed', 'Your Observation Failed to Upload', [{
       text: 'Retry',
-      onPress: () => sendLocationPin(position, userID, cover, acres, description, ownership, imageSource)
+      onPress: () => sendLocationPin(observation)
     },
     {
       text: 'Ok'

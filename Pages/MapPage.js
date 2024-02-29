@@ -5,15 +5,17 @@ import { getLocationPins } from '../utils/APICalls'
 import CustomMarker from '../components/CustomMarker'
 import PropTypes from 'prop-types'
 import { convertToCSV, saveCSVToFile } from '../utils/CsvSaving'
-import Icon from 'react-native-vector-icons/FontAwesome5' // Import the icon of your choice
 
-const MapPage = ({ userLocation }) => {
+const MapPage = ({ observation }) => {
   const [apiCoordinates, setApiCoordinates] = useState([])
   const [mapKey, setMapKey] = useState(0)
+  console.log(observation)
 
   useEffect(() => {
+    // Fetch pins and refresh the map on component mount
     fetchPins()
-  }, [mapKey])
+    refreshMap()
+  }, [])
 
   const fetchPins = async () => {
     try {
@@ -31,7 +33,8 @@ const MapPage = ({ userLocation }) => {
     }
   }
 
-  const refreshMap = async () => {
+  const refreshMap = () => {
+    // Incrementing the mapKey to force a re-render of the MapView
     setMapKey(prevKey => prevKey + 1)
   }
 
@@ -52,29 +55,25 @@ const MapPage = ({ userLocation }) => {
           longitudeDelta: 0.0421
         }}
       >
-
         {apiCoordinates.map((coordinate, index) => (
           <CustomMarker key={index} data={coordinate} />
         ))}
 
-        {userLocation && (
-          <CustomMarker data={userLocation} />
+        {observation && (
+          <CustomMarker data={observation} />
         )}
       </MapView>
       <View style={styles.buttonContainer}>
         {/* <TouchableOpacity style={styles.button} onPress={handleDownload}>
           <Text style={styles.buttonText}>Download</Text>
         </TouchableOpacity> */}
-        <TouchableOpacity style={styles.refreshButton} onPress={refreshMap}>
-          <Icon name="sync" size={30} color="black" />
-        </TouchableOpacity>
       </View>
     </View>
   )
 }
 
 MapPage.propTypes = {
-  userLocation: PropTypes.object
+  observation: PropTypes.object
 }
 
 const styles = StyleSheet.create({
