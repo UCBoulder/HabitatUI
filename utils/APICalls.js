@@ -1,10 +1,6 @@
 import axios from 'axios'
-import { v4 as uuidv4 } from 'uuid'
-import RNFS from 'react-native-fs'
 import { Alert } from 'react-native'
 import config from '../config'
-import { processImageFile, s3Upload } from './S3Upload'
-import { Buffer } from 'buffer'
 
 // recieve one or many lat long coordinates from the API
 export const getLocationPins = async () => {
