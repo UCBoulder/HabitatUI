@@ -20,7 +20,7 @@ export const getLocationPins = async () => {
 }
 
 // send one lat long coordinate to the API
-export const sendLocationPin = async (position, userID, cover, acres, description, ownership, imageSource) => {
+export const sendLocationPin = async (position, userID, cover, acres, description, imageSource) => {
   const oid = uuidv4()
   const observation = {
     UserID: userID,
@@ -52,7 +52,7 @@ export const sendLocationPin = async (position, userID, cover, acres, descriptio
 
     Alert.alert('Failed', 'Your Observation Failed to Upload', [{
       text: 'Retry',
-      onPress: () => sendLocationPin(position, userID, cover, acres, description, ownership, imageSource)
+      onPress: () => sendLocationPin(position, userID, cover, acres, description, imageSource)
     },
     {
       text: 'Ok'
