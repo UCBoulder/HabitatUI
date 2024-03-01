@@ -24,7 +24,7 @@ const ConfirmationPage = ({ route, userID }) => {
   const [iModalVisible, setiModalVisible] = useState(false)
 
   const confirmationButton = async () => {
-    const observation = await makeObservation(userID, cover, acres, description, ownership, imageSource)
+    const observation = await makeObservation(userID, cover, acres, description, imageSource)
     navigation.navigate('Map', {
       refreshMap: true,
       observation
