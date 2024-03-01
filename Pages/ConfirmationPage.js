@@ -20,7 +20,6 @@ const ConfirmationPage = ({ route, userID }) => {
   const { imageSource } = route.params
   const [acres, onChangeAcres] = useState('')
   const [description, onChangeDescription] = useState('')
-  const [ownership, onChangeOwnership] = useState('')
   const [cover, onChangeCover] = useState()
   const [iModalVisible, setiModalVisible] = useState(false)
 
@@ -53,64 +52,29 @@ const ConfirmationPage = ({ route, userID }) => {
   const plantDensity = useMemo(
     () => [
       {
-        id: '0-20%',
-        label: '0-20%',
-        value: '0-20%'
+        id: '0-5%',
+        label: '0-5%',
+        value: '0-5%'
       },
       {
-        id: '20-40%',
-        label: '20-40%',
-        value: '20-40%'
+        id: '5-15%',
+        label: '5-15%',
+        value: '5-15%'
       },
       {
-        id: '40-60%',
-        label: '40-60%',
-        value: '40-60%'
+        id: '15-25%',
+        label: '15-25%',
+        value: '15-25%'
       },
       {
-        id: '60-80%',
-        label: '60-80%',
-        value: '60-80%'
+        id: '25-50%',
+        label: '25-50%',
+        value: '25-50%'
       },
       {
-        id: '80-100%',
-        label: '80-100%',
-        value: '80-100%'
-      }
-    ],
-    []
-  )
-  const landOwnership = useMemo(
-    () => [
-      {
-        id: 'Private',
-        label: 'Private',
-        value: 'Private'
-      },
-      {
-        id: 'Bureau of Land Management (BLM)',
-        label: 'Bureau of Land Management (BLM)',
-        value: 'Bureau of Land Management (BLM)'
-      },
-      {
-        id: 'US Forest Service (USFS)',
-        label: 'US Forest Service (USFS)',
-        value: 'US Forest Service (USFS)'
-      },
-      {
-        id: 'Colorado State',
-        label: 'Colorado State',
-        value: 'Colorado State'
-      },
-      {
-        id: 'National Park Service (NPS)',
-        label: 'National Park Service (NPS)',
-        value: 'National Park Service (NPS)'
-      },
-      {
-        id: 'Unknown',
-        label: 'Unknown',
-        value: 'Unknown'
+        id: 'more than 50%',
+        label: 'more than 50%',
+        value: 'more than 50%'
       }
     ],
     []
@@ -119,25 +83,25 @@ const ConfirmationPage = ({ route, userID }) => {
   const sizeSelect = useMemo(
     () => [
       {
-        id: 'smaller than a VW Bug',
-        label: 'smaller than a VW Bug',
-        value: 'smaller than a VW Bug'
+        id: 'smaller than a picnic table',
+        label: 'smaller than a picnic table',
+        value: 'smaller than a picnic table'
       },
       {
-        id: 'between a VW Bug and a 2 car garage',
-        label: 'between a VW Bug and a 2 car garage',
-        value: 'between a VW Bug and a 2 car garage'
+        id: 'between a picnic table and a 2 car garage',
+        label: 'between a picnic table and a 2 car garage',
+        value: 'between a picnic table and a 2 car garage'
       },
       {
-        id: 'between a 2 car garage and a football field',
-        label: 'between a 2 car garage and a football field',
-        value: 'between a 2 car garage and a football field'
+        id: 'between a 2 car garage and a basketball court',
+        label: 'between a 2 car garage and a basketball court',
+        value: 'between a 2 car garage and a basketball court'
       },
-      // {
-      //   id: 'the size of a football field',
-      //   label: 'the size of a football field',
-      //   value: 'the size of a football field'
-      // },
+      {
+        id: 'between a basketball court and a football field',
+        label: 'between a basketball court and a football field',
+        value: 'between a basketball court and a football field'
+      },
       {
         id: 'larger than a football field',
         label: 'larger than a football field',
@@ -158,22 +122,13 @@ const ConfirmationPage = ({ route, userID }) => {
       <TouchableOpacity style={styles.backButton} onPress={() => handleBack()}>
         <Icon name="x" size={25} color="black" />
       </TouchableOpacity>
+
+      {/* questions portion */}
+      <Text style={styles.label}>All questions are optional.{'\n'}</Text>
       <ScrollView>
-        {/* land owned by question */}
-        <Text style={styles.label}>Land Owned By (optional):</Text>
-        <RadioGroup
-          radioButtons={landOwnership}
-          onPress={onChangeOwnership}
-          selectedId={ownership}
-          layout="row"
-          flexDirection="row"
-          containerStyle={styles.radioGroupContainer} // Add this line for additional styling
-          buttonContainerStyle={styles.radioButtonContainer}
-          labelStyle={styles.radioGroup}
-        />
 
         {/* estimated size of infestation question */}
-        <Text style={styles.label}>Select Estimated Size of Infestation (optional):</Text>
+        <Text style={styles.label}>Select Estimated Size of Infestation:</Text>
         <RadioGroup
           radioButtons={sizeSelect}
           onPress={onChangeAcres}
@@ -187,8 +142,16 @@ const ConfirmationPage = ({ route, userID }) => {
 
         {/* confirmation questions */}
         <Text style={styles.label}>
-          Select Estimated Plant Cover (optional):
+          Select Estimated Plant Cover:
+        {/* i button with information pop up */}
+        <TouchableOpacity
+          style={styles.IButton}
+          onPress={() => handleI()}
+        ><Icon name="circle-info" size={15} color="black" />
+        </TouchableOpacity>
         </Text>
+
+        {/* buttons for questions */}
         <RadioGroup
           radioButtons={plantDensity}
           onPress={onChangeCover}
@@ -200,14 +163,7 @@ const ConfirmationPage = ({ route, userID }) => {
           labelStyle={styles.radioGroup}
         />
 
-        {/* i button with information pop up */}
-        <TouchableOpacity
-          style={styles.IButton}
-          onPress={() => handleI()}
-        >
-          <Icon name="circle-info" size={30} color="black" />
-        </TouchableOpacity>
-
+        {/* modal for i button  */}
         <Modal
           animationType="slide"
           visible={iModalVisible}
@@ -218,15 +174,14 @@ const ConfirmationPage = ({ route, userID }) => {
               <TouchableOpacity style={styles.modalXButton} onPress={closeModal}>
                 <Icon name="x" size={25} color="black" />
               </TouchableOpacity>
-              <Text>  </Text>
-              <Text style={styles.modalText}> Estimate the amount of the ground in an infestation that is covered with cheat grass. For example,
+              <Text style={styles.modalText}>{'\n'}Estimate the amount of the ground in an infestation that is covered with cheat grass. For example,
                 if about half the plants in a square foot are cheat grass, then it is 50% cover.</Text>
             </View>
           </View>
         </Modal>
 
         {/* location description text input */}
-        <Text style={styles.label}>Location Description (optional):</Text>
+        <Text style={styles.label}>Location Description:</Text>
         <TextInput
           style={styles.input}
           onChangeText={onChangeDescription}
@@ -368,7 +323,7 @@ const styles = StyleSheet.create({
     top: 10,
     left: 10,
     padding: 10,
-    borderRadius: 50,
+    borderRadius: 15,
     backgroundColor: 'white'
   }
 })
