@@ -26,7 +26,5 @@ export const makeJson = async (position, userID, cover, acres, description, owne
     }
   }
 
-  console.log(observation)
-
   return observation
 }
