@@ -21,7 +21,6 @@ export const getLocationPins = async () => {
 
 // send one lat long coordinate to the API
 export const sendLocationPin = async (observation) => {
-  console.log(observation)
   try {
     const response = await axios.post(`${config.apiTestAddress}${config.apiPath}`, observation)
     console.log('Response from backend: ', response.data)

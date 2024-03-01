@@ -11,7 +11,7 @@ import FetchS3Image from '../utils/FetchS3Image'
 const CustomMarker = ({ data }) => {
   const [modalVisible, setModalVisible] = useState(false)
   const parsedData = simplifyJson(data)
-  console.log(parsedData)
+  console.log('custom marker', parsedData)
 
   const calloutPress = () => {
     setModalVisible(true)

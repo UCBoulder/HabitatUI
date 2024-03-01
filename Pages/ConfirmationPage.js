@@ -26,7 +26,10 @@ const ConfirmationPage = ({ route, userID }) => {
 
   const confirmationButton = () => {
     const observation = makeObservation(userID, cover, acres, description, ownership, imageSource)
-    navigation.navigate('Map', observation)
+    navigation.navigate('Map', {
+      refreshMap: true,
+      observation
+    })
   }
 
   const closeModal = () => {
