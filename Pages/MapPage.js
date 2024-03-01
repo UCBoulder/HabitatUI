@@ -5,15 +5,23 @@ import { getLocationPins } from '../utils/APICalls'
 import CustomMarker from '../components/CustomMarker'
 import PropTypes from 'prop-types'
 import { convertToCSV, saveCSVToFile } from '../utils/CsvSaving'
-import Icon from 'react-native-vector-icons/FontAwesome5' // Import the icon of your choice
+import { useRoute } from '@react-navigation/native'
 
-const MapPage = ({ userLocation }) => {
+const MapPage = ({ observation }) => {
   const [apiCoordinates, setApiCoordinates] = useState([])
   const [mapKey, setMapKey] = useState(0)
+  const route = useRoute() // Add this line to get the route object
 
   useEffect(() => {
     fetchPins()
-  }, [mapKey])
+
+    // Use route.params instead of navigation.getParam
+    const refreshCallback = route.params?.refreshMap
+
+    if (refreshCallback) {
+      refreshMap()
+    }
+  }, [route])
 
   const fetchPins = async () => {
     try {
@@ -31,7 +39,8 @@ const MapPage = ({ userLocation }) => {
     }
   }
 
-  const refreshMap = async () => {
+  const refreshMap = () => {
+    // Incrementing the mapKey to force a re-render of the MapView
     setMapKey(prevKey => prevKey + 1)
   }
 
@@ -52,21 +61,17 @@ const MapPage = ({ userLocation }) => {
           longitudeDelta: 0.0421
         }}
       >
+        {observation && (
+          <CustomMarker data={observation} />
+        )}
 
         {apiCoordinates.map((coordinate, index) => (
           <CustomMarker key={index} data={coordinate} />
         ))}
-
-        {userLocation && (
-          <CustomMarker data={userLocation} />
-        )}
       </MapView>
       <View style={styles.buttonContainer}>
-        {/* <TouchableOpacity style={styles.button} onPress={handleDownload}>
+        <TouchableOpacity style={styles.button} onPress={handleDownload}>
           <Text style={styles.buttonText}>Download</Text>
-        </TouchableOpacity> */}
-        <TouchableOpacity style={styles.refreshButton} onPress={refreshMap}>
-          <Icon name="sync" size={30} color="black" />
         </TouchableOpacity>
       </View>
     </View>
@@ -74,7 +79,7 @@ const MapPage = ({ userLocation }) => {
 }
 
 MapPage.propTypes = {
-  userLocation: PropTypes.object
+  observation: PropTypes.object
 }
 
 const styles = StyleSheet.create({

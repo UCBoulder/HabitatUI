@@ -11,7 +11,6 @@ import { loadUserID } from './utils/UserID'
 const Stack = createNativeStackNavigator()
 
 export default function App () {
-  const [userLocation, setUserLocation] = useState(null)
   const [userID, setUserID] = useState(null)
 
   useEffect(() => {
@@ -29,7 +28,7 @@ export default function App () {
       <Stack.Navigator>
 
         <Stack.Screen name="Map" options={{ headerShown: false }}>
-          {(props) => <MapScreen {...props} userLocation={userLocation} />}
+          {(props) => <MapScreen {...props} />}
         </Stack.Screen>
 
         <Stack.Screen name="Info" component={InfoPage} />
@@ -37,7 +36,7 @@ export default function App () {
         <Stack.Screen name="Camera" component={CameraPage} options={{ headerShown: false }} />
 
         <Stack.Screen name="Confirmation" options={{ headerShown: false }}>
-          {(props) => <ConfirmationPage {...props} setUserLocation={setUserLocation} userID={userID} />}
+          {(props) => <ConfirmationPage {...props} userID={userID} />}
         </Stack.Screen>
 
       </Stack.Navigator>

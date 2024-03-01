@@ -1,10 +1,6 @@
 import axios from 'axios'
-import { v4 as uuidv4 } from 'uuid'
-import RNFS from 'react-native-fs'
 import { Alert } from 'react-native'
 import config from '../config'
-import { processImageFile, s3Upload } from './S3Upload'
-import { Buffer } from 'buffer'
 
 // recieve one or many lat long coordinates from the API
 export const getLocationPins = async () => {
@@ -20,29 +16,7 @@ export const getLocationPins = async () => {
 }
 
 // send one lat long coordinate to the API
-export const sendLocationPin = async (position, userID, cover, acres, description, imageSource) => {
-  const oid = uuidv4()
-  const observation = {
-    UserID: userID,
-    ObservationID: oid,
-    coords: {
-      latitude: position.coords.latitude,
-      longitude: position.coords.longitude,
-      accuracy: position.coords.accuracy
-    },
-    Notes: description,
-    VerificationRating: 1,
-    timestamp: position.timestamp
-  }
-
-  if (imageSource) {
-    try {
-      const s3Location = s3Upload(imageSource)
-      observation.image = s3Location._j
-    } catch (error) {
-      console.error('Failed to upload to S3:', error)
-    }
-  }
+export const sendLocationPin = async (observation) => {
   try {
     const response = await axios.post(`${config.apiTestAddress}${config.apiPath}`, observation)
     console.log('Response from backend: ', response.data)
@@ -52,7 +26,7 @@ export const sendLocationPin = async (position, userID, cover, acres, descriptio
 
     Alert.alert('Failed', 'Your Observation Failed to Upload', [{
       text: 'Retry',
-      onPress: () => sendLocationPin(position, userID, cover, acres, description, imageSource)
+      onPress: () => sendLocationPin(observation)
     },
     {
       text: 'Ok'
