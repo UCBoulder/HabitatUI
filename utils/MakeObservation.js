@@ -4,7 +4,6 @@ import { makeJson } from './MakeJson'
 
 // helper to combine button functionality and sending to the API
 export const makeObservation = (userID, cover, acres, description, imageSource) => {
-  console.log('make', imageSource)
   return new Promise((resolve, reject) => {
     Geolocation.getCurrentPosition(async (position) => {
       try {

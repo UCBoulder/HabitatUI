@@ -3,7 +3,6 @@ import { s3Upload } from './S3Upload'
 import RNFS from 'react-native-fs'
 
 export const makeJson = async (position, userID, cover, acres, description, imageSource) => {
-  console.log(imageSource)
   const ObservationID = uuidv4()
 
   const observation = {

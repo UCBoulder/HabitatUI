@@ -22,7 +22,6 @@ const ConfirmationPage = ({ route, userID }) => {
   const [description, onChangeDescription] = useState('')
   const [cover, onChangeCover] = useState()
   const [iModalVisible, setiModalVisible] = useState(false)
-  console.log('con', imageSource)
 
   const confirmationButton = async () => {
     const observation = await makeObservation(userID, cover, acres, description, imageSource)
