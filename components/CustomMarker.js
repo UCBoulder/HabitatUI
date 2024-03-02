@@ -7,10 +7,13 @@ import PropTypes from 'prop-types'
 import { simplifyJson } from '../utils/simplifyJson'
 import Icon from 'react-native-vector-icons/FontAwesome6'
 import FetchS3Image from '../utils/FetchS3Image'
+import { loadUserID } from '../utils/UserID'
 
 const CustomMarker = ({ data }) => {
   const [modalVisible, setModalVisible] = useState(false)
   const parsedData = simplifyJson(data)
+  const [userID, setUserID] = useState(null)
+
   console.log('custom marker', parsedData)
 
   const calloutPress = () => {
@@ -21,18 +24,21 @@ const CustomMarker = ({ data }) => {
     setModalVisible(false)
   }
 
+  const observationDate = FormatDate(parsedData.timestamp)
+  loadUserID(setUserID)
+
   return (
     <Marker coordinate={{
       latitude: parseFloat(parsedData.coords.latitude),
       longitude: parseFloat(parsedData.coords.longitude)
     }}
-      pinColor={ColorCode(parsedData.VerificationRating ? parsedData.VerificationRating : '1')}>
+      pinColor={observationDate.recent ? '#031cfc' : ColorCode(parsedData.VerificationRating ? parsedData.VerificationRating : '1')}>
       <Callout tooltip onPress={calloutPress}>
 
         <View style={styles.calloutContainer}>
 
           <Text style={styles.calloutText}>
-            {`Observation made on: ${FormatDate(parsedData.timestamp)}\n`}
+            {`Observation made on: ${observationDate.formattedDate}\n`}
             {`Latitude: ${parsedData.coords.latitude}\nLongitude: ${parsedData.coords.longitude}\n`}
             {`Accuracy: ${parsedData.coords.accuracy}\n`}
             {`Notes: ${parsedData.Notes}\n`}
