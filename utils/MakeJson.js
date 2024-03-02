@@ -1,5 +1,6 @@
 import { v4 as uuidv4 } from 'uuid'
 import { s3Upload } from './S3Upload'
+import RNFS from 'react-native-fs'
 
 export const makeJson = async (position, userID, cover, acres, description, ownership, imageSource) => {
   const ObservationID = uuidv4()
@@ -18,13 +19,17 @@ export const makeJson = async (position, userID, cover, acres, description, owne
   }
 
   if (imageSource) {
-    try {
-      const s3Location = s3Upload(imageSource)
-      observation.image = { S: s3Location._j }
-    } catch (error) {
-      console.error('Failed to upload to S3:', error)
-    }
+    const imageBase64 = await RNFS.readFile(imageSource, 'base64')
+    const formData = new FormData()
+    formData.append('image', {
+      uri: imageSource,
+      type: 'image/jpeg',
+      name: 'image.jpg',
+      encoded64: imageBase64
+    })
   }
+
+  console.log(observation)
 
   return observation
 }
