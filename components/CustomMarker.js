@@ -14,8 +14,6 @@ const CustomMarker = ({ data }) => {
   const parsedData = simplifyJson(data)
   const [userID, setUserID] = useState(null)
 
-  console.log('custom marker', parsedData)
-
   const calloutPress = () => {
     setModalVisible(true)
   }
@@ -26,13 +24,14 @@ const CustomMarker = ({ data }) => {
 
   const observationDate = FormatDate(parsedData.timestamp)
   loadUserID(setUserID)
+  const checkUserID = parsedData.userID ? userID : false
 
   return (
     <Marker coordinate={{
       latitude: parseFloat(parsedData.coords.latitude),
       longitude: parseFloat(parsedData.coords.longitude)
     }}
-      pinColor={observationDate.recent ? '#031cfc' : ColorCode(parsedData.VerificationRating ? parsedData.VerificationRating : '1')}>
+      pinColor={observationDate.recent && checkUserID ? '#031cfc' : ColorCode(parsedData.VerificationRating ? parsedData.VerificationRating : '1')}>
       <Callout tooltip onPress={calloutPress}>
 
         <View style={styles.calloutContainer}>
@@ -41,7 +40,7 @@ const CustomMarker = ({ data }) => {
             {`Observation made on: ${observationDate.formattedDate}\n`}
             {`Latitude: ${parsedData.coords.latitude}\nLongitude: ${parsedData.coords.longitude}\n`}
             {`Accuracy: ${parsedData.coords.accuracy}\n`}
-            {`Notes: ${parsedData.Notes}\n`}
+            {`Notes: ${parsedData.Notes ?? ''}\n`}
 
             {/* {`Notes: ${parsedData.Notes?.locationDescription ?? ''}\n`} */}
           </Text>
