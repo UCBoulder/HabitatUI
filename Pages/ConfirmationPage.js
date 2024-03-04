@@ -141,15 +141,16 @@ const ConfirmationPage = ({ route, userID }) => {
         />
 
         {/* confirmation questions */}
-        <Text style={styles.label}>
-          Select Estimated Plant Cover:
-        {/* i button with information pop up */}
-        <TouchableOpacity
-          style={styles.IButton}
-          onPress={() => handleI()}
-        ><Icon name="circle-info" size={15} color="black" />
-        </TouchableOpacity>
-        </Text>
+        <View style={styles.labelContainer}>
+          <Text style={styles.label}>Select Estimated Plant Cover:</Text>
+          {/* i button with information pop up */}
+          <TouchableOpacity
+            style={styles.iButton}
+            onPress={() => handleI()}
+          >
+            <Icon name="circle-info" size={15} color="black" />
+          </TouchableOpacity>
+        </View>
 
         {/* buttons for questions */}
         <RadioGroup
@@ -267,9 +268,10 @@ const styles = StyleSheet.create({
   radioGroup: {
     color: 'black'
   },
-  IButton: {
-    padding: 10,
-    borderRadius: 5
+  labelContainer: {
+    flexDirection: 'row',
+    alignItems: 'flex-start', // Set to 'flex-start' to align items at the top
+    marginLeft: 10
   },
   modalContainer: {
     flex: 1,

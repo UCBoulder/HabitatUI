@@ -7,7 +7,7 @@ import PropTypes from 'prop-types'
 import { convertToCSV, saveCSVToFile } from '../utils/CsvSaving'
 import { useRoute } from '@react-navigation/native'
 
-const MapPage = ({ observation }) => {
+const MapPage = () => {
   const [apiCoordinates, setApiCoordinates] = useState([])
   const [mapKey, setMapKey] = useState(0)
   const route = useRoute() // Add this line to get the route object
@@ -61,9 +61,6 @@ const MapPage = ({ observation }) => {
           longitudeDelta: 0.0421
         }}
       >
-        {observation && (
-          <CustomMarker data={observation} />
-        )}
 
         {apiCoordinates.map((coordinate, index) => (
           <CustomMarker key={index} data={coordinate} />

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { Marker, Callout } from 'react-native-maps'
 import { ColorCode } from './ColorCode'
 import { FormatDate } from '../utils/FormatDate'
@@ -7,11 +7,13 @@ import PropTypes from 'prop-types'
 import { simplifyJson } from '../utils/simplifyJson'
 import Icon from 'react-native-vector-icons/FontAwesome6'
 import FetchS3Image from '../utils/FetchS3Image'
+import { loadUserID } from '../utils/UserID'
 
 const CustomMarker = ({ data }) => {
   const [modalVisible, setModalVisible] = useState(false)
   const parsedData = simplifyJson(data)
-  console.log('custom marker', parsedData)
+  const [userID, setUserID] = useState(null)
+  const markerRef = useRef(null)
 
   const calloutPress = () => {
     setModalVisible(true)
@@ -21,89 +23,67 @@ const CustomMarker = ({ data }) => {
     setModalVisible(false)
   }
 
+  const observationDate = FormatDate(parsedData.timestamp)
+  loadUserID(setUserID)
+  const checkUserID = userID === parsedData.UserID
+  const renderCallout = observationDate.recent && checkUserID
+
+  useEffect(() => {
+    if (renderCallout && markerRef.current && markerRef.current.showCallout) {
+      markerRef.current.showCallout()
+    }
+  }, [renderCallout])
+
   return (
-    <Marker coordinate={{
-      latitude: parseFloat(parsedData.coords.latitude),
-      longitude: parseFloat(parsedData.coords.longitude)
-    }}
-      pinColor={ColorCode(parsedData.VerificationRating ? parsedData.VerificationRating : '1')}>
-      <Callout tooltip onPress={calloutPress}>
+      <Marker coordinate={{
+        latitude: parseFloat(parsedData.coords.latitude),
+        longitude: parseFloat(parsedData.coords.longitude)
+      }}
+        ref={markerRef}
+        pinColor={ColorCode(parsedData.VerificationRating ? parsedData.VerificationRating : '1')}>
 
-        <View style={styles.calloutContainer}>
+        <Callout tooltip onPress={calloutPress}>
+          <View style={styles.calloutContainer}>
 
-          <Text style={styles.calloutText}>
-            {`Observation made on: ${FormatDate(parsedData.timestamp)}\n`}
-            {`Latitude: ${parsedData.coords.latitude}\nLongitude: ${parsedData.coords.longitude}\n`}
-            {`Accuracy: ${parsedData.coords.accuracy}\n`}
-            {`Notes: ${parsedData.Notes}\n`}
+            <Text style={styles.calloutText}>
+              {`Observation made on: ${observationDate.formattedDate}\n`}
+              {`Latitude: ${parsedData.coords.latitude}\nLongitude: ${parsedData.coords.longitude}\n`}
+              {`Accuracy: ${parsedData.coords.accuracy}\n`}
+              {`Notes: ${parsedData.Notes ? '' : parsedData.Notes}\n`}
+            </Text>
 
-            {/* {`Notes: ${parsedData.Notes?.locationDescription ?? ''}\n`} */}
-          </Text>
+            <Text style={styles.calloutTextCentered}>
+              {'Tap to view image'}
+            </Text>
 
-          <Text style={styles.calloutTextCentered}>
-            {'Tap to view image'}
-          </Text>
-
-        </View>
-
-        {/* Image popup */}
-        <Modal
-          animationType="slide"
-          visible={modalVisible}
-        >
-          <View style={styles.modalContainer}>
-            {/* <FetchS3Image imageURL={parsedData.image} /> */}
-
-            <TouchableOpacity style={styles.modalExitButton} onPress={closeModal}>
-              <View style={styles.iconContainer}>
-                <Icon name="x" size={25} color="black" />
-              </View>
-            </TouchableOpacity>
           </View>
 
-        </Modal>
+          {/* Image popup */}
+          <Modal
+            animationType="slide"
+            visible={modalVisible}
+          >
+            <View style={styles.modalContainer}>
+              <FetchS3Image imageURL={parsedData.image} />
 
-      </Callout>
-    </Marker>
+              <TouchableOpacity style={styles.modalExitButton} onPress={closeModal}>
+                <View style={styles.iconContainer}>
+                  <Icon name="x" size={25} color="black" />
+                </View>
+              </TouchableOpacity>
+            </View>
+
+          </Modal>
+
+        </Callout>
+      </Marker>
+
   )
 }
 
-// Define PropTypes for the data prop
-// CustomMarker.propTypes = {
-//   data: PropTypes.shape({
-//     coords: PropTypes.shape({
-//       latitude: PropTypes.number,
-//       longitude: PropTypes.number,
-//       accuracy: PropTypes.number
-//     }),
-//     VerificationRating: PropTypes.object,
-//     timestamp: PropTypes.oneOfType([
-//       PropTypes.object,
-//       PropTypes.number
-//     ]),
-//     Notes: PropTypes.string
-//   })
-// }
-// CustomMarker.propTypes = {
-//   data: PropTypes.shape({
-//     coords: PropTypes.shape({
-//       latitude: PropTypes.number,
-//       longitude: PropTypes.number,
-//       accuracy: PropTypes.number
-//     }),
-//     VerificationRating: PropTypes.object,
-//     timestamp: PropTypes.oneOfType([
-//       PropTypes.object,
-//       PropTypes.number
-//     ]),
-//     Notes: PropTypes.shape({
-//       estimatedCover: PropTypes.string,
-//       estimatedArea: PropTypes.string,
-//       locationDescription: PropTypes.string,
-//       ownership: PropTypes.string
-//     })
-//   })
-// }
+CustomMarker.propTypes = {
+  data: PropTypes.object.isRequired
+}
 
 const styles = StyleSheet.create({
   calloutContainer: {
