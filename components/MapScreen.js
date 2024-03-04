@@ -11,11 +11,11 @@ export function MapScreen (props) {
     <View style={styles.MapScreen}>
       <MapPage userLocation={props.userLocation} />
       <MakeObservationButton />
-      <InfoPageButton
+      {/* <InfoPageButton
         navigation={props.navigation}
         destinationScreen="Info"
         title="Info"
-      />
+      /> */}
     </View>
   )
 }
