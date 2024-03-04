@@ -14,6 +14,17 @@ const Stack = createNativeStackNavigator()
 const Drawer = createDrawerNavigator()
 
 export default function App () {
+  return (
+    <NavigationContainer>
+      <Drawer.Navigator initialRouteName="Home">
+        <Drawer.Screen name="Home" component={StackScreens} />
+        <Drawer.Screen name="Info" component={InfoPage} />
+      </Drawer.Navigator>
+    </NavigationContainer>
+  )
+}
+
+function StackScreens () {
   const [userID, setUserID] = useState(null)
 
   useEffect(() => {
@@ -27,27 +38,15 @@ export default function App () {
   }, [])
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-
-        <Stack.Screen name="Map" options={{ headerShown: false }}>
-          {(props) => <MapScreen {...props} />}
-        </Stack.Screen>
-
-        <Stack.Screen name="Info" component={InfoPage} />
-
-        <Stack.Screen name="Camera" component={CameraPage} options={{ headerShown: false }} />
-
-        <Stack.Screen name="Confirmation" options={{ headerShown: false }}>
-          {(props) => <ConfirmationPage {...props} userID={userID} />}
-        </Stack.Screen>
-
-      </Stack.Navigator>
-
-    <Drawer.Navigator initialRouteName="Home">
-      <Drawer.Screen name="Info" component={InfoPage} />
-      {/* <Drawer.Screen name="Notifications" component={NotificationsScreen} /> */}
-    </Drawer.Navigator>
-  </NavigationContainer>
+    <Stack.Navigator>
+      <Stack.Screen name="Map" options={{ headerShown: false }}>
+        {(props) => <MapScreen {...props} />}
+      </Stack.Screen>
+      <Stack.Screen name="Info" component={InfoPage} />
+      <Stack.Screen name="Camera" component={CameraPage} options={{ headerShown: false }} />
+      <Stack.Screen name="Confirmation" options={{ headerShown: false }}>
+        {(props) => <ConfirmationPage {...props} userID={userID} />}
+      </Stack.Screen>
+    </Stack.Navigator>
   )
 }
