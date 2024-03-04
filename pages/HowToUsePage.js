@@ -1,10 +1,16 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react'
 import { View, Text, StyleSheet, ScrollView } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
+import { BurgerMenuButton } from '../components/BurgerMenuButton'
 
 const HowToUsePage = () => {
+  const navigation = useNavigation()
+
   return (
         <ScrollView contentContainerStyle={styles.container}>
+            <BurgerMenuButton navigation={navigation} />
+
             <Text style={styles.title}>How to Log Cheatgrass</Text>
 
             <View style={styles.stepContainer}>
@@ -38,14 +44,14 @@ const HowToUsePage = () => {
             <View style={styles.stepContainer}>
                 <Text style={styles.stepNumber}>5.</Text>
                 <Text style={styles.stepText}>
-                You will be redirected to back the map with a pin indicating the location you just logged the cheatgrass at.
+                    You will be redirected to back the map with a pin indicating the location you just logged the cheatgrass at.
                 </Text>
             </View>
 
             <View style={styles.stepContainer}>
                 <Text style={styles.stepNumber}>6.</Text>
                 <Text style={styles.stepText}>
-                A success message will be displayed, confirming that your observation was successfully uploaded to our database.
+                    A success message will be displayed, confirming that your observation was successfully uploaded to our database.
                 </Text>
             </View>
 

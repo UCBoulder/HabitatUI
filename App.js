@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Image, View, Text } from 'react-native'
+import { Image, View } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer'
@@ -20,7 +20,7 @@ const CustomDrawerContent = (props) => {
       <View>
         <Image
           source={require('./images/BurgerMenuImage.png')}
-          style={{ width: 300, height: 250 }}
+          style={{ width: 300, height: 250, marginBottom: 15 }}
         />
       </View>
       <DrawerItemList {...props} />
@@ -35,9 +35,13 @@ export default function App () {
       <Drawer.Navigator
         initialRouteName="Home"
         drawerContent={(props) => <CustomDrawerContent {...props} />}
-        screenOptions={{ tabBarStyle: { width: '100%' } }}
+        screenOptions={{
+          drawerActiveTintColor: 'black',
+          drawerInactiveTintColor: 'black',
+          headerShown: false
+        }}
       >
-        <Drawer.Screen name="Home" component={StackScreens} />
+        <Drawer.Screen name="Map" component={StackScreens} />
         <Drawer.Screen name="Info" component={InfoPage} />
         <Drawer.Screen name="How to Use" component={HowToUsePage} />
       </Drawer.Navigator>
@@ -59,12 +63,15 @@ function StackScreens () {
   }, [])
 
   return (
-    <Stack.Navigator>
-      <Stack.Screen name="Map" options={{ headerShown: false }}>
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false
+      }}>
+      <Stack.Screen name="MapScreen">
         {(props) => <MapScreen {...props} />}
       </Stack.Screen>
-      <Stack.Screen name="Camera" component={CameraPage} options={{ headerShown: false }} />
-      <Stack.Screen name="Confirmation" options={{ headerShown: false }}>
+      <Stack.Screen name="Camera" component={CameraPage} />
+      <Stack.Screen name="Confirmation" >
         {(props) => <ConfirmationPage {...props} userID={userID} />}
       </Stack.Screen>
     </Stack.Navigator>

@@ -1,7 +1,7 @@
 import React from 'react'
 import MapPage from '../pages/MapPage'
-import { InfoPageButton } from './InfoPageButton'
 import MakeObservationButton from './MakeObservationButton'
+import { BurgerMenuButton } from './BurgerMenuButton'
 import { View, StyleSheet } from 'react-native'
 import PropTypes from 'prop-types'
 
@@ -10,12 +10,8 @@ export function MapScreen (props) {
   return (
     <View style={styles.MapScreen}>
       <MapPage userLocation={props.userLocation} />
+      <BurgerMenuButton navigation={props.navigation} />
       <MakeObservationButton />
-      {/* <InfoPageButton
-        navigation={props.navigation}
-        destinationScreen="Info"
-        title="Info"
-      /> */}
     </View>
   )
 }

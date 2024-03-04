@@ -25,7 +25,7 @@ const ConfirmationPage = ({ route, userID }) => {
 
   const confirmationButton = async () => {
     const observation = await makeObservation(userID, cover, acres, description, imageSource)
-    navigation.navigate('Map', {
+    navigation.navigate('MapScreen', {
       refreshMap: true,
       observation
     })
@@ -45,7 +45,7 @@ const ConfirmationPage = ({ route, userID }) => {
     },
     {
       text: 'Discard',
-      onPress: () => navigation.navigate('Map')
+      onPress: () => navigation.navigate('MapScreen')
     }])
   }
 
