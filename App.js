@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler'
 import React, { useEffect, useState } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
@@ -7,8 +8,10 @@ import CameraPage from './pages/CameraPage'
 import ConfirmationPage from './pages/ConfirmationPage'
 import { requestLocationPermission, requestCameraPermission } from './utils/Permissions'
 import { loadUserID } from './utils/UserID'
+import { createDrawerNavigator } from '@react-navigation/drawer'
 
 const Stack = createNativeStackNavigator()
+const Drawer = createDrawerNavigator()
 
 export default function App () {
   const [userID, setUserID] = useState(null)
@@ -40,6 +43,11 @@ export default function App () {
         </Stack.Screen>
 
       </Stack.Navigator>
-    </NavigationContainer>
+
+    <Drawer.Navigator initialRouteName="Home">
+      <Drawer.Screen name="Info" component={InfoPage} />
+      {/* <Drawer.Screen name="Notifications" component={NotificationsScreen} /> */}
+    </Drawer.Navigator>
+  </NavigationContainer>
   )
 }
