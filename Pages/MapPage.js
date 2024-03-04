@@ -11,7 +11,6 @@ const MapPage = () => {
   const [apiCoordinates, setApiCoordinates] = useState([])
   const [mapKey, setMapKey] = useState(0)
   const route = useRoute() // Add this line to get the route object
-  const observation = route.params?.observation
 
   useEffect(() => {
     fetchPins()
@@ -62,9 +61,6 @@ const MapPage = () => {
           longitudeDelta: 0.0421
         }}
       >
-        {observation && (
-          <CustomMarker data={observation} />
-        )}
 
         {apiCoordinates.map((coordinate, index) => (
           <CustomMarker key={index} data={coordinate} />

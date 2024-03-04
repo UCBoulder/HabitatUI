@@ -13,7 +13,7 @@ export const makeJson = async (position, userID, cover, acres, description, owne
       accuracy: position.coords.accuracy.toString()
     },
     Notes: description,
-    VerificationRating: 1, // Numeric value directly, not wrapped in an object
+    VerificationRating: 1,
     timestamp: position.timestamp.toString()
   }
 
