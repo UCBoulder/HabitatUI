@@ -7,6 +7,7 @@ import CameraPage from './pages/CameraPage'
 import ConfirmationPage from './pages/ConfirmationPage'
 import { requestLocationPermission, requestCameraPermission } from './utils/Permissions'
 import { loadUserID } from './utils/UserID'
+import { checkAsyncStorage } from './utils/APICalls'
 
 const Stack = createNativeStackNavigator()
 
@@ -18,6 +19,7 @@ export default function App () {
       await requestLocationPermission()
       await requestCameraPermission()
       await loadUserID(setUserID)
+      await checkAsyncStorage()
     }
 
     startUp()
