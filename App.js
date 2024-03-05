@@ -9,7 +9,7 @@ import { MapScreen } from './components/MapScreen'
 import InfoPage from './pages/InfoPage'
 import CameraPage from './pages/CameraPage'
 import ConfirmationPage from './pages/ConfirmationPage'
-import HowToUsePage from './pages/HowToUsePage'
+import AboutPage from './pages/AboutPage'
 
 const Stack = createNativeStackNavigator()
 const Drawer = createDrawerNavigator()
@@ -43,7 +43,7 @@ export default function App () {
       >
         <Drawer.Screen name="Map" component={StackScreens} />
         <Drawer.Screen name="Info" component={InfoPage} />
-        <Drawer.Screen name="How to Use" component={HowToUsePage} />
+        <Drawer.Screen name="About" component={AboutPage} headerShown={true}/>
       </Drawer.Navigator>
     </NavigationContainer>
   )

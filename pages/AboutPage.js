@@ -1,17 +1,14 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react'
 import { View, Text, StyleSheet, ScrollView } from 'react-native'
-import { useNavigation } from '@react-navigation/native'
-import { BurgerMenuButton } from '../components/BurgerMenuButton'
 
-const HowToUsePage = () => {
-  const navigation = useNavigation()
-
+const AboutPage = () => {
   return (
         <ScrollView contentContainerStyle={styles.container}>
-            <BurgerMenuButton navigation={navigation} />
+            <Text style={styles.title}> This app was made for Gunnison community members to log local infestations of cheatgrass
+            and help the containment efforts</Text>
 
-            <Text style={styles.title}>How to Log Cheatgrass</Text>
+            {/* <Text style={styles.title}>How to Log Cheatgrass</Text>
 
             <View style={styles.stepContainer}>
                 <Text style={styles.stepNumber}>1.</Text>
@@ -55,7 +52,7 @@ const HowToUsePage = () => {
                 </Text>
             </View>
 
-            <View style={{ height: 200 }} />
+            <View style={{ height: 200 }} /> */}
 
         </ScrollView>
   )
@@ -85,6 +82,7 @@ const styles = StyleSheet.create({
     color: 'black'
   },
   title: {
+    flex: 1,
     color: 'black',
     fontSize: 24,
     fontWeight: 'bold',
@@ -92,4 +90,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default HowToUsePage
+export default AboutPage
