@@ -16,7 +16,7 @@ const Drawer = createDrawerNavigator()
 
 const CustomDrawerContent = (props) => {
   return (
-    <DrawerContentScrollView {...props}>
+    <DrawerContentScrollView {...props} contentContainerStyle={{ paddingTop: 0 }}>
       <View>
         <Image
           source={require('./images/BurgerMenuImage.png')}
