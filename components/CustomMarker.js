@@ -34,6 +34,8 @@ const CustomMarker = ({ data }) => {
     }
   }, [renderCallout])
 
+  console.log(parsedData)
+
   return (
       <Marker coordinate={{
         latitude: parseFloat(parsedData.coords.latitude),
@@ -49,7 +51,7 @@ const CustomMarker = ({ data }) => {
               {`Observation made on: ${observationDate.formattedDate}\n`}
               {`Latitude: ${parsedData.coords.latitude}\nLongitude: ${parsedData.coords.longitude}\n`}
               {`Accuracy: ${parsedData.coords.accuracy}\n`}
-              {`Notes: ${parsedData.Notes ? '' : parsedData.Notes}\n`}
+              {`Notes: ${parsedData.Notes ?? ''}\n`}
             </Text>
 
             <Text style={styles.calloutTextCentered}>
