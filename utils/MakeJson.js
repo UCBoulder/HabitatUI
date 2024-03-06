@@ -1,5 +1,4 @@
 import { v4 as uuidv4 } from 'uuid'
-import { s3Upload } from './S3Upload'
 import RNFS from 'react-native-fs'
 
 export const makeJson = async (position, userID, cover, acres, description, imageSource) => {
@@ -14,7 +13,7 @@ export const makeJson = async (position, userID, cover, acres, description, imag
       accuracy: position.coords.accuracy.toString()
     },
     Notes: description,
-    VerificationRating: 1, // Numeric value directly, not wrapped in an object
+    VerificationRating: 1,
     timestamp: position.timestamp.toString()
   }
 
@@ -29,8 +28,6 @@ export const makeJson = async (position, userID, cover, acres, description, imag
     })
     observation.image = imageBase64
   }
-
-  console.log(observation)
 
   return observation
 }
