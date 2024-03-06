@@ -1,5 +1,6 @@
 module.exports = {
   env: {
+    'react-native/react-native': true, // Specify react-native environment
     browser: true,
     es2021: true
   },
@@ -22,10 +23,14 @@ module.exports = {
   ],
   parserOptions: {
     ecmaVersion: 'latest',
-    sourceType: 'module'
+    sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true
+    }
   },
   plugins: [
-    'react'
+    'react',
+    'react-native' // Enable the react-native plugin
   ],
   rules: {
   }
