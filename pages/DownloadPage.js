@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { View, StyleSheet, TouchableOpacity, Text } from 'react-native'
+import { View, StyleSheet, TouchableOpacity, Text, ImageBackground } from 'react-native'
 import { BurgerMenuButton } from '../components/BurgerMenuButton'
 import { convertToCSV, saveCSVToFile } from '../utils/CsvSaving'
 import { getLocationPins } from '../utils/APICalls'
@@ -29,23 +29,30 @@ const DownloadPage = () => {
   }
 
   return (
-        <View style={styles.buttonContainer}>
-            <BurgerMenuButton navigation={navigation} />
-            <Text style={styles.text}>Download all pins in csv format</Text>
-            <TouchableOpacity style={styles.button} onPress={handleDownload}>
-                <Text style={styles.text}>Download</Text>
-            </TouchableOpacity>
-        </View>
+        <ImageBackground
+            source={require('../images/downloadPage.png')}
+            style={styles.backgroundImage}
+        >
+            <View style={styles.buttonContainer}>
+                <BurgerMenuButton navigation={navigation} />
+                <TouchableOpacity style={styles.button} onPress={handleDownload}>
+                    <Text style={styles.text}>Download Pin Information</Text>
+                </TouchableOpacity>
+            </View>
+        </ImageBackground>
   )
 }
 
 const styles = StyleSheet.create({
+  backgroundImage: {
+    flex: 1
+  },
   buttonContainer: {
     flex: 1,
+    flexDirection: 'row',
     justifyContent: 'center',
     position: 'center',
     alignItems: 'center'
-
   },
   button: {
     backgroundColor: 'white',
@@ -54,7 +61,8 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     marginVertical: 5,
     height: 50,
-    width: 200
+    width: 200,
+    marginRight: 10
   },
   text: {
     color: 'black',
