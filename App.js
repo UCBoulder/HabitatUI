@@ -5,12 +5,13 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer'
 import { loadUserID } from './utils/UserID'
 import { requestLocationPermission, requestCameraPermission } from './utils/Permissions'
+import { checkAsyncStorage } from './utils/APICalls'
 import { MapScreen } from './components/MapScreen'
 import InfoPage from './pages/InfoPage'
 import CameraPage from './pages/CameraPage'
 import ConfirmationPage from './pages/ConfirmationPage'
-import { checkAsyncStorage } from './utils/APICalls'
 import AboutPage from './pages/AboutPage'
+import DownloadPage from './pages/DownloadPage'
 
 const Stack = createNativeStackNavigator()
 const Drawer = createDrawerNavigator()
@@ -45,6 +46,7 @@ export default function App () {
         <Drawer.Screen name="Map" component={StackScreens} />
         <Drawer.Screen name="Info" component={InfoPage} />
         <Drawer.Screen name="About" component={AboutPage} headerShown={true}/>
+        <Drawer.Screen name="Download" component={DownloadPage} />
       </Drawer.Navigator>
     </NavigationContainer>
   )
