@@ -9,6 +9,9 @@ import { MapScreen } from './components/MapScreen'
 import InfoPage from './pages/InfoPage'
 import CameraPage from './pages/CameraPage'
 import ConfirmationPage from './pages/ConfirmationPage'
+import { requestLocationPermission, requestCameraPermission } from './utils/Permissions'
+import { loadUserID } from './utils/UserID'
+import { checkAsyncStorage } from './utils/APICalls'
 import AboutPage from './pages/AboutPage'
 
 const Stack = createNativeStackNavigator()
@@ -57,6 +60,7 @@ function StackScreens () {
       await requestLocationPermission()
       await requestCameraPermission()
       await loadUserID(setUserID)
+      await checkAsyncStorage()
     }
 
     startUp()

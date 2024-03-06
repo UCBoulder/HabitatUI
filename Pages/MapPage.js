@@ -10,12 +10,11 @@ import { useRoute } from '@react-navigation/native'
 const MapPage = () => {
   const [apiCoordinates, setApiCoordinates] = useState([])
   const [mapKey, setMapKey] = useState(0)
-  const route = useRoute() // Add this line to get the route object
+  const route = useRoute()
 
   useEffect(() => {
     fetchPins()
 
-    // Use route.params instead of navigation.getParam
     const refreshCallback = route.params?.refreshMap
 
     if (refreshCallback) {
