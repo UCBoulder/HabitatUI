@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { View, StyleSheet, TouchableOpacity, Text } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps'
 import { getLocationPins } from '../utils/APICalls'
 import CustomMarker from '../components/CustomMarker'
 import PropTypes from 'prop-types'
-import { convertToCSV, saveCSVToFile } from '../utils/CsvSaving'
 import { useRoute } from '@react-navigation/native'
 
 const MapPage = () => {
@@ -28,13 +27,6 @@ const MapPage = () => {
       coordinates && setApiCoordinates(coordinates)
     } catch (error) {
       console.error('Error fetching API data: ', error)
-    }
-  }
-
-  const handleDownload = () => {
-    if (apiCoordinates.length > 0) {
-      const csvData = convertToCSV(apiCoordinates)
-      saveCSVToFile(csvData)
     }
   }
 
@@ -65,11 +57,6 @@ const MapPage = () => {
           <CustomMarker key={index} data={coordinate} />
         ))}
       </MapView>
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button} onPress={handleDownload}>
-          <Text style={styles.buttonText}>Download</Text>
-        </TouchableOpacity>
-      </View>
     </View>
   )
 }
@@ -84,28 +71,6 @@ const styles = StyleSheet.create({
   },
   map: {
     ...StyleSheet.absoluteFillObject
-  },
-  buttonContainer: {
-    position: 'absolute',
-    bottom: 15,
-    right: 20,
-    alignItems: 'center'
-  },
-  button: {
-    backgroundColor: 'white',
-    padding: 10,
-    borderRadius: 5,
-    marginVertical: 5
-  },
-  refreshButton: {
-    backgroundColor: 'white',
-    padding: 15,
-    borderRadius: 50,
-    marginVertical: 5
-  },
-  buttonText: {
-    color: 'black',
-    textAlign: 'center'
   }
 })
 
