@@ -34,8 +34,6 @@ const CustomMarker = ({ data }) => {
     }
   }, [renderCallout])
 
-  console.log(parsedData)
-
   return (
       <Marker coordinate={{
         latitude: parseFloat(parsedData.coords.latitude),
@@ -66,7 +64,7 @@ const CustomMarker = ({ data }) => {
             visible={modalVisible}
           >
             <View style={styles.modalContainer}>
-              <FetchS3Image imageURL={parsedData.image} />
+              <FetchS3Image imageURL={parsedData.observationImageURL} />
 
               <TouchableOpacity style={styles.modalExitButton} onPress={closeModal}>
                 <View style={styles.iconContainer}>

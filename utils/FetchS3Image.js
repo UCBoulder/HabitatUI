@@ -4,37 +4,36 @@ import RNFetchBlob from 'rn-fetch-blob'
 import PropTypes from 'prop-types'
 
 const FetchS3Image = ({ imageURL }) => {
-  // const [imageUri, setImageUri] = useState(null)
-  // const [error, setError] = useState(false)
+  const [imageUri, setImageUri] = useState(null)
+  const [error, setError] = useState(false)
 
-  // useEffect(() => {
-  //   const fetchImage = async () => {
-  //     try {
-  //       const s3Url = imageURL
-  //       const response = await RNFetchBlob.fetch('GET', s3Url)
-  //       const base64Image = response.base64()
-  //       const uri = `data:image/jpeg;base64,${base64Image}`
-  //       setImageUri(uri)
-  //     } catch (error) {
-  //       console.error('Error fetching image:', error)
-  //       setError(true)
-  //     }
-  //   }
+  useEffect(() => {
+    const fetchImage = async () => {
+      try {
+        const s3Url = imageURL
+        const response = await RNFetchBlob.fetch('GET', s3Url)
+        const base64Image = response.base64()
+        const uri = `data:image/jpeg;base64,${base64Image}`
+        setImageUri(uri)
+      } catch (error) {
+        console.error('Error fetching image:', error)
+        setError(true)
+      }
+    }
 
-  //   fetchImage()
-  // }, [])
+    fetchImage()
+  }, [])
   return (
     <View style={styles.container}>
-      {/* {error && <Text>Image not found</Text>}
-      {imageUri && <Image source={{ uri: imageUri }} style={styles.image} />} */}
-      <Image source={{ uri: imageURL }} style={styles.image} />
+      {error && <Text>Image not found</Text>}
+      {imageUri && <Image source={{ uri: imageUri }} style={styles.image} />}
     </View>
   )
 }
 
-// FetchS3Image.propTypes = {
-//   imageURL: PropTypes.string
-// }
+FetchS3Image.propTypes = {
+  imageURL: PropTypes.string
+}
 
 const styles = StyleSheet.create({
   container: {
