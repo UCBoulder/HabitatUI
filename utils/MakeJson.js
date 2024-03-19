@@ -12,6 +12,11 @@ export const makeJson = async (position, userID, cover, acres, description, imag
       longitude: position.coords.longitude.toString(),
       accuracy: position.coords.accuracy.toString()
     },
+    // Notes: {
+    //   cover,
+    //   acres,
+    //   description
+    // },
     Notes: description,
     VerificationRating: 1,
     timestamp: position.timestamp.toString()
