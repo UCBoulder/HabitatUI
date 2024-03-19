@@ -8,6 +8,7 @@ import { simplifyJson } from '../utils/simplifyJson'
 import Icon from 'react-native-vector-icons/FontAwesome6'
 import FetchS3Image from '../utils/FetchS3Image'
 import { loadUserID } from '../utils/UserID'
+import LoadingModal from '../utils/LoadingModal'
 
 const CustomMarker = ({ data }) => {
   const [modalVisible, setModalVisible] = useState(false)
@@ -35,49 +36,45 @@ const CustomMarker = ({ data }) => {
   }, [renderCallout])
 
   return (
-      <Marker coordinate={{
+    <Marker
+      coordinate={{
         latitude: parseFloat(parsedData.coords.latitude),
         longitude: parseFloat(parsedData.coords.longitude)
       }}
-        ref={markerRef}
-        pinColor={ColorCode(parsedData.VerificationRating ? parsedData.VerificationRating : '1')}>
-
-        <Callout tooltip onPress={calloutPress}>
-          <View style={styles.calloutContainer}>
-
-            <Text style={styles.calloutText}>
-              {`Observation made on: ${observationDate.formattedDate}\n`}
-              {`Latitude: ${parsedData.coords.latitude}\nLongitude: ${parsedData.coords.longitude}\n`}
-              {`Accuracy: ${parsedData.coords.accuracy}\n`}
-              {`Notes: ${parsedData.Notes ?? ''}\n`}
-            </Text>
-
-            <Text style={styles.calloutTextCentered}>
-              {'Tap to view image'}
-            </Text>
-
+      ref={markerRef}
+      pinColor={ColorCode(parsedData.VerificationRating ? parsedData.VerificationRating : '1')}
+    >
+      <Callout tooltip onPress={calloutPress}>
+        <View style={styles.calloutContainer}>
+          <Text style={styles.calloutText}>
+            {`Observation made on: ${observationDate.formattedDate}\n`}
+            {`Latitude: ${parsedData.coords.latitude}\nLongitude: ${parsedData.coords.longitude}\n`}
+            {`Accuracy: ${parsedData.coords.accuracy}\n`}
+            {`Notes: ${parsedData.Notes ?? ''}\n`}
+          </Text>
+          <Text style={styles.calloutTextCentered}>
+            {'Tap to view image'}
+          </Text>
+        </View>
+        {/* Image popup */}
+        <Modal
+          animationType="slide"
+          visible={modalVisible}
+        >
+          <View style={styles.modalContainer}>
+            <FetchS3Image
+              imageURL={parsedData.observationImageURL}
+              closeModal={closeModal}
+            />
+            <TouchableOpacity style={styles.modalExitButton} onPress={closeModal}>
+              <View style={styles.iconContainer}>
+                <Icon name="x" size={25} color="black" />
+              </View>
+            </TouchableOpacity>
           </View>
-
-          {/* Image popup */}
-          <Modal
-            animationType="slide"
-            visible={modalVisible}
-          >
-            <View style={styles.modalContainer}>
-              <FetchS3Image imageURL={parsedData.observationImageURL} />
-
-              <TouchableOpacity style={styles.modalExitButton} onPress={closeModal}>
-                <View style={styles.iconContainer}>
-                  <Icon name="x" size={25} color="black" />
-                </View>
-              </TouchableOpacity>
-            </View>
-
-          </Modal>
-
-        </Callout>
-      </Marker>
-
+        </Modal>
+      </Callout>
+    </Marker>
   )
 }
 
@@ -110,13 +107,9 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 10,
     right: 10,
-    borderRadius: 50,
-    padding: 10
-  },
-  modalImage: {
-    flex: 1,
-    width: '100%',
-    height: '100%'
+    padding: 10,
+    borderRadius: 15,
+    backgroundColor: 'white'
   },
   iconContainer: {
     backgroundColor: 'white',

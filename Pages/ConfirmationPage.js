@@ -301,24 +301,6 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     padding: 10
   },
-  modalCancelButton: {
-    zIndex: 2,
-    position: 'absolute',
-    bottom: 10,
-    left: 10,
-    borderRadius: 100,
-    padding: 10,
-    backgroundColor: '#9d9e9d'
-  },
-  modalDiscardButton: {
-    zIndex: 2,
-    position: 'absolute',
-    bottom: 10,
-    right: 10,
-    borderRadius: 100,
-    padding: 10,
-    backgroundColor: '#f20a0a'
-  },
   modalText: {
     marginBottom: 15,
     textAlign: 'center',
