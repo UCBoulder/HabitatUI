@@ -8,7 +8,6 @@ import { simplifyJson } from '../utils/simplifyJson'
 import Icon from 'react-native-vector-icons/FontAwesome6'
 import FetchS3Image from '../utils/FetchS3Image'
 import { loadUserID } from '../utils/UserID'
-import LoadingModal from '../utils/LoadingModal'
 
 const CustomMarker = ({ data }) => {
   const [modalVisible, setModalVisible] = useState(false)
@@ -50,7 +49,7 @@ const CustomMarker = ({ data }) => {
             {`Observation made on: ${observationDate.formattedDate}\n`}
             {`Latitude: ${parsedData.coords.latitude}\nLongitude: ${parsedData.coords.longitude}\n`}
             {`Accuracy: ${parsedData.coords.accuracy}\n`}
-            {`Notes: ${parsedData.Notes ?? ''}\n`}
+            {`Notes: ${typeof parsedData.Notes === 'object' ? '' : parsedData.Notes}\n`}
           </Text>
           <Text style={styles.calloutTextCentered}>
             {'Tap to view image'}
