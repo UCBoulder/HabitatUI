@@ -54,35 +54,23 @@ export const sendStoredObservations = async () => {
   const observations = JSON.parse(storedObservations)
 
   if (storedObservations) {
-    Alert.alert(
-      '',
-      'There is an Observation in storage, would you like to upload it?',
-      [
-        {
-          text: 'Cancel'
+    for (const storedObservation of observations) {
+      try {
+        await axios.post(`${config.apiTestAddress}${config.apiPath}`, storedObservation)
+      } catch (error) {
+        console.error('Error sending stored observation to backend: ', error)
+        Alert.alert('Failed', 'Your Observation Failed to Upload.', [{
+          text: 'Retry',
+          onPress: () => sendLocationPin(storedObservation)
         },
         {
-          text: 'Upload',
-          onPress: async () => {
-            for (const storedObservation of observations) {
-              try {
-                await axios.post(`${config.apiTestAddress}${config.apiPath}`, storedObservation)
-              } catch (error) {
-                console.error('Error sending stored observation to backend: ', error)
-                Alert.alert('Failed', 'Your Observation Failed to Upload.', [{
-                  text: 'Retry',
-                  onPress: () => sendLocationPin(storedObservation)
-                },
-                {
-                  text: 'Ok'
-                }])
-              }
-            }
-            Alert.alert('Success', 'Your Observation Was Successfully Uploaded.')
-          }
-        }
-      ])
+          text: 'Ok'
+        }])
+      }
+    }
+    Alert.alert('Success', 'Your Stored Observation Was Successfully Uploaded.')
   }
+
   await AsyncStorage.removeItem('Observations')
 }
 
