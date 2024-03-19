@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { View, Image, StyleSheet, Text } from 'react-native'
+import { View, Image, StyleSheet, ActivityIndicator, Text } from 'react-native'
 import RNFetchBlob from 'rn-fetch-blob'
 import PropTypes from 'prop-types'
 
 const FetchS3Image = ({ imageURL }) => {
   const [imageUri, setImageUri] = useState(null)
   const [error, setError] = useState(false)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const fetchImage = async () => {
@@ -15,18 +16,30 @@ const FetchS3Image = ({ imageURL }) => {
         const base64Image = response.base64()
         const uri = `data:image/jpeg;base64,${base64Image}`
         setImageUri(uri)
+        setLoading(false)
       } catch (error) {
         console.error('Error fetching image:', error)
         setError(true)
+        setLoading(false)
       }
     }
 
     fetchImage()
   }, [])
+
   return (
     <View style={styles.container}>
-      {error && <Text>Image not found</Text>}
-      {imageUri && <Image source={{ uri: imageUri }} style={styles.image} />}
+      {loading
+        ? (
+        <ActivityIndicator size="large" color="black" />
+          )
+        : error
+          ? (
+        <Text>Image not found</Text>
+            )
+          : (
+        <Image source={{ uri: imageUri }} style={styles.image} />
+            )}
     </View>
   )
 }

@@ -14,6 +14,7 @@ import { makeObservation } from '../utils/MakeObservation'
 import RadioGroup from 'react-native-radio-buttons-group'
 import PropTypes from 'prop-types'
 import Icon from 'react-native-vector-icons/FontAwesome6'
+import LoadingModal from '../utils/LoadingModal'
 
 const ConfirmationPage = ({ route, userID }) => {
   const navigation = useNavigation()
@@ -22,13 +23,16 @@ const ConfirmationPage = ({ route, userID }) => {
   const [description, onChangeDescription] = useState('')
   const [cover, onChangeCover] = useState()
   const [iModalVisible, setiModalVisible] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
 
   const confirmationButton = async () => {
+    setIsLoading(true)
     const observation = await makeObservation(userID, cover, acres, description, imageSource)
     navigation.navigate('MapScreen', {
       refreshMap: true,
       observation
     })
+    setIsLoading(false)
   }
 
   const closeModal = () => {
@@ -197,9 +201,11 @@ const ConfirmationPage = ({ route, userID }) => {
         <View style={styles.container}>
           <TouchableOpacity
             style={styles.confirmationButton}
-            onPress={confirmationButton}>
+            onPress={confirmationButton}
+            disabled={isLoading}>
             <Text style={styles.buttonText}>Confirm Observation</Text>
           </TouchableOpacity>
+          <LoadingModal isVisible={isLoading} />
         </View>
       </ScrollView>
     </View>
@@ -294,24 +300,6 @@ const styles = StyleSheet.create({
     right: 10,
     borderRadius: 50,
     padding: 10
-  },
-  modalCancelButton: {
-    zIndex: 2,
-    position: 'absolute',
-    bottom: 10,
-    left: 10,
-    borderRadius: 100,
-    padding: 10,
-    backgroundColor: '#9d9e9d'
-  },
-  modalDiscardButton: {
-    zIndex: 2,
-    position: 'absolute',
-    bottom: 10,
-    right: 10,
-    borderRadius: 100,
-    padding: 10,
-    backgroundColor: '#f20a0a'
   },
   modalText: {
     marginBottom: 15,
