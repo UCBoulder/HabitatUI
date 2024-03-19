@@ -49,7 +49,9 @@ const CustomMarker = ({ data }) => {
             {`Observation made on: ${observationDate.formattedDate}\n`}
             {`Latitude: ${parsedData.coords.latitude}\nLongitude: ${parsedData.coords.longitude}\n`}
             {`Accuracy: ${parsedData.coords.accuracy}\n`}
-            {`Notes: ${typeof parsedData.Notes === 'object' ? '' : parsedData.Notes}\n`}
+            {`Size: ${parsedData.Notes.acres}\n`}
+            {`Cover: ${parsedData.Notes.cover}\n`}
+            {`Notes: ${parsedData.Notes.description}\n`}
           </Text>
           <Text style={styles.calloutTextCentered}>
             {'Tap to view image'}

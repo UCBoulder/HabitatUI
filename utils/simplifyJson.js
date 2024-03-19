@@ -14,6 +14,14 @@ export const simplifyJson = (input) => {
           }
         }
         result[key] = coordsObj
+      } else if (key === 'Notes' && value.M) {
+        const notesObj = {}
+        for (const noteKey in value.M) {
+          if (Object.prototype.hasOwnProperty.call(value.M, noteKey)) {
+            notesObj[noteKey] = value.M[noteKey].S
+          }
+        }
+        result[key] = notesObj
       } else {
         result[key] = value.S || value.N || value
       }
