@@ -21,7 +21,7 @@ export const getLocationPins = async () => {
 // send one lat long coordinate to the API
 export const sendLocationPin = async (observation) => {
   const isConnected = await connectionCheck()
-  const storedObservations = await AsyncStorage.getItem('Observation')
+  const storedObservations = await AsyncStorage.getItem('Observations')
 
   if (isConnected) {
     try {
@@ -45,16 +45,17 @@ export const sendLocationPin = async (observation) => {
     const updatedObservations = storedObservations ? JSON.parse(storedObservations) : []
     updatedObservations.push(observation)
     await AsyncStorage.setItem('Observations', JSON.stringify(updatedObservations))
-    Alert.alert('Success', 'Your observation has been stored and can be uploaded when you have service.')
+    Alert.alert('Warning', 'Your observation has been stored and can be uploaded when you have service.')
+    console.log('list', updatedObservations.length)
   }
 }
 
 export const sendStoredObservations = async () => {
-  const storedObservations = await AsyncStorage.getItem('Observations')
-  const observations = JSON.parse(storedObservations)
+  const storedObservationsString = await AsyncStorage.getItem('Observations')
+  const storedObservations = storedObservationsString ? JSON.parse(storedObservationsString) : []
 
-  if (storedObservations) {
-    for (const storedObservation of observations) {
+  if (storedObservations.length > 0) {
+    for (const storedObservation of storedObservations) {
       try {
         await axios.post(`${config.apiTestAddress}${config.apiPath}`, storedObservation)
       } catch (error) {
@@ -69,13 +70,13 @@ export const sendStoredObservations = async () => {
       }
     }
     Alert.alert('Success', 'Your Stored Observation Was Successfully Uploaded.')
+    await AsyncStorage.removeItem('Observations')
   }
-
-  await AsyncStorage.removeItem('Observations')
 }
 
 export const checkAsyncStorage = async () => {
   const storedObservations = await AsyncStorage.getItem('Observations')
+  console.log('stored obs', storedObservations)
   if (storedObservations) {
     sendStoredObservations()
   }
