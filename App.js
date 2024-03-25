@@ -12,6 +12,7 @@ import CameraPage from './pages/CameraPage'
 import ConfirmationPage from './pages/ConfirmationPage'
 import AboutPage from './pages/AboutPage'
 import DownloadPage from './pages/DownloadPage'
+import TutorialPage from './pages/TutorialPage'
 
 const Stack = createNativeStackNavigator()
 const Drawer = createDrawerNavigator()
@@ -47,6 +48,7 @@ export default function App () {
         <Drawer.Screen name="Info" component={InfoPage} />
         <Drawer.Screen name="About" component={AboutPage} headerShown={true}/>
         <Drawer.Screen name="Download" component={DownloadPage} />
+        <Drawer.Screen name="Tutorial" component={TutorialPage} />
       </Drawer.Navigator>
     </NavigationContainer>
   )

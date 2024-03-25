@@ -1,10 +1,14 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react'
-import { View, Text, StyleSheet, ScrollView } from 'react-native'
+import { Text, StyleSheet, ScrollView } from 'react-native'
+import { BurgerMenuButton } from '../components/BurgerMenuButton'
+import { useNavigation } from '@react-navigation/native'
 
 const AboutPage = () => {
+  const navigation = useNavigation()
   return (
         <ScrollView contentContainerStyle={styles.container}>
+          <BurgerMenuButton navigation={navigation} />
             <Text style={styles.title}> This app was made for Gunnison community members to log local infestations of cheatgrass
             and help the containment efforts</Text>
 
@@ -86,7 +90,8 @@ const styles = StyleSheet.create({
     color: 'black',
     fontSize: 24,
     fontWeight: 'bold',
-    marginBottom: 20
+    marginBottom: 20,
+    marginTop: 25
   }
 })
 

@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: windowWidth,
-    height: 250
+    height: 350
   },
   longImage: {
     width: windowWidth,
