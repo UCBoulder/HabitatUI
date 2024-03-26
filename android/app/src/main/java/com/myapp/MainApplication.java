@@ -11,8 +11,6 @@ import com.facebook.soloader.SoLoader;
 import java.util.List;
 import android.database.CursorWindow;
 import java.lang.reflect.Field;
-import com.facebook.react.modules.storage.ReactDatabaseSupplier;
-
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -57,9 +55,6 @@ public class MainApplication extends Application implements ReactApplication {
   public void onCreate() {
     super.onCreate();
     SoLoader.init(this, /* native exopackage */ false);
-    long size = 100L * 1024L * 1024L; // 50 MB
-    com.facebook.react.modules.storage.ReactDatabaseSupplier.getInstance(getApplicationContext()).setMaximumSize(size);
-
     try {
       Field field = CursorWindow.class.getDeclaredField("sCursorWindowSize");
       field.setAccessible(true);
