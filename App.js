@@ -7,10 +7,10 @@ import { loadUserID } from './utils/UserID'
 import { requestLocationPermission, requestCameraPermission } from './utils/Permissions'
 import { checkAsyncStorage } from './utils/APICalls'
 import { MapScreen } from './components/MapScreen'
-import InfoPage from './pages/InfoPage'
+import HowToID from './pages/HowToID'
 import CameraPage from './pages/CameraPage'
 import ConfirmationPage from './pages/ConfirmationPage'
-import AboutPage from './pages/AboutPage'
+import WhatIs from './pages/WhatIs'
 import DownloadPage from './pages/DownloadPage'
 import TutorialPage from './pages/TutorialPage'
 
@@ -45,8 +45,8 @@ export default function App () {
         }}
       >
         <Drawer.Screen name="Map" component={StackScreens} />
-        <Drawer.Screen name="Info" component={InfoPage} />
-        <Drawer.Screen name="About" component={AboutPage} headerShown={true}/>
+        <Drawer.Screen name="What is Cheatgrass" component={WhatIs} headerShown={true}/>
+        <Drawer.Screen name="How to Identify Cheatgrass" component={HowToID} />
         <Drawer.Screen name="Download" component={DownloadPage} />
         <Drawer.Screen name="Tutorial" component={TutorialPage} />
       </Drawer.Navigator>
