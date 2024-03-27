@@ -5,7 +5,7 @@ import connectionCheck from './CheckConnection'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const axiosInstance = axios.create({
-  timeout: 10000 // 10 seconds timeout
+  timeout: 5000 // 5 seconds timeout
 })
 
 // receive one or many lat long coordinates from the API
