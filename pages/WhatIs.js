@@ -40,12 +40,14 @@ const WhatIs = () => {
             and decreases the economic value of land{'\n'}-Cheatgrass threatens the largest remaining population of the Gunnison Sage-Grouse,
             which will become extinct if the spread of Cheatgrass continues{'\n'}-Many ranching, hunting and other economic and outdoor opportunities will be lost too </Text>
 
+          <Image source={require('../images/CheatAndFire.jpg')} style={styles.image} />
+
           <Text style={styles.header}>Statistics </Text>
 
           <Text style={styles.text}>-87% of Gunnison Sage-Grouse population in the Gunnison Valley is threatened
             {'\n'}-10,000 Cheatgrass plants can grow in one square meter, dramatically increasing the fire risk
             {'\n'}-12 million acres have been transformed into Cheatgrass monoculture in the Great Basin </Text>
-            <Image source={require('../images/cheatgrassInfestation.jpg')} style={styles.image} />
+          <Image source={require('../images/cheatgrassInfestation.jpg')} style={styles.image} />
 
           <Text style={styles.header}>Prevent the Spread: Don’t Get Cheated </Text>
 
@@ -70,9 +72,9 @@ const WhatIs = () => {
           <Text style={styles.text}>Phone: (970) 874-6600{'\n'}
           Address: 2250 South Main St, Delta, CO 81416</Text>
 
-          <Text style={styles.nametext}>Paul M. Rady School of Computer Science & Engineering</Text>
+          {/* <Text style={styles.nametext}>Paul M. Rady School of Computer Science & Engineering</Text>
           <Text style={styles.text}>Phone: (970) 943-2400{'\n'}
-            Address: 777 E Georgia Ave, Gunnison, CO 81230</Text>
+            Address: 777 E Georgia Ave, Gunnison, CO 81230</Text> */}
           <Image source={require('../images/WesternCULogo.jpg')} style={styles.WCULogo} />
           <Text></Text>
 
