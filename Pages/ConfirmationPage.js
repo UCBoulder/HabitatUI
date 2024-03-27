@@ -128,7 +128,7 @@ const ConfirmationPage = ({ route, userID }) => {
       </TouchableOpacity>
 
       {/* questions portion */}
-      <Text style={styles.label}>All questions are optional.{'\n'}</Text>
+      <Text style={styles.floatingLabel}>All questions are optional.{'\n'}</Text>
       <ScrollView>
 
         {/* estimated size of infestation question */}
@@ -197,18 +197,19 @@ const ConfirmationPage = ({ route, userID }) => {
           textAlignVertical="top"
           color='black'
         />
-
-        <View style={styles.container}>
-          <TouchableOpacity
-            style={styles.confirmationButton}
-            onPress={confirmationButton}
-            disabled={isLoading}>
-            <Text style={styles.buttonText}>Confirm Observation</Text>
-          </TouchableOpacity>
-          <LoadingModal isVisible={isLoading} />
-        </View>
+        <Text>{'\n'}{'\n'}{'\n'}</Text>
       </ScrollView>
-    </View>
+
+    <View style={styles.container}>
+    <TouchableOpacity
+      style={styles.confirmationButton}
+      onPress={confirmationButton}
+      disabled={isLoading}>
+      <Text style={styles.buttonText}>Confirm Observation</Text>
+    </TouchableOpacity>
+    <LoadingModal isVisible={isLoading} />
+  </View>
+  </View>
   )
 }
 
@@ -230,7 +231,7 @@ const styles = StyleSheet.create({
   },
   confirmationImage: {
     width: '100%',
-    height: '50%'
+    height: '40%'
   },
   input: {
     height: 100,
@@ -249,7 +250,9 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     bottom: 20,
     marginTop: 30,
-    width: '50%'
+    marginBottom: 50,
+    width: 200,
+    height: 40
   },
   buttonText: {
     color: 'black',
@@ -269,6 +272,13 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'black',
     marginBottom: 15,
+    marginLeft: 10
+  },
+  floatingLabel: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: 'black',
+    marginBottom: 0,
     marginLeft: 10
   },
   radioGroup: {

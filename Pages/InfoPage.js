@@ -85,7 +85,6 @@ const InfoPage = () => {
 
       </ScrollView>
     </View>
-    // </ImageBackground>s
 
   )
 }
