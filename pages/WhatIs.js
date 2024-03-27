@@ -65,7 +65,7 @@ const WhatIs = () => {
 
           <Text style={styles.nametext}>County Weed Management Program:</Text>
           <Text style={styles.text}>Phone: (970) 641-4393{'\n'}
-            Address: 725 S. 10th Street, Gunnison, CO 81230</Text>
+          Address: 725 S. 10th Street, Gunnison, CO 81230</Text>
 
           <Text style={styles.nametext}>US Forest Service Supervisor{"'"}s Office
            - Grand Mesa, Uncompahgre and Gunnison National Forests</Text>
@@ -76,7 +76,6 @@ const WhatIs = () => {
           <Text style={styles.text}>Phone: (970) 943-2400{'\n'}
             Address: 777 E Georgia Ave, Gunnison, CO 81230</Text> */}
           <Image source={require('../images/WesternCULogo.jpg')} style={styles.WCULogo} />
-          <Text></Text>
 
         </ScrollView>
     </View>

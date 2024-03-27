@@ -12,7 +12,7 @@ const HowToID = () => {
 
   return (
     <View backgroundColor= '#98bd55'>
-      <ScrollView contentContainerStyle={styles.container} >
+    <ScrollView contentContainerStyle={styles.container} >
       <BurgerMenuButton navigation={navigation} />
 
         <Text style={styles.header}>{'\n'}{'\n'}How do you identify Cheatgrass? </Text>
@@ -93,13 +93,7 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     textDecorationLine: 'underline'
   },
-  buttonContainer: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    position: 'center',
-    alignItems: 'center'
-  }
+
 })
 
 export default HowToID

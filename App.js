@@ -45,7 +45,7 @@ export default function App () {
         }}
       >
         <Drawer.Screen name="Map" component={StackScreens} />
-        <Drawer.Screen name="What is Cheatgrass" component={WhatIs} headerShown={true}/>
+        <Drawer.Screen name="What is Cheatgrass" component={WhatIs} />
         <Drawer.Screen name="How to Identify Cheatgrass" component={HowToID} />
         <Drawer.Screen name="Download" component={DownloadPage} />
         <Drawer.Screen name="Tutorial" component={TutorialPage} />
