@@ -7,7 +7,6 @@ import { loadUserID } from './utils/UserID'
 import { requestLocationPermission, requestCameraPermission } from './utils/Permissions'
 import { checkAsyncStorage } from './utils/APICalls'
 import { MapScreen } from './components/MapScreen'
-import { configureBackgroundFetch, checkNetwork } from './utils/backgroundTasks'
 import InfoPage from './pages/InfoPage'
 import CameraPage from './pages/CameraPage'
 import ConfirmationPage from './pages/ConfirmationPage'
@@ -61,8 +60,7 @@ function StackScreens () {
       await requestLocationPermission()
       await requestCameraPermission()
       await loadUserID(setUserID)
-      configureBackgroundFetch()
-      checkNetwork()
+      await checkAsyncStorage()
     }
 
     startUp()
