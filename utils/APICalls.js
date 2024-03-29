@@ -3,6 +3,7 @@ import { Alert } from 'react-native'
 import config from '../config'
 import connectionCheck from './CheckConnection'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import BackgroundFetch from 'react-native-background-fetch'
 
 const axiosInstance = axios.create({
   timeout: 5000 // 5 seconds timeout
@@ -36,8 +37,8 @@ export const sendLocationPin = async (observation) => {
       const updatedObservations = storedObservations ? JSON.parse(storedObservations) : []
       updatedObservations.push(observation)
       await AsyncStorage.setItem('Observations', JSON.stringify(updatedObservations))
+      await initBackgroundFetch()
       Alert.alert('Warning', 'Your observation has been stored and can be uploaded when you have service.')
-      console.log('list', updatedObservations.length)
     }
   } catch (error) {
     console.error('Error sending data to backend: ', error)
@@ -56,8 +57,8 @@ export const sendLocationPin = async (observation) => {
       const updatedObservations = storedObservations ? JSON.parse(storedObservations) : []
       updatedObservations.push(observation)
       await AsyncStorage.setItem('Observations', JSON.stringify(updatedObservations))
+      await initBackgroundFetch()
       Alert.alert('Warning', 'Your observation was not uploaded due to a network error. It has been stored and can be uploaded when you have service.')
-      console.log('list', updatedObservations.length)
     } else {
       // Handle other types of errors
       Alert.alert('Failed', 'An error occurred while sending your observation.', [{
@@ -102,4 +103,29 @@ export const checkAsyncStorage = async () => {
   if (storedObservations) {
     sendStoredObservations()
   }
+}
+
+export const initBackgroundFetch = async () => {
+  const onEvent = async (taskId) => {
+    console.log('Background task: ', taskId)
+    const isConnected = await connectionCheck()
+
+    if (isConnected) {
+      await sendStoredObservations()
+      BackgroundFetch.finish(taskId)
+    }
+  }
+
+  const onTimeout = async (taskId) => {
+    console.log('Background task timeout: ', taskId)
+    BackgroundFetch.finish(taskId)
+  }
+
+  const status = await BackgroundFetch.configure({
+    minimumFetchInterval: 15, // Fetch interval in minutes
+    stopOnTerminate: false,
+    startOnBoot: true
+  }, onEvent, onTimeout)
+
+  console.log('Configure status:', status)
 }
