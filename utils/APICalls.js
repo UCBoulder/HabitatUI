@@ -99,7 +99,6 @@ export const sendStoredObservations = async () => {
 
 export const checkAsyncStorage = async () => {
   const storedObservations = await AsyncStorage.getItem('Observations')
-  console.log('stored obs', storedObservations)
   if (storedObservations) {
     sendStoredObservations()
   }
@@ -126,6 +125,4 @@ export const initBackgroundFetch = async () => {
     stopOnTerminate: false,
     startOnBoot: true
   }, onEvent, onTimeout)
-
-  console.log('Configure status:', status)
 }

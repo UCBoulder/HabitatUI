@@ -6,7 +6,7 @@ import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList } from '
 import { loadUserID } from './utils/UserID'
 import { requestLocationPermission, requestCameraPermission } from './utils/Permissions'
 import { MapScreen } from './components/MapScreen'
-import { initBackgroundFetch } from './utils/APICalls'
+import { checkAsyncStorage, initBackgroundFetch } from './utils/APICalls'
 import InfoPage from './pages/InfoPage'
 import CameraPage from './pages/CameraPage'
 import ConfirmationPage from './pages/ConfirmationPage'
@@ -60,6 +60,7 @@ function StackScreens () {
       await requestLocationPermission()
       await requestCameraPermission()
       await loadUserID(setUserID)
+      await checkAsyncStorage()
       await initBackgroundFetch()
     }
 
