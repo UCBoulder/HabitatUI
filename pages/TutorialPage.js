@@ -7,17 +7,19 @@ const TutorialPage = () => {
   const navigation = useNavigation()
 
   return (
-  <View backgroundColor= '#98bd55'>
-    <ScrollView contentContainerStyle={styles.container}>
-      <BurgerMenuButton navigation={navigation} />
-      <Text style ={styles.header}>{'\n'}{'\n'}Hello, welcome to the tracking growth of cheatgrass app.</Text>
-      <Text style ={styles.text}>To make an observation, tap the {'"'}Make Observation{'"'} button at the bottom of the Map.{'\n'}
-      Take a picture by tapping the circle at the bottom of the next screen.{'\n'}
-      To retake a picture tap the retry button, or tap the check mark to continue.{'\n'}
-      Answer as many of the 3 questions on the confirmation page as you can, then scroll down and tap the
-       {'"'}Confirm Observation{'"'} button. Or tap the X in the upper left hand corner to abandon the observation.</Text>
-    </ScrollView>
-  </View>
+    <View backgroundColor='#98bd55'>
+      <View style={styles.burgerMenuContainer}>
+        <BurgerMenuButton navigation={navigation} />
+      </View>
+      <ScrollView contentContainerStyle={styles.container}>
+        <Text style={styles.header}>{'\n'}{'\n'}Hello, welcome to the tracking growth of cheatgrass app.</Text>
+        <Text style={styles.text}>To make an observation, tap the {'"'}Make Observation{'"'} button at the bottom of the Map.{'\n'}
+          Take a picture by tapping the circle at the bottom of the next screen.{'\n'}
+          To retake a picture tap the retry button, or tap the check mark to continue.{'\n'}
+          Answer as many of the 3 questions on the confirmation page as you can, then scroll down and tap the
+          {'"'}Confirm Observation{'"'} button. Or tap the X in the upper left hand corner to abandon the observation.</Text>
+      </ScrollView>
+    </View>
 
   )
 }
@@ -27,6 +29,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexGrow: 1,
     justifyContent: 'space-between'
+  },
+  burgerMenuContainer: {
+    position: 'absolute',
+    zIndex: 100
   },
   text: {
     fontSize: 18,

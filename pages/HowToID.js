@@ -11,9 +11,11 @@ const HowToID = () => {
   const navigation = useNavigation()
 
   return (
-    <View backgroundColor= '#98bd55'>
-    <ScrollView contentContainerStyle={styles.container} >
-      <BurgerMenuButton navigation={navigation} />
+    <View backgroundColor='#98bd55'>
+      <View style={styles.burgerMenuContainer}>
+        <BurgerMenuButton navigation={navigation} />
+      </View>
+      <ScrollView contentContainerStyle={styles.container} >
 
         <Text style={styles.header}>{'\n'}{'\n'}How do you identify Cheatgrass? </Text>
         <Text style={styles.text}>-Short flat blade-length (6”-24”) {'\n'}-Sharp seedlet emerging from a “sheath”
@@ -63,6 +65,10 @@ const styles = StyleSheet.create({
     objectFit: 'contain',
     resizeMode: 'contain'
   },
+  burgerMenuContainer: {
+    position: 'absolute',
+    zIndex: 100
+  },
   image: {
     width: windowWidth,
     height: 350
@@ -92,7 +98,7 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     marginLeft: 10,
     textDecorationLine: 'underline'
-  },
+  }
 
 })
 
