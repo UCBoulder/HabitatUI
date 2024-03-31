@@ -3,13 +3,18 @@ import { Alert } from 'react-native'
 import config from '../config'
 import connectionCheck from './CheckConnection'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import { API_KEY } from '@env'
 
 // recieve one or many lat long coordinates from the API
 export const getLocationPins = async () => {
   const isConnected = await connectionCheck()
   if (isConnected) {
     try {
-      const response = await axios.get(`${config.apiTestAddress}${config.apiPath}`)
+      const response = await axios.get(`${config.apiTestAddress}${config.apiPath}`, {
+        headers: {
+          'x-api-key': API_KEY
+        }
+      })
       return response.data.Items
     } catch (error) {
       console.error('Error fetching API data: ', error)
@@ -25,7 +30,11 @@ export const sendLocationPin = async (observation) => {
 
   if (isConnected) {
     try {
-      const response = await axios.post(`${config.apiTestAddress}${config.apiPath}`, observation)
+      const response = await axios.post(`${config.apiTestAddress}${config.apiPath}`, observation, {
+        headers: {
+          'x-api-key': API_KEY
+        }
+      })
       console.log('Response from backend: ', response.data)
       Alert.alert('Success', 'Your Observation Was Successfully Uploaded.')
     } catch (error) {
@@ -56,7 +65,11 @@ export const sendStoredObservations = async () => {
   if (storedObservations) {
     for (const storedObservation of observations) {
       try {
-        await axios.post(`${config.apiTestAddress}${config.apiPath}`, storedObservation)
+        await axios.post(`${config.apiTestAddress}${config.apiPath}`, storedObservation, {
+          headers: {
+            'x-api-key': API_KEY
+          }
+        })
       } catch (error) {
         console.error('Error sending stored observation to backend: ', error)
         Alert.alert('Failed', 'Your Observation Failed to Upload.', [{
