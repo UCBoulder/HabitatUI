@@ -128,7 +128,7 @@ const ConfirmationPage = ({ route, userID }) => {
       </TouchableOpacity>
 
       {/* questions portion */}
-      <Text style={styles.label}>All questions are optional.{'\n'}</Text>
+      <Text style={styles.optionalLabel}>All questions are optional.{'\n'}</Text>
       <ScrollView>
 
         {/* estimated size of infestation question */}
@@ -270,6 +270,13 @@ const styles = StyleSheet.create({
     color: 'black',
     marginBottom: 15,
     marginLeft: 10
+  },
+  optionalLabel: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: 'black',
+    marginLeft: 10,
+    marginBottom: -15
   },
   radioGroup: {
     color: 'black'

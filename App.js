@@ -5,8 +5,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer'
 import { loadUserID } from './utils/UserID'
 import { requestLocationPermission, requestCameraPermission } from './utils/Permissions'
-import { checkAsyncStorage } from './utils/APICalls'
 import { MapScreen } from './components/MapScreen'
+import { checkAsyncStorage, initBackgroundFetch } from './utils/APICalls'
 import InfoPage from './pages/InfoPage'
 import CameraPage from './pages/CameraPage'
 import ConfirmationPage from './pages/ConfirmationPage'
@@ -61,6 +61,7 @@ function StackScreens () {
       await requestCameraPermission()
       await loadUserID(setUserID)
       await checkAsyncStorage()
+      await initBackgroundFetch()
     }
 
     startUp()
