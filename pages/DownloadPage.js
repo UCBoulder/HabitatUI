@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { View, StyleSheet, TouchableOpacity, Text, ImageBackground } from 'react-native'
+import { View, StyleSheet, TouchableOpacity, Text, ImageBackground, Platform, Alert } from 'react-native'
 import { BurgerMenuButton } from '../components/BurgerMenuButton'
 import { convertToCSV, saveCSVToFile } from '../utils/CsvSaving'
 import { getLocationPins } from '../utils/APICalls'
 import { useNavigation } from '@react-navigation/native'
+import Mailer from 'react-native-mail'
 
 const DownloadPage = () => {
   const [apiCoordinates, setApiCoordinates] = useState([])
@@ -11,7 +12,7 @@ const DownloadPage = () => {
 
   useEffect(() => {
     fetchPins()
-  })
+  }, [])
 
   const fetchPins = async () => {
     try {
@@ -21,25 +22,43 @@ const DownloadPage = () => {
       console.error('Error fetching API data: ', error)
     }
   }
-  const handleDownload = () => {
+
+  const handleDownload = async () => {
     if (apiCoordinates.length > 0) {
       const csvData = convertToCSV(apiCoordinates)
-      saveCSVToFile(csvData)
+      const filePath = await saveCSVToFile(csvData)
+      console.log(filePath)
+
+      Mailer.mail({
+        subject: 'CSV File',
+        body: 'Attached is the CSV file containing pin information.',
+        isHTML: false,
+        attachments: [{
+          path: filePath,
+          type: 'csv'
+        }]
+      }, (error, event) => {
+        if (error) {
+          console.error('Error sending email:', error)
+          Alert.alert('Error', 'Failed to send email.')
+        } else {
+          Alert.alert('Success', 'Email sent successfully.')
+        }
+      })
     }
   }
 
   return (
-        <ImageBackground
-            source={require('../images/downloadPage.png')}
-            style={styles.backgroundImage}
-        >
-            <View style={styles.buttonContainer}>
-                <BurgerMenuButton navigation={navigation} />
-                <TouchableOpacity style={styles.button} onPress={handleDownload}>
-                    <Text style={styles.text}>Download Pin Information</Text>
-                </TouchableOpacity>
-            </View>
-        </ImageBackground>
+    <ImageBackground
+      source={require('../images/downloadPage.png')}
+      style={styles.backgroundImage}>
+      <View style={styles.buttonContainer}>
+        <BurgerMenuButton navigation={navigation} />
+        <TouchableOpacity style={styles.button} onPress={handleDownload}>
+          <Text style={styles.text}>Download Pin Information</Text>
+        </TouchableOpacity>
+      </View>
+    </ImageBackground>
   )
 }
 
@@ -51,7 +70,6 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'center',
-    position: 'center',
     alignItems: 'center'
   },
   button: {
@@ -69,4 +87,5 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   }
 })
+
 export default DownloadPage
