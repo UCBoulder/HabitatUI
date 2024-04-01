@@ -1,3 +1,4 @@
+platform :ios,"15.0" 
 # Resolve react_native_pods.rb with node to allow for hoisting
 require Pod::Executable.execute_command('node', ['-p',
   'require.resolve(
@@ -5,18 +6,38 @@ require Pod::Executable.execute_command('node', ['-p',
     {paths: [process.argv[1]]},
   )', __dir__]).strip
 
-platform :ios, min_ios_version_supported
+  def node_require(script)
+    # Resolve script with node to allow for hoisting
+    require Pod::Executable.execute_command('node', ['-p',
+      "require.resolve(
+        '#{script}',
+        {paths: [process.argv[1]]},
+      )", __dir__]).strip
+  end
+
+  node_require('react-native/scripts/react_native_pods.rb')
+  node_require('react-native-permissions/scripts/setup.rb')
+
+
+
 prepare_react_native_project!
 
-# If you are using a `react-native-flipper` your iOS build will fail when `NO_FLIPPER=1` is set.
-# because `react-native-flipper` depends on (FlipperKit,...) that will be excluded
-#
-# To fix this you can also exclude `react-native-flipper` using a `react-native.config.js`
-# ```js
-# module.exports = {
-#   dependencies: {
-#     ...(process.env.NO_FLIPPER ? { 'react-native-flipper': { platforms: { ios: null } } } : {}),
-# ```
+
+
+setup_permissions([
+  'Camera',
+  'PhotoLibrary',
+  'LocationAccuracy',
+  'LocationWhenInUse',
+  'LocationAlways',
+])
+
+
+
+
+
+
+
 flipper_config = ENV['NO_FLIPPER'] == "1" ? FlipperConfiguration.disabled : FlipperConfiguration.enabled
 
 linkage = ENV['USE_FRAMEWORKS']
@@ -26,10 +47,17 @@ if linkage != nil
 end
 
 target 'MyApp' do
+  # React Native Maps dependencies
+
+  rn_maps_path = '../node_modules/react-native-maps'
+  pod 'react-native-google-maps', :path => rn_maps_path
   config = use_native_modules!
 
   # Flags change depending on the env values.
   flags = get_default_flags()
+  # include react-native-google-maps dependency
+  # pod 'react-native-google-maps', :path => '../node_modules/react-native-maps'
+
 
   use_react_native!(
     :path => config[:reactNativePath],
@@ -57,6 +85,12 @@ target 'MyApp' do
       config[:reactNativePath],
       :mac_catalyst_enabled => false
     )
-    __apply_Xcode_12_5_M1_post_install_workaround(installer)
+    # __apply_Xcode_12_5_M1_post_install_workaround(installer)
+
+    installer.pods_project.targets.each do |target|
+      target.build_configurations.each do |config|
+        config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] ||= ['$(inherited)', '_LIBCPP_ENABLE_CXX17_REMOVED_UNARY_BINARY_FUNCTION']
+      end
+    end
   end
 end
