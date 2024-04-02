@@ -5,7 +5,6 @@ import { useNavigation } from '@react-navigation/native'
 
 //  gets the dimensions of the screen, should allow images to adapt to different sreen sizes
 const windowWidth = Dimensions.get('window').width
-// const windowHight = Dimensions.get('window').height
 
 const HowToID = () => {
   const navigation = useNavigation()

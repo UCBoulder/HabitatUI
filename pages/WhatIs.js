@@ -2,12 +2,9 @@ import React from 'react'
 import { Image, ScrollView, Text, StyleSheet, View, Dimensions } from 'react-native'
 import { BurgerMenuButton } from '../components/BurgerMenuButton'
 import { useNavigation } from '@react-navigation/native'
-// import { GestureHandlerRootView, PanGestureHandler, PinchGestureHandler, State } from 'react-native-gesture-handler'
-// import { AnimatedText } from 'react-native-reanimated/lib/typescript/reanimated2/component/Text'
 
 //  gets the dimensions of the screen, should allow images to adapt to different sreen sizes
 const windowWidth = Dimensions.get('window').width
-// const windowHight = Dimensions.get('window').height
 
 const WhatIs = () => {
   const navigation = useNavigation()
@@ -18,9 +15,6 @@ const WhatIs = () => {
         <BurgerMenuButton navigation={navigation} />
       </View>
       <ScrollView contentContainerStyle={styles.container} >
-
-        {/* <Image source={require('../images/CheatgrassInfographic.png')} style={styles.infographic} /> */}
-        {/* <Image source={require('../images/CheatGrassBrochure-1.png')} style={styles.image} /> */}
 
         <Text style={styles.header}>{'\n'}{'\n'}What is Cheatgrass?</Text>
         <Text style={styles.text}>Cheatgrass, an invasive species in Gunnison County, threatens the way of life of the Western
@@ -74,11 +68,9 @@ const WhatIs = () => {
         <Text style={styles.text}>Phone: (970) 874-6600{'\n'}
           Address: 2250 South Main St, Delta, CO 81416</Text>
 
-        {/* <Text style={styles.nametext}>Paul M. Rady School of Computer Science & Engineering</Text>
-          <Text style={styles.text}>Phone: (970) 943-2400{'\n'}
-            Address: 777 E Georgia Ave, Gunnison, CO 81230</Text> */}
-        <Image source={require('../images/WesternCULogo.jpg')} style={styles.WCULogo} />
-
+        <View style={styles.WCULogoContainer}>
+          <Image source={require('../images/WesternCU.jpg')} style={styles.WCULogo} />
+        </View>
       </ScrollView>
     </View>
 
@@ -108,10 +100,14 @@ const styles = StyleSheet.create({
     width: windowWidth,
     height: 450
   },
+  WCULogoContainer: {
+    alignItems: 'center',
+    marginTop: -125,
+    marginBottom: -155
+  },
   WCULogo: {
-    flex: 1,
     width: windowWidth,
-    height: 94
+    resizeMode: 'contain'
   },
   burgerMenuContainer: {
     position: 'absolute',

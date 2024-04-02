@@ -1,5 +1,5 @@
-import React, { useState, useRef, createRef } from 'react'
-import { Image, ScrollView, Text, StyleSheet, View, Dimensions, ImageBackground } from 'react-native'
+import React from 'react'
+import { Image, ScrollView, Text, StyleSheet, View } from 'react-native'
 import { BurgerMenuButton } from '../components/BurgerMenuButton'
 import { useNavigation } from '@react-navigation/native'
 
@@ -12,7 +12,7 @@ const TutorialPage = () => {
         <BurgerMenuButton navigation={navigation} />
       </View>
       <ScrollView contentContainerStyle={styles.container}>
-        <Text style={styles.header}>{'\n'}{'\n'}Hello, welcome to the tracking growth of cheatgrass app.</Text>
+        <Text style={styles.header}>{'\n'}{'\n'}Hello, welcome to CheatMaps</Text>
         <Text style={styles.text}>To make an observation, tap the {'"'}Make Observation{'"'} button at the bottom of the Map.</Text>
         <Image source={require('../images/tutorial/MapTutorial.png')} style={styles.image} />
         <Text style={styles.text}>Take a picture by tapping the circle at the bottom of the next screen.</Text>
@@ -23,7 +23,7 @@ const TutorialPage = () => {
           {'"'}Confirm Observation{'"'} button. Or tap the X in the upper left hand corner to abandon the observation.</Text>
         <Image source={require('../images/tutorial/QuestionsTutorial.png')} style={styles.image} />
         <Image source={require('../images/tutorial/LocationDescriptionTutorial.png')} style={styles.image} />
-        <Text style={styles.text}>Once you see the success dialogue your observation has been uploaded! If you are out of service your 
+        <Text style={styles.text}>Once you see the success dialogue your observation has been uploaded! If you are out of service your
         observation will be saved and uploaded once you are back in range!</Text>
         <Image source={require('../images/tutorial/SuccessTutorial.png')} style={styles.image} />
         <Text style={styles.header}>Thank you for helping us track cheatgrass in the Gunnison Valley!</Text>
@@ -47,7 +47,9 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: 'black',
     marginBottom: 15,
-    marginLeft: 10
+    marginLeft: 15,
+    textAlign: 'center'
+
   },
   header: {
     fontSize: 24,
