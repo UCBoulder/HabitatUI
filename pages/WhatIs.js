@@ -1,58 +1,26 @@
-import React, { useState, useRef, createRef } from 'react'
-import { Image, ScrollView, Text, StyleSheet, View, Dimensions, ImageBackground } from 'react-native'
+import React from 'react'
+import { Image, ScrollView, Text, StyleSheet, View, Dimensions } from 'react-native'
 import { BurgerMenuButton } from '../components/BurgerMenuButton'
 import { useNavigation } from '@react-navigation/native'
-// import { GestureHandlerRootView, PanGestureHandler, PinchGestureHandler, State } from 'react-native-gesture-handler'
-// import { AnimatedText } from 'react-native-reanimated/lib/typescript/reanimated2/component/Text'
 
 //  gets the dimensions of the screen, should allow images to adapt to different sreen sizes
 const windowWidth = Dimensions.get('window').width
-const windowHight = Dimensions.get('window').height
 
-const InfoPage = () => {
+const WhatIs = () => {
   const navigation = useNavigation()
 
   return (
-    // <ImageBackground
-    //   source={require('../images/infoPage.jpeg')}
-    //   style={styles.backgroundImage}
-    // >
-    <View backgroundColor= '#98bd55'>
-      <ScrollView contentContainerStyle={styles.container} >
+    <View backgroundColor='#98bd55'>
+      <View style={styles.burgerMenuContainer}>
         <BurgerMenuButton navigation={navigation} />
-
-        {/* <Image source={require('../images/CheatgrassInfographic.png')} style={styles.infographic} /> */}
-        {/* <Image source={require('../images/CheatGrassBrochure-1.png')} style={styles.image} /> */}
+      </View>
+      <ScrollView contentContainerStyle={styles.container} >
 
         <Text style={styles.header}>{'\n'}{'\n'}What is Cheatgrass?</Text>
         <Text style={styles.text}>Cheatgrass, an invasive species in Gunnison County, threatens the way of life of the Western
           slope. Whether it is decreasing grass availability for ranching, degrading recreational opportunities, or posing fire threats to homeowners, nearly
           everybody is affected by Cheatgrass. Through education, outreach, and volunteering we can prevent the spread of Cheatgrass.  </Text>
         <Image source={require('../images/cheatgrass.jpg')} style={styles.image} />
-
-        <Text style={styles.header}>How do you identify Cheatgrass? </Text>
-        <Text style={styles.text}>-Short flat blade-length (6”-24”) {'\n'}-Sharp seedlet emerging from a “sheath”
-          {'\n'}-Sharp spiky seeds typically containing 5-8 seeds in each seedlet {'\n'}-High density of seeds and stalks in a growing area
-          {'\n'}-Variable coloration ranging from green, to purple, to tan {'\n'}-Initially bright green in early life stages
-        </Text>
-        <Image source={require('../images/cheatgrass3.jpg')} style={styles.image} />
-        <Text style={styles.text}>
-          {'\n'}-Turns purplish when it begins to die and then becomes tan or light brown when it dies completely</Text>
-        <Image source={require('../images/cheatgrass2.jpg')} style={styles.image} />
-
-        <Text style={styles.header}>Similar speces to look out for </Text>
-
-        <Text style={styles.text}>Indian Rice Grass {'\n'}-Blonde or light green color{'\n'}-Deep roots so it will not come out of the ground
-          {'\n'}-Spikelets contain a single floret {'\n'}-Loose branches with seeds spread at wide angles </Text>
-        <Image source={require('../images/indianRiceGrass.jpg')} style={styles.image} />
-
-        <Text style={styles.text}>Needle-and-Thread Grass{'\n'}-Blonde color in the Summer, otherwise greenish
-          {'\n'}-Up to three feet in height {'\n'}-Bunchgrass with deep roots {'\n'}Very long bristles that stick to clothing </Text>
-        <Image source={require('../images/needleAndThreadGrass.jpg')} style={styles.image} />
-
-        <Text style={styles.text}>Foxtail Barley{'\n'}-1-2 feet tall{'\n'}-Bristly seeds up to four inches long that resemble the tail of a fox
-          {'\n'}-About three spikes per node {'\n'}-Seeds can be reddish-brown to purplish in color {'\n'}-Densely packed seeds </Text>
-        <Image source={require('../images/foxtailBarley.jpg')} style={styles.image} />
 
         <Text style={styles.header}>Cheatgrass and Fire: A Deadly Combination </Text>
 
@@ -61,21 +29,23 @@ const InfoPage = () => {
           making it easy to ignite and kill off native sagebrush and fauna{'\n'}-After fires occur, Cheatgrass replaces the Sagebrush, and the cycle continues
           {'\n'}-Fire become much more frequent, threatening homes and eliminating the Sagebrush and making Cheatgrass the dominant landscape </Text>
 
-        <Text style={styles.header}>Cheatgrass: Bad for Wildlife, Bad for Business  </Text>
+        <Text style={styles.header}>Cheatgrass: Bad for Wildlife; Bad for Business  </Text>
 
         <Text style={styles.text}>-In Nevada, Cheatgrass has replaced native plants and now makes up 90% of the total biomass
           {'\n'}-The poor forage is bad for wildlife including elk, Sage-Grouse, and deer{'\n'}-Also creates poor grazing conditions for cattle
           and decreases the economic value of land{'\n'}-Cheatgrass threatens the largest remaining population of the Gunnison Sage-Grouse,
           which will become extinct if the spread of Cheatgrass continues{'\n'}-Many ranching, hunting and other economic and outdoor opportunities will be lost too </Text>
 
+        <Image source={require('../images/CheatAndFire.jpg')} style={styles.image} />
+
         <Text style={styles.header}>Statistics </Text>
 
         <Text style={styles.text}>-87% of Gunnison Sage-Grouse population in the Gunnison Valley is threatened
           {'\n'}-10,000 Cheatgrass plants can grow in one square meter, dramatically increasing the fire risk
           {'\n'}-12 million acres have been transformed into Cheatgrass monoculture in the Great Basin </Text>
-          <Image source={require('../images/cheatgrassInfestation.jpg')} style={styles.image} />
+        <Image source={require('../images/cheatgrassInfestation.jpg')} style={styles.image} />
 
-        <Text style={styles.header}>Don’t Get Cheated </Text>
+        <Text style={styles.header}>Prevent the Spread: Don’t Get Cheated </Text>
 
         <Text style={styles.text}>-Removing Cheatgrass from your property is an effective solution
           {'\n'}-Pulling it by hand or using commercially available herbicides are two common forms of removal
@@ -83,9 +53,26 @@ const InfoPage = () => {
           {'\n'}-Clean boots, gear, and vehicles before traveling to another location to avoid spreading Cheatgrass </Text>
         <Image source={require('../images/CheatgrassStuckInSocks.jpg')} style={styles.longImage} />
 
+        <Text style={styles.header}>Contact Information </Text>
+
+        <Text style={styles.nametext}>Bureau of Land Management (BLM) Gunnison Field Office:</Text>
+        <Text style={styles.text}>Phone: (970) 642-4940{'\n'}
+          Address: 2500 E New York Ave, Gunnison, CO 81230</Text>
+
+        <Text style={styles.nametext}>County Weed Management Program:</Text>
+        <Text style={styles.text}>Phone: (970) 641-4393{'\n'}
+          Address: 725 S. 10th Street, Gunnison, CO 81230</Text>
+
+        <Text style={styles.nametext}>US Forest Service Supervisor{"'"}s Office
+          - Grand Mesa, Uncompahgre and Gunnison National Forests</Text>
+        <Text style={styles.text}>Phone: (970) 874-6600{'\n'}
+          Address: 2250 South Main St, Delta, CO 81416</Text>
+
+        <View style={styles.WCULogoContainer}>
+          <Image source={require('../images/WesternCU.jpg')} style={styles.WCULogo} />
+        </View>
       </ScrollView>
     </View>
-    // </ImageBackground>s
 
   )
 }
@@ -93,6 +80,7 @@ const InfoPage = () => {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
+    alignContent: 'center',
     flexGrow: 1,
     justifyContent: 'space-between'
   },
@@ -106,25 +94,46 @@ const styles = StyleSheet.create({
   },
   image: {
     width: windowWidth,
-    height: 250
+    height: 350
   },
   longImage: {
     width: windowWidth,
     height: 450
   },
+  WCULogoContainer: {
+    alignItems: 'center',
+    marginTop: -125,
+    marginBottom: -155
+  },
+  WCULogo: {
+    width: windowWidth,
+    resizeMode: 'contain'
+  },
+  burgerMenuContainer: {
+    position: 'absolute',
+    zIndex: 100
+  },
   header: {
-    fontSize: 22,
+    fontSize: 24,
     fontWeight: 'bold',
     color: 'black',
     marginBottom: 15,
     marginLeft: 10,
-    marginTop: 15
+    marginTop: 15,
+    alignItems: 'center'
   },
   text: {
-    fontSize: 18,
+    fontSize: 20,
     color: 'black',
     marginBottom: 15,
     marginLeft: 10
+  },
+  nametext: {
+    fontSize: 20,
+    color: 'black',
+    marginBottom: 15,
+    marginLeft: 10,
+    textDecorationLine: 'underline'
   },
   buttonContainer: {
     flex: 1,
@@ -135,4 +144,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default InfoPage
+export default WhatIs
