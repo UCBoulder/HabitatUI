@@ -274,12 +274,18 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     marginLeft: 10
   },
-  floatingLabel: {
+ floatingLabel: {
     fontSize: 18,
     fontWeight: 'bold',
     color: 'black',
     marginBottom: 0,
     marginLeft: 10
+  optionalLabel: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: 'black',
+    marginLeft: 10,
+    marginBottom: -15
   },
   radioGroup: {
     color: 'black'

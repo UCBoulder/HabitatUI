@@ -1,16 +1,17 @@
 import RNFS from 'react-native-fs'
 import { simplifyJson } from './simplifyJson'
-import { Alert } from 'react-native'
+import { FormatDate } from '../utils/FormatDate'
 
 export const convertToCSV = (data) => {
-  const header = 'Latitude,Longitude,Accuracy,Notes,Image\n'
+  const header = 'Date,Latitude,Longitude,Accuracy,Cover,Acres,Description,Image\n'
   const rows = data.map((json) => {
     const simplifiedJson = simplifyJson(json)
+    const observationDate = FormatDate(simplifiedJson.timestamp)
     const { coords } = simplifiedJson
 
     if (coords) {
       const { latitude, longitude, accuracy } = coords
-      return `${latitude},${longitude},${accuracy},${simplifiedJson.Notes},${simplifiedJson.observationImageURL}\n`
+      return `${observationDate.formattedDate},${latitude},${longitude},${accuracy},${simplifiedJson.Notes.cover},${simplifiedJson.Notes.acres},${simplifiedJson.Notes.description},${simplifiedJson.observationImageURL}\n`
     }
 
     return ''
@@ -20,18 +21,13 @@ export const convertToCSV = (data) => {
 }
 
 export const saveCSVToFile = async (csvData) => {
-  const filePath = '/storage/emulated/0/Download/coordinates.csv'
+  const timestamp = new Date().getTime() // Get current timestamp
+  const fileName = `${RNFS.DownloadDirectoryPath}/Observations_${timestamp}.csv` // Append timestamp to file name
   try {
-    await RNFS.writeFile(filePath, csvData, 'utf8')
-    Alert.alert('Success', 'The Observation information has been downloaded to Downloads/coordinates.csv')
+    await RNFS.writeFile(fileName, csvData, 'utf8')
+    return fileName
   } catch (error) {
-    Alert.alert('Failed', 'The Observation information failed to download', [{
-      text: 'Retry',
-      onPress: () => saveCSVToFile(csvData)
-    },
-    {
-      text: 'Ok'
-    }])
     console.error('Error saving CSV file: ', error)
+    throw error
   }
 }
