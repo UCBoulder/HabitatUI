@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
     zIndex: 100
   },
   header: {
-    fontSize: 22,
+    fontSize: 24,
     fontWeight: 'bold',
     color: 'black',
     marginBottom: 15,
@@ -127,13 +127,13 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   text: {
-    fontSize: 18,
+    fontSize: 20,
     color: 'black',
     marginBottom: 15,
     marginLeft: 10
   },
   nametext: {
-    fontSize: 18,
+    fontSize: 20,
     color: 'black',
     marginBottom: 15,
     marginLeft: 10,
