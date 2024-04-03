@@ -3,7 +3,6 @@ import { Alert } from 'react-native'
 import config from '../config'
 import connectionCheck from './CheckConnection'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import { API_KEY } from '@env'
 
 // recieve one or many lat long coordinates from the API
 export const getLocationPins = async () => {
@@ -12,7 +11,7 @@ export const getLocationPins = async () => {
     try {
       const response = await axios.get(`${config.apiTestAddress}${config.apiPath}`, {
         headers: {
-          'x-api-key': API_KEY
+          'x-api-key': process.env.API_KEY
         }
       })
       return response.data.Items
@@ -32,7 +31,7 @@ export const sendLocationPin = async (observation) => {
     try {
       const response = await axios.post(`${config.apiTestAddress}${config.apiPath}`, observation, {
         headers: {
-          'x-api-key': API_KEY
+          'x-api-key': process.env.API_KEY
         }
       })
       console.log('Response from backend: ', response.data)
@@ -67,7 +66,7 @@ export const sendStoredObservations = async () => {
       try {
         await axios.post(`${config.apiTestAddress}${config.apiPath}`, storedObservation, {
           headers: {
-            'x-api-key': API_KEY
+            'x-api-key': process.env.API_KEY
           }
         })
       } catch (error) {
