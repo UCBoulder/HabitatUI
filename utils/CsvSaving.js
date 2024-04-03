@@ -22,7 +22,8 @@ export const convertToCSV = (data) => {
 
 export const saveCSVToFile = async (csvData) => {
   const timestamp = new Date().getTime() // Get current timestamp
-  const fileName = `/storage/emulated/0/Download/coordinates_${timestamp}.csv` // Append timestamp to file name
+  const fileName = `${RNFS.DownloadDirectoryPath}/coordinates_${timestamp}.csv`
+
   try {
     await RNFS.writeFile(fileName, csvData, 'utf8')
     return fileName
