@@ -7,11 +7,12 @@ import { loadUserID } from './utils/UserID'
 import { requestLocationPermission, requestCameraPermission } from './utils/Permissions'
 import { MapScreen } from './components/MapScreen'
 import { checkAsyncStorage, initBackgroundFetch } from './utils/APICalls'
-import InfoPage from './pages/InfoPage'
 import CameraPage from './pages/CameraPage'
 import ConfirmationPage from './pages/ConfirmationPage'
-import AboutPage from './pages/AboutPage'
+import WhatIs from './pages/WhatIs'
+import HowToID from './pages/HowToID'
 import DownloadPage from './pages/DownloadPage'
+import TutorialPage from './pages/TutorialPage'
 
 const Stack = createNativeStackNavigator()
 const Drawer = createDrawerNavigator()
@@ -44,9 +45,10 @@ export default function App () {
         }}
       >
         <Drawer.Screen name="Map" component={StackScreens} />
-        <Drawer.Screen name="Info" component={InfoPage} />
-        <Drawer.Screen name="About" component={AboutPage} headerShown={true}/>
+        <Drawer.Screen name="What is Cheatgrass" component={WhatIs} />
+        <Drawer.Screen name="How to Identify Cheatgrass" component={HowToID} />
         <Drawer.Screen name="Download" component={DownloadPage} />
+        <Drawer.Screen name="Tutorial" component={TutorialPage} />
       </Drawer.Navigator>
     </NavigationContainer>
   )

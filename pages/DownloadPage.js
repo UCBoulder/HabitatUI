@@ -27,7 +27,6 @@ const DownloadPage = () => {
     if (apiCoordinates.length > 0) {
       const csvData = convertToCSV(apiCoordinates)
       const filePath = await saveCSVToFile(csvData)
-      console.log(filePath)
 
       Mailer.mail({
         subject: 'CSV File',
@@ -55,7 +54,7 @@ const DownloadPage = () => {
       <View style={styles.buttonContainer}>
         <BurgerMenuButton navigation={navigation} />
         <TouchableOpacity style={styles.button} onPress={handleDownload}>
-          <Text style={styles.text}>Download Pin Information</Text>
+          <Text style={styles.text}>Download and Email Observations</Text>
         </TouchableOpacity>
       </View>
     </ImageBackground>
@@ -78,7 +77,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 5,
     marginVertical: 5,
-    height: 50,
+    height: 55,
     width: 200,
     marginRight: 10
   },
