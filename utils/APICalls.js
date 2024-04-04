@@ -14,7 +14,11 @@ export const getLocationPins = async () => {
   const isConnected = await connectionCheck()
   if (isConnected) {
     try {
-      const response = await axiosInstance.get(`${config.apiTestAddress}${config.apiPath}`)
+      const response = await axios.get(`${config.apiTestAddress}${config.apiPath}`, {
+        headers: {
+          'x-api-key': process.env.API_KEY
+        }
+      })
       return response.data.Items
     } catch (error) {
       console.error('Error fetching API data: ', error)
@@ -28,9 +32,15 @@ export const sendLocationPin = async (observation) => {
   const isConnected = await connectionCheck()
   const storedObservations = await AsyncStorage.getItem('Observations')
 
-  try {
-    if (isConnected) {
-      const response = await axiosInstance.post(`${config.apiTestAddress}${config.apiPath}`, observation)
+
+  if (isConnected) {
+    try {
+      const response = await axios.post(`${config.apiTestAddress}${config.apiPath}`, observation, {
+        headers: {
+          'x-api-key': process.env.API_KEY
+        }
+      })
+
       console.log('Response from backend: ', response.data)
       Alert.alert('Success', 'Your Observation Was Successfully Uploaded.')
     } else {
@@ -79,7 +89,12 @@ export const sendStoredObservations = async () => {
   if (storedObservations.length > 0) {
     for (const storedObservation of storedObservations) {
       try {
-        await axiosInstance.post(`${config.apiTestAddress}${config.apiPath}`, storedObservation)
+        await axios.post(`${config.apiTestAddress}${config.apiPath}`, storedObservation, {
+          headers: {
+            'x-api-key': process.env.API_KEY
+          }
+        })
+
       } catch (error) {
         console.error('Error sending stored observation to backend: ', error)
         Alert.alert('Failed', 'Your Observation Failed to Upload.', [{
