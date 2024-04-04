@@ -47,8 +47,6 @@ const CustomMarker = ({ data }) => {
         <View style={styles.calloutContainer}>
           <Text style={styles.calloutText}>
             {`Observation made on: ${observationDate.formattedDate}\n`}
-            {`Latitude: ${parsedData.coords.latitude}\nLongitude: ${parsedData.coords.longitude}\n`}
-            {`Accuracy: ${parsedData.coords.accuracy}\n`}
             {`Size: ${parsedData.Notes.acres}\n`}
             {`Cover: ${parsedData.Notes.cover}\n`}
             {`Notes: ${parsedData.Notes.description}\n`}

@@ -3,8 +3,13 @@ import { Alert } from 'react-native'
 import config from '../config'
 import connectionCheck from './CheckConnection'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import BackgroundFetch from 'react-native-background-fetch'
 
-// recieve one or many lat long coordinates from the API
+const axiosInstance = axios.create({
+  timeout: 5000 // 5 seconds timeout
+})
+
+// receive one or many lat long coordinates from the API
 export const getLocationPins = async () => {
   const isConnected = await connectionCheck()
   if (isConnected) {
@@ -25,7 +30,8 @@ export const getLocationPins = async () => {
 // send one lat long coordinate to the API
 export const sendLocationPin = async (observation) => {
   const isConnected = await connectionCheck()
-  const storedObservations = await AsyncStorage.getItem('Observation')
+  const storedObservations = await AsyncStorage.getItem('Observations')
+
 
   if (isConnected) {
     try {
@@ -34,11 +40,21 @@ export const sendLocationPin = async (observation) => {
           'x-api-key': process.env.API_KEY
         }
       })
+
       console.log('Response from backend: ', response.data)
       Alert.alert('Success', 'Your Observation Was Successfully Uploaded.')
-    } catch (error) {
-      console.error('Error sending data to backend: ', error)
+    } else {
+      const updatedObservations = storedObservations ? JSON.parse(storedObservations) : []
+      updatedObservations.push(observation)
+      await AsyncStorage.setItem('Observations', JSON.stringify(updatedObservations))
+      await initBackgroundFetch()
+      Alert.alert('Warning', 'Your observation has been stored and can be uploaded when you have service.')
+    }
+  } catch (error) {
+    console.error('Error sending data to backend: ', error)
 
+    if (error.response) {
+      // Handle other errors based on Axios response
       Alert.alert('Failed', 'Your Observation Failed to Upload.', [{
         text: 'Retry',
         onPress: () => sendLocationPin(observation)
@@ -46,29 +62,39 @@ export const sendLocationPin = async (observation) => {
       {
         text: 'Ok'
       }])
-
-      return null
+    } else if (error.request) {
+      // Handle network error
+      const updatedObservations = storedObservations ? JSON.parse(storedObservations) : []
+      updatedObservations.push(observation)
+      await AsyncStorage.setItem('Observations', JSON.stringify(updatedObservations))
+      await initBackgroundFetch()
+      Alert.alert('Warning', 'Your observation was not uploaded due to a network error. It has been stored and can be uploaded when you have service.')
+    } else {
+      // Handle other types of errors
+      Alert.alert('Failed', 'An error occurred while sending your observation.', [{
+        text: 'Retry',
+        onPress: () => sendLocationPin(observation)
+      },
+      {
+        text: 'Ok'
+      }])
     }
-  } else {
-    const updatedObservations = storedObservations ? JSON.parse(storedObservations) : []
-    updatedObservations.push(observation)
-    await AsyncStorage.setItem('Observations', JSON.stringify(updatedObservations))
-    Alert.alert('Success', 'Your observation has been stored and can be uploaded when you have service.')
   }
 }
 
 export const sendStoredObservations = async () => {
-  const storedObservations = await AsyncStorage.getItem('Observations')
-  const observations = JSON.parse(storedObservations)
+  const storedObservationsString = await AsyncStorage.getItem('Observations')
+  const storedObservations = storedObservationsString ? JSON.parse(storedObservationsString) : []
 
-  if (storedObservations) {
-    for (const storedObservation of observations) {
+  if (storedObservations.length > 0) {
+    for (const storedObservation of storedObservations) {
       try {
         await axios.post(`${config.apiTestAddress}${config.apiPath}`, storedObservation, {
           headers: {
             'x-api-key': process.env.API_KEY
           }
         })
+
       } catch (error) {
         console.error('Error sending stored observation to backend: ', error)
         Alert.alert('Failed', 'Your Observation Failed to Upload.', [{
@@ -78,12 +104,12 @@ export const sendStoredObservations = async () => {
         {
           text: 'Ok'
         }])
+        return // Exit the function if any observation fails to upload
       }
     }
     Alert.alert('Success', 'Your Stored Observation Was Successfully Uploaded.')
+    await AsyncStorage.removeItem('Observations')
   }
-
-  await AsyncStorage.removeItem('Observations')
 }
 
 export const checkAsyncStorage = async () => {
@@ -91,4 +117,27 @@ export const checkAsyncStorage = async () => {
   if (storedObservations) {
     sendStoredObservations()
   }
+}
+
+export const initBackgroundFetch = async () => {
+  const onEvent = async (taskId) => {
+    console.log('Background task: ', taskId)
+    const isConnected = await connectionCheck()
+
+    if (isConnected) {
+      await sendStoredObservations()
+      BackgroundFetch.finish(taskId)
+    }
+  }
+
+  const onTimeout = async (taskId) => {
+    console.log('Background task timeout: ', taskId)
+    BackgroundFetch.finish(taskId)
+  }
+
+  const status = await BackgroundFetch.configure({
+    minimumFetchInterval: 15, // Fetch interval in minutes
+    stopOnTerminate: false,
+    startOnBoot: true
+  }, onEvent, onTimeout)
 }
