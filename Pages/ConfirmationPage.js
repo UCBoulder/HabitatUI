@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   Text,
   Modal,
-  ScrollView, Alert
+  ScrollView, Alert, Dimensions
 } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { makeObservation } from '../utils/MakeObservation'
@@ -15,6 +15,8 @@ import RadioGroup from 'react-native-radio-buttons-group'
 import PropTypes from 'prop-types'
 import Icon from 'react-native-vector-icons/FontAwesome6'
 import LoadingModal from '../utils/LoadingModal'
+
+const windowWidth = Dimensions.get('window').width
 
 const ConfirmationPage = ({ route, userID }) => {
   const navigation = useNavigation()
@@ -128,7 +130,7 @@ const ConfirmationPage = ({ route, userID }) => {
       </TouchableOpacity>
 
       {/* questions portion */}
-      <Text style={styles.floatingLabel}>All questions are optional.{'\n'}</Text>
+      <Text style={styles.floatingLabel}>All questions are optional{'\n'}</Text>
       <ScrollView>
 
         {/* estimated size of infestation question */}
@@ -191,7 +193,7 @@ const ConfirmationPage = ({ route, userID }) => {
           style={styles.input}
           onChangeText={onChangeDescription}
           value={description}
-          multiline={true}
+          multiline
           placeholder={'Please describe the area. \nInclude landmarks, the cardinal direction, etc.'}
           placeholderTextColor={'#aaa'}
           textAlignVertical="top"
@@ -200,16 +202,16 @@ const ConfirmationPage = ({ route, userID }) => {
         <Text>{'\n'}{'\n'}{'\n'}</Text>
       </ScrollView>
 
-    <View style={styles.container}>
-    <TouchableOpacity
-      style={styles.confirmationButton}
-      onPress={confirmationButton}
-      disabled={isLoading}>
-      <Text style={styles.buttonText}>Confirm Observation</Text>
-    </TouchableOpacity>
-    <LoadingModal isVisible={isLoading} />
-  </View>
-  </View>
+      <View style={styles.container}>
+        <TouchableOpacity
+          style={styles.confirmationButton}
+          onPress={confirmationButton}
+          disabled={isLoading}>
+          <Text style={styles.buttonText}>Confirm Observation</Text>
+        </TouchableOpacity>
+        <LoadingModal isVisible={isLoading} />
+      </View>
+    </View>
   )
 }
 
@@ -235,7 +237,7 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 100,
-    width: '95%',
+    width: 0.95 * windowWidth,
     borderColor: 'black',
     borderWidth: 1,
     borderRadius: 10,
@@ -278,7 +280,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     color: 'black',
-    marginBottom: 0,
+    marginBottom: -13,
     marginLeft: 10
   },
   optionalLabel: {
