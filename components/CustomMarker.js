@@ -43,7 +43,7 @@ const CustomMarker = ({ data }) => {
       ref={markerRef}
       pinColor={ColorCode(parsedData.VerificationRating ? parsedData.VerificationRating : '1')}
     >
-      <Callout tooltip onPress={calloutPress}>
+      <Callout tooltip onPress={calloutPress} style={{ flex: 1 }}>
         <View style={styles.calloutContainer}>
           <Text style={styles.calloutText}>
             {`Observation made on: ${observationDate.formattedDate}\n`}
@@ -85,7 +85,8 @@ const styles = StyleSheet.create({
   calloutContainer: {
     borderRadius: 10,
     backgroundColor: 'white',
-    padding: 4
+    padding: 4,
+    width: 200
   },
   calloutText: {
     fontSize: 14,
