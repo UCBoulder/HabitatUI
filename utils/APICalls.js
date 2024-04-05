@@ -32,13 +32,31 @@ export const sendLocationPin = async (observation) => {
   const isConnected = await connectionCheck()
   const storedObservations = await AsyncStorage.getItem('Observations')
 
+  let timeoutId = null // Variable to store the timeout ID
+  const cancelTokenSource = axios.CancelToken.source() // Create a cancel token source
+
   try {
     if (isConnected) {
+      // Start the timer
+      timeoutId = setTimeout(async () => {
+        cancelTokenSource.cancel('Timeout occurred') // Cancel the request if timeout occurs
+        const updatedObservations = storedObservations ? JSON.parse(storedObservations) : []
+        updatedObservations.push(observation)
+        await AsyncStorage.setItem('Observations', JSON.stringify(updatedObservations))
+        await initBackgroundFetch()
+        Alert.alert('Warning', 'Your observation has been stored and can be uploaded when you have service.')
+      }, 7500) // 7.5 seconds timeout
+
       const response = await axiosInstance.post(`${config.apiTestAddress}${config.apiPath}`, observation, {
         headers: {
           'x-api-key': process.env.API_KEY
-        }
+        },
+        cancelToken: cancelTokenSource.token // Pass the cancel token to the request config
       })
+
+      // Clear the timeout if the request completes before 5 seconds
+      clearTimeout(timeoutId)
+
       console.log('Response from backend: ', response.data)
       Alert.alert('Success', 'Your Observation Was Successfully Uploaded.')
     } else {
@@ -50,6 +68,14 @@ export const sendLocationPin = async (observation) => {
     }
   } catch (error) {
     console.error('Error sending data to backend: ', error)
+
+    // Clear the timeout if an error occurs
+    clearTimeout(timeoutId)
+
+    if (axios.isCancel(error)) {
+      console.log('Request canceled:', error.message) // Handle canceled request
+      return // Exit the function if the request was canceled
+    }
 
     if (error.response) {
       // Handle other errors based on Axios response
