@@ -10,6 +10,9 @@ import FetchS3Image from '../utils/FetchS3Image'
 import { loadUserID } from '../utils/UserID'
 
 const CustomMarker = ({ data }) => {
+  if (!data) {
+    return null
+  }
   const [modalVisible, setModalVisible] = useState(false)
   const parsedData = simplifyJson(data)
   const [userID, setUserID] = useState(null)

@@ -12,16 +12,16 @@ const MapPage = () => {
   const [mapKey, setMapKey] = useState(0)
   const isFocused = useIsFocused()
 
-  useEffect(() => {
-    const fetchPins = async () => {
-      try {
-        const coordinates = await getLocationPins()
-        coordinates && setApiCoordinates(coordinates)
-      } catch (error) {
-        console.error('Error fetching API data: ', error)
-      }
+  const fetchPins = async () => {
+    try {
+      const coordinates = await getLocationPins()
+      coordinates && setApiCoordinates(coordinates)
+    } catch (error) {
+      console.error('Error fetching API data: ', error)
     }
+  }
 
+  useEffect(() => {
     if (isFocused) {
       fetchPins()
     }
@@ -29,6 +29,7 @@ const MapPage = () => {
 
   const refreshMap = () => {
     setMapKey(prevKey => prevKey + 1)
+    fetchPins()
   }
 
   return (

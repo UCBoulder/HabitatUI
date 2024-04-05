@@ -8,7 +8,9 @@ import Icon from 'react-native-vector-icons/FontAwesome5'
 const CameraPage = () => {
   const navigation = useNavigation()
   const camera = useRef(null)
-  const device = useCameraDevice('back')
+  const device = useCameraDevice('back', [
+    { photoResolution: { width: 1080, height: 1920 } }
+  ])
 
   const [imageSource, setImageSource] = useState('')
   const [photoTaken, setPhotoTaken] = useState(false)
@@ -16,7 +18,8 @@ const CameraPage = () => {
   async function capturePhoto () {
     if (camera.current !== null) {
       const photo = await camera.current.takePhoto({
-        enableShutterSound: false
+        enableShutterSound: false,
+        quality: 0.2
       })
       setImageSource(photo.path)
       setPhotoTaken(true)

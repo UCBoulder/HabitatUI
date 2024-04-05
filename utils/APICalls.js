@@ -6,7 +6,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import BackgroundFetch from 'react-native-background-fetch'
 
 const axiosInstance = axios.create({
-  timeout: 5000 // 5 seconds timeout
+  timeout: 10000 // 5 seconds timeout
 })
 
 // receive one or many lat long coordinates from the API
@@ -45,7 +45,7 @@ export const sendLocationPin = async (observation) => {
         await AsyncStorage.setItem('Observations', JSON.stringify(updatedObservations))
         await initBackgroundFetch()
         Alert.alert('Warning', 'Your observation has been stored and can be uploaded when you have service.')
-      }, 7500) // 7.5 seconds timeout
+      }, 10000) // 10 seconds timeout
 
       const response = await axiosInstance.post(`${config.apiTestAddress}${config.apiPath}`, observation, {
         headers: {
@@ -67,13 +67,13 @@ export const sendLocationPin = async (observation) => {
       Alert.alert('Warning', 'Your observation has been stored and can be uploaded when you have service.')
     }
   } catch (error) {
-    console.error('Error sending data to backend: ', error)
+    console.error('Error sending data to backend: ', error.respose.data)
 
     // Clear the timeout if an error occurs
     clearTimeout(timeoutId)
 
     if (axios.isCancel(error)) {
-      console.log('Request canceled:', error.message) // Handle canceled request
+      console.log('Request canceled:', error.message)
       return // Exit the function if the request was canceled
     }
 
@@ -109,7 +109,6 @@ export const sendLocationPin = async (observation) => {
 export const sendStoredObservations = async () => {
   const storedObservationsString = await AsyncStorage.getItem('Observations')
   const storedObservations = storedObservationsString ? JSON.parse(storedObservationsString) : []
-
   if (storedObservations.length > 0) {
     for (const storedObservation of storedObservations) {
       try {
@@ -119,7 +118,7 @@ export const sendStoredObservations = async () => {
           }
         })
       } catch (error) {
-        console.error('Error sending stored observation to backend: ', error)
+        console.error('Error sending stored observation to backend: ', error.respose.data)
         Alert.alert('Failed', 'Your Observation Failed to Upload.', [{
           text: 'Retry',
           onPress: () => sendLocationPin(storedObservation)
