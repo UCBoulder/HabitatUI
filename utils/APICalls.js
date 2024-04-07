@@ -6,7 +6,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import BackgroundFetch from 'react-native-background-fetch'
 
 const axiosInstance = axios.create({
-  timeout: 10000 // 5 seconds timeout
+  timeout: 7500 // 5 seconds timeout
 })
 
 // receive one or many lat long coordinates from the API
@@ -45,7 +45,7 @@ export const sendLocationPin = async (observation) => {
         await AsyncStorage.setItem('Observations', JSON.stringify(updatedObservations))
         await initBackgroundFetch()
         Alert.alert('Warning', 'Your observation has been stored and can be uploaded when you have service.')
-      }, 10000) // 10 seconds timeout
+      }, 7500) // 10 seconds timeout
 
       const response = await axiosInstance.post(`${config.apiTestAddress}${config.apiPath}`, observation, {
         headers: {
@@ -67,8 +67,7 @@ export const sendLocationPin = async (observation) => {
       Alert.alert('Warning', 'Your observation has been stored and can be uploaded when you have service.')
     }
   } catch (error) {
-    console.error('Error sending data to backend: ', error.respose.data)
-
+    console.error('Error sending data to backend: ', error)
     // Clear the timeout if an error occurs
     clearTimeout(timeoutId)
 

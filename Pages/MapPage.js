@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { View, StyleSheet, TouchableOpacity, Text } from 'react-native'
+import { View, StyleSheet, TouchableOpacity } from 'react-native'
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps'
 import { getLocationPins } from '../utils/APICalls'
 import CustomMarker from '../components/CustomMarker'
