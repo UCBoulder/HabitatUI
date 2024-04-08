@@ -48,7 +48,7 @@ if linkage != nil
   use_frameworks! :linkage => linkage.to_sym
 end
 
-target 'MyApp' do
+target 'CheatMaps' do
   # React Native Maps dependencies
 
   rn_maps_path = '../node_modules/react-native-maps'
@@ -75,7 +75,7 @@ target 'MyApp' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
-  target 'MyAppTests' do
+  target 'CheatMapsTests' do
     inherit! :complete
     # Pods for testing
   end
