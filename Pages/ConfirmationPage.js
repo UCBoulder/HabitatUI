@@ -194,7 +194,8 @@ const ConfirmationPage = ({ route, userID }) => {
           onChangeText={onChangeDescription}
           value={description}
           multiline
-          placeholder={'Please describe the area. \nInclude landmarks, the cardinal direction, etc.'}
+          maxLength={500}
+          placeholder={'Please describe the area. Include landmarks, the cardinal direction, etc. Max 500 characters'}
           placeholderTextColor={'#aaa'}
           textAlignVertical="top"
           color='black'
