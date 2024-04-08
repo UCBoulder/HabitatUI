@@ -6,7 +6,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import BackgroundFetch from 'react-native-background-fetch'
 
 const axiosInstance = axios.create({
-  timeout: 7500 // 7.5 seconds timeout
+  timeout: 10000 // 10 seconds timeout
 })
 
 // receive one or many lat long coordinates from the API
@@ -45,7 +45,7 @@ export const sendLocationPin = async (observation) => {
         await AsyncStorage.setItem('Observations', JSON.stringify(updatedObservations))
         await initBackgroundFetch()
         Alert.alert('Warning', 'Your observation has been stored and can be uploaded when you have service.')
-      }, 7500) // 7.5 seconds timeout
+      }, 10000) // 10 seconds timeout
 
       const response = await axiosInstance.post(`${config.apiTestAddress}${config.apiPath}`, observation, {
         headers: {
