@@ -54,7 +54,7 @@ const WhatIs = () => {
         <Image source={require('../images/CheatgrassStuckInSocks.jpg')} style={styles.longImage} />
 
         <Text style={styles.header}>Contact Information </Text>
-
+        <View style={styles.contactContainer}>
         <Text style={styles.nametext}>Bureau of Land Management (BLM) Gunnison Field Office:</Text>
         <Text style={styles.text}>Phone: (970) 642-4940{'\n'}
           Address: 2500 E New York Ave, Gunnison, CO 81230</Text>
@@ -67,7 +67,7 @@ const WhatIs = () => {
           - Grand Mesa, Uncompahgre and Gunnison National Forests</Text>
         <Text style={styles.text}>Phone: (970) 874-6600{'\n'}
           Address: 2250 South Main St, Delta, CO 81416</Text>
-
+        </View>
         <View style={styles.WCULogoContainer}>
           <Image source={require('../images/WesternCU.jpg')} style={styles.WCULogo} />
         </View>
@@ -78,6 +78,9 @@ const WhatIs = () => {
 }
 
 const styles = StyleSheet.create({
+  contactContainer: {
+    alignItems: 'left'
+  },
   container: {
     alignItems: 'center',
     alignContent: 'center',
