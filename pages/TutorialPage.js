@@ -24,8 +24,39 @@ const TutorialPage = () => {
         <Image source={require('../images/tutorial/QuestionsTutorial.png')} style={styles.image} />
         <Image source={require('../images/tutorial/LocationDescriptionTutorial.png')} style={styles.image} />
         <Text style={styles.text}>Once you see the success dialogue your observation has been uploaded! If you are out of service your
-        observation will be saved and uploaded once you are back in range!</Text>
+          observation will be saved and uploaded once you are back in range!</Text>
         <Image source={require('../images/tutorial/SuccessTutorial.png')} style={styles.image} />
+
+        <Text style={styles.keyText}>Map Key:</Text>
+
+        <View style={styles.keyContainer}>
+          <View style={styles.colorContainer}>
+            <View style={styles.outerSquare}>
+              <View style={styles.yesSquare} />
+            </View>
+            <Text style={styles.text}>= Verified as cheatgrass</Text>
+          </View>
+          <View style={styles}></View>
+          <View style={styles.colorContainer}>
+            <View style={styles.outerSquare}>
+              <View style={styles.noSquare} />
+            </View>
+            <Text style={styles.text}>= Verified as not cheatgrass</Text>
+          </View>
+          <View style={styles.colorContainer}>
+            <View style={styles.outerSquare}>
+              <View style={styles.maybeSquare} />
+            </View>
+            <Text style={styles.text}>= Verified as maybe cheatgrass</Text>
+          </View>
+          <View style={styles.colorContainer}>
+            <View style={styles.outerSquare}>
+              <View style={styles.defaultSquare} />
+            </View>
+            <Text style={styles.text}>= Default color</Text>
+          </View>
+        </View>
+
         <Text style={styles.header}>Thank you for helping us track cheatgrass in the Gunnison Valley!</Text>
       </ScrollView>
     </View>
@@ -38,6 +69,50 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexGrow: 1,
     justifyContent: 'space-between'
+  },
+  keyContainer: {
+    alignContent: 'left'
+  },
+  colorContainer: {
+    flexDirection: 'row',
+    alignItems: 'left'
+  },
+  outerSquare: {
+    width: 35,
+    height: 35,
+    backgroundColor: 'white'
+  },
+  yesSquare: {
+    width: 25,
+    height: 25,
+    margin: 5,
+    backgroundColor: '#98bd55'
+  },
+  noSquare: {
+    width: 25,
+    height: 25,
+    margin: 5,
+    backgroundColor: '#b50404'
+  },
+  maybeSquare: {
+    width: 25,
+    height: 25,
+    margin: 5,
+    backgroundColor: '#f6fa00'
+  },
+  defaultSquare: {
+    width: 25,
+    height: 25,
+    margin: 5,
+    backgroundColor: '#15588f'
+  },
+  keyText: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: 'black',
+    marginBottom: 15,
+    marginLeft: 10,
+    marginTop: 20
   },
   burgerMenuContainer: {
     position: 'absolute',
