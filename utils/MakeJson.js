@@ -27,6 +27,5 @@ export const makeJson = async (position, userID, cover, acres, description, imag
     const imageBase64 = await RNFS.readFile(compressedImage, 'base64')
     observation.image = imageBase64
   }
-
   return observation
 }
