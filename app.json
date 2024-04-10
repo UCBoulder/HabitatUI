@@ -1,4 +1,5 @@
 {
   "name": "CheatMaps",
-  "displayName": "CheatMaps"
+  "displayName": "CheatMaps",
+  "plugins": ["react-native-compressor"]
 }
