@@ -34,9 +34,9 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = MyApp/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = MyApp/main.m; sourceTree = "<group>"; };
 		173E7B19DB5017ABA62F64A9 /* libPods-MyApp-MyAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyApp-MyAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		1DB1F37E92BB12BA1D887464 /* Pods-MyApp-MyAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyApp-MyAppTests.release.xcconfig"; path = "Target Support Files/Pods-MyApp-MyAppTests/Pods-MyApp-MyAppTests.release.xcconfig"; sourceTree = "<group>"; };
-		6B4BBA792A49437685CAB1BF /* Pods-MyApp-MyAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyApp-MyAppTests.debug.xcconfig"; path = "Target Support Files/Pods-MyApp-MyAppTests/Pods-MyApp-MyAppTests.debug.xcconfig"; sourceTree = "<group>"; };
-		6F9991BFC2A5A91387A628C2 /* Pods-MyApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyApp.release.xcconfig"; path = "Target Support Files/Pods-MyApp/Pods-MyApp.release.xcconfig"; sourceTree = "<group>"; };
+		1DB1F37E92BB12BA1D887464 /* Pods-CheatMaps-CheatMapsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CheatMaps-CheatMapsTests.release.xcconfig"; path = "Target Support Files/Pods-MyApp-MyAppTests/Pods-CheatMaps-CheatMapsTests.release.xcconfig"; sourceTree = "<group>"; };
+		6B4BBA792A49437685CAB1BF /* Pods-CheatMaps-CheatMapsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CheatMaps-CheatMapsTests.debug.xcconfig"; path = "Target Support Files/Pods-MyApp-MyAppTests/Pods-CheatMaps-CheatMapsTests.debug.xcconfig"; sourceTree = "<group>"; };
+		6F9991BFC2A5A91387A628C2 /* Pods-CheatMaps.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CheatMaps.release.xcconfig"; path = "Target Support Files/Pods-MyApp/Pods-CheatMaps.release.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = MyApp/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		99812EF81A53FC390F1740C7 /* libPods-MyApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D776475B2BC4613E0011D347 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = CheatMaps/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -46,7 +46,7 @@
 		D7B478132BBB2E29007BDBA8 /* TSBackgroundFetch.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:32A636YFGZ:Christopher Scott"; lastKnownFileType = wrapper.xcframework; name = TSBackgroundFetch.xcframework; path = "../node_modules/react-native-background-fetch/ios/RNBackgroundFetch/TSBackgroundFetch.xcframework"; sourceTree = "<group>"; };
 		D7EB62D12BC6E1F20047061A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = CheatMaps/Images.xcassets; sourceTree = "<group>"; };
 		D7EB62D22BC6E2CE0047061A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = CheatMaps/Images.xcassets; sourceTree = "<group>"; };
-		E94F2EAF03F2DD48409EC211 /* Pods-MyApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyApp.debug.xcconfig"; path = "Target Support Files/Pods-MyApp/Pods-MyApp.debug.xcconfig"; sourceTree = "<group>"; };
+		E94F2EAF03F2DD48409EC211 /* Pods-CheatMaps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CheatMaps.debug.xcconfig"; path = "Target Support Files/Pods-MyApp/Pods-CheatMaps.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -69,13 +69,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		00E356EF1AD99517003FC87E /* CheatMapTest */ = {
+		00E356EF1AD99517003FC87E /* CheatMapsTest */ = {
 			isa = PBXGroup;
 			children = (
 				00E356F21AD99517003FC87E /* MyAppTests.m */,
 				00E356F01AD99517003FC87E /* Supporting Files */,
 			);
-			path = CheatMapTest;
+			path = CheatMapsTest;
 			sourceTree = "<group>";
 		};
 		00E356F01AD99517003FC87E /* Supporting Files */ = {
@@ -128,7 +128,7 @@
 				D776475C2BC468750011D347 /* ic_launcher.png */,
 				13B07FAE1A68108700A75B9A /* CheatMaps */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
-				00E356EF1AD99517003FC87E /* CheatMapTest */,
+				00E356EF1AD99517003FC87E /* CheatMapsTest */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
@@ -150,10 +150,10 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				E94F2EAF03F2DD48409EC211 /* Pods-MyApp.debug.xcconfig */,
-				6F9991BFC2A5A91387A628C2 /* Pods-MyApp.release.xcconfig */,
-				6B4BBA792A49437685CAB1BF /* Pods-MyApp-MyAppTests.debug.xcconfig */,
-				1DB1F37E92BB12BA1D887464 /* Pods-MyApp-MyAppTests.release.xcconfig */,
+				E94F2EAF03F2DD48409EC211 /* Pods-CheatMaps.debug.xcconfig */,
+				6F9991BFC2A5A91387A628C2 /* Pods-CheatMaps.release.xcconfig */,
+				6B4BBA792A49437685CAB1BF /* Pods-CheatMaps-CheatMapsTests.debug.xcconfig */,
+				1DB1F37E92BB12BA1D887464 /* Pods-CheatMaps-CheatMapsTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -438,7 +438,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6B4BBA792A49437685CAB1BF /* Pods-MyApp-MyAppTests.debug.xcconfig */;
+			baseConfigurationReference = 6B4BBA792A49437685CAB1BF /* Pods-CheatMaps-CheatMapsTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -465,7 +465,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1DB1F37E92BB12BA1D887464 /* Pods-MyApp-MyAppTests.release.xcconfig */;
+			baseConfigurationReference = 1DB1F37E92BB12BA1D887464 /* Pods-CheatMaps-CheatMapsTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -489,7 +489,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E94F2EAF03F2DD48409EC211 /* Pods-MyApp.debug.xcconfig */;
+			baseConfigurationReference = E94F2EAF03F2DD48409EC211 /* Pods-CheatMaps.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -501,7 +501,7 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UILaunchScreen_Generation = NO;
 				INFOPLIST_PREPROCESS = NO;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -515,15 +515,19 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = org.reactjs.native.example.CheatGrassIdentifcation;
 				PRODUCT_NAME = MyApp;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6F9991BFC2A5A91387A628C2 /* Pods-MyApp.release.xcconfig */;
+			baseConfigurationReference = 6F9991BFC2A5A91387A628C2 /* Pods-CheatMaps.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -534,7 +538,7 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UILaunchScreen_Generation = NO;
 				INFOPLIST_PREPROCESS = NO;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -548,7 +552,11 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = org.reactjs.native.example.CheatGrassIdentifcation;
 				PRODUCT_NAME = MyApp;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
