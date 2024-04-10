@@ -8,10 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* MyAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* MyAppTests.m */; };
-		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
-		2BB86FEAF8C5847981FBDB1E /* libPods-MyApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 99812EF81A53FC390F1740C7 /* libPods-MyApp.a */; };
-		A9CD0D96369BB266BFDBE9AD /* libPods-MyApp-MyAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 173E7B19DB5017ABA62F64A9 /* libPods-MyApp-MyAppTests.a */; };
+		D776475F2BC468920011D347 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D776475E2BC468920011D347 /* Images.xcassets */; };
 		D7B478142BBB2E29007BDBA8 /* TSBackgroundFetch.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7B478132BBB2E29007BDBA8 /* TSBackgroundFetch.xcframework */; };
+		D7EB62D32BC6E2CE0047061A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7EB62D22BC6E2CE0047061A /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,7 +40,12 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = MyApp/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		99812EF81A53FC390F1740C7 /* libPods-MyApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D776475B2BC4613E0011D347 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = CheatMaps/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D776475C2BC468750011D347 /* ic_launcher.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_launcher.png; path = CheatMaps/Images.xcassets/ic_launcher.png; sourceTree = "<group>"; };
+		D776475E2BC468920011D347 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = CheatMaps/Images.xcassets; sourceTree = "<group>"; };
+		D77647602BC4697B0011D347 /* ic_launcher.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_launcher.png; path = CheatMaps/Images.xcassets/AppIcon.appiconset/ic_launcher.png; sourceTree = "<group>"; };
 		D7B478132BBB2E29007BDBA8 /* TSBackgroundFetch.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:32A636YFGZ:Christopher Scott"; lastKnownFileType = wrapper.xcframework; name = TSBackgroundFetch.xcframework; path = "../node_modules/react-native-background-fetch/ios/RNBackgroundFetch/TSBackgroundFetch.xcframework"; sourceTree = "<group>"; };
+		D7EB62D12BC6E1F20047061A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = CheatMaps/Images.xcassets; sourceTree = "<group>"; };
+		D7EB62D22BC6E2CE0047061A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = CheatMaps/Images.xcassets; sourceTree = "<group>"; };
 		E94F2EAF03F2DD48409EC211 /* Pods-MyApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyApp.debug.xcconfig"; path = "Target Support Files/Pods-MyApp/Pods-MyApp.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -51,7 +55,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A9CD0D96369BB266BFDBE9AD /* libPods-MyApp-MyAppTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,7 +63,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D7B478142BBB2E29007BDBA8 /* TSBackgroundFetch.xcframework in Frameworks */,
-				2BB86FEAF8C5847981FBDB1E /* libPods-MyApp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,6 +89,7 @@
 		13B07FAE1A68108700A75B9A /* CheatMaps */ = {
 			isa = PBXGroup;
 			children = (
+				D7EB62D12BC6E1F20047061A /* Images.xcassets */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -119,6 +122,10 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				D7EB62D22BC6E2CE0047061A /* Images.xcassets */,
+				D77647602BC4697B0011D347 /* ic_launcher.png */,
+				D776475E2BC468920011D347 /* Images.xcassets */,
+				D776475C2BC468750011D347 /* ic_launcher.png */,
 				13B07FAE1A68108700A75B9A /* CheatMaps */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* CheatMapTest */,
@@ -245,7 +252,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				D7EB62D32BC6E2CE0047061A /* Images.xcassets in Resources */,
+				D776475F2BC468920011D347 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -488,10 +496,11 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 45SRS8VVKL;
 				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = MyApp/Info.plist;
+				INFOPLIST_FILE = CheatMaps/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = CheatMaps;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UILaunchScreen_Generation = NO;
+				INFOPLIST_PREPROCESS = NO;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -520,10 +529,11 @@
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 45SRS8VVKL;
-				INFOPLIST_FILE = MyApp/Info.plist;
+				INFOPLIST_FILE = CheatMaps/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = CheatMaps;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UILaunchScreen_Generation = NO;
+				INFOPLIST_PREPROCESS = NO;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
