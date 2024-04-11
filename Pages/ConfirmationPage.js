@@ -297,6 +297,7 @@ const styles = StyleSheet.create({
   radioGroup: {
     color: 'black',
     fontSize: 18,
+    marginRight: 25,
     flex: 1
   },
   labelContainer: {
