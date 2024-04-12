@@ -148,13 +148,13 @@ const ConfirmationPage = ({ route, userID }) => {
 
         {/* confirmation questions */}
         <View style={styles.labelContainer}>
-          <Text style={styles.label}>Select Estimated Plant Cover:</Text>
+          <Text style={styles.label}>Select Estimated Plant Cover:  </Text>
           {/* i button with information pop up */}
           <TouchableOpacity
             style={styles.iButton}
             onPress={() => handleI()}
           >
-            <Icon name="circle-info" size={15} color="black" />
+            <Icon name="circle-info" size={25} color="black" />
           </TouchableOpacity>
         </View>
 
@@ -237,6 +237,7 @@ const styles = StyleSheet.create({
     height: '40%'
   },
   input: {
+    fontSize: 18,
     height: 100,
     width: 0.95 * windowWidth,
     borderColor: 'black',
@@ -244,22 +245,24 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     textDecorationColor: '#aaa',
     textAlignVertical: 'top',
-    marginLeft: 10
+    marginLeft: 10,
+    marginBottom: 15
   },
   confirmationButton: {
     backgroundColor: 'white',
     padding: 10,
     borderRadius: 10,
     borderColor: 'black',
-    bottom: 20,
+    bottom: 30,
     marginTop: 30,
     marginBottom: 50,
-    width: 200,
-    height: 40
+    width: 250,
+    height: 50
   },
   buttonText: {
     color: 'black',
-    textAlign: 'center'
+    textAlign: 'center',
+    fontSize: 18
   },
   radioGroupContainer: {
     flexDirection: 'row',
@@ -271,17 +274,17 @@ const styles = StyleSheet.create({
     marginVertical: 5
   },
   label: {
-    fontSize: 18,
+    fontSize: 25,
     fontWeight: 'bold',
     color: 'black',
     marginBottom: 15,
     marginLeft: 10
   },
   floatingLabel: {
-    fontSize: 18,
+    fontSize: 25,
     fontWeight: 'bold',
     color: 'black',
-    marginBottom: -13,
+    marginBottom: -30,
     marginLeft: 10
   },
   optionalLabel: {
@@ -292,7 +295,10 @@ const styles = StyleSheet.create({
     marginBottom: -15
   },
   radioGroup: {
-    color: 'black'
+    color: 'black',
+    fontSize: 18,
+    marginRight: 25,
+    flex: 1
   },
   labelContainer: {
     flexDirection: 'row',

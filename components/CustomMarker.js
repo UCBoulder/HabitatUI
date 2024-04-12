@@ -89,10 +89,10 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: 'white',
     padding: 4,
-    width: 200
+    width: 250
   },
   calloutText: {
-    fontSize: 14,
+    fontSize: 16,
     color: 'black'
   },
   calloutTextCentered: {
