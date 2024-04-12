@@ -148,7 +148,7 @@ const ConfirmationPage = ({ route, userID }) => {
 
         {/* confirmation questions */}
         <View style={styles.labelContainer}>
-          <Text style={styles.label}>Select Estimated Plant Cover:</Text>
+          <Text style={styles.label}>Select Estimated Plant Cover: </Text>
           {/* i button with information pop up */}
           <TouchableOpacity
             style={styles.iButton}
@@ -226,6 +226,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center'
+  },
+  iButton: {
+    marginTop: 4
   },
   scrollViewContainer: {
     flex: 1,
