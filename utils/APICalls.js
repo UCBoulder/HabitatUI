@@ -121,7 +121,7 @@ export const sendStoredObservations = async () => {
           }
         })
       } catch (error) {
-        console.error('Error sending stored observation to backend: ', error.respose.data)
+        console.error('Error sending stored observation to backend: ', error)
         Alert.alert('Failed', 'Your Observation Failed to Upload.', [{
           text: 'Retry',
           onPress: () => sendLocationPin(storedObservation)
