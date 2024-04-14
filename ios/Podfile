@@ -1,6 +1,5 @@
 platform :ios,"15.0" 
-pod 'RNFS', :path => '../node_modules/react-native-fs'
-
+use_modular_headers!
 # Resolve react_native_pods.rb with node to allow for hoisting
 require Pod::Executable.execute_command('node', ['-p',
   'require.resolve(
@@ -23,7 +22,6 @@ require Pod::Executable.execute_command('node', ['-p',
 
 
 prepare_react_native_project!
-
 
 
 setup_permissions([
