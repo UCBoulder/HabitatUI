@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "MyApp.app"
-               BlueprintName = "MyApp"
-               ReferencedContainer = "container:MyApp.xcodeproj">
+               BuildableName = "CheatMaps.app"
+               BlueprintName = "CheatMaps"
+               ReferencedContainer = "container:CheatMaps.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "MyAppTests.xctest"
-               BlueprintName = "MyAppTests"
-               ReferencedContainer = "container:MyApp.xcodeproj">
+               BuildableName = "CheatMapsTests.xctest"
+               BlueprintName = "CheatMapsTests"
+               ReferencedContainer = "container:CheatMaps.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "MyApp.app"
-            BlueprintName = "MyApp"
-            ReferencedContainer = "container:MyApp.xcodeproj">
+            BuildableName = "CheatMaps.app"
+            BlueprintName = "CheatMaps"
+            ReferencedContainer = "container:CheatMaps.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "MyApp.app"
-            BlueprintName = "MyApp"
-            ReferencedContainer = "container:MyApp.xcodeproj">
+            BuildableName = "CheatMaps.app"
+            BlueprintName = "CheatMaps"
+            ReferencedContainer = "container:CheatMaps.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

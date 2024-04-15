@@ -8,8 +8,27 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* CheatMapsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* CheatMapsTests.m */; };
-		1447F5D69BF5D46D0B5BCD12 /* libPods-CheatMaps-CheatMapsTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 333E0CF32161B1EEF556AF3F /* libPods-CheatMaps-CheatMapsTests.a */; };
-		3B4C96D06BAD9D9926FEDC07 /* libPods-CheatMaps.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 128CB7DD1A331FAF64BEBBE9 /* libPods-CheatMaps.a */; };
+		9C09912DFC87FEDF90D29FA9 /* libPods-CheatMaps-CheatMapsTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CDF2FCD6EFAB846D66254F5A /* libPods-CheatMaps-CheatMapsTests.a */; };
+		AFE51C004B4242DAED213962 /* libPods-CheatMaps.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EF775D682F4296BFF3EC6B0D /* libPods-CheatMaps.a */; };
+		D7A94A292BCDA18C005F06D8 /* AntDesign.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7A94A152BCDA18C005F06D8 /* AntDesign.ttf */; };
+		D7A94A2A2BCDA18C005F06D8 /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7A94A162BCDA18C005F06D8 /* Entypo.ttf */; };
+		D7A94A2B2BCDA18C005F06D8 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7A94A172BCDA18C005F06D8 /* EvilIcons.ttf */; };
+		D7A94A2C2BCDA18C005F06D8 /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7A94A182BCDA18C005F06D8 /* Feather.ttf */; };
+		D7A94A2D2BCDA18C005F06D8 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7A94A192BCDA18C005F06D8 /* FontAwesome.ttf */; };
+		D7A94A2E2BCDA18C005F06D8 /* FontAwesome5_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7A94A1A2BCDA18C005F06D8 /* FontAwesome5_Brands.ttf */; };
+		D7A94A2F2BCDA18C005F06D8 /* FontAwesome5_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7A94A1B2BCDA18C005F06D8 /* FontAwesome5_Regular.ttf */; };
+		D7A94A302BCDA18C005F06D8 /* FontAwesome5_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7A94A1C2BCDA18C005F06D8 /* FontAwesome5_Solid.ttf */; };
+		D7A94A312BCDA18C005F06D8 /* FontAwesome6_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7A94A1D2BCDA18C005F06D8 /* FontAwesome6_Brands.ttf */; };
+		D7A94A322BCDA18C005F06D8 /* FontAwesome6_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7A94A1E2BCDA18C005F06D8 /* FontAwesome6_Regular.ttf */; };
+		D7A94A332BCDA18C005F06D8 /* FontAwesome6_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7A94A1F2BCDA18C005F06D8 /* FontAwesome6_Solid.ttf */; };
+		D7A94A342BCDA18C005F06D8 /* Fontisto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7A94A202BCDA18C005F06D8 /* Fontisto.ttf */; };
+		D7A94A352BCDA18C005F06D8 /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7A94A212BCDA18C005F06D8 /* Foundation.ttf */; };
+		D7A94A362BCDA18C005F06D8 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7A94A222BCDA18C005F06D8 /* Ionicons.ttf */; };
+		D7A94A372BCDA18C005F06D8 /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7A94A232BCDA18C005F06D8 /* MaterialCommunityIcons.ttf */; };
+		D7A94A382BCDA18C005F06D8 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7A94A242BCDA18C005F06D8 /* MaterialIcons.ttf */; };
+		D7A94A392BCDA18C005F06D8 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7A94A252BCDA18C005F06D8 /* Octicons.ttf */; };
+		D7A94A3A2BCDA18C005F06D8 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7A94A262BCDA18C005F06D8 /* SimpleLineIcons.ttf */; };
+		D7A94A3B2BCDA18C005F06D8 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7A94A272BCDA18C005F06D8 /* Zocial.ttf */; };
 		D7B478142BBB2E29007BDBA8 /* TSBackgroundFetch.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7B478132BBB2E29007BDBA8 /* TSBackgroundFetch.xcframework */; };
 		D7BF8F192BCC4A7700289966 /* AppDelegate.h in Sources */ = {isa = PBXBuildFile; fileRef = D7BF8F162BCC4A7700289966 /* AppDelegate.h */; };
 		D7BF8F1A2BCC4A7700289966 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = D7BF8F172BCC4A7700289966 /* AppDelegate.mm */; };
@@ -23,7 +42,7 @@
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
-			remoteInfo = MyApp;
+			remoteInfo = CheatMaps;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -31,30 +50,49 @@
 		00E356EE1AD99517003FC87E /* CheatMapsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CheatMapsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* CheatMapsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CheatMapsTests.m; sourceTree = "<group>"; };
-		128CB7DD1A331FAF64BEBBE9 /* libPods-CheatMaps.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CheatMaps.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07F961A680F5B00A75B9A /* MyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = MyApp/AppDelegate.h; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = MyApp/AppDelegate.mm; sourceTree = "<group>"; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = MyApp/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = MyApp/Info.plist; sourceTree = "<group>"; };
-		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = MyApp/main.m; sourceTree = "<group>"; };
-		142CB9F3157BEAD9E30BE173 /* Pods-CheatMaps-CheatMapsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CheatMaps-CheatMapsTests.release.xcconfig"; path = "Target Support Files/Pods-CheatMaps-CheatMapsTests/Pods-CheatMaps-CheatMapsTests.release.xcconfig"; sourceTree = "<group>"; };
-		333E0CF32161B1EEF556AF3F /* libPods-CheatMaps-CheatMapsTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CheatMaps-CheatMapsTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		669569699DEED39AE707A1A2 /* Pods-CheatMaps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CheatMaps.debug.xcconfig"; path = "Target Support Files/Pods-CheatMaps/Pods-CheatMaps.debug.xcconfig"; sourceTree = "<group>"; };
-		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = MyApp/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* CheatMaps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CheatMaps.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = CheatMaps/AppDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = CheatMaps/AppDelegate.mm; sourceTree = "<group>"; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = CheatMaps/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = CheatMaps/main.m; sourceTree = "<group>"; };
+		4375131A7D1002E48D297387 /* Pods-CheatMaps-CheatMapsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CheatMaps-CheatMapsTests.release.xcconfig"; path = "Target Support Files/Pods-CheatMaps-CheatMapsTests/Pods-CheatMaps-CheatMapsTests.release.xcconfig"; sourceTree = "<group>"; };
+		4F6012F0C146ED015408E54B /* Pods-CheatMaps.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CheatMaps.release.xcconfig"; path = "Target Support Files/Pods-CheatMaps/Pods-CheatMaps.release.xcconfig"; sourceTree = "<group>"; };
+		65447835F4C01FE96196FB40 /* Pods-CheatMaps-CheatMapsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CheatMaps-CheatMapsTests.debug.xcconfig"; path = "Target Support Files/Pods-CheatMaps-CheatMapsTests/Pods-CheatMaps-CheatMapsTests.debug.xcconfig"; sourceTree = "<group>"; };
+		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = CheatMaps/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CDF2FCD6EFAB846D66254F5A /* libPods-CheatMaps-CheatMapsTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CheatMaps-CheatMapsTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D776475B2BC4613E0011D347 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = CheatMaps/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D776475C2BC468750011D347 /* ic_launcher.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_launcher.png; path = CheatMaps/Images.xcassets/ic_launcher.png; sourceTree = "<group>"; };
 		D776475E2BC468920011D347 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = CheatMaps/Images.xcassets; sourceTree = "<group>"; };
 		D77647602BC4697B0011D347 /* ic_launcher.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_launcher.png; path = CheatMaps/Images.xcassets/AppIcon.appiconset/ic_launcher.png; sourceTree = "<group>"; };
+		D7A94A132BCDA119005F06D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = CheatMaps/Info.plist; sourceTree = "<group>"; };
+		D7A94A152BCDA18C005F06D8 /* AntDesign.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AntDesign.ttf; sourceTree = "<group>"; };
+		D7A94A162BCDA18C005F06D8 /* Entypo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Entypo.ttf; sourceTree = "<group>"; };
+		D7A94A172BCDA18C005F06D8 /* EvilIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EvilIcons.ttf; sourceTree = "<group>"; };
+		D7A94A182BCDA18C005F06D8 /* Feather.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Feather.ttf; sourceTree = "<group>"; };
+		D7A94A192BCDA18C005F06D8 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
+		D7A94A1A2BCDA18C005F06D8 /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome5_Brands.ttf; sourceTree = "<group>"; };
+		D7A94A1B2BCDA18C005F06D8 /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome5_Regular.ttf; sourceTree = "<group>"; };
+		D7A94A1C2BCDA18C005F06D8 /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome5_Solid.ttf; sourceTree = "<group>"; };
+		D7A94A1D2BCDA18C005F06D8 /* FontAwesome6_Brands.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome6_Brands.ttf; sourceTree = "<group>"; };
+		D7A94A1E2BCDA18C005F06D8 /* FontAwesome6_Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome6_Regular.ttf; sourceTree = "<group>"; };
+		D7A94A1F2BCDA18C005F06D8 /* FontAwesome6_Solid.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome6_Solid.ttf; sourceTree = "<group>"; };
+		D7A94A202BCDA18C005F06D8 /* Fontisto.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Fontisto.ttf; sourceTree = "<group>"; };
+		D7A94A212BCDA18C005F06D8 /* Foundation.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Foundation.ttf; sourceTree = "<group>"; };
+		D7A94A222BCDA18C005F06D8 /* Ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Ionicons.ttf; sourceTree = "<group>"; };
+		D7A94A232BCDA18C005F06D8 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MaterialCommunityIcons.ttf; sourceTree = "<group>"; };
+		D7A94A242BCDA18C005F06D8 /* MaterialIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MaterialIcons.ttf; sourceTree = "<group>"; };
+		D7A94A252BCDA18C005F06D8 /* Octicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Octicons.ttf; sourceTree = "<group>"; };
+		D7A94A262BCDA18C005F06D8 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SimpleLineIcons.ttf; sourceTree = "<group>"; };
+		D7A94A272BCDA18C005F06D8 /* Zocial.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Zocial.ttf; sourceTree = "<group>"; };
 		D7B478132BBB2E29007BDBA8 /* TSBackgroundFetch.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:32A636YFGZ:Christopher Scott"; lastKnownFileType = wrapper.xcframework; name = TSBackgroundFetch.xcframework; path = "../node_modules/react-native-background-fetch/ios/RNBackgroundFetch/TSBackgroundFetch.xcframework"; sourceTree = "<group>"; };
 		D7BF8F162BCC4A7700289966 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = CheatMaps/AppDelegate.h; sourceTree = "<group>"; };
 		D7BF8F172BCC4A7700289966 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = CheatMaps/AppDelegate.mm; sourceTree = "<group>"; };
 		D7BF8F182BCC4A7700289966 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = main.m; path = CheatMaps/main.m; sourceTree = "<group>"; };
 		D7EB62D12BC6E1F20047061A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = CheatMaps/Images.xcassets; sourceTree = "<group>"; };
 		D7EB62D22BC6E2CE0047061A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = CheatMaps/Images.xcassets; sourceTree = "<group>"; };
-		EA94F7373C921B4E54C0ABA9 /* Pods-CheatMaps.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CheatMaps.release.xcconfig"; path = "Target Support Files/Pods-CheatMaps/Pods-CheatMaps.release.xcconfig"; sourceTree = "<group>"; };
+		DA557EDF3321DD0BDF237D27 /* Pods-CheatMaps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CheatMaps.debug.xcconfig"; path = "Target Support Files/Pods-CheatMaps/Pods-CheatMaps.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		FC12D30A743F25FE73BD83AE /* Pods-CheatMaps-CheatMapsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CheatMaps-CheatMapsTests.debug.xcconfig"; path = "Target Support Files/Pods-CheatMaps-CheatMapsTests/Pods-CheatMaps-CheatMapsTests.debug.xcconfig"; sourceTree = "<group>"; };
+		EF775D682F4296BFF3EC6B0D /* libPods-CheatMaps.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CheatMaps.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1447F5D69BF5D46D0B5BCD12 /* libPods-CheatMaps-CheatMapsTests.a in Frameworks */,
+				9C09912DFC87FEDF90D29FA9 /* libPods-CheatMaps-CheatMapsTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,7 +109,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D7B478142BBB2E29007BDBA8 /* TSBackgroundFetch.xcframework in Frameworks */,
-				3B4C96D06BAD9D9926FEDC07 /* libPods-CheatMaps.a in Frameworks */,
+				AFE51C004B4242DAED213962 /* libPods-CheatMaps.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,11 +136,12 @@
 		13B07FAE1A68108700A75B9A /* CheatMaps */ = {
 			isa = PBXGroup;
 			children = (
+				D7A94A282BCDA18C005F06D8 /* Fonts */,
+				D7A94A132BCDA119005F06D8 /* Info.plist */,
 				D7EB62D12BC6E1F20047061A /* Images.xcassets */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
-				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				D776475B2BC4613E0011D347 /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
@@ -115,8 +154,8 @@
 			children = (
 				D7B478132BBB2E29007BDBA8 /* TSBackgroundFetch.xcframework */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				128CB7DD1A331FAF64BEBBE9 /* libPods-CheatMaps.a */,
-				333E0CF32161B1EEF556AF3F /* libPods-CheatMaps-CheatMapsTests.a */,
+				EF775D682F4296BFF3EC6B0D /* libPods-CheatMaps.a */,
+				CDF2FCD6EFAB846D66254F5A /* libPods-CheatMaps-CheatMapsTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -153,7 +192,7 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* MyApp.app */,
+				13B07F961A680F5B00A75B9A /* CheatMaps.app */,
 				00E356EE1AD99517003FC87E /* CheatMapsTests.xctest */,
 			);
 			name = Products;
@@ -162,12 +201,39 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				669569699DEED39AE707A1A2 /* Pods-CheatMaps.debug.xcconfig */,
-				EA94F7373C921B4E54C0ABA9 /* Pods-CheatMaps.release.xcconfig */,
-				FC12D30A743F25FE73BD83AE /* Pods-CheatMaps-CheatMapsTests.debug.xcconfig */,
-				142CB9F3157BEAD9E30BE173 /* Pods-CheatMaps-CheatMapsTests.release.xcconfig */,
+				DA557EDF3321DD0BDF237D27 /* Pods-CheatMaps.debug.xcconfig */,
+				4F6012F0C146ED015408E54B /* Pods-CheatMaps.release.xcconfig */,
+				65447835F4C01FE96196FB40 /* Pods-CheatMaps-CheatMapsTests.debug.xcconfig */,
+				4375131A7D1002E48D297387 /* Pods-CheatMaps-CheatMapsTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		D7A94A282BCDA18C005F06D8 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				D7A94A152BCDA18C005F06D8 /* AntDesign.ttf */,
+				D7A94A162BCDA18C005F06D8 /* Entypo.ttf */,
+				D7A94A172BCDA18C005F06D8 /* EvilIcons.ttf */,
+				D7A94A182BCDA18C005F06D8 /* Feather.ttf */,
+				D7A94A192BCDA18C005F06D8 /* FontAwesome.ttf */,
+				D7A94A1A2BCDA18C005F06D8 /* FontAwesome5_Brands.ttf */,
+				D7A94A1B2BCDA18C005F06D8 /* FontAwesome5_Regular.ttf */,
+				D7A94A1C2BCDA18C005F06D8 /* FontAwesome5_Solid.ttf */,
+				D7A94A1D2BCDA18C005F06D8 /* FontAwesome6_Brands.ttf */,
+				D7A94A1E2BCDA18C005F06D8 /* FontAwesome6_Regular.ttf */,
+				D7A94A1F2BCDA18C005F06D8 /* FontAwesome6_Solid.ttf */,
+				D7A94A202BCDA18C005F06D8 /* Fontisto.ttf */,
+				D7A94A212BCDA18C005F06D8 /* Foundation.ttf */,
+				D7A94A222BCDA18C005F06D8 /* Ionicons.ttf */,
+				D7A94A232BCDA18C005F06D8 /* MaterialCommunityIcons.ttf */,
+				D7A94A242BCDA18C005F06D8 /* MaterialIcons.ttf */,
+				D7A94A252BCDA18C005F06D8 /* Octicons.ttf */,
+				D7A94A262BCDA18C005F06D8 /* SimpleLineIcons.ttf */,
+				D7A94A272BCDA18C005F06D8 /* Zocial.ttf */,
+			);
+			name = Fonts;
+			path = "../node_modules/react-native-vector-icons/Fonts";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,12 +243,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "CheatMapsTests" */;
 			buildPhases = (
-				1A1470009E162822DBBC759B /* [CP] Check Pods Manifest.lock */,
+				F71BA5EC5FB81BB1E06FD574 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				7FFD5213A4025319B3B8B142 /* [CP] Embed Pods Frameworks */,
-				2A5F414D9EE55ED7AD9AE808 /* [CP] Copy Pods Resources */,
+				CF02AB5EE756179AA1C5D818 /* [CP] Embed Pods Frameworks */,
+				CE4F2667C08FAA1D87FF42D5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -190,7 +256,7 @@
 				00E356F51AD99517003FC87E /* PBXTargetDependency */,
 			);
 			name = CheatMapsTests;
-			productName = MyAppTests;
+			productName = CheatMapsTests;
 			productReference = 00E356EE1AD99517003FC87E /* CheatMapsTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
@@ -198,22 +264,22 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "CheatMaps" */;
 			buildPhases = (
-				BF1B6DED3399367C944797B7 /* [CP] Check Pods Manifest.lock */,
+				47368ED8ABA3F4929F779FEB /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				338A75883D88A5400D60CFDF /* [CP] Embed Pods Frameworks */,
-				5636F3299149896BB682B540 /* [CP] Copy Pods Resources */,
+				DE2A183DFA1E58198F48A50C /* [CP] Embed Pods Frameworks */,
+				4881C665570BFCDD1980C6EF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = CheatMaps;
-			productName = MyApp;
-			productReference = 13B07F961A680F5B00A75B9A /* MyApp.app */;
+			productName = CheatMaps;
+			productReference = 13B07F961A680F5B00A75B9A /* CheatMaps.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -265,7 +331,26 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7A94A312BCDA18C005F06D8 /* FontAwesome6_Brands.ttf in Resources */,
+				D7A94A352BCDA18C005F06D8 /* Foundation.ttf in Resources */,
+				D7A94A322BCDA18C005F06D8 /* FontAwesome6_Regular.ttf in Resources */,
+				D7A94A292BCDA18C005F06D8 /* AntDesign.ttf in Resources */,
+				D7A94A2B2BCDA18C005F06D8 /* EvilIcons.ttf in Resources */,
+				D7A94A362BCDA18C005F06D8 /* Ionicons.ttf in Resources */,
+				D7A94A372BCDA18C005F06D8 /* MaterialCommunityIcons.ttf in Resources */,
+				D7A94A2F2BCDA18C005F06D8 /* FontAwesome5_Regular.ttf in Resources */,
+				D7A94A2C2BCDA18C005F06D8 /* Feather.ttf in Resources */,
+				D7A94A2A2BCDA18C005F06D8 /* Entypo.ttf in Resources */,
+				D7A94A392BCDA18C005F06D8 /* Octicons.ttf in Resources */,
+				D7A94A3A2BCDA18C005F06D8 /* SimpleLineIcons.ttf in Resources */,
+				D7A94A3B2BCDA18C005F06D8 /* Zocial.ttf in Resources */,
 				D7EB62D32BC6E2CE0047061A /* Images.xcassets in Resources */,
+				D7A94A382BCDA18C005F06D8 /* MaterialIcons.ttf in Resources */,
+				D7A94A342BCDA18C005F06D8 /* Fontisto.ttf in Resources */,
+				D7A94A302BCDA18C005F06D8 /* FontAwesome5_Solid.ttf in Resources */,
+				D7A94A2E2BCDA18C005F06D8 /* FontAwesome5_Brands.ttf in Resources */,
+				D7A94A332BCDA18C005F06D8 /* FontAwesome6_Solid.ttf in Resources */,
+				D7A94A2D2BCDA18C005F06D8 /* FontAwesome.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,7 +373,7 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"../node_modules/react-native/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"../node_modules/react-native/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
 		};
-		1A1470009E162822DBBC759B /* [CP] Check Pods Manifest.lock */ = {
+		47368ED8ABA3F4929F779FEB /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -303,48 +388,14 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-CheatMaps-CheatMapsTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-CheatMaps-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		2A5F414D9EE55ED7AD9AE808 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CheatMaps-CheatMapsTests/Pods-CheatMaps-CheatMapsTests-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CheatMaps-CheatMapsTests/Pods-CheatMaps-CheatMapsTests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CheatMaps-CheatMapsTests/Pods-CheatMaps-CheatMapsTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		338A75883D88A5400D60CFDF /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CheatMaps/Pods-CheatMaps-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CheatMaps/Pods-CheatMaps-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CheatMaps/Pods-CheatMaps-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		5636F3299149896BB682B540 /* [CP] Copy Pods Resources */ = {
+		4881C665570BFCDD1980C6EF /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -361,7 +412,24 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CheatMaps/Pods-CheatMaps-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7FFD5213A4025319B3B8B142 /* [CP] Embed Pods Frameworks */ = {
+		CE4F2667C08FAA1D87FF42D5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CheatMaps-CheatMapsTests/Pods-CheatMaps-CheatMapsTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CheatMaps-CheatMapsTests/Pods-CheatMaps-CheatMapsTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CheatMaps-CheatMapsTests/Pods-CheatMaps-CheatMapsTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CF02AB5EE756179AA1C5D818 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -378,7 +446,24 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CheatMaps-CheatMapsTests/Pods-CheatMaps-CheatMapsTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		BF1B6DED3399367C944797B7 /* [CP] Check Pods Manifest.lock */ = {
+		DE2A183DFA1E58198F48A50C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CheatMaps/Pods-CheatMaps-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CheatMaps/Pods-CheatMaps-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CheatMaps/Pods-CheatMaps-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F71BA5EC5FB81BB1E06FD574 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -393,7 +478,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-CheatMaps-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-CheatMaps-CheatMapsTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -453,7 +538,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FC12D30A743F25FE73BD83AE /* Pods-CheatMaps-CheatMapsTests.debug.xcconfig */;
+			baseConfigurationReference = 65447835F4C01FE96196FB40 /* Pods-CheatMaps-CheatMapsTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -462,7 +547,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = MyAppTests/Info.plist;
+				INFOPLIST_FILE = CheatMapsTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -476,19 +561,19 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyApp.app/MyApp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CheatMaps.app/CheatMaps";
 			};
 			name = Debug;
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 142CB9F3157BEAD9E30BE173 /* Pods-CheatMaps-CheatMapsTests.release.xcconfig */;
+			baseConfigurationReference = 4375131A7D1002E48D297387 /* Pods-CheatMaps-CheatMapsTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
-				INFOPLIST_FILE = MyAppTests/Info.plist;
+				INFOPLIST_FILE = CheatMapsTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -502,13 +587,13 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyApp.app/MyApp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CheatMaps.app/CheatMaps";
 			};
 			name = Release;
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 669569699DEED39AE707A1A2 /* Pods-CheatMaps.debug.xcconfig */;
+			baseConfigurationReference = DA557EDF3321DD0BDF237D27 /* Pods-CheatMaps.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -535,7 +620,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = org.reactjs.native.example.CheatGrassIdentifcation;
-				PRODUCT_NAME = MyApp;
+				PRODUCT_NAME = CheatMaps;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -548,7 +633,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EA94F7373C921B4E54C0ABA9 /* Pods-CheatMaps.release.xcconfig */;
+			baseConfigurationReference = 4F6012F0C146ED015408E54B /* Pods-CheatMaps.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -574,7 +659,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = org.reactjs.native.example.CheatGrassIdentifcation;
-				PRODUCT_NAME = MyApp;
+				PRODUCT_NAME = CheatMaps;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
