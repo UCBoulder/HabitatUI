@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { View, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, StyleSheet, TouchableOpacity, Platform } from 'react-native'
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps'
 import { getLocationPins } from '../utils/APICalls'
 import CustomMarker from '../components/CustomMarker'
@@ -82,9 +82,10 @@ const styles = StyleSheet.create({
   },
   refreshButtonContainer: {
     position: 'absolute',
-    bottom: 20,
-    left: 250,
-    right: 0,
+    bottom: Platform.OS === 'ios' ? undefined : 20,
+    top: Platform.OS === 'ios' ? 20 : undefined,
+    left: Platform.OS === 'ios' ? undefined : 250,
+    right: 20,
     alignItems: 'center'
   },
   map: {

@@ -58,7 +58,12 @@ target 'CheatMaps' do
   # include react-native-google-maps dependency
   # pod 'react-native-google-maps', :path => '../node_modules/react-native-maps'
 
-
+  # Using react-native-fs
+  pod 'RNFS', :path => '../node_modules/react-native-fs'
+ 
+  # For email:
+  pod 'react-native-mail', :path => '../node_modules/react-native-mail'
+  
   use_react_native!(
     :path => config[:reactNativePath],
     # Hermes is now enabled by default. Disable by setting this flag to false.

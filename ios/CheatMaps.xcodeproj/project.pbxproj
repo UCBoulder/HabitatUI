@@ -8,27 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* CheatMapsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* CheatMapsTests.m */; };
-		9C09912DFC87FEDF90D29FA9 /* libPods-CheatMaps-CheatMapsTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CDF2FCD6EFAB846D66254F5A /* libPods-CheatMaps-CheatMapsTests.a */; };
-		AFE51C004B4242DAED213962 /* libPods-CheatMaps.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EF775D682F4296BFF3EC6B0D /* libPods-CheatMaps.a */; };
-		D7A94A292BCDA18C005F06D8 /* AntDesign.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7A94A152BCDA18C005F06D8 /* AntDesign.ttf */; };
-		D7A94A2A2BCDA18C005F06D8 /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7A94A162BCDA18C005F06D8 /* Entypo.ttf */; };
-		D7A94A2B2BCDA18C005F06D8 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7A94A172BCDA18C005F06D8 /* EvilIcons.ttf */; };
-		D7A94A2C2BCDA18C005F06D8 /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7A94A182BCDA18C005F06D8 /* Feather.ttf */; };
-		D7A94A2D2BCDA18C005F06D8 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7A94A192BCDA18C005F06D8 /* FontAwesome.ttf */; };
-		D7A94A2E2BCDA18C005F06D8 /* FontAwesome5_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7A94A1A2BCDA18C005F06D8 /* FontAwesome5_Brands.ttf */; };
-		D7A94A2F2BCDA18C005F06D8 /* FontAwesome5_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7A94A1B2BCDA18C005F06D8 /* FontAwesome5_Regular.ttf */; };
-		D7A94A302BCDA18C005F06D8 /* FontAwesome5_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7A94A1C2BCDA18C005F06D8 /* FontAwesome5_Solid.ttf */; };
-		D7A94A312BCDA18C005F06D8 /* FontAwesome6_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7A94A1D2BCDA18C005F06D8 /* FontAwesome6_Brands.ttf */; };
-		D7A94A322BCDA18C005F06D8 /* FontAwesome6_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7A94A1E2BCDA18C005F06D8 /* FontAwesome6_Regular.ttf */; };
-		D7A94A332BCDA18C005F06D8 /* FontAwesome6_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7A94A1F2BCDA18C005F06D8 /* FontAwesome6_Solid.ttf */; };
-		D7A94A342BCDA18C005F06D8 /* Fontisto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7A94A202BCDA18C005F06D8 /* Fontisto.ttf */; };
-		D7A94A352BCDA18C005F06D8 /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7A94A212BCDA18C005F06D8 /* Foundation.ttf */; };
-		D7A94A362BCDA18C005F06D8 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7A94A222BCDA18C005F06D8 /* Ionicons.ttf */; };
-		D7A94A372BCDA18C005F06D8 /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7A94A232BCDA18C005F06D8 /* MaterialCommunityIcons.ttf */; };
-		D7A94A382BCDA18C005F06D8 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7A94A242BCDA18C005F06D8 /* MaterialIcons.ttf */; };
-		D7A94A392BCDA18C005F06D8 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7A94A252BCDA18C005F06D8 /* Octicons.ttf */; };
-		D7A94A3A2BCDA18C005F06D8 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7A94A262BCDA18C005F06D8 /* SimpleLineIcons.ttf */; };
-		D7A94A3B2BCDA18C005F06D8 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7A94A272BCDA18C005F06D8 /* Zocial.ttf */; };
+		51FC964F3824EF334C9B896A /* libPods-CheatMaps.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0671EED2EEAA5389B654F58A /* libPods-CheatMaps.a */; };
+		9A36607C72BD471D710E504F /* libPods-CheatMaps-CheatMapsTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 605FC288E10EA607194B34F0 /* libPods-CheatMaps-CheatMapsTests.a */; };
 		D7B478142BBB2E29007BDBA8 /* TSBackgroundFetch.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7B478132BBB2E29007BDBA8 /* TSBackgroundFetch.xcframework */; };
 		D7BF8F192BCC4A7700289966 /* AppDelegate.h in Sources */ = {isa = PBXBuildFile; fileRef = D7BF8F162BCC4A7700289966 /* AppDelegate.h */; };
 		D7BF8F1A2BCC4A7700289966 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = D7BF8F172BCC4A7700289966 /* AppDelegate.mm */; };
@@ -50,16 +31,18 @@
 		00E356EE1AD99517003FC87E /* CheatMapsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CheatMapsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* CheatMapsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CheatMapsTests.m; sourceTree = "<group>"; };
+		0671EED2EEAA5389B654F58A /* libPods-CheatMaps.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CheatMaps.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07F961A680F5B00A75B9A /* CheatMaps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CheatMaps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = CheatMaps/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = CheatMaps/AppDelegate.mm; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = CheatMaps/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = CheatMaps/main.m; sourceTree = "<group>"; };
-		4375131A7D1002E48D297387 /* Pods-CheatMaps-CheatMapsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CheatMaps-CheatMapsTests.release.xcconfig"; path = "Target Support Files/Pods-CheatMaps-CheatMapsTests/Pods-CheatMaps-CheatMapsTests.release.xcconfig"; sourceTree = "<group>"; };
-		4F6012F0C146ED015408E54B /* Pods-CheatMaps.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CheatMaps.release.xcconfig"; path = "Target Support Files/Pods-CheatMaps/Pods-CheatMaps.release.xcconfig"; sourceTree = "<group>"; };
-		65447835F4C01FE96196FB40 /* Pods-CheatMaps-CheatMapsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CheatMaps-CheatMapsTests.debug.xcconfig"; path = "Target Support Files/Pods-CheatMaps-CheatMapsTests/Pods-CheatMaps-CheatMapsTests.debug.xcconfig"; sourceTree = "<group>"; };
+		1C6C1A2C5718E437DC4AFF3E /* Pods-CheatMaps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CheatMaps.debug.xcconfig"; path = "Target Support Files/Pods-CheatMaps/Pods-CheatMaps.debug.xcconfig"; sourceTree = "<group>"; };
+		2C25A88A84420D1519517C1A /* Pods-CheatMaps.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CheatMaps.release.xcconfig"; path = "Target Support Files/Pods-CheatMaps/Pods-CheatMaps.release.xcconfig"; sourceTree = "<group>"; };
+		579460F061EBE87AB2704451 /* Pods-CheatMaps-CheatMapsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CheatMaps-CheatMapsTests.debug.xcconfig"; path = "Target Support Files/Pods-CheatMaps-CheatMapsTests/Pods-CheatMaps-CheatMapsTests.debug.xcconfig"; sourceTree = "<group>"; };
+		605FC288E10EA607194B34F0 /* libPods-CheatMaps-CheatMapsTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CheatMaps-CheatMapsTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = CheatMaps/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		CDF2FCD6EFAB846D66254F5A /* libPods-CheatMaps-CheatMapsTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CheatMaps-CheatMapsTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		884744F4159D1D819A9ECBE0 /* Pods-CheatMaps-CheatMapsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CheatMaps-CheatMapsTests.release.xcconfig"; path = "Target Support Files/Pods-CheatMaps-CheatMapsTests/Pods-CheatMaps-CheatMapsTests.release.xcconfig"; sourceTree = "<group>"; };
 		D776475B2BC4613E0011D347 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = CheatMaps/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D776475C2BC468750011D347 /* ic_launcher.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_launcher.png; path = CheatMaps/Images.xcassets/ic_launcher.png; sourceTree = "<group>"; };
 		D776475E2BC468920011D347 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = CheatMaps/Images.xcassets; sourceTree = "<group>"; };
@@ -90,9 +73,7 @@
 		D7BF8F182BCC4A7700289966 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = main.m; path = CheatMaps/main.m; sourceTree = "<group>"; };
 		D7EB62D12BC6E1F20047061A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = CheatMaps/Images.xcassets; sourceTree = "<group>"; };
 		D7EB62D22BC6E2CE0047061A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = CheatMaps/Images.xcassets; sourceTree = "<group>"; };
-		DA557EDF3321DD0BDF237D27 /* Pods-CheatMaps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CheatMaps.debug.xcconfig"; path = "Target Support Files/Pods-CheatMaps/Pods-CheatMaps.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		EF775D682F4296BFF3EC6B0D /* libPods-CheatMaps.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CheatMaps.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9C09912DFC87FEDF90D29FA9 /* libPods-CheatMaps-CheatMapsTests.a in Frameworks */,
+				9A36607C72BD471D710E504F /* libPods-CheatMaps-CheatMapsTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,7 +90,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D7B478142BBB2E29007BDBA8 /* TSBackgroundFetch.xcframework in Frameworks */,
-				AFE51C004B4242DAED213962 /* libPods-CheatMaps.a in Frameworks */,
+				51FC964F3824EF334C9B896A /* libPods-CheatMaps.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,8 +135,8 @@
 			children = (
 				D7B478132BBB2E29007BDBA8 /* TSBackgroundFetch.xcframework */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				EF775D682F4296BFF3EC6B0D /* libPods-CheatMaps.a */,
-				CDF2FCD6EFAB846D66254F5A /* libPods-CheatMaps-CheatMapsTests.a */,
+				0671EED2EEAA5389B654F58A /* libPods-CheatMaps.a */,
+				605FC288E10EA607194B34F0 /* libPods-CheatMaps-CheatMapsTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -201,10 +182,10 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				DA557EDF3321DD0BDF237D27 /* Pods-CheatMaps.debug.xcconfig */,
-				4F6012F0C146ED015408E54B /* Pods-CheatMaps.release.xcconfig */,
-				65447835F4C01FE96196FB40 /* Pods-CheatMaps-CheatMapsTests.debug.xcconfig */,
-				4375131A7D1002E48D297387 /* Pods-CheatMaps-CheatMapsTests.release.xcconfig */,
+				1C6C1A2C5718E437DC4AFF3E /* Pods-CheatMaps.debug.xcconfig */,
+				2C25A88A84420D1519517C1A /* Pods-CheatMaps.release.xcconfig */,
+				579460F061EBE87AB2704451 /* Pods-CheatMaps-CheatMapsTests.debug.xcconfig */,
+				884744F4159D1D819A9ECBE0 /* Pods-CheatMaps-CheatMapsTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -243,12 +224,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "CheatMapsTests" */;
 			buildPhases = (
-				F71BA5EC5FB81BB1E06FD574 /* [CP] Check Pods Manifest.lock */,
+				2B33896FC152846FE9167803 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				CF02AB5EE756179AA1C5D818 /* [CP] Embed Pods Frameworks */,
-				CE4F2667C08FAA1D87FF42D5 /* [CP] Copy Pods Resources */,
+				2F97D48B8996E0E54AC7EAA6 /* [CP] Embed Pods Frameworks */,
+				1DE5413A6BB4E198F25A09EE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -264,14 +245,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "CheatMaps" */;
 			buildPhases = (
-				47368ED8ABA3F4929F779FEB /* [CP] Check Pods Manifest.lock */,
+				44A0E262DC8987ED8010CD09 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				DE2A183DFA1E58198F48A50C /* [CP] Embed Pods Frameworks */,
-				4881C665570BFCDD1980C6EF /* [CP] Copy Pods Resources */,
+				AC6935A0867DADFB5500E18B /* [CP] Embed Pods Frameworks */,
+				78C10E330AFB7BED597D785E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -331,26 +312,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D7A94A312BCDA18C005F06D8 /* FontAwesome6_Brands.ttf in Resources */,
-				D7A94A352BCDA18C005F06D8 /* Foundation.ttf in Resources */,
-				D7A94A322BCDA18C005F06D8 /* FontAwesome6_Regular.ttf in Resources */,
-				D7A94A292BCDA18C005F06D8 /* AntDesign.ttf in Resources */,
-				D7A94A2B2BCDA18C005F06D8 /* EvilIcons.ttf in Resources */,
-				D7A94A362BCDA18C005F06D8 /* Ionicons.ttf in Resources */,
-				D7A94A372BCDA18C005F06D8 /* MaterialCommunityIcons.ttf in Resources */,
-				D7A94A2F2BCDA18C005F06D8 /* FontAwesome5_Regular.ttf in Resources */,
-				D7A94A2C2BCDA18C005F06D8 /* Feather.ttf in Resources */,
-				D7A94A2A2BCDA18C005F06D8 /* Entypo.ttf in Resources */,
-				D7A94A392BCDA18C005F06D8 /* Octicons.ttf in Resources */,
-				D7A94A3A2BCDA18C005F06D8 /* SimpleLineIcons.ttf in Resources */,
-				D7A94A3B2BCDA18C005F06D8 /* Zocial.ttf in Resources */,
 				D7EB62D32BC6E2CE0047061A /* Images.xcassets in Resources */,
-				D7A94A382BCDA18C005F06D8 /* MaterialIcons.ttf in Resources */,
-				D7A94A342BCDA18C005F06D8 /* Fontisto.ttf in Resources */,
-				D7A94A302BCDA18C005F06D8 /* FontAwesome5_Solid.ttf in Resources */,
-				D7A94A2E2BCDA18C005F06D8 /* FontAwesome5_Brands.ttf in Resources */,
-				D7A94A332BCDA18C005F06D8 /* FontAwesome6_Solid.ttf in Resources */,
-				D7A94A2D2BCDA18C005F06D8 /* FontAwesome.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,7 +335,63 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"../node_modules/react-native/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"../node_modules/react-native/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
 		};
-		47368ED8ABA3F4929F779FEB /* [CP] Check Pods Manifest.lock */ = {
+		1DE5413A6BB4E198F25A09EE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CheatMaps-CheatMapsTests/Pods-CheatMaps-CheatMapsTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CheatMaps-CheatMapsTests/Pods-CheatMaps-CheatMapsTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CheatMaps-CheatMapsTests/Pods-CheatMaps-CheatMapsTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2B33896FC152846FE9167803 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CheatMaps-CheatMapsTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2F97D48B8996E0E54AC7EAA6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CheatMaps-CheatMapsTests/Pods-CheatMaps-CheatMapsTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CheatMaps-CheatMapsTests/Pods-CheatMaps-CheatMapsTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CheatMaps-CheatMapsTests/Pods-CheatMaps-CheatMapsTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		44A0E262DC8987ED8010CD09 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -395,7 +413,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		4881C665570BFCDD1980C6EF /* [CP] Copy Pods Resources */ = {
+		78C10E330AFB7BED597D785E /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -412,41 +430,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CheatMaps/Pods-CheatMaps-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		CE4F2667C08FAA1D87FF42D5 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CheatMaps-CheatMapsTests/Pods-CheatMaps-CheatMapsTests-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CheatMaps-CheatMapsTests/Pods-CheatMaps-CheatMapsTests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CheatMaps-CheatMapsTests/Pods-CheatMaps-CheatMapsTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CF02AB5EE756179AA1C5D818 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CheatMaps-CheatMapsTests/Pods-CheatMaps-CheatMapsTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CheatMaps-CheatMapsTests/Pods-CheatMaps-CheatMapsTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CheatMaps-CheatMapsTests/Pods-CheatMaps-CheatMapsTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		DE2A183DFA1E58198F48A50C /* [CP] Embed Pods Frameworks */ = {
+		AC6935A0867DADFB5500E18B /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -461,28 +445,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CheatMaps/Pods-CheatMaps-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F71BA5EC5FB81BB1E06FD574 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-CheatMaps-CheatMapsTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -538,7 +500,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 65447835F4C01FE96196FB40 /* Pods-CheatMaps-CheatMapsTests.debug.xcconfig */;
+			baseConfigurationReference = 579460F061EBE87AB2704451 /* Pods-CheatMaps-CheatMapsTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -567,7 +529,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4375131A7D1002E48D297387 /* Pods-CheatMaps-CheatMapsTests.release.xcconfig */;
+			baseConfigurationReference = 884744F4159D1D819A9ECBE0 /* Pods-CheatMaps-CheatMapsTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -593,7 +555,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DA557EDF3321DD0BDF237D27 /* Pods-CheatMaps.debug.xcconfig */;
+			baseConfigurationReference = 1C6C1A2C5718E437DC4AFF3E /* Pods-CheatMaps.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -633,7 +595,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4F6012F0C146ED015408E54B /* Pods-CheatMaps.release.xcconfig */;
+			baseConfigurationReference = 2C25A88A84420D1519517C1A /* Pods-CheatMaps.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
