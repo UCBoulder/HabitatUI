@@ -1,4 +1,5 @@
 import RNFS from 'react-native-fs'
+import { Platform } from 'react-native'
 import { simplifyJson } from './simplifyJson'
 import { FormatDate } from '../utils/FormatDate'
 
@@ -22,7 +23,7 @@ export const convertToCSV = (data) => {
 
 export const saveCSVToFile = async (csvData) => {
   const timestamp = new Date().getTime() // Get current timestamp
-  const fileName = `${RNFS.DownloadDirectoryPath}/Observations_${timestamp}.csv` // Append timestamp to file name
+  const fileName = Platform.OS === 'ios' ?  `${RNFS.LibraryDirectoryPath}/Observations_${timestamp}.csv` : `${RNFS.DownloadDirectoryPath}/Observations_${timestamp}.csv`
   try {
     await RNFS.writeFile(fileName, csvData, 'utf8')
     return fileName

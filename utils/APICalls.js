@@ -46,8 +46,9 @@ export const sendLocationPin = async (observation) => {
         await initBackgroundFetch()
         Alert.alert('Warning', 'Your observation has been stored and can be uploaded when you have service.')
       }, 10000) // 10 seconds timeout
-
+      console.log(process.env.API_KEY)
       const response = await axiosInstance.post(`${config.apiTestAddress}${config.apiPath}`, observation, {
+
         headers: {
           'x-api-key': process.env.API_KEY
         },
