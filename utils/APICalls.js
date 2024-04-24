@@ -37,8 +37,10 @@ export const sendLocationPin = async (observation) => {
 
   try {
     if (isConnected) {
+      console.log('Is connected: ', isConnected)
       // Start the timer
       timeoutId = setTimeout(async () => {
+        
         cancelTokenSource.cancel('Timeout occurred') // Cancel the request if timeout occurs
         const updatedObservations = storedObservations ? JSON.parse(storedObservations) : []
         updatedObservations.push(observation)

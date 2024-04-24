@@ -43,7 +43,7 @@ const CustomMarker = ({ data }) => {
       ref={markerRef}
       pinColor={ColorCode(parsedData.VerificationRating ? parsedData.VerificationRating : '1')}
     >
-      <Callout onPress={handleCalloutPress}>
+      <Callout tooltip onPress={handleCalloutPress} style= {{flex: 1}}>
         <View style={styles.calloutContainer}>
           <Text style={styles.calloutText}>
             {`Observation made on: ${observationDate.formattedDate}\n
@@ -75,51 +75,38 @@ const styles = StyleSheet.create({
   calloutContainer: {
     borderRadius: 10,
     backgroundColor: 'white',
-    padding: 8, // Increased padding for better spacing
-    width: 250,
-    shadowColor: "#000", // Shadow for better visibility
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
+    padding: 4,
+    width: 250
   },
   calloutText: {
     fontSize: 16,
     color: 'black',
-    fontWeight: '500', // Slight weight increase for readability
   },
   calloutTextCentered: {
-    fontSize: 25,
+    fontSize: 14,
     color: 'black',
-    textAlign: 'center',
-    fontWeight: 'bold', // Bold for emphasis
+    textAlign: 'center'
   },
   modalContainer: {
     flex: 1,
     width: '100%',
-    height: '100%',
-    backgroundColor: '#00000080' // Adding transparency
+    height: '100%'
   },
   modalExitButton: {
     zIndex: 2,
     position: 'absolute',
     top: 10,
     right: 10,
-    padding: 12, // Increased padding for easier tap
-    borderRadius: 20, // More pronounced rounding
-    backgroundColor: 'white',
-    elevation: 6 // Elevation for button prominence
-  },
-  image: {
-    width: '100%',
-    height: '100%',
+    padding: 10,
+    borderRadius: 15,
+    backgroundColor: 'white'
   },
   iconContainer: {
     backgroundColor: 'white',
     borderRadius: 10,
     padding: 5
   }
-});
+})
 
 
 export default CustomMarker
