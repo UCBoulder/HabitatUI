@@ -45,7 +45,9 @@
 		</dict>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>Cheat Grass Idenification app needs access to your Camera.</string>
+	<string>Cheat Grass Idenification app needs access to your camera in order to take observations.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Cheat Grass Identification app needs access to your photo library to allow you to select and upload photos for identification purposes.</string>
 	<key>NSLocationAccuracyAuthorizationDescription</key>
 	<string>We need access to your high-accuracy location data to provide observation data.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
