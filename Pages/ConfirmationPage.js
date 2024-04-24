@@ -3,6 +3,7 @@ import {
   View,
   StyleSheet,
   Image,
+  KeyboardAvoidingView,
   TextInput,
   TouchableOpacity,
   Text,
@@ -120,18 +121,20 @@ const ConfirmationPage = ({ route, userID }) => {
   return (
     <View style={styles.container}>
       {/* Display photo that was taken */}
-      <Image
-        source={{ uri: `file://${imageSource}` }}
-        style={styles.confirmationImage}
-      />
-      {/* Cancel; back to home */}
-      <TouchableOpacity style={styles.backButton} onPress={() => handleBack()}>
-        <Icon name="x" size={25} color="black" />
-      </TouchableOpacity>
+        <Image
+          source={{ uri: `file://${imageSource}` }}
+          style={styles.confirmationImage}
+        />
+        {/* Cancel; back to home */}
+        <TouchableOpacity style={styles.backButton} onPress={() => handleBack()}>
+          <Icon name="x" size={25} color="black" />
+        </TouchableOpacity>
 
-      {/* questions portion */}
-      <Text style={styles.floatingLabel}>All questions are optional{'\n'}</Text>
-      <ScrollView>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        style = {{flex: 1}}
+      >        
+        <ScrollView>
 
         {/* estimated size of infestation question */}
         <Text style={styles.label}>Select Estimated Size of Infestation:</Text>
@@ -212,7 +215,9 @@ const ConfirmationPage = ({ route, userID }) => {
         </TouchableOpacity>
         <LoadingModal isVisible={isLoading} />
       </View>
+        </KeyboardAvoidingView>
     </View>
+
   )
 }
 

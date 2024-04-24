@@ -44,6 +44,8 @@
 			</dict>
 		</dict>
 	</dict>
+  <key>ITSAppUsesNonExemptEncryption</key>
+  <false/>
 	<key>NSCameraUsageDescription</key>
 	<string>Cheat Grass Idenification app needs access to your camera in order to take observations.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
