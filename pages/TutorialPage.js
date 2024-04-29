@@ -22,10 +22,10 @@ const TutorialPage = () => {
         <Text style={styles.text}>To retake a picture tap the retry button, or tap the check mark to continue.</Text>
         <Image source={require('../images/tutorial/ConfirmImageTutorial.png')} style={styles.image} />
         <Text style={styles.text}>Answer as many of the 3 questions on the confirmation page as you can, then scroll down and tap the
-          {'"'}Confirm Observation{'"'} button. Or tap the X in the upper left hand corner to abandon the observation.</Text>
+          {'"'}Confirm Observation{'"'} button, or tap the X in the upper left hand corner to abandon the observation.</Text>
         <Image source={require('../images/tutorial/QuestionsTutorial.png')} style={styles.image} />
         <Image source={require('../images/tutorial/LocationDescriptionTutorial.png')} style={styles.image} />
-        <Text style={styles.text}>Once you see the success dialogue your observation has been uploaded! If you are out of service your
+        <Text style={styles.text}>Once you see the success dialogue, your observation has been uploaded! If you are out of service, your
           observation will be saved and uploaded once you are back in range!</Text>
         <Image source={require('../images/tutorial/SuccessTutorial.png')} style={styles.image} />
 
@@ -55,7 +55,7 @@ const TutorialPage = () => {
             <View style={styles.outerSquare}>
               <View style={styles.defaultSquare} />
             </View>
-            <Text style={styles.text}>= Default color</Text>
+            <Text style={styles.text}>= Unverified</Text>
           </View>
         </View>
 

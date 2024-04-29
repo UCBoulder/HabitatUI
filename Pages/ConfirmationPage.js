@@ -3,7 +3,6 @@ import {
   View,
   StyleSheet,
   Image,
-  KeyboardAvoidingView,
   TextInput,
   TouchableOpacity,
   Text,
@@ -79,9 +78,9 @@ const ConfirmationPage = ({ route, userID }) => {
         value: '25-50%'
       },
       {
-        id: 'more than 50%',
-        label: 'more than 50%',
-        value: 'more than 50%'
+        id: 'More than 50%',
+        label: 'More than 50%',
+        value: 'More than 50%'
       }
     ],
     []
@@ -90,29 +89,29 @@ const ConfirmationPage = ({ route, userID }) => {
   const sizeSelect = useMemo(
     () => [
       {
-        id: 'smaller than a picnic table',
-        label: 'smaller than a picnic table',
-        value: 'smaller than a picnic table'
+        id: 'Smaller than a picnic table',
+        label: 'Smaller than a picnic table',
+        value: 'Smaller than a picnic table'
       },
       {
-        id: 'between a picnic table and a 2 car garage',
-        label: 'between a picnic table and a 2 car garage',
-        value: 'between a picnic table and a 2 car garage'
+        id: 'Between a picnic table and a 2 car garage',
+        label: 'Between a picnic table and a 2 car garage',
+        value: 'Between a picnic table and a 2 car garage'
       },
       {
-        id: 'between a 2 car garage and a basketball court',
-        label: 'between a 2 car garage and a basketball court',
-        value: 'between a 2 car garage and a basketball court'
+        id: 'Between a 2 car garage and a basketball court',
+        label: 'Between a 2 car garage and a basketball court',
+        value: 'Between a 2 car garage and a basketball court'
       },
       {
-        id: 'between a basketball court and a football field',
-        label: 'between a basketball court and a football field',
-        value: 'between a basketball court and a football field'
+        id: 'Between a basketball court and a football field',
+        label: 'Between a basketball court and a football field',
+        value: 'Between a basketball court and a football field'
       },
       {
-        id: 'larger than a football field',
-        label: 'larger than a football field',
-        value: 'larger than a football field'
+        id: 'Larger than a football field',
+        label: 'Larger than a football field',
+        value: 'Larger than a football field'
       }
     ],
     []
@@ -121,20 +120,18 @@ const ConfirmationPage = ({ route, userID }) => {
   return (
     <View style={styles.container}>
       {/* Display photo that was taken */}
-        <Image
-          source={{ uri: `file://${imageSource}` }}
-          style={styles.confirmationImage}
-        />
-        {/* Cancel; back to home */}
-        <TouchableOpacity style={styles.backButton} onPress={() => handleBack()}>
-          <Icon name="x" size={25} color="black" />
-        </TouchableOpacity>
+      <Image
+        source={{ uri: `file://${imageSource}` }}
+        style={styles.confirmationImage}
+      />
+      {/* Cancel; back to home */}
+      <TouchableOpacity style={styles.backButton} onPress={() => handleBack()}>
+        <Icon name="x" size={25} color="black" />
+      </TouchableOpacity>
 
-      <KeyboardAvoidingView
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        style = {{flex: 1}}
-      >        
-        <ScrollView>
+      {/* questions portion */}
+      <Text style={styles.floatingLabel}>All questions are optional{'\n'}</Text>
+      <ScrollView>
 
         {/* estimated size of infestation question */}
         <Text style={styles.label}>Select Estimated Size of Infestation:</Text>
@@ -151,7 +148,7 @@ const ConfirmationPage = ({ route, userID }) => {
 
         {/* confirmation questions */}
         <View style={styles.labelContainer}>
-          <Text style={styles.label}>Select Estimated Plant Cover:  </Text>
+          <Text style={styles.label}>Select Estimated Plant Cover: </Text>
           {/* i button with information pop up */}
           <TouchableOpacity
             style={styles.iButton}
@@ -184,8 +181,8 @@ const ConfirmationPage = ({ route, userID }) => {
               <TouchableOpacity style={styles.modalXButton} onPress={closeModal}>
                 <Icon name="x" size={25} color="black" />
               </TouchableOpacity>
-              <Text style={styles.modalText}>{'\n'}Estimate the amount of the ground in an infestation that is covered with cheat grass. For example,
-                if about half the plants in a square foot are cheat grass, then it is 50% cover.</Text>
+              <Text style={styles.modalText}>{'\n'}Estimate the amount of the ground in an infestation that is covered with cheatgrass. For example,
+                if about half the plants in a square foot are cheatgrass, then it is 50% cover.</Text>
             </View>
           </View>
         </Modal>
@@ -215,9 +212,7 @@ const ConfirmationPage = ({ route, userID }) => {
         </TouchableOpacity>
         <LoadingModal isVisible={isLoading} />
       </View>
-        </KeyboardAvoidingView>
     </View>
-
   )
 }
 
@@ -232,6 +227,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   },
+  iButton: {
+    marginTop: 4
+  },
   scrollViewContainer: {
     flex: 1,
     justifyContent: 'center',
@@ -243,7 +241,7 @@ const styles = StyleSheet.create({
   },
   input: {
     fontSize: 18,
-    height: 100,
+    height: 120,
     width: 0.95 * windowWidth,
     borderColor: 'black',
     borderWidth: 1,
@@ -279,11 +277,11 @@ const styles = StyleSheet.create({
     marginVertical: 5
   },
   label: {
-    fontSize: 25,
+    fontSize: 24,
     fontWeight: 'bold',
     color: 'black',
     marginBottom: 15,
-    marginLeft: 10
+    marginLeft: 0
   },
   floatingLabel: {
     fontSize: 25,
@@ -348,5 +346,4 @@ const styles = StyleSheet.create({
     backgroundColor: 'white'
   }
 })
-
 export default ConfirmationPage

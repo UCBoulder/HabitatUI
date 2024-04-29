@@ -18,7 +18,7 @@ const HowToID = () => {
         scrollIndicatorInsets={{ right: 1 }}
       >
 
-        <Text style={styles.header}>{'\n'}{'\n'}How do you identify Cheatgrass? </Text>
+        <Text style={styles.header}>{'\n'}{'\n'}How do you identify cheatgrass? </Text>
         <Text style={styles.text}>-Short flat blade-length (6”-24”) {'\n'}-Sharp seedlet emerging from a “sheath”
           {'\n'}-Sharp spiky seeds typically containing 5-8 seeds in each seedlet {'\n'}-High density of seeds and stalks in a growing area
           {'\n'}-Variable coloration ranging from green, to purple, to tan {'\n'}-Initially bright green in early life stages
@@ -28,7 +28,9 @@ const HowToID = () => {
           {'\n'}-Turns purplish when it begins to die and then becomes tan or light brown when it dies completely</Text>
         <Image source={require('../images/cheatgrass2.jpg')} style={styles.image} />
 
-        <Text style={styles.header}>Similar species to look out for </Text>
+        <Text style={styles.header}>Similar-looking species</Text>
+
+        <Text style={styles.text}> These species are native to the region and don’t need to be reported or pulled.</Text>
 
         <Text style={styles.textHeader}>Indian Rice Grass</Text>
         <Text style={styles.text}>-Blonde or light green color{'\n'}-Deep roots so it will not come out of the ground
