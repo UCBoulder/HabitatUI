@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import { View, StyleSheet, TouchableOpacity, Text, ImageBackground, Alert } from 'react-native'
+import { View, StyleSheet, TouchableOpacity, Text, ImageBackground, Alert, Modal } from 'react-native'
 import { BurgerMenuButton } from '../components/BurgerMenuButton'
 import { convertToCSV, saveCSVToFile } from '../utils/CsvSaving'
 import { getLocationPins } from '../utils/APICalls'
 import { useNavigation } from '@react-navigation/native'
 import Mailer from 'react-native-mail'
+import Icon from 'react-native-vector-icons/FontAwesome6'
 
 const DownloadPage = () => {
   const [apiCoordinates, setApiCoordinates] = useState([])
   const navigation = useNavigation()
+  const [iModalVisible, setiModalVisible] = useState(false)
 
   useEffect(() => {
     fetchPins()
@@ -21,6 +23,14 @@ const DownloadPage = () => {
     } catch (error) {
       console.error('Error fetching API data: ', error)
     }
+  }
+
+  const closeModal = () => {
+    setiModalVisible(false)
+  }
+
+  function handleI () {
+    setiModalVisible(true)
   }
 
   const handleDownload = async () => {
@@ -56,9 +66,31 @@ const DownloadPage = () => {
         <TouchableOpacity style={styles.button} onPress={handleDownload}>
           <Text style={styles.text}>Download and Email Observations</Text>
         </TouchableOpacity>
-        <Text style={styles.textHeader}>To view all current pins as a .csv, use this button to download and email the file.</Text>
+        <TouchableOpacity
+            style={styles.iButton}
+            onPress={() => handleI()}
+          >
+            <Icon name="circle-info" size={30} color="white" />
+            </TouchableOpacity>
       </View>
-    </ImageBackground>
+
+      {/* Modal */}
+      <Modal
+            animationType="slide"
+            visible={iModalVisible}
+            transparent={true}
+          >
+            <View style={styles.modalContainer}>
+              <View style={styles.modalContent}>
+                <TouchableOpacity style={styles.modalXButton} onPress={closeModal}>
+                  <Icon name="x" size={25} color="black" />
+                </TouchableOpacity>
+                <Text style={styles.modalText}>{'\n'}To view all current pins as a .csv file,
+                 press this button to download and email the file.</Text>
+              </View>
+            </View>
+          </Modal>
+      </ImageBackground>
   )
 }
 
@@ -91,8 +123,41 @@ const styles = StyleSheet.create({
     color: 'black',
     marginBottom: 15,
     marginLeft: 10,
-    textDecorationLine: 'underline'
+    marginRight: 10,
+    backgroundColor: 'white'
+  },
+  iButton: {
+    marginTop: 4
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)'
+  },
+  modalContent: {
+    width: '80%',
+    height: '36%',
+    backgroundColor: 'white',
+    borderRadius: 10,
+    padding: 20,
+    alignItems: 'center'
+  },
+  modalXButton: {
+    zIndex: 2,
+    position: 'absolute',
+    top: 10,
+    right: 10,
+    borderRadius: 50,
+    padding: 10
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: 'center',
+    color: 'black',
+    fontSize: 25
   }
+
 })
 
 export default DownloadPage
