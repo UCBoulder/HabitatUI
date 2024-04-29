@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { View, StyleSheet, TouchableOpacity, Text, ImageBackground, Platform, Alert } from 'react-native'
+import { View, StyleSheet, TouchableOpacity, Text, ImageBackground, Alert } from 'react-native'
 import { BurgerMenuButton } from '../components/BurgerMenuButton'
 import { convertToCSV, saveCSVToFile } from '../utils/CsvSaving'
 import { getLocationPins } from '../utils/APICalls'
@@ -30,7 +30,7 @@ const DownloadPage = () => {
 
       Mailer.mail({
         subject: 'CSV File',
-        body: 'Attached is the CSV file containing pin information.',
+        body: 'Attached is the CSV file containing pin information from CheatMaps.',
         isHTML: false,
         attachments: [{
           path: filePath,
@@ -56,6 +56,7 @@ const DownloadPage = () => {
         <TouchableOpacity style={styles.button} onPress={handleDownload}>
           <Text style={styles.text}>Download and Email Observations</Text>
         </TouchableOpacity>
+        <Text style={styles.textHeader}>To view all current pins as a .csv, use this button to download and email the file.</Text>
       </View>
     </ImageBackground>
   )
@@ -84,6 +85,13 @@ const styles = StyleSheet.create({
   text: {
     color: 'black',
     textAlign: 'center'
+  },
+  textHeader: {
+    fontSize: 20,
+    color: 'black',
+    marginBottom: 15,
+    marginLeft: 10,
+    textDecorationLine: 'underline'
   }
 })
 

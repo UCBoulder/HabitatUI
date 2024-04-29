@@ -181,8 +181,8 @@ const ConfirmationPage = ({ route, userID }) => {
               <TouchableOpacity style={styles.modalXButton} onPress={closeModal}>
                 <Icon name="x" size={25} color="black" />
               </TouchableOpacity>
-              <Text style={styles.modalText}>{'\n'}Estimate the amount of the ground in an infestation that is covered with cheat grass. For example,
-                if about half the plants in a square foot are cheat grass, then it is 50% cover.</Text>
+              <Text style={styles.modalText}>{'\n'}Estimate the amount of the ground in an infestation that is covered with cheatgrass. For example,
+                if about half the plants in a square foot are cheatgrass, then it is 50% cover.</Text>
             </View>
           </View>
         </Modal>
@@ -316,7 +316,7 @@ const styles = StyleSheet.create({
   },
   modalContent: {
     width: '80%',
-    height: '39%',
+    height: '50%',
     backgroundColor: 'white',
     borderRadius: 10,
     padding: 20,
@@ -346,5 +346,4 @@ const styles = StyleSheet.create({
     backgroundColor: 'white'
   }
 })
-
 export default ConfirmationPage
