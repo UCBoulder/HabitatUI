@@ -78,9 +78,9 @@ const ConfirmationPage = ({ route, userID }) => {
         value: '25-50%'
       },
       {
-        id: 'more than 50%',
-        label: 'more than 50%',
-        value: 'more than 50%'
+        id: 'More than 50%',
+        label: 'More than 50%',
+        value: 'More than 50%'
       }
     ],
     []
@@ -89,29 +89,29 @@ const ConfirmationPage = ({ route, userID }) => {
   const sizeSelect = useMemo(
     () => [
       {
-        id: 'smaller than a picnic table',
-        label: 'smaller than a picnic table',
-        value: 'smaller than a picnic table'
+        id: 'Smaller than a picnic table',
+        label: 'Smaller than a picnic table',
+        value: 'Smaller than a picnic table'
       },
       {
-        id: 'between a picnic table and a 2 car garage',
-        label: 'between a picnic table and a 2 car garage',
-        value: 'between a picnic table and a 2 car garage'
+        id: 'Between a picnic table and a 2 car garage',
+        label: 'Between a picnic table and a 2 car garage',
+        value: 'Between a picnic table and a 2 car garage'
       },
       {
-        id: 'between a 2 car garage and a basketball court',
-        label: 'between a 2 car garage and a basketball court',
-        value: 'between a 2 car garage and a basketball court'
+        id: 'Between a 2 car garage and a basketball court',
+        label: 'Between a 2 car garage and a basketball court',
+        value: 'Between a 2 car garage and a basketball court'
       },
       {
-        id: 'between a basketball court and a football field',
-        label: 'between a basketball court and a football field',
-        value: 'between a basketball court and a football field'
+        id: 'Between a basketball court and a football field',
+        label: 'Between a basketball court and a football field',
+        value: 'Between a basketball court and a football field'
       },
       {
-        id: 'larger than a football field',
-        label: 'larger than a football field',
-        value: 'larger than a football field'
+        id: 'Larger than a football field',
+        label: 'Larger than a football field',
+        value: 'Larger than a football field'
       }
     ],
     []
@@ -241,7 +241,7 @@ const styles = StyleSheet.create({
   },
   input: {
     fontSize: 18,
-    height: 100,
+    height: 120,
     width: 0.95 * windowWidth,
     borderColor: 'black',
     borderWidth: 1,
@@ -316,7 +316,7 @@ const styles = StyleSheet.create({
   },
   modalContent: {
     width: '80%',
-    height: '50%',
+    height: '39%',
     backgroundColor: 'white',
     borderRadius: 10,
     padding: 20,
