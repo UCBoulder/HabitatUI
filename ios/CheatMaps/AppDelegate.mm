@@ -16,6 +16,7 @@
   self.initialProps = @{};
   [[TSBackgroundFetch sharedInstance] didFinishLaunching];
   return [super application:application didFinishLaunchingWithOptions:launchOptions];
+  // return YES;
 }
 
 - (NSURL *)sourceURLForBridge:(RCTBridge *)bridge

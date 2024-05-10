@@ -100,5 +100,43 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+  
+  
+  <key>NSPrivacyAccessedAPITypes</key>
+  <dict>
+    <!-- New Category for Boot Time -->
+      <key>NSPrivacyAccessedAPICategorySystemBootTime</key>
+      <array>
+          <string>35F9.1</string>
+          <string>8FFB.1</string>
+          <string>3D61.1</string>
+      </array>
+      <!-- New Category for File Time Stamps -->
+          <!--    Not required here:  -->
+<!--      <key>NSPrivacyAccessedAPICategoryFileTimestamp</key>-->
+<!--      <array>-->
+<!--      </array>-->
+      <!-- New Category for Disk Space -->
+      <key>NSPrivacyAccessedAPICategoryDiskSpace</key>
+      <array>
+          <string>E174.1</string>
+          <string>7D9E.1</string>
+      </array>
+  </dict>
+
+  <key>NSPrivacyAccessedAPITypeReasons</key>
+  <dict>
+    <key>35F9.1</key>
+    <string>Access the system boot time to measure the amount of time that has elapsed between events that occurred within the app. Works with the timer for uploading locally saved observation data.</string>
+    <key>8FFB.1</key>
+    <string>Access the system boot time to calculate absolute timestamps for events that occurred within the app. Linked to observation storage and creation on device.</string>
+    <key>3D61.1</key>
+    <string>Include system boot time information in an optional bug report that the user decides to submit. The information is prominently displayed to the user as part of the bug report and may be sent off-device only if the user submits the report for the purpose of investigating or responding to the bug.</string>
+    <key>E174.1</key>
+    <string>Check whether there is sufficient disk space to write the observation files for locally storing observation data when offline. Not used when online</string>
+    <key>7D9E.1</key>
+    <string>Include disk space information in an optional bug report that the person using the device chooses to submit.</string>
+  </dict>
+
 </dict>
 </plist>

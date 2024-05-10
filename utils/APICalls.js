@@ -4,6 +4,7 @@ import config from '../config'
 import connectionCheck from './CheckConnection'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import BackgroundFetch from 'react-native-background-fetch'
+import { getAllExternalFilesDirs } from 'react-native-fs'
 
 const axiosInstance = axios.create({
   timeout: 10000 // 10 seconds timeout
@@ -29,12 +30,17 @@ export const getLocationPins = async () => {
 
 // send one lat long coordinate to the API
 export const sendLocationPin = async (observation) => {
+  // Alert.alert('Warning', 'Top of sendlocation Pin function')
+  console.log("before connection check ")
   const isConnected = await connectionCheck()
+
+  console.log("after connection check ")
   const storedObservations = await AsyncStorage.getItem('Observations')
-
+  console.log("after storedObservations ")
   let timeoutId = null // Variable to store the timeout ID
-  const cancelTokenSource = axios.CancelToken.source() // Create a cancel token source
 
+  const cancelTokenSource = axios.CancelToken.source() // Create a cancel token source
+  console.log("before try ")
   try {
     if (isConnected) {
       console.log('Is connected: ', isConnected)
@@ -63,11 +69,17 @@ export const sendLocationPin = async (observation) => {
       console.log('Response from backend: ', response.data)
       Alert.alert('Success', 'Your Observation Was Successfully Uploaded.')
     } else {
+      
       const updatedObservations = storedObservations ? JSON.parse(storedObservations) : []
       updatedObservations.push(observation)
+      // Alert.alert('Warning', 'In else statement of sendLocationPin function if not connected to internet. after updatedObservations.push(observation)')
       await AsyncStorage.setItem('Observations', JSON.stringify(updatedObservations))
+      // Alert.alert('Warning', 'after awaited for async storage')
+      console.log('after awaited for async storage')
       await initBackgroundFetch()
-      Alert.alert('Warning', 'Your observation has been stored and can be uploaded when you have service.')
+      // Alert.alert('Warning', 'after init background fetch')
+      console.log('after init background fetch')
+      Alert.alert('Success', 'Your observation has been stored and can be uploaded when you have service.')
     }
   } catch (error) {
     console.error('Error sending data to backend: ', error)
@@ -157,15 +169,33 @@ export const initBackgroundFetch = async () => {
       BackgroundFetch.finish(taskId)
     }
   }
-
   const onTimeout = async (taskId) => {
     console.log('Background task timeout: ', taskId)
+    Alert.alert('Warning', 'Background task timeout')
     BackgroundFetch.finish(taskId)
   }
-
-  const status = await BackgroundFetch.configure({
-    minimumFetchInterval: 15, // Fetch interval in minutes
-    stopOnTerminate: false,
-    startOnBoot: true
-  }, onEvent, onTimeout)
+  try {
+    // if(!isConnected){
+      const status = await BackgroundFetch.configure({
+        minimumFetchInterval: 15, // Fetch interval in minutes
+        stopOnTerminate: false,
+        startOnBoot: true
+      }, onEvent, onTimeout);
+    // } 
+    // console.log('BackgroundFetch configure success:', status);
+  } catch (error) {
+    // This is an error that only occurs when the user on IOS has disabled background fetch
+      console.error('Error details:', error.message, error.stack);
+      errorMessageLine1 = " Your observation has been stored locally on your phone.\n When you are back in cell phone range, close this app  all the way and reopen. \n" 
+      errorMessageLine2 = "\n If you have just re-opened your app after saving an observation, wait for it to upload\n \n To close the app: \n"
+      errorMessageLine3 = " Swipe up from the bottom and be sure to pause in the middle of the screen.\n"
+      errorMessageLine4 = " Locate this app, and swipe up to close it.\n\n "
+      errorMessageLine6 = " To prevent this in the future, go to Settings > General > Background App Refresh. With this enabled, our automatic upload feature can work. "
+      errorMessage = errorMessageLine1 + errorMessageLine2 + errorMessageLine3 + errorMessageLine4  + errorMessageLine6
+      Alert.alert('Warning: Manual Steps needed to Upload', errorMessage, error); 
+  }
 }
+//Your observation has been stored locally on your phone. When you are back in cell phone range, close this app  all the way and reopen. Alternatively, if you don't know how to close apps you may shut off your phone, and restart the phone and the app. To close the app:
+// Swipe up from the bottom and be sure to pause in the middle of the screen. You will see all of the apps you are running in a stack. Locate this app, and swipe up to close it.
+// On iPhones with a Home button, double-click the home button. Select an app, and then swipe up to close it.
+// To prevent this in the future, go to Settings > General > Background App Refresh. With this enabled, our automatic upload feature can work.

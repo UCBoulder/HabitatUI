@@ -1,7 +1,8 @@
 import Geolocation from 'react-native-geolocation-service'
 import { sendLocationPin } from './APICalls'
 import { makeJson } from './MakeJson'
-
+import axios from 'axios'
+import { Alert } from 'react-native'
 // helper to combine button functionality and sending to the API
 export const makeObservation = (userID, cover, acres, description, imageSource) => {
   return new Promise((resolve, reject) => {
