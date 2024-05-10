@@ -11,7 +11,9 @@ const TutorialPage = () => {
       <View style={styles.burgerMenuContainer}>
         <BurgerMenuButton navigation={navigation} />
       </View>
-      <ScrollView contentContainerStyle={styles.container}>
+      <ScrollView contentContainerStyle={styles.container}
+                scrollIndicatorInsets={{ right: 1 }}
+      >
         <Text style={styles.header}>{'\n'}{'\n'}Hello, welcome to CheatMaps</Text>
         <Text style={styles.text}>To make an observation, tap the {'"'}Make Observation{'"'} button at the bottom of the Map.</Text>
         <Image source={require('../images/tutorial/MapTutorial.png')} style={styles.image} />
