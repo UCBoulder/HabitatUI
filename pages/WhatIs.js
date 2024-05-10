@@ -14,7 +14,9 @@ const WhatIs = () => {
       <View style={styles.burgerMenuContainer}>
         <BurgerMenuButton navigation={navigation} />
       </View>
-      <ScrollView contentContainerStyle={styles.container} >
+      <ScrollView contentContainerStyle={styles.container}
+                  scrollIndicatorInsets={{ right: 1 }}
+      >
 
         <Text style={styles.header}>{'\n'}{'\n'}What is cheatgrass?</Text>
         <Text style={styles.text}>Cheatgrass, an invasive species in Gunnison County, threatens the way of life of the Western

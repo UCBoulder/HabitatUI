@@ -14,7 +14,9 @@ const HowToID = () => {
       <View style={styles.burgerMenuContainer}>
         <BurgerMenuButton navigation={navigation} />
       </View>
-      <ScrollView contentContainerStyle={styles.container} >
+      <ScrollView contentContainerStyle={styles.container}
+          scrollIndicatorInsets={{ right: 1 }}
+      >
 
         <Text style={styles.header}>{'\n'}{'\n'}How do you identify cheatgrass? </Text>
         <Text style={styles.text}>-Short flat blade-length (6”-24”) {'\n'}-Sharp seedlet emerging from a “sheath”
