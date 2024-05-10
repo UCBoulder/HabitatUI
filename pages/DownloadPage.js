@@ -56,7 +56,7 @@ const DownloadPage = () => {
         <TouchableOpacity style={styles.button} onPress={handleDownload}>
           <Text style={styles.text}>Download and Email Observations</Text>
         </TouchableOpacity>
-        <Text style={styles.textHeader}>To view all current pins as a .csv, use this button to download and email the file.</Text>
+        {/* <Text style={styles.textHeader}>To view all current pins as a .csv, use this button to download and email the file.</Text> */}
       </View>
     </ImageBackground>
   )
